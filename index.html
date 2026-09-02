@@ -240,7 +240,7 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 <div class="stage" id="stage">
 <div class="deck-top">
   <span class="brand"><b>SESI-5</b> · Decode Risk. Ship Impact.</span>
-  <span class="page"><b id="idx">01</b><span>/26</span></span>
+  <span class="page"><b id="idx">01</b><span>/27</span></span>
 </div>
 <nav class="nav-dots" id="dots" aria-label="Slides"></nav>
 <div class="key-hint">← → · space · dots · F11</div>
@@ -431,7 +431,25 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 </section>
 
 <!-- ============================================================
-     S8 · SESSION FLOW
+     S8 · FIND ENDPOINTS — FIELD GUIDE
+     ============================================================ -->
+<section class="slide" data-act="Find endpoints">
+  <div class="slide-content">
+    <span class="pill dot reveal">FIELD GUIDE</span>
+    <h2 class="reveal d1" style="margin-bottom:.3rem">How to find endpoints — 5 steps.</h2>
+    <div class="tl reveal d2">
+      <div class="t"><span class="n">01</span><span class="d"><b>Open the public site</b><br><span class="side-note">Example: <span class="data">sisteminformasibanjir.jakarta.go.id</span> or <span class="data">inarisk.bnpb.go.id</span> — know what data it shows on the map.</span></span></div>
+      <div class="t"><span class="n">02</span><span class="d"><b>F12 → Network, use the site</b><br><span class="side-note">Open DevTools (F12) → tab Network. Toggle layers, pick dates, zoom. <b>Watch</b> the requests roll in.</span></span></div>
+      <div class="t"><span class="n">03</span><span class="d"><b>Spot the API</b><br><span class="side-note">Filter <span class="data">Fetch/XHR</span>. Look for JSON, GeoJSON, or <span class="data">geoserver/wcs</span> patterns. URL is often self-descriptive: <span class="data">map_report/hujan/2021-01-01/07</span>.</span></span></div>
+      <div class="t"><span class="n">04</span><span class="d"><b>Try GetCapabilities (OGC servers)</b><br><span class="side-note">If you see GeoServer, hit <span class="data">/geoserver/wcs?request=GetCapabilities</span> — it returns XML listing every layer, bbox, and CRS. <b>No login.</b></span></span></div>
+      <div class="t"><span class="n">05</span><span class="d"><b>Verify URL in a new tab</b><br><span class="side-note">Open the captured URL directly. Confirm response format (GeoJSON, TIFF, XML). Test with <span class="data">curl</span> if needed. You now have a reusable endpoint.</span></span></div>
+    </div>
+    <p class="muted reveal d3" style="margin-top:.3rem"><b>Pattern:</b> every public data portal leaves a trail in DevTools Network. Follow the requests.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     S9 · SESSION FLOW
      ============================================================ -->
 <section class="slide" data-act="Session flow">
   <div class="slide-content">
@@ -452,7 +470,7 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 </section>
 
 <!-- ============================================================
-     S9 · WHAT YOU SHIP TODAY
+     S10 · WHAT YOU SHIP TODAY
      ============================================================ -->
 <section class="slide" data-act="Outcome">
   <div class="slide-content">
@@ -480,7 +498,7 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 </section>
 
 <!-- ============================================================
-     S10 · BEFORE YOU START
+     S11 · BEFORE YOU START
      ============================================================ -->
 <section class="slide" data-act="Prerequisites">
   <div class="slide-content">
@@ -506,7 +524,7 @@ npm -v</div>
 </section>
 
 <!-- ============================================================
-     S11 · ACCOUNT CHECKLIST
+     S12 · ACCOUNT CHECKLIST
      ============================================================ -->
 <section class="slide" data-act="Accounts">
   <div class="slide-content">
@@ -528,7 +546,7 @@ npm -v</div>
 </section>
 
 <!-- ============================================================
-     S12 · PRD BEFORE CODE
+     S13 · PRD BEFORE CODE
      ============================================================ -->
 <section class="slide" data-act="Spec before code">
   <div class="slide-content">
@@ -604,7 +622,7 @@ How to test the journey. Report.</div>
 </section>
 
 <!-- ============================================================
-     S15 · PASSES + ACCEPTANCE CRITERIA
+     S16 · PASSES + ACCEPTANCE CRITERIA
      ============================================================ -->
 <section class="slide" data-act="Passes">
   <div class="slide-content">
@@ -635,7 +653,7 @@ How to test the journey. Report.</div>
 </section>
 
 <!-- ============================================================
-     S16 · TURSO SETUP
+     S17 · TURSO SETUP
      ============================================================ -->
 <section class="slide" data-act="Turso">
   <div class="slide-content">
@@ -674,7 +692,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S17 · DEPLOYMENT
+     S18 · DEPLOYMENT
      ============================================================ -->
 <section class="slide" data-act="Deploy">
   <div class="slide-content">
@@ -695,7 +713,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S18 · ERRORS + ETIQUETTE
+     S19 · ERRORS + ETIQUETTE
      ============================================================ -->
 <section class="slide" data-act="Errors & etiquette">
   <div class="slide-content">
@@ -727,7 +745,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S19 · WHAT IS A SKILL
+     S20 · WHAT IS A SKILL
      ============================================================ -->
 <section class="slide" data-act="Agent skills">
   <div class="slide-content">
@@ -755,7 +773,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S20 · WHAT IS MCP
+     S21 · WHAT IS MCP
      ============================================================ -->
 <section class="slide" data-act="MCP">
   <div class="slide-content">
@@ -843,7 +861,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S23 · SKILL + MCP WORKFLOW
+     S24 · SKILL + MCP WORKFLOW
      ============================================================ -->
 <section class="slide" data-act="Skill + MCP workflow">
   <div class="slide-content">
@@ -862,7 +880,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S24 · THE PROTOTYPE (interactive)
+     S25 · THE PROTOTYPE (interactive)
      ============================================================ -->
 <section class="slide" data-act="The prototype">
   <div class="slide-content">
@@ -908,7 +926,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S25 · DEFINITION OF DONE
+     S26 · DEFINITION OF DONE
      ============================================================ -->
 <section class="slide" data-act="Done">
   <div class="slide-content">
@@ -934,7 +952,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S26 · NOW IT'S YOUR TURN
+     S27 · NOW IT'S YOUR TURN
      ============================================================ -->
 <section class="slide" data-act="Your turn">
   <div class="slide-content">

@@ -23,7 +23,7 @@ var slides = extractSlides(html);
 
 var checks = [
   { name: 'doctype', find: '<!DOCTYPE html>' },
-  { name: 'slide count = 26', find: 'slide' },
+  { name: 'slide count = 27', find: 'slide' },
   { name: 'progress bar', find: 'id="progress"' },
   { name: 'nav dots', find: 'id="dots"' },
   { name: 'slide index', find: 'id="idx"' },
@@ -37,7 +37,7 @@ checks.forEach(function (c) {
   report(c.name, ok);
 });
 
-report('slides array length is 26', slides.length === 26);
+report('slides array length is 27', slides.length === 27);
 
 var titles = [
   'From static',
@@ -47,6 +47,7 @@ var titles = [
   'Kampung Melayu, Jatinegara',
   'The data you',
   'We scraped it anyway.',
+  'How to find endpoints',
   'Today\'s session',
   'What you ship today.',
   'Before you start.',
