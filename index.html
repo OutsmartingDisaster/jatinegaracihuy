@@ -156,12 +156,11 @@ b,strong{color:var(--ink);font-weight:600}
    TIMELINE (session flow)
    ============================================================ */
 .tl{display:flex;flex-direction:column;gap:.3rem}
-.tl .t{display:grid;grid-template-columns:auto 1fr auto;gap:.6rem;align-items:center;
+.tl .t{display:grid;grid-template-columns:auto 1fr;gap:.6rem;align-items:center;
   border:1px solid var(--line);border-radius:10px;padding:.32rem .7rem;background:var(--surface)}
 .tl .n{font-family:var(--font-data);color:var(--primary-deep);font-weight:600;min-width:1.8ch}
 .tl .d{font-size:calc(var(--body-size)*0.9);color:var(--muted)}
 .tl .d b{color:var(--ink);font-weight:600}
-.tl .time{font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);white-space:nowrap;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:.1rem .55rem}
 
 /* ============================================================
    CHECKLIST
@@ -360,16 +359,16 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
   <div class="slide-content">
     <h2 class="reveal d1">Today's session — build &amp; ship.</h2>
     <div class="tl reveal d2">
-      <div class="t"><span class="n">01</span><span class="d"><b>Frame the problem</b> — static vs interactive</span><span class="time">10 min</span></div>
-      <div class="t"><span class="n">02</span><span class="d"><b>Accounts checklist</b> — register, one by one</span><span class="time">10 min</span></div>
-      <div class="t"><span class="n">03</span><span class="d"><b>PRD first</b> — case → PRD with <span class="data">freebuff</span></span><span class="time">15 min</span></div>
-      <div class="t"><span class="n">04</span><span class="d"><b>Pass 01</b> — shell, schema, seed with <span class="data">opencode</span></span><span class="time">30 min</span></div>
-      <div class="t"><span class="n">05</span><span class="d"><b>Verify Pass 01</b> — runs locally, disclaimer visible</span><span class="time">10 min</span></div>
-      <div class="t"><span class="n">06</span><span class="d"><b>Pass 02</b> — event selector + risk verdict</span><span class="time">30 min</span></div>
-      <div class="t"><span class="n">07</span><span class="d"><b>Verify Pass 02</b> — one full journey works</span><span class="time">10 min</span></div>
-      <div class="t"><span class="n">08</span><span class="d"><b>Deploy</b> — Vercel / Cloudflare + env vars</span><span class="time">15 min</span></div>
-      <div class="t"><span class="n">09</span><span class="d"><b>Test</b> — 1 question, 3–5 people</span><span class="time">10 min</span></div>
-      <div class="t"><span class="n">10</span><span class="d"><b>Reflect</b> — limits, next steps, share URL</span><span class="time">10 min</span></div>
+      <div class="t"><span class="n">01</span><span class="d"><b>Frame the problem</b> — static vs interactive</span></div>
+      <div class="t"><span class="n">02</span><span class="d"><b>Accounts checklist</b> — register, one by one</span></div>
+      <div class="t"><span class="n">03</span><span class="d"><b>PRD first</b> — case → PRD with <span class="data">freebuff</span></span></div>
+      <div class="t"><span class="n">04</span><span class="d"><b>Pass 01</b> — shell, schema, seed with <span class="data">opencode</span></span></div>
+      <div class="t"><span class="n">05</span><span class="d"><b>Verify Pass 01</b> — runs locally, disclaimer visible</span></div>
+      <div class="t"><span class="n">06</span><span class="d"><b>Pass 02</b> — event selector + risk verdict</span></div>
+      <div class="t"><span class="n">07</span><span class="d"><b>Verify Pass 02</b> — one full journey works</span></div>
+      <div class="t"><span class="n">08</span><span class="d"><b>Deploy</b> — Vercel / Cloudflare + env vars</span></div>
+      <div class="t"><span class="n">09</span><span class="d"><b>Test</b> — 1 question, 3–5 people</span></div>
+      <div class="t"><span class="n">10</span><span class="d"><b>Reflect</b> — limits, next steps, share URL</span></div>
     </div>
   </div>
 </section>
