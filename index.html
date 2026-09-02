@@ -427,8 +427,57 @@ Build Pass 01 only, then stop and report.</pre>
   <h3>They work together.</h3>
   <p class="lead">A skill defines the workflow; MCP gives it live data.</p>
 </section>
-<section class="slide" id="slide-18" data-act="Act 5 · Bandung Landslide"></section>
-<section class="slide" id="slide-19" data-act="Act 5 · Bandung Landslide"></section>
+<section class="slide" id="slide-18" data-act="Act 5 · Bandung Landslide">
+  <p class="tag">17 · From spec to deployed</p>
+  <h1>The case, bounded</h1>
+  <p class="lead">Parents in a Bandung school-route area struggle to decide whether it is safe to walk after heavy rain, because landslide-risk information is fragmented.</p>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">One location</h3>
+      <p>Five pilot wards in Bandung (Cidadap, Coblong, Bandung Wetan, Sukajadi, Cibeunying Kaler).</p>
+    </div>
+    <div class="card">
+      <h3 class="kicker">One user group</h3>
+      <p>Parents and school staff deciding the route to school.</p>
+    </div>
+    <div class="card">
+      <h3 class="kicker">One journey</h3>
+      <p>Check today's route risk → get one action (walk / detour / stay home).</p>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Why it fits</h3>
+      <p>Specific enough to research; small enough to prototype in 1–2 weeks.</p>
+    </div>
+  </div>
+</section>
+<section class="slide" id="slide-19" data-act="Act 5 · Bandung Landslide">
+  <p class="tag">18 · From spec to deployed</p>
+  <h1>The evidence</h1>
+  <p class="lead">Every source carries a trail — source, period, use, limitation.</p>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">Rainfall</h3>
+      <p><span class="tool">BMKG</span> / Open-Meteo — historical + forecast.</p>
+      <p class="note">Use: today's risk. Limitation: point forecasts, not street-level.</p>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Slope &amp; elevation</h3>
+      <p>Open elevation (DEM). Use: route slope risk.</p>
+      <p class="note">Limitation: regional resolution.</p>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Land cover</h3>
+      <p>Open land-cover data. Use: which areas slide-prone.</p>
+      <p class="note">Limitation: periodic, not real-time.</p>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Incident records</h3>
+      <p>Reported events / news timeline. Use: recurring locations.</p>
+      <p class="note">Limitation: contextual and exploratory — not official data.</p>
+    </div>
+  </div>
+  <p class="note">Official data = factual foundation. Crawled data = context only.</p>
+</section>
 <section class="slide" id="slide-20" data-act="Act 5 · Bandung Landslide"></section>
 <section class="slide" id="slide-21" data-act="Act 5 · Bandung Landslide"></section>
 <section class="slide" id="slide-22" data-act="Act 6 · Your Portfolio"></section>
