@@ -11,7 +11,6 @@
 /* ============================================================
    THEME — CIVIC / FLOOD MAP
    Pure white paper, Ciliwung river-teal, warning amber.
-   The aesthetic of a laminated flood map on a warung wall.
    ============================================================ */
 :root{
   --bg:oklch(1 0 0);
@@ -38,8 +37,8 @@
   --h2-size:clamp(1.15rem,3.1vw,2.4rem);
   --h3-size:clamp(0.95rem,1.9vw,1.3rem);
   --body-size:clamp(0.8rem,1.4vw,1.02rem);
-  --small-size:clamp(0.64rem,1vw,0.8rem);
-  --slide-padding:clamp(1.1rem,3.6vw,2.8rem);
+  --small-size:clamp(0.62rem,0.95vw,0.78rem);
+  --slide-padding:clamp(1rem,3.2vw,2.5rem);
   --gap:clamp(0.55rem,1.5vw,1.4rem);
   --ease-out-expo:cubic-bezier(0.16,1,0.3,1);
 }
@@ -47,7 +46,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow-x:hidden}
 html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.48;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.46;-webkit-font-smoothing:antialiased}
 
 .slide{width:100vw;height:100vh;height:100dvh;overflow:hidden;scroll-snap-align:start;
   display:flex;flex-direction:column;position:relative}
@@ -55,19 +54,18 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-hei
   display:flex;flex-direction:column;justify-content:center}
 
 /* ============================================================
-   CHROME — thin civic bar (not an eyebrow)
+   CHROME
    ============================================================ */
 .deck-top{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;
-  align-items:center;gap:1rem;padding:clamp(0.55rem,1.2vw,0.95rem) clamp(0.95rem,2.4vw,2rem);
+  align-items:center;gap:1rem;padding:clamp(0.5rem,1.1vw,0.9rem) clamp(0.95rem,2.4vw,2rem);
   font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);letter-spacing:.06em;
   border-bottom:1px solid var(--line);background:color-mix(in oklab,var(--bg) 92%,transparent);
   backdrop-filter:blur(6px)}
 .deck-top .brand b{color:var(--primary-deep);font-weight:600}
-.deck-top .page{display:flex;align-items:center;gap:.6rem}
+.deck-top .page{display:flex;align-items:center;gap:.5rem}
 .deck-top .page b{color:var(--ink);font-weight:600}
-.rule-teal{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--primary);opacity:.9}
 .progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--primary);z-index:70;width:0%}
-.nav-dots{position:fixed;right:clamp(0.5rem,1.2vw,1.1rem);top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:7px}
+.nav-dots{position:fixed;right:clamp(0.5rem,1.2vw,1.1rem);top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:6px}
 .nav-dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--muted);background:transparent;padding:0;cursor:pointer;opacity:.45;transition:all .25s}
 .nav-dots button.active{background:var(--primary);border-color:var(--primary);opacity:1;transform:scale(1.35)}
 .key-hint{position:fixed;bottom:clamp(0.3rem,1vw,.6rem);right:clamp(0.6rem,1.4vw,1.2rem);z-index:60;
@@ -79,30 +77,28 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-hei
 h1,h2,h3{font-family:var(--font-display);text-wrap:balance;letter-spacing:-0.025em}
 h1{font-weight:800;font-size:var(--title-size);line-height:1.0;letter-spacing:-0.03em;margin:.2rem 0 .55rem}
 h1 .hl{color:var(--primary)}
-h2{font-weight:700;font-size:var(--h2-size);line-height:1.06;margin:.25rem 0 .55rem}
+h2{font-weight:700;font-size:var(--h2-size);line-height:1.05;margin:.25rem 0 .5rem}
 h3{font-weight:700;font-size:var(--h3-size);line-height:1.15}
 p{font-size:var(--body-size);color:var(--muted);max-width:65ch}
-.sub{font-size:calc(var(--body-size)*1.16);color:var(--ink);max-width:52ch;text-wrap:pretty}
+.sub{font-size:calc(var(--body-size)*1.14);color:var(--ink);max-width:52ch;text-wrap:pretty}
 b,strong{color:var(--ink);font-weight:600}
 .data{font-family:var(--font-data)}
 .tag-teal{color:var(--primary-deep)}
-.tag-amber{color:oklch(0.55 0.12 78)}
-.rule{height:1px;background:var(--line);margin:calc(var(--gap)*0.45) 0}
+.rule{height:1px;background:var(--line);margin:calc(var(--gap)*0.4) 0}
 
 /* ============================================================
-   SURFACES — full borders, tinted fills. No side-stripes.
+   SURFACES
    ============================================================ */
 .card{border:1px solid var(--line);border-radius:14px;background:var(--surface);
-  padding:clamp(0.75rem,1.4vw,1.25rem);overflow:hidden}
+  padding:clamp(0.7rem,1.3vw,1.2rem);overflow:hidden}
 .card.flat{background:var(--bg)}
-.card .num{font-family:var(--font-display);font-weight:800;font-size:clamp(1.05rem,2.4vw,1.75rem);line-height:1.05;color:var(--primary-deep)}
+.card .num{font-family:var(--font-display);font-weight:800;font-size:clamp(1.05rem,2.3vw,1.7rem);line-height:1.05;color:var(--primary-deep)}
 .card .lbl{font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);text-transform:uppercase;letter-spacing:.1em;display:block;margin-top:.3rem}
-.card p{font-size:calc(var(--body-size)*0.96);margin-top:.45rem;color:var(--muted)}
-.card ul{list-style:none;margin-top:.45rem}
-.card li{font-size:calc(var(--body-size)*0.92);color:var(--muted);padding:.2rem 0;display:flex;gap:.6rem;align-items:baseline}
+.card p{font-size:calc(var(--body-size)*0.95);margin-top:.4rem;color:var(--muted)}
+.card ul{list-style:none;margin-top:.4rem}
+.card li{font-size:calc(var(--body-size)*0.9);color:var(--muted);padding:.18rem 0;display:flex;gap:.6rem;align-items:baseline}
 .card li::before{content:"—";color:var(--primary);flex:none}
 
-/* tonal fills for status */
 .tint-teal{background:var(--primary-soft);border-color:color-mix(in oklab,var(--primary) 30%,transparent)}
 .tint-amber{background:var(--accent-soft);border-color:color-mix(in oklab,var(--accent) 40%,transparent)}
 .tint-red{background:var(--danger-soft);border-color:color-mix(in oklab,var(--danger) 35%,transparent)}
@@ -112,9 +108,11 @@ b,strong{color:var(--ink);font-weight:600}
 .cols-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))}
 .cols-3{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
 .cols-4{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+.bad h3{color:var(--danger)} .good h3{color:var(--safe)}
 
 /* ============================================================
-   PILLS / LEGEND (map legend style)
+   PILLS / LEGEND
    ============================================================ */
 .pill{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-data);font-size:var(--small-size);
   border-radius:999px;padding:.22rem .7rem;border:1px solid var(--line);background:var(--bg);color:var(--muted)}
@@ -128,63 +126,88 @@ b,strong{color:var(--ink);font-weight:600}
 
 .flow{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
 .step{font-family:var(--font-data);font-size:var(--small-size);border:1px solid var(--line);
-  background:var(--surface);color:var(--muted);border-radius:10px;padding:.42rem .7rem;white-space:nowrap}
+  background:var(--surface);color:var(--muted);border-radius:10px;padding:.4rem .7rem;white-space:nowrap}
 .step b{color:var(--primary-deep)}
 .flow .arr{color:var(--muted);font-family:var(--font-data)}
 
-/* ============================================================
-   QUOTE — the InaRISK complaint (a real voice, not a mock)
-   ============================================================ */
-.quote{font-family:var(--font-display);font-weight:700;font-size:clamp(1.05rem,2.5vw,1.95rem);line-height:1.22;
+.quote{font-family:var(--font-display);font-weight:700;font-size:clamp(1.05rem,2.5vw,1.9rem);line-height:1.22;
   color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:16px;
-  padding:clamp(0.9rem,1.8vw,1.6rem) clamp(1rem,2.2vw,2rem)}
-.quote small{display:block;font-family:var(--font-data);font-weight:400;font-size:var(--small-size);color:var(--muted);margin-top:.7rem}
-
-/* comparison split */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
-.bad h3{color:var(--danger)} .good h3{color:var(--safe)}
+  padding:clamp(0.9rem,1.8vw,1.5rem) clamp(1rem,2.2vw,1.9rem)}
+.quote small{display:block;font-family:var(--font-data);font-weight:400;font-size:var(--small-size);color:var(--muted);margin-top:.65rem}
 
 /* ============================================================
-   CODE + COPY
+   TABLE (accounts, errors)
+   ============================================================ */
+.table-wrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg)}
+.table{width:100%;border-collapse:collapse;font-size:calc(var(--body-size)*0.9)}
+.table th{font-family:var(--font-data);font-size:var(--small-size);text-transform:uppercase;letter-spacing:.08em;
+  color:var(--muted);text-align:left;padding:.45rem .7rem;background:var(--surface-2);border-bottom:1px solid var(--line)}
+.table td{padding:.45rem .7rem;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top}
+.table td b{color:var(--ink);font-weight:600}
+.table tr:last-child td{border-bottom:0}
+.table .mono{font-family:var(--font-data);font-size:calc(var(--body-size)*0.82);word-break:break-all}
+
+/* ============================================================
+   TIMELINE (session flow)
+   ============================================================ */
+.tl{display:flex;flex-direction:column;gap:.3rem}
+.tl .t{display:grid;grid-template-columns:auto 1fr auto;gap:.6rem;align-items:center;
+  border:1px solid var(--line);border-radius:10px;padding:.32rem .7rem;background:var(--surface)}
+.tl .n{font-family:var(--font-data);color:var(--primary-deep);font-weight:600;min-width:1.8ch}
+.tl .d{font-size:calc(var(--body-size)*0.9);color:var(--muted)}
+.tl .d b{color:var(--ink);font-weight:600}
+.tl .time{font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);white-space:nowrap;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:.1rem .55rem}
+
+/* ============================================================
+   CHECKLIST
+   ============================================================ */
+.check{list-style:none;display:flex;flex-direction:column;gap:.32rem}
+.check li{display:flex;gap:.6rem;align-items:baseline;font-size:calc(var(--body-size)*0.95);color:var(--muted)}
+.check li b{color:var(--ink);font-weight:600}
+.check li::before{content:"✓";color:var(--safe);font-weight:800;flex:none}
+
+/* ============================================================
+   CODE
    ============================================================ */
 .code{position:relative;background:var(--ink);border-radius:14px;color:oklch(0.92 0.01 170);
-  font-family:var(--font-data);font-size:clamp(0.68rem,1.05vw,.84rem);line-height:1.6;
-  padding:clamp(0.8rem,1.5vw,1.3rem);overflow:auto;max-height:58vh}
-.code .copy{position:absolute;top:.6rem;right:.6rem;font-family:var(--font-data);font-size:var(--small-size);
-  background:var(--accent);color:#fff;border:0;border-radius:8px;padding:.28rem .6rem;cursor:pointer;font-weight:600}
+  font-family:var(--font-data);font-size:clamp(0.64rem,0.95vw,.8rem);line-height:1.55;
+  padding:clamp(0.7rem,1.3vw,1.1rem);overflow:auto;max-height:56vh}
+.code .copy{position:absolute;top:.55rem;right:.55rem;font-family:var(--font-data);font-size:var(--small-size);
+  background:var(--accent);color:#fff;border:0;border-radius:8px;padding:.26rem .55rem;cursor:pointer;font-weight:600}
 .code .k{color:oklch(0.75 0.1 190)}
 .code .c{color:oklch(0.7 0 0 / .55)}
+.code.small{font-size:clamp(0.6rem,0.85vw,.72rem);padding:clamp(0.6rem,1.1vw,.95rem)}
 
 /* ============================================================
-   MINI APP — Kampung Melayu flood gauge
+   MINI APP
    ============================================================ */
 .app{background:var(--bg);border:1px solid var(--primary);border-radius:16px;overflow:hidden;box-shadow:0 1px 0 var(--line)}
 .app-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;
-  padding:.65rem 1rem;background:var(--primary);color:#fff}
+  padding:.6rem 1rem;background:var(--primary);color:#fff}
 .app-head .title{font-family:var(--font-display);font-weight:700;font-size:clamp(.85rem,1.6vw,1.1rem)}
 .app-head .title small{display:block;font-family:var(--font-data);font-weight:400;font-size:var(--small-size);opacity:.85;letter-spacing:.04em}
 .app-body{display:grid;grid-template-columns:1.2fr .9fr;gap:0}
-.app-left{padding:clamp(.7rem,1.2vw,1.05rem);border-right:1px solid var(--line)}
-.app-right{padding:clamp(.7rem,1.2vw,1.05rem);display:flex;flex-direction:column;gap:.5rem;background:var(--surface)}
-.gauge{border:1px solid var(--line);border-radius:12px;padding:.5rem .7rem;background:var(--bg)}
+.app-left{padding:clamp(.65rem,1.1vw,.95rem);border-right:1px solid var(--line)}
+.app-right{padding:clamp(.65rem,1.1vw,.95rem);display:flex;flex-direction:column;gap:.45rem;background:var(--surface)}
+.gauge{border:1px solid var(--line);border-radius:12px;padding:.45rem .7rem;background:var(--bg)}
 .gauge .lab{font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
-.gauge .val{font-family:var(--font-display);font-weight:800;font-size:clamp(1rem,2.1vw,1.55rem);color:var(--ink);line-height:1.1}
+.gauge .val{font-family:var(--font-display);font-weight:800;font-size:clamp(1rem,2.1vw,1.5rem);color:var(--ink);line-height:1.1}
 .gauge .val small{font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);font-weight:400}
 .bar{height:6px;border-radius:4px;background:var(--surface-2);margin-top:.35rem;overflow:hidden}
 .bar i{display:block;height:100%;background:var(--primary);border-radius:4px}
 select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-size);
-  background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.55rem .7rem}
+  background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.5rem .7rem}
 .verdict{font-family:var(--font-display);font-weight:800;text-align:center;border-radius:12px;
-  padding:clamp(.6rem,1vw,.95rem);font-size:clamp(1rem,1.9vw,1.4rem);letter-spacing:.02em;line-height:1.1}
+  padding:clamp(.55rem,.9vw,.85rem);font-size:clamp(1rem,1.9vw,1.35rem);letter-spacing:.02em;line-height:1.1}
 .verdict small{display:block;font-family:var(--font-data);font-weight:400;font-size:var(--small-size);margin-top:.25rem;letter-spacing:.04em;opacity:.9}
 .verdict.aman{background:var(--safe);color:#fff}
 .verdict.waspada{background:var(--accent);color:#fff}
 .verdict.siaga{background:oklch(0.62 0.15 55);color:#fff}
 .verdict.bahaya{background:var(--danger);color:#fff}
-.disclaimer{margin-top:.6rem;padding:.4rem .7rem;background:var(--accent-soft);border:1px solid color-mix(in oklab,var(--accent) 35%,transparent);
+.disclaimer{margin-top:.55rem;padding:.38rem .7rem;background:var(--accent-soft);border:1px solid color-mix(in oklab,var(--accent) 35%,transparent);
   font-size:var(--small-size);color:var(--ink);border-radius:8px}
-.hist{font-size:calc(var(--body-size)*0.9)}
-.hist li{list-style:none;padding:.24rem 0;border-bottom:1px dashed var(--line);color:var(--muted);display:flex;gap:.5rem;align-items:baseline}
+.hist{font-size:calc(var(--body-size)*0.88)}
+.hist li{list-style:none;padding:.22rem 0;border-bottom:1px dashed var(--line);color:var(--muted);display:flex;gap:.5rem;align-items:baseline}
 .hist li b{font-family:var(--font-data);color:var(--ink);font-weight:500;flex:none}
 .hist li span{color:var(--muted)}
 .side-note{font-size:calc(var(--body-size)*0.85);color:var(--muted)}
@@ -192,23 +215,23 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 /* ============================================================
    REVEAL
    ============================================================ */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s var(--ease-out-expo),transform .55s var(--ease-out-expo)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s var(--ease-out-expo),transform .5s var(--ease-out-expo)}
 .slide.visible .reveal{opacity:1;transform:none}
-.slide.visible .d1{transition-delay:.06s}.slide.visible .d2{transition-delay:.12s}
-.slide.visible .d3{transition-delay:.18s}.slide.visible .d4{transition-delay:.24s}
-.slide.visible .d5{transition-delay:.3s}
+.slide.visible .d1{transition-delay:.05s}.slide.visible .d2{transition-delay:.1s}
+.slide.visible .d3{transition-delay:.15s}.slide.visible .d4{transition-delay:.2s}
+.slide.visible .d5{transition-delay:.25s}
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-height:700px){:root{--slide-padding:clamp(.8rem,3vw,1.5rem);--gap:clamp(.4rem,1vw,.8rem)}}
+@media (max-height:700px){:root{--slide-padding:clamp(.7rem,2.6vw,1.3rem);--gap:clamp(.35rem,.9vw,.7rem)}}
 @media (max-height:600px){.nav-dots,.key-hint{display:none}}
 @media (max-width:820px){
   .cols-2,.cols-3,.cols-4,.split{grid-template-columns:1fr}
   .app-body{grid-template-columns:1fr}
   .app-left{border-right:0;border-bottom:1px solid var(--line)}
 }
-@media (max-width:600px){:root{--title-size:clamp(1.4rem,7vw,2.1rem)}}
+@media (max-width:600px){:root{--title-size:clamp(1.4rem,7vw,2rem)}}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   html{scroll-behavior:auto}
@@ -220,7 +243,7 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 <div class="progress-bar" id="progress"></div>
 <div class="deck-top">
   <span class="brand"><b>SESI-5</b> · Decode Risk. Ship Impact.</span>
-  <span class="page"><span class="rule-teal" style="display:none"></span><b id="idx">01</b><span>/13</span></span>
+  <span class="page"><b id="idx">01</b><span>/22</span></span>
 </div>
 <nav class="nav-dots" id="dots" aria-label="Slides"></nav>
 <div class="key-hint">scroll · ↑↓ · dots</div>
@@ -230,18 +253,18 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
      ============================================================ -->
 <section class="slide" data-act="Cover">
   <div class="slide-content">
-    <span class="pill dot reveal">CIVIC DATA PROTOTYPE</span>
+    <span class="pill dot reveal">CIVIC DATA PROTOTYPE · WORKSHOP</span>
     <h1 class="reveal d1">From static<br>to <span class="hl">interactive</span>.</h1>
     <p class="sub reveal d2">Agent Skills · MCP · and a one-kecamatan flood prototype — shipped with <b class="data tag-teal">freebuff</b> + <b class="data tag-teal">opencode</b>.</p>
     <div class="rule reveal d3"></div>
     <div class="flow reveal d3">
       <span class="step"><b>Case</b> · Kampung Melayu, Jatinegara</span><span class="arr">→</span>
       <span class="step"><b>Evidence</b></span><span class="arr">→</span>
-      <span class="step"><b>Insight</b></span><span class="arr">→</span>
-      <span class="step"><b>Prototype</b></span><span class="arr">→</span>
-      <span class="step"><b>Deployed portfolio</b></span>
+      <span class="step"><b>PRD</b></span><span class="arr">→</span>
+      <span class="step"><b>Pass 01–04</b></span><span class="arr">→</span>
+      <span class="step"><b>Deploy</b></span>
     </div>
-    <p class="muted reveal d4" style="margin-top:clamp(.6rem,1.4vw,1.1rem)">Not just an AI-generated infographic. A working, honest prototype.</p>
+    <p class="muted reveal d4" style="margin-top:clamp(.55rem,1.3vw,1rem)">Not just an AI-generated infographic. A working, honest prototype.</p>
   </div>
 </section>
 
@@ -292,7 +315,7 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
         </ul>
       </div>
     </div>
-    <p class="sub reveal d3" style="font-size:calc(var(--body-size)*1.15)">A portfolio prototype proves the <b>thinking</b> behind a product — not just the pixels.</p>
+    <p class="sub reveal d3" style="font-size:calc(var(--body-size)*1.12)">A portfolio prototype proves the <b>thinking</b> behind a product — not just the pixels.</p>
     <div class="flow reveal d4" style="margin-top:.4rem">
       <span class="pill dot green">small</span><span class="pill dot">evidence-based</span><span class="pill dot amber">usable</span><span class="pill dot red">honest about limits</span>
     </div>
@@ -327,41 +350,110 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
       <div class="card tint-red"><span class="lbl">DKI SDA · TMA</span><p>River water-level data exists — not as an open API you can call from a demo.</p></div>
     </div>
     <div class="rule reveal d3"></div>
-    <p class="sub reveal d3" style="font-size:calc(var(--body-size)*1.05)">So the honest move: build the <b>flow with sample + documented data</b>, label it clearly, and use official sources as <b>reference only</b>.</p>
+    <p class="sub reveal d3" style="font-size:calc(var(--body-size)*1.02)">So the honest move: build the <b>flow with sample + documented data</b>, label it clearly, and use official sources as <b>reference only</b>.</p>
     <div class="flow reveal d4"><span class="pill warn">every source carries a trail</span><span class="pill">source · period · use · limitation</span><span class="pill">crawl for context — never fake certainty</span></div>
   </div>
 </section>
 
 <!-- ============================================================
-     S6 · STACK
+     S6 · SESSION FLOW
      ============================================================ -->
-<section class="slide" data-act="Meet the stack">
+<section class="slide" data-act="Session flow">
   <div class="slide-content">
-    <h2 class="reveal d1">Coding partners + 4 accounts.</h2>
-    <div class="grid cols-2 reveal d2">
-      <div class="card">
-        <h3>Coding partners</h3>
-        <p style="margin-top:.3rem"><span class="pill"><b>freebuff</b></span> &nbsp; <span class="pill"><b>opencode</b></span></p>
-        <p>Your agent CLIs. You bring the case &amp; evidence; they bring tools, workflow, and the build.</p>
-      </div>
-      <div class="card">
-        <h3>Ship layer</h3>
-        <div class="flow" style="margin-top:.3rem"><span class="pill">Next.js</span><span class="pill">Turso</span><span class="pill">Vercel / Cloudflare</span></div>
-        <p>Deployable web app on top of a real database — not a static image.</p>
-      </div>
-    </div>
-    <div class="rule reveal d3"></div>
-    <div class="grid cols-4 reveal d3">
-      <div class="card flat"><span class="lbl">why · proof</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">GitHub</div><p>Repo = your proof. Versioned PRD, passes, README case study.</p></div>
-      <div class="card flat"><span class="lbl">why · data</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Turso</div><p>Edge SQLite — ward data, TMA, events live here.</p></div>
-      <div class="card flat"><span class="lbl">why · host</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Cloudflare</div><p>DNS + deploy. Fast, global, free tier.</p></div>
-      <div class="card flat"><span class="lbl">why · url</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Gravatar</div><p>Free subdomain — a public link turns prototype into portfolio.</p></div>
+    <h2 class="reveal d1">Today's session — build &amp; ship.</h2>
+    <div class="tl reveal d2">
+      <div class="t"><span class="n">01</span><span class="d"><b>Frame the problem</b> — static vs interactive</span><span class="time">10 min</span></div>
+      <div class="t"><span class="n">02</span><span class="d"><b>Accounts checklist</b> — register, one by one</span><span class="time">10 min</span></div>
+      <div class="t"><span class="n">03</span><span class="d"><b>PRD first</b> — case → PRD with <span class="data">freebuff</span></span><span class="time">15 min</span></div>
+      <div class="t"><span class="n">04</span><span class="d"><b>Pass 01</b> — shell, schema, seed with <span class="data">opencode</span></span><span class="time">30 min</span></div>
+      <div class="t"><span class="n">05</span><span class="d"><b>Verify Pass 01</b> — runs locally, disclaimer visible</span><span class="time">10 min</span></div>
+      <div class="t"><span class="n">06</span><span class="d"><b>Pass 02</b> — event selector + risk verdict</span><span class="time">30 min</span></div>
+      <div class="t"><span class="n">07</span><span class="d"><b>Verify Pass 02</b> — one full journey works</span><span class="time">10 min</span></div>
+      <div class="t"><span class="n">08</span><span class="d"><b>Deploy</b> — Vercel / Cloudflare + env vars</span><span class="time">15 min</span></div>
+      <div class="t"><span class="n">09</span><span class="d"><b>Test</b> — 1 question, 3–5 people</span><span class="time">10 min</span></div>
+      <div class="t"><span class="n">10</span><span class="d"><b>Reflect</b> — limits, next steps, share URL</span><span class="time">10 min</span></div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     S7 · PRD BEFORE CODE
+     S7 · WHAT YOU SHIP TODAY
+     ============================================================ -->
+<section class="slide" data-act="Outcome">
+  <div class="slide-content">
+    <h2 class="reveal d1">What you ship today.</h2>
+    <div class="split reveal d2">
+      <div>
+        <ul class="check">
+          <li><b>01</b> A public GitHub repo — <span class="data">kampung-melayu-flood</span></li>
+          <li><b>02</b> A <span class="data">PRD.md</span> — user, scope, non-goals, passes</li>
+          <li><b>03</b> A working Next.js flood-history prototype</li>
+          <li><b>04</b> A Turso database with sample flood events</li>
+          <li><b>05</b> A deployed URL — live and linkable</li>
+          <li><b>06</b> A README with case, data limits, next steps</li>
+        </ul>
+      </div>
+      <div class="card tint-teal">
+        <span class="lbl">final deliverable</span>
+        <div class="num" style="font-size:clamp(1rem,2.2vw,1.6rem)">Repo + DB<br>+ URL + limits</div>
+        <p>A deployed prototype plus an honest limitation statement. That's the whole bar.</p>
+      </div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <p class="reveal d3" style="font-size:calc(var(--body-size)*1.05)"><b>Done</b> = one journey works, data is labeled sample, and the limits are written down.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     S8 · BEFORE YOU START
+     ============================================================ -->
+<section class="slide" data-act="Prerequisites">
+  <div class="slide-content">
+    <h2 class="reveal d1">Before you start.</h2>
+    <div class="split reveal d2">
+      <div>
+        <ul class="check">
+          <li>Laptop with terminal access</li>
+          <li><b>Node.js 20+</b> installed</li>
+          <li><b>Git</b> installed</li>
+          <li>One project folder, e.g. <span class="data">kampung-melayu-flood</span></li>
+          <li>Accounts: <b>GitHub · Turso · Cloudflare/Vercel · Gravatar</b></li>
+        </ul>
+      </div>
+      <div class="code small"><span class="c"># verify your tools</span>
+node -v    <span class="c"># must print v20.x or newer</span>
+git --version
+npm -v</div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <p class="reveal d3"><b>Installing tools this session?</b> That's the group-chat problem, not the workshop. Ask in the group <em>before</em> step 03.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     S9 · ACCOUNT CHECKLIST
+     ============================================================ -->
+<section class="slide" data-act="Accounts">
+  <div class="slide-content">
+    <h2 class="reveal d1">Accounts — checklist.</h2>
+    <div class="table-wrap reveal d2">
+      <table class="table">
+        <tr><th>Account</th><th>Purpose</th><th>Create</th><th>Proof</th></tr>
+        <tr><td><b>GitHub</b></td><td>Repo + portfolio evidence</td><td class="mono">public repo kampung-melayu-flood</td><td class="mono">repo URL</td></tr>
+        <tr><td><b>Turso</b></td><td>Flood-events database</td><td class="mono">database flood-demo</td><td class="mono">DB URL + auth token</td></tr>
+        <tr><td><b>Cloudflare / Vercel</b></td><td>Hosting / deployment</td><td class="mono">connect repo → Pages / Projects</td><td class="mono">live URL</td></tr>
+        <tr><td><b>Gravatar</b></td><td>Public identity / avatar</td><td class="mono">same email as GitHub, profile photo</td><td class="mono">public profile</td></tr>
+      </table>
+    </div>
+    <div class="rule reveal d3"></div>
+    <div class="card tint-amber reveal d3">
+      <p><b>Note on Gravatar:</b> it's a public <em>identity/avatar</em> — not a domain provider. The free URL for your prototype comes from <b>Cloudflare Pages</b> or the <b>Vercel</b> subdomain.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S10 · PRD BEFORE CODE
      ============================================================ -->
 <section class="slide" data-act="Spec before code">
   <div class="slide-content">
@@ -384,45 +476,183 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 </section>
 
 <!-- ============================================================
-     S8 · SMALL PASSES
+     S11 · FREEBUFF — CASE TO PRD
      ============================================================ -->
-<section class="slide" data-act="Small passes">
+<section class="slide" data-act="Freebuff">
   <div class="slide-content">
-    <h2 class="reveal d1">Break it down. Ship it demonstrable.</h2>
-    <div class="grid cols-4 reveal d2">
-      <div class="card tint-green"><span class="lbl">Pass 01</span><div class="num">Foundation</div><p>App shell, nav, DB schema, seed data, visible disclaimer.</p></div>
-      <div class="card"><span class="lbl">Pass 02</span><div class="num">Core journey</div><p>Pick an event → see risk + impact. One action, done well.</p></div>
-      <div class="card tint-amber"><span class="lbl">Pass 03</span><div class="num">Quality</div><p>Mobile layout, error states, accessibility, attribution.</p></div>
-      <div class="card"><span class="lbl">Pass 04</span><div class="num">Polish</div><p>Methodology, screenshots, demo reset, clean README.</p></div>
+    <h2 class="reveal d1"><span class="data tag-teal">freebuff</span> — turn the case into a PRD.</h2>
+    <p class="sub reveal d2">Input: case brief + constraints. Output: <span class="data">PRD.md</span> with scope, non-goals, and Pass 01–04.</p>
+    <div class="code reveal d3"><button class="copy" onclick="copyPrompt(this)">Copy</button><span class="k">Create a PRD</span> for a flood-history dashboard for Kampung Melayu, Jatinegara.
+<span class="k">User:</span> a resident asking "is my area at risk, and what happened last time?"
+<span class="k">Data:</span> sample only — no live TMA, no official warning.
+<span class="k">Stack:</span> Next.js, TypeScript, Tailwind, Turso.
+<span class="k">Include:</span> user, purpose, pages/flow, tech stack, DB schema, API,
+UI/UX, seed data, expected states, <span class="k">non-goals</span>, and Pass 01–04.</div>
+    <div class="rule reveal d4"></div>
+    <div class="grid cols-2 reveal d4">
+      <div class="card tint-green"><span class="lbl">expected output</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">PRD.md</div><p>Scope limited to one kelurahan. Non-goals stated. No live-warning features invented.</p></div>
+      <div class="card"><span class="lbl">verify before coding</span><p>Open <span class="data">PRD.md</span>, read the non-goals, confirm the passes. Then hand it to <span class="data">opencode</span>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S12 · OPencode — ONE PASS AT A TIME
+     ============================================================ -->
+<section class="slide" data-act="OpenCode">
+  <div class="slide-content">
+    <h2 class="reveal d1"><span class="data tag-teal">opencode</span> — build one pass, stop, report.</h2>
+    <div class="split reveal d2">
+      <div class="code small"><span class="k">Pass 01 prompt</span>
+Read PRD.md. Build <span class="k">Pass 01 only</span>:
+- Next.js app shell + navigation
+- visible disclaimer
+- Turso schema + seed script
+Do NOT build event interaction
+or deployment.
+Stop. List changed files.
+How to run + seed. Report.</div>
+      <div class="code small"><span class="k">Pass 02 prompt</span>
+Pass 01 is verified.
+Build <span class="k">Pass 02 only</span>:
+- event selector
+- read events from Turso
+- show details + risk verdict
+- empty state
+No live data. No auth.
+Stop. List changed files.
+How to test the journey. Report.</div>
     </div>
     <div class="rule reveal d3"></div>
-    <p class="reveal d3" style="font-size:calc(var(--body-size)*1.1)"><b>Why?</b> Each pass is demo-able, has a small failure surface, and is easy to audit. <b>Never start pass N+1 until pass N is verified.</b></p>
+    <p class="reveal d3"><b>Rule:</b> one pass per prompt. Ask it to <b>stop and report</b>. Verify locally, then continue.</p>
   </div>
 </section>
 
 <!-- ============================================================
-     S9 · THE PROMPT
+     S13 · PASSES + ACCEPTANCE CRITERIA
      ============================================================ -->
-<section class="slide" data-act="The prompt">
+<section class="slide" data-act="Passes">
   <div class="slide-content">
-    <h2 class="reveal d1">The prompt that ships.</h2>
-    <div class="code reveal d2" id="promptBox"><button class="copy" onclick="copyPrompt(this)">Copy</button><span class="k">You are building</span> a Next.js flood-history app for a DRR portfolio.
-<span class="k">User:</span> A resident of Kampung Melayu, Jatinegara.
-<span class="k">Purpose:</span> See past flood events &amp; typical impact for their kelurahan.
-<span class="k">Pages:</span> One dashboard — event selector + risk verdict.
-<span class="k">Data model:</span> events(id, year, tma_cm, rainfall, areas_hit, note).
-<span class="k">API:</span> read events; classify risk from tma + rainfall.
-<span class="k">Stack:</span> Next.js, TypeScript, Tailwind, Turso.
-<span class="k">Language:</span> English. <span class="k">Seed:</span> 5 labeled sample events.
-<span class="k">States:</span> event picked → verdict; none → prompt to choose.
-<span class="k">Non-goals:</span> no live TMA, no official warning, no auth.
-<span class="c">// Build Pass 01 only, then stop and report.</span></div>
-    <p class="muted reveal d3" style="margin-top:.5rem">One pass at a time · verify · then continue.</p>
+    <h2 class="reveal d1">Passes, with acceptance criteria.</h2>
+    <div class="grid cols-2 reveal d2">
+      <div class="card tint-green">
+        <span class="lbl">Pass 01 · Foundation</span>
+        <div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Done when</div>
+        <ul><li>App runs locally</li><li>Disclaimer appears</li><li>DB schema exists</li><li>Sample events can be seeded</li></ul>
+      </div>
+      <div class="card">
+        <span class="lbl">Pass 02 · Core journey</span>
+        <div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Done when</div>
+        <ul><li>User can select an event</li><li>App shows event details</li><li>Risk verdict appears</li><li>Empty state works</li></ul>
+      </div>
+      <div class="card tint-amber">
+        <span class="lbl">Pass 03 · Quality</span>
+        <div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Done when</div>
+        <ul><li>Mobile layout is usable</li><li>Error state exists</li><li>Data limitation is visible</li><li>Basic accessibility checked</li></ul>
+      </div>
+      <div class="card">
+        <span class="lbl">Pass 04 · Polish</span>
+        <div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Done when</div>
+        <ul><li>README explains the case</li><li>Screenshots added</li><li>Methodology section added</li><li>Demo reset works</li></ul>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ============================================================
-     S10 · WHAT IS A SKILL
+     S14 · TURSO SETUP
+     ============================================================ -->
+<section class="slide" data-act="Turso">
+  <div class="slide-content">
+    <h2 class="reveal d1"><span class="data tag-teal">Turso</span> — connect the database.</h2>
+    <div class="split reveal d2">
+      <div>
+        <ul class="check">
+          <li><b>01</b> Create a Turso account</li>
+          <li><b>02</b> Create database: <span class="data">flood-demo</span></li>
+          <li><b>03</b> Copy the database URL</li>
+          <li><b>04</b> Copy the auth token</li>
+          <li><b>05</b> Add both to <span class="data">.env.local</span></li>
+        </ul>
+        <div class="code small" style="margin-top:.6rem"><span class="c"># .env.local</span>
+TURSO_DATABASE_URL=your-db-url
+TURSO_AUTH_TOKEN=your-auth-token</div>
+      </div>
+      <div>
+        <div class="code small"><span class="c">-- schema</span>
+CREATE TABLE events (
+  id INTEGER PRIMARY KEY,
+  year INTEGER NOT NULL,
+  tma_cm INTEGER,
+  rainfall_mm INTEGER,
+  areas_hit TEXT,
+  note TEXT
+);
+<span class="c">-- seed (sample)</span>
+INSERT INTO events (year, tma_cm, rainfall_mm, areas_hit, note)
+VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
+       (2020, 230, 140, 'Multiple RTs', 'Sample');</div>
+        <p class="side-note" style="margin-top:.4rem">Sample events for portfolio/demo — <b>not official flood data</b>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S15 · DEPLOYMENT
+     ============================================================ -->
+<section class="slide" data-act="Deploy">
+  <div class="slide-content">
+    <h2 class="reveal d1">Deploy — pick your path.</h2>
+    <div class="split reveal d2">
+      <div class="card tint-green">
+        <span class="lbl">Vercel · recommended</span>
+        <ul><li>Easiest for Next.js</li><li>Connect the GitHub repo</li><li>Add <span class="data">TURSO_*</span> env vars</li><li>Deploys automatically on push</li></ul>
+      </div>
+      <div class="card">
+        <span class="lbl">Cloudflare</span>
+        <ul><li>Good for DNS / domain control</li><li>Cloudflare Pages for the app</li><li>May need a Next.js adapter</li><li>Use if you already host DNS here</li></ul>
+      </div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <p class="reveal d3" style="font-size:calc(var(--body-size)*1.05)"><b>Workshop call:</b> Vercel for the fastest deploy; Cloudflare for DNS &amp; the public URL. Both give you a free subdomain.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     S16 · ERRORS + ETIQUETTE
+     ============================================================ -->
+<section class="slide" data-act="Errors & etiquette">
+  <div class="slide-content">
+    <h2 class="reveal d1">Errors &amp; agent etiquette.</h2>
+    <div class="split reveal d2">
+      <div class="table-wrap">
+        <table class="table">
+          <tr><th>Problem</th><th>Likely cause</th><th>Fix</th></tr>
+          <tr><td><span class="mono">npm install</span> fails</td><td>Wrong Node</td><td>Use Node 20+</td></tr>
+          <tr><td>No Turso connection</td><td>Missing env vars</td><td>Check <span class="mono">.env.local</span></td></tr>
+          <tr><td>No events shown</td><td>Seed not run</td><td>Run seed script</td></tr>
+          <tr><td>Deploy fails</td><td>Env vars not added</td><td>Add in Vercel/Cloudflare</td></tr>
+          <tr><td>Blank page</td><td>Build error</td><td>Check terminal / console</td></tr>
+          <tr><td>Agent overbuilds</td><td>Prompt too broad</td><td>Ask for one pass only</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="card tint-green">
+          <h3>Do</h3>
+          <ul><li>Give one pass at a time</li><li>Ask it to stop after each pass</li><li>Ask for changed files</li><li>Verify locally before continuing</li><li>Keep data sample-based</li></ul>
+        </div>
+        <div class="card tint-red" style="margin-top:var(--gap)">
+          <h3>Don't</h3>
+          <ul><li>Ask for the full app in one prompt</li><li>Claim official live warnings</li><li>Scrape restricted data</li><li>Add auth/admin unless needed</li><li>Let the agent invent features</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S17 · WHAT IS A SKILL
      ============================================================ -->
 <section class="slide" data-act="Agent skills">
   <div class="slide-content">
@@ -450,7 +680,7 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 </section>
 
 <!-- ============================================================
-     S11 · WHAT IS MCP
+     S18 · WHAT IS MCP
      ============================================================ -->
 <section class="slide" data-act="MCP">
   <div class="slide-content">
@@ -471,12 +701,12 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
       <div class="card flat"><span class="lbl">Skill</span><p>static procedure · by topic · <b>"how to think"</b></p></div>
       <div class="card tint-green"><span class="lbl">MCP</span><p>live connection · by tool call · <b>"what to reach"</b></p></div>
     </div>
-    <p class="reveal d5" style="margin-top:.5rem"><b>Together:</b> a skill defines the workflow — MCP gives it live data.</p>
+    <p class="reveal d5" style="margin-top:.45rem"><b>Together:</b> a skill defines the workflow — MCP gives it live data.</p>
   </div>
 </section>
 
 <!-- ============================================================
-     S12 · THE PROTOTYPE (interactive)
+     S19 · THE PROTOTYPE (interactive)
      ============================================================ -->
 <section class="slide" data-act="The prototype">
   <div class="slide-content">
@@ -492,7 +722,7 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
           <div class="app-left">
             <label style="font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);letter-spacing:.1em;text-transform:uppercase">Pick a flood event</label>
             <select id="evSelect" style="margin-top:.4rem"></select>
-            <ul class="hist" id="evHist" style="margin-top:.6rem"></ul>
+            <ul class="hist" id="evHist" style="margin-top:.55rem"></ul>
           </div>
           <div class="app-right">
             <div class="gauge"><span class="lab">River TMA (Manggarai)</span><div class="val" id="evTma">—<small> cm</small></div><div class="bar"><i id="evTmaBar" style="width:0%"></i></div></div>
@@ -522,30 +752,62 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 </section>
 
 <!-- ============================================================
-     S13 · DEPLOY & PROVE
+     S20 · DEFINITION OF DONE
      ============================================================ -->
-<section class="slide" data-act="Deploy & prove">
+<section class="slide" data-act="Done">
   <div class="slide-content">
-    <h2 class="reveal d1">Deploy. Test. Prove.</h2>
-    <div class="grid cols-3 reveal d2">
-      <div class="card tint-green"><span class="lbl">ship</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Repo + DB + URL</div><p>GitHub repo, Turso schema, live link on Gravatar / Cloudflare.</p></div>
-      <div class="card"><span class="lbl">test</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">3–5 people</div><p>"Expect heavy rain — use this to decide." Watch, learn, one iteration.</p></div>
-      <div class="card tint-amber"><span class="lbl">frame</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Limits</div><p>Demonstrates flow + data trail. Not an official early-warning system.</p></div>
-    </div>
-    <div class="rule reveal d3"></div>
-    <div class="grid cols-3 reveal d3">
-      <div class="card flat"><span class="lbl">deliverable</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.05rem)">Bounded local case</div></div>
-      <div class="card flat"><span class="lbl">deliverable</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.05rem)">Data catalog + PRD</div></div>
-      <div class="card flat"><span class="lbl">deliverable</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.05rem)">Deployed URL + repo</div></div>
+    <h2 class="reveal d1">Definition of done.</h2>
+    <p class="sub reveal d2">Your prototype is complete when:</p>
+    <div class="split reveal d3">
+      <ul class="check">
+        <li><b>One user journey works</b> end to end</li>
+        <li>An event can be <b>selected</b></li>
+        <li>The <b>risk verdict</b> appears</li>
+        <li>Data is <b>labeled as sample</b></li>
+      </ul>
+      <ul class="check">
+        <li>The <b>disclaimer</b> is visible</li>
+        <li>Repo is <b>public</b> on GitHub</li>
+        <li>The URL is <b>live</b></li>
+        <li>README explains <b>limitations</b></li>
+      </ul>
     </div>
     <div class="rule reveal d4"></div>
-    <p class="reveal d4" style="margin-top:.2rem"><b>Stuck? Install error?</b> Ask in the group. Pick your own case, write the PRD, run Pass 01.</p>
+    <p class="reveal d4" style="font-size:calc(var(--body-size)*1.05)"><b>Pass this gate and it's portfolio-ready.</b> Small, evidence-based, usable, honest.</p>
   </div>
 </section>
 
 <!-- ============================================================
-     CONTROLLER + MINI APP
+     S21 · NOW IT'S YOUR TURN
      ============================================================ -->
+<section class="slide" data-act="Your turn">
+  <div class="slide-content">
+    <h2 class="reveal d1">Now it's your turn.</h2>
+    <div class="grid cols-2 reveal d2">
+      <div class="card">
+        <span class="lbl">your sequence</span>
+        <ul>
+          <li><b>01</b> Create GitHub, Turso, Cloudflare/Vercel, Gravatar</li>
+          <li><b>02</b> Create the public repo</li>
+          <li><b>03</b> Write or generate your PRD</li>
+          <li><b>04</b> Build Pass 01 only with <span class="data">opencode</span></li>
+          <li><b>05</b> Verify locally — then commit</li>
+          <li><b>06</b> Build Pass 02, verify, commit</li>
+          <li><b>07</b> Deploy to a live URL</li>
+          <li><b>08</b> Share the URL + case study</li>
+        </ul>
+      </div>
+      <div class="card tint-teal">
+        <span class="lbl">remember</span>
+        <div class="num" style="font-size:clamp(.95rem,2.1vw,1.5rem)">One pass at a time.<br>Label sample data.<br>Ship honest impact.</div>
+        <p>Not fake certainty. Decode Risk. Ship Impact.</p>
+      </div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <p class="reveal d3" style="font-size:calc(var(--body-size)*1.05)"><b>Stuck? Install error?</b> Ask in the group chat — that's what it's for.</p>
+  </div>
+</section>
+
 <script>
 /* ============ PURE LOGIC (unit-tested by tools/verify.js) ============ */
 // PURE-START

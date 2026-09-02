@@ -23,7 +23,7 @@ var slides = extractSlides(html);
 
 var checks = [
   { name: 'doctype', find: '<!DOCTYPE html>' },
-  { name: 'slide count = 13', find: 'slide' },
+  { name: 'slide count = 21', find: 'slide' },
   { name: 'progress bar', find: 'id="progress"' },
   { name: 'nav dots', find: 'id="dots"' },
   { name: 'slide index', find: 'id="idx"' },
@@ -36,22 +36,30 @@ checks.forEach(function (c) {
   report(c.name, ok);
 });
 
-report('slides array length is 13', slides.length === 13);
+report('slides array length is 21', slides.length === 21);
 
 var titles = [
-  'From static',                                        // 1 cover
-  'A familiar feeling when you open InaRISK.',          // 2 itch
-  'Interactive beats infographic.',                     // 3 why
-  'Kampung Melayu, Jatinegara',                         // 4 case
-  'The data you',                                       // 5 wall
-  'Coding partners + 4 accounts.',                      // 6 stack
-  'Write the PRD first.',                               // 7 prd
-  'Break it down. Ship it demonstrable.',               // 8 passes
-  'The prompt that ships.',                             // 9 prompt
-  'What is a',                                          // 10 skill
-  'What is',                                            // 11 mcp
-  'route through history',                              // 12 prototype
-  'Deploy. Test. Prove.'                                // 13 proof
+  'From static',                                    // 1 cover
+  'A familiar feeling when you open InaRISK.',      // 2 itch
+  'Interactive beats infographic.',                 // 3 why
+  'Kampung Melayu, Jatinegara',                     // 4 case
+  'The data you',                                   // 5 wall
+  "Today's session",                                // 6 flow
+  'What you ship today.',                           // 7 outcome
+  'Before you start.',                              // 8 prereq
+  'Accounts — checklist.',                          // 9 accounts
+  'Write the PRD first.',                           // 10 prd
+  'freebuff',                                       // 11 freebuff
+  'opencode',                                       // 12 opencode
+  'Passes, with acceptance criteria.',              // 13 passes
+  'Turso',                                          // 14 turso
+  'Deploy — pick your path.',                       // 15 deploy
+  'Errors &amp; agent etiquette.',                  // 16 errors
+  'What is a',                                      // 17 skill
+  'What is',                                        // 18 mcp
+  'route through history',                          // 19 prototype
+  'Definition of done.',                            // 20 done
+  "Now it's your turn."                             // 21 your turn
 ];
 
 titles.forEach(function (t, i) {
@@ -62,6 +70,11 @@ titles.forEach(function (t, i) {
 var appEls = ['id="evSelect"', 'id="evVerdict"', 'id="evHist"', 'disclaimer'];
 appEls.forEach(function (el) {
   report('mini-app has ' + el, html.indexOf(el) !== -1);
+});
+
+var opEls = ['TURSO_DATABASE_URL', 'CREATE TABLE events', 'id="evSelect"'];
+opEls.forEach(function (el) {
+  report('operational slide has ' + el, html.indexOf(el) !== -1);
 });
 
 var pureMatch = html.match(/\/\/ PURE-START([\s\S]*?)\/\/ PURE-END/);
