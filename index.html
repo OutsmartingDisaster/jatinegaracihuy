@@ -400,31 +400,31 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 <section class="slide" data-act="Real scraping">
   <div class="slide-content">
     <span class="pill dot reveal">IT CAN BE DONE — HERE'S HOW</span>
-    <h2 class="reveal d1">We scraped it anyway.</h2>
-    <div class="split reveal d2" style="margin-top:.2rem">
-      <div class="card">
+    <h2 class="reveal d1" style="margin-bottom:.35rem">We scraped it anyway.</h2>
+    <div class="split reveal d2" style="margin-top:0">
+      <div class="card" style="padding:.7rem .9rem">
         <span class="lbl">DKI flood · TMA / rain / sluice</span>
-        <h3><span class="data tag-teal">scraper-banjirdki.py</span></h3>
-        <p style="margin-top:.2rem">Loops every day × 24 hours on the public <b>DKI flood archive</b>, saves GeoJSON per day.</p>
-        <div class="code small" style="margin-top:.4rem">map_report/{jenis}/{YYYY-MM-DD}/{HH}
+        <h3 style="margin-top:.1rem"><span class="data tag-teal">scraper-banjirdki.py</span></h3>
+        <p style="margin-top:.15rem">Loop every day × 24h on the public <b>DKI flood archive</b> → GeoJSON per day.</p>
+        <div class="code small" style="margin-top:.3rem">map_report/{jenis}/{YYYY-MM-DD}/{HH}
 <span class="c"># pos_pengamatan · hujan · pintu_air</span></div>
       </div>
-      <div class="card">
+      <div class="card" style="padding:.7rem .9rem">
         <span class="lbl">InaRISK · hazard / risk / vulnerability</span>
-        <h3><span class="data tag-teal">download_indeks_*.py</span></h3>
-        <p style="margin-top:.2rem">Pulls InaRISK layers from the public <b>GeoServer (WCS 2.0.1)</b> — chunked by bbox, assembled locally, validated.</p>
-        <div class="code small" style="margin-top:.4rem">geoserver/wcs?request=GetCoverage
+        <h3 style="margin-top:.1rem"><span class="data tag-teal">download_indeks_*.py</span></h3>
+        <p style="margin-top:.15rem">Pull InaRISK layers from public <b>GeoServer WCS 2.0.1</b> — chunk by bbox, assemble, validate.</p>
+        <div class="code small" style="margin-top:.3rem">geoserver/wcs?request=GetCoverage
 <span class="c"># raster__INDEKS_BAHAYA_BANJIR1</span></div>
       </div>
     </div>
     <div class="rule reveal d3"></div>
-    <h3 class="reveal d3">How to find endpoints like these — 5 steps</h3>
-    <div class="grid cols-5 reveal d4" style="margin-top:.3rem">
-      <div class="card flat"><div class="num" style="font-size:1rem">01</div><p><b>Open</b> the public site</p></div>
-      <div class="card flat"><div class="num" style="font-size:1rem">02</div><p><b>F12 → Network</b>, then use the site</p></div>
-      <div class="card flat"><div class="num" style="font-size:1rem">03</div><p><b>Spot the API</b> (Fetch/JSON)</p></div>
-      <div class="card flat"><div class="num" style="font-size:1rem">04</div><p><b>Check OGC</b> — try GetCapabilities</p></div>
-      <div class="card flat"><div class="num" style="font-size:1rem">05</div><p><b>Verify</b> URL in a new tab</p></div>
+    <h3 class="reveal d3" style="margin:.2rem 0 .3rem">How to find endpoints like these — 5 steps</h3>
+    <div class="flow reveal d4">
+      <span class="step"><b>01</b> Open the public site</span><span class="arr">→</span>
+      <span class="step"><b>02</b> F12 → Network, use the site</span><span class="arr">→</span>
+      <span class="step"><b>03</b> Spot the API (Fetch / JSON)</span><span class="arr">→</span>
+      <span class="step"><b>04</b> Try GetCapabilities (OGC)</span><span class="arr">→</span>
+      <span class="step"><b>05</b> Verify URL in a new tab</span>
     </div>
     <p class="muted reveal d5" style="margin-top:.3rem"><b>Key trick:</b> GeoServer's <span class="data">GetCapabilities</span> lists every layer — no login needed.</p>
   </div>
