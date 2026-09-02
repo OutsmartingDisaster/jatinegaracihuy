@@ -358,9 +358,75 @@ Build Pass 01 only, then stop and report.</pre>
   </div>
   <p class="lead">Pick skills per stage: research the case, design the UI, then build.</p>
 </section>
-<section class="slide" id="slide-15" data-act="Act 4 · MCP"></section>
-<section class="slide" id="slide-16" data-act="Act 4 · MCP"></section>
-<section class="slide" id="slide-17" data-act="Act 4 · MCP"></section>
+<section class="slide" id="slide-15" data-act="Act 4 · MCP">
+  <p class="tag">14 · MCP</p>
+  <h1>What is MCP?</h1>
+  <p class="lead">Model Context Protocol — an <strong>open standard</strong> for agents to connect to external tools and data.</p>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">The idea</h3>
+      <ul>
+        <li>One protocol, many integrations</li>
+        <li>MCP <strong>servers</strong> expose tools and data to the agent</li>
+        <li>The agent calls them like built-in tools</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Mental model</h3>
+      <ul>
+        <li><strong>Skill</strong> = how to think / do (a procedure)</li>
+        <li><strong>MCP</strong> = what to reach / read (a live connection)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="slide" id="slide-16" data-act="Act 4 · MCP">
+  <p class="tag">15 · MCP</p>
+  <h1>MCP in your project</h1>
+  <p class="lead">Live connections the agent uses while it builds — not one-off files.</p>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">Agent ↔ services</h3>
+      <ul>
+        <li><span class="tool">Turso</span> — read/write ward &amp; rainfall data</li>
+        <li><span class="tool">GitHub</span> — create the repo, push passes</li>
+        <li><span class="tool">Cloudflare</span> / Vercel — deploy the app</li>
+        <li>Data APIs — pull evidence into the schema</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Why it changes the build</h3>
+      <p>While writing code, the agent can <strong>read live data</strong> from your Turso database through MCP — schema, seed rows, sample queries.</p>
+      <p class="note">Your app ships connected to real data, not stubbed constants.</p>
+    </div>
+  </div>
+</section>
+<section class="slide" id="slide-17" data-act="Act 4 · MCP">
+  <p class="tag">16 · MCP</p>
+  <h1>Skill vs MCP</h1>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">Skill</h3>
+      <ul>
+        <li>Static packaged procedure</li>
+        <li>Activated by <strong>topic</strong></li>
+        <li>"How to think / do"</li>
+        <li>Example: frontend-design</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="kicker">MCP</h3>
+      <ul>
+        <li>Live connection to a tool/server</li>
+        <li>Activated by <strong>tool call</strong></li>
+        <li>"What to reach / read"</li>
+        <li>Example: Turso database</li>
+      </ul>
+    </div>
+  </div>
+  <h3>They work together.</h3>
+  <p class="lead">A skill defines the workflow; MCP gives it live data.</p>
+</section>
 <section class="slide" id="slide-18" data-act="Act 5 · Bandung Landslide"></section>
 <section class="slide" id="slide-19" data-act="Act 5 · Bandung Landslide"></section>
 <section class="slide" id="slide-20" data-act="Act 5 · Bandung Landslide"></section>
