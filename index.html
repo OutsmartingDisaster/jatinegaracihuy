@@ -114,10 +114,88 @@ pre.code .copy{float:right;background:#374151;color:#fff;border:0;border-radius:
   <h3>Deployed prototype, not a PDF.</h3>
   <p class="note">This session shows the tools to go from idea → deployed: <span class="tool">freebuff</span>, <span class="tool">opencode</span>, skills, MCP.</p>
 </section>
-<section class="slide" id="slide-4" data-act="Act 2 · Stack &amp; Spec"></section>
-<section class="slide" id="slide-5" data-act="Act 2 · Stack &amp; Spec"></section>
-<section class="slide" id="slide-6" data-act="Act 2 · Stack &amp; Spec"></section>
-<section class="slide" id="slide-7" data-act="Act 2 · Stack &amp; Spec"></section>
+<section class="slide" id="slide-4" data-act="Act 2 · Stack &amp; Spec">
+  <p class="tag">03 · Meet the stack</p>
+  <h1>Your new stack</h1>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">Coding partners</h3>
+      <p><span class="tool">freebuff</span> — your agent CLI for building and iterating.</p>
+      <p><span class="tool">opencode</span> — your interactive agent workspace.</p>
+      <p class="note">You bring the case and the evidence. They bring tools, workflow, and building.</p>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Shipping layer</h3>
+      <p>App: Next.js + TypeScript + Tailwind (or your choice).</p>
+      <p>Data: <span class="tool">Turso</span> — SQLite that runs at the edge.</p>
+      <p>Deploy: <span class="tool">Cloudflare</span> / Vercel + a public URL.</p>
+    </div>
+  </div>
+  <h3>Four services to register — each one has a job.</h3>
+  <p class="lead">GitHub · Turso · Cloudflare · Gravatar</p>
+</section>
+<section class="slide" id="slide-5" data-act="Act 2 · Stack &amp; Spec">
+  <p class="tag">04 · Stack / GitHub</p>
+  <h1>GitHub — why register</h1>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">What it does</h3>
+      <ul>
+        <li>Source control — every pass tracked, auditable</li>
+        <li>Identity — used by Vercel, Cloudflare, and <span class="tool">opencode</span> for auth</li>
+        <li>Public profile — the first thing a reviewer sees</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Why it matters for THIS project</h3>
+      <p>Your repository is the <strong>proof</strong>: the PRD, the data catalog, the build passes, the README case study.</p>
+      <p class="note">Deliverable: a public repository with a case-study README.</p>
+    </div>
+  </div>
+</section>
+<section class="slide" id="slide-6" data-act="Act 2 · Stack &amp; Spec">
+  <p class="tag">05 · Stack / Turso</p>
+  <h1>Turso — why register</h1>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">What it does</h3>
+      <ul>
+        <li>SQLite-compatible database that runs at the edge</li>
+        <li>No server to provision or pay for</li>
+        <li>A connection string your app can read from anywhere</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Why it matters for THIS project</h3>
+      <p>Your wards, rainfall, slope, and risk scores live here as <strong>schema + seed data</strong>.</p>
+      <p>Your app reads real structured data — not hardcoded JS.</p>
+      <p class="note">Deliverable: a database URL your deployed app connects to via MCP.</p>
+    </div>
+  </div>
+</section>
+<section class="slide" id="slide-7" data-act="Act 2 · Stack &amp; Spec">
+  <p class="tag">06 · Stack / Cloudflare + Gravatar</p>
+  <h1>Cloudflare + Gravatar — why register</h1>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">Cloudflare</h3>
+      <ul>
+        <li>DNS + fast global deploy of static and edge apps</li>
+        <li>Alternative/companion to Vercel for the public URL</li>
+        <li>Free tier covers a bootcamp portfolio</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Gravatar</h3>
+      <ul>
+        <li>Free avatar that follows your email</li>
+        <li>Free subdomain: <span class="tool">yourname.gravatar.com</span></li>
+        <li>Your portfolio URL — a live link, not a file</li>
+      </ul>
+    </div>
+  </div>
+  <p class="lead">A public URL is what turns a prototype into a portfolio.</p>
+</section>
 <section class="slide" id="slide-8" data-act="Act 2 · Stack &amp; Spec"></section>
 <section class="slide" id="slide-9" data-act="Act 2 · Stack &amp; Spec"></section>
 <section class="slide" id="slide-10" data-act="Act 2 · Stack &amp; Spec"></section>
