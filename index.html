@@ -51,6 +51,20 @@ pre.code .copy{float:right;background:#374151;color:#fff;border:0;border-radius:
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{transition:none!important;animation:none!important}
 }
+.app-card{border:2px solid var(--ink);border-radius:14px;padding:24px;background:#fff;max-width:560px}
+.app-card label{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px}
+#wardSelect{width:100%;font-size:17px;font-family:var(--sans);padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff}
+#verdict{margin-top:20px;padding:16px 18px;border-radius:10px;color:#fff;min-height:74px}
+#verdict .big{font-family:var(--serif);font-size:26px;margin-bottom:6px}
+#verdict .sub{font-size:15px;opacity:.92}
+#verdict.pending{background:var(--muted)}
+#verdict.safe{background:var(--safe)}
+#verdict.detour{background:var(--accent)}
+#verdict.stay{background:var(--danger)}
+.disclaimer{margin-top:18px;border-left:4px solid var(--accent);padding:10px 14px;background:#FFFBEB;font-size:13px;color:#92400E}
+.risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.risk-cell{border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:14px}
+.risk-cell b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -478,7 +492,33 @@ Build Pass 01 only, then stop and report.</pre>
   </div>
   <p class="note">Official data = factual foundation. Crawled data = context only.</p>
 </section>
-<section class="slide" id="slide-20" data-act="Act 5 · Bandung Landslide"></section>
+<section class="slide" id="slide-20" data-act="Act 5 · Bandung Landslide">
+  <p class="tag">19 · From spec to deployed</p>
+  <h1>Live: Bandung Route Check</h1>
+  <p class="lead">The same story — now a decision, not a picture.</p>
+  <div class="cols">
+    <div class="app-card">
+      <label for="wardSelect">Choose a school-route ward</label>
+      <select id="wardSelect" aria-label="Select ward"></select>
+      <div class="risk-grid">
+        <div class="risk-cell"><b>Rainfall today</b><span id="rainVal">—</span></div>
+        <div class="risk-cell"><b>Slope risk</b><span id="slopeVal">—</span></div>
+      </div>
+      <div id="verdict" class="pending"><span class="big">Select a ward</span><span class="sub">Sample data · exploratory</span></div>
+      <div class="disclaimer">This prototype is an exploratory portfolio project. It is not an official emergency-warning system and does not replace information from authorized agencies.</div>
+    </div>
+    <div>
+      <div class="card">
+        <h3 class="kicker">What you're seeing</h3>
+        <ul>
+          <li>Skill used: <span class="tool">frontend-design</span> — the interface</li>
+          <li>MCP connection: <span class="tool">Turso</span> — the ward data lives in a database</li>
+          <li>Sample data, clearly labeled — honest about limits</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="slide" id="slide-21" data-act="Act 5 · Bandung Landslide"></section>
 <section class="slide" id="slide-22" data-act="Act 6 · Your Portfolio"></section>
 
@@ -500,6 +540,71 @@ function copyPrompt(btn) {
     setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
   }
 }
+</script>
+<script>
+// PURE-START
+var PURE = {};
+PURE.WARDS = [
+  { id: 'cidadap', name: 'Cidadap', rain: 'heavy', slope: 'high',
+    safeNote: 'Route is clear today.', detourNote: 'Use the main road — avoid the hill path.',
+    stayNote: 'High rain on steep ground. Stay home today.' },
+  { id: 'coblong', name: 'Coblong', rain: 'moderate', slope: 'high',
+    safeNote: 'Route is clear today.', detourNote: 'Take the flat route along the canal.',
+    stayNote: 'Steep slopes are unstable. Avoid travel.' },
+  { id: 'bandung-wetan', name: 'Bandung Wetan', rain: 'moderate', slope: 'low',
+    safeNote: 'Low rain and flat terrain. Safe to walk.',
+    detourNote: 'Minor risk — use the primary road.',
+    stayNote: 'Unusual conditions — stay home today.' },
+  { id: 'sukajadi', name: 'Sukajadi', rain: 'heavy', slope: 'low',
+    safeNote: 'Flat terrain — walking is fine.',
+    detourNote: 'Heavy rain on low risk — take the covered route.',
+    stayNote: 'Heavy rain — avoid exposed roads.' },
+  { id: 'cibeunying-kaler', name: 'Cibeunying Kaler', rain: 'moderate', slope: 'moderate',
+    safeNote: 'Route is clear today.', detourNote: 'Use the southern road — safer gradient.',
+    stayNote: 'Conditions worsening — stay home today.' }
+];
+PURE.verdict = function (p) {
+  var rainHeavy = p.rain === 'heavy';
+  var slopeHigh = p.slope === 'high';
+  if (rainHeavy && slopeHigh) {
+    return { key: 'stay', label: 'Stay home', note: p.stayNote };
+  }
+  if (rainHeavy || slopeHigh) {
+    return { key: 'detour', label: 'Take a detour', note: p.detourNote };
+  }
+  return { key: 'safe', label: 'Safe to walk', note: p.safeNote };
+};
+// PURE-END
+(function () {
+  var select = document.getElementById('wardSelect');
+  var rainVal = document.getElementById('rainVal');
+  var slopeVal = document.getElementById('slopeVal');
+  var verdict = document.getElementById('verdict');
+  function renderVerdict(id) {
+    if (!id) {
+      verdict.className = 'pending';
+      verdict.innerHTML = '<span class="big">Select a ward</span><span class="sub">Sample data · exploratory</span>';
+      rainVal.textContent = '—'; slopeVal.textContent = '—';
+      return;
+    }
+    var ward = null;
+    for (var i = 0; i < PURE.WARDS.length; i++) {
+      if (PURE.WARDS[i].id === id) { ward = PURE.WARDS[i]; break; }
+    }
+    if (!ward) return;
+    rainVal.textContent = ward.rain.charAt(0).toUpperCase() + ward.rain.slice(1);
+    slopeVal.textContent = ward.slope.charAt(0).toUpperCase() + ward.slope.slice(1);
+    var v = PURE.verdict(ward);
+    verdict.className = v.key;
+    verdict.innerHTML = '<span class="big">' + v.label + '</span><span class="sub">' + v.note + '</span>';
+  }
+  PURE.WARDS.forEach(function (w) {
+    var opt = document.createElement('option');
+    opt.value = w.id; opt.textContent = w.name;
+    select.appendChild(opt);
+  });
+  select.addEventListener('change', function () { renderVerdict(select.value); });
+})();
 </script>
 <div id="chrome"><span id="actLabel"></span><span id="counter"></span></div>
 <script>
