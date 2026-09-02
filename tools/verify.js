@@ -20,8 +20,38 @@ function report(name, ok) {
   if (!ok) fail = 1;
 }
 
+var slideTitles = [
+  'From Static to Interactive',
+  'Why interactive <em>beats</em> infographic',
+  'The bar for your portfolio',
+  'Your new stack',
+  'GitHub — why register',
+  'Turso — why register',
+  'Cloudflare + Gravatar — why register',
+  'Why a PRD before code?',
+  'Anatomy of a PRD',
+  'Break it into small passes',
+  'The prompt',
+  'What is a Skill?',
+  'Anatomy of a skill',
+  'Skills for DRR work',
+  'What is MCP?',
+  'MCP in your project',
+  'Skill vs MCP',
+  'The case, bounded',
+  'The evidence',
+  'Live: Bandung Route Check',
+  'Deploy &amp; prove',
+  'By the end, each participant has'
+];
+slideTitles.forEach(function (t, i) {
+  var block = html.split('id="slide-' + (i + 1) + '"')[1].split('<section class="slide"')[0];
+  checks.push({ name: 'slide ' + (i + 1) + ' title', find: t, block: block });
+});
+
 checks.forEach(function (c) {
-  var ok = html.indexOf(c.find) !== -1;
+  var haystack = c.block !== undefined ? c.block : html;
+  var ok = haystack.indexOf(c.find) !== -1;
   report(c.name, ok);
 });
 
