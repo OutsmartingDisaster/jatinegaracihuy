@@ -196,10 +196,104 @@ pre.code .copy{float:right;background:#374151;color:#fff;border:0;border-radius:
   </div>
   <p class="lead">A public URL is what turns a prototype into a portfolio.</p>
 </section>
-<section class="slide" id="slide-8" data-act="Act 2 · Stack &amp; Spec"></section>
-<section class="slide" id="slide-9" data-act="Act 2 · Stack &amp; Spec"></section>
-<section class="slide" id="slide-10" data-act="Act 2 · Stack &amp; Spec"></section>
-<section class="slide" id="slide-11" data-act="Act 2 · Stack &amp; Spec"></section>
+<section class="slide" id="slide-8" data-act="Act 2 · Stack &amp; Spec">
+  <p class="tag">07 · Spec before code</p>
+  <h1>Why a PRD before code?</h1>
+  <p class="lead">Discipline before code — a PRD is the <strong>contract</strong> between you and your coding agent.</p>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">Shared understanding</h3>
+      <p>Both you and the agent agree on who the user is and what decision the app supports.</p>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Scope control</h3>
+      <p>Non-goals are as important as goals — the agent won't invent features you never asked for.</p>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Measurable completion</h3>
+      <p>"Done" means the spec's expected states are met — not "the screen looks nice."</p>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Without it</h3>
+      <p>The agent guesses, scope creeps, and the output is hard to audit.</p>
+    </div>
+  </div>
+</section>
+<section class="slide" id="slide-9" data-act="Act 2 · Stack &amp; Spec">
+  <p class="tag">08 · Spec before code</p>
+  <h1>Anatomy of a PRD</h1>
+  <p class="lead">One document covering everything — from stack to pixels.</p>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">Purpose</h3>
+      <ul>
+        <li><strong>User</strong> — who has the problem</li>
+        <li><strong>Purpose</strong> — which decision it supports</li>
+        <li><strong>Pages / flow</strong> — one core journey</li>
+      </ul>
+      <h3 class="kicker">Product</h3>
+      <ul>
+        <li><strong>Tech stack</strong> — framework, language, styling</li>
+        <li><strong>Database design</strong> — tables, schema, seed data</li>
+        <li><strong>API</strong> — endpoints / data access the app needs</li>
+        <li><strong>UI/UX flow</strong> — screens and the interaction between them</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Guardrails</h3>
+      <ul>
+        <li><strong>Constraints</strong> — stack rules, language, disclaimer</li>
+        <li><strong>Expected states</strong> — normal, empty, error</li>
+        <li><strong>Non-goals</strong> — what this version will NOT do</li>
+      </ul>
+      <p class="note">A PRD is a small file, not a novel — but it must be explicit.</p>
+    </div>
+  </div>
+</section>
+<section class="slide" id="slide-10" data-act="Act 2 · Stack &amp; Spec">
+  <p class="tag">09 · Spec before code</p>
+  <h1>Break it into small passes</h1>
+  <p class="lead">Each pass is demonstrable, has a small failure surface, and is easy to audit.</p>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">Pass 01 · Foundation</h3>
+      <p>App shell, navigation, schema, seed data, visible disclaimer.</p>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Pass 02 · Core journey</h3>
+      <p>One dashboard/map flow, one interaction, one action.</p>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Pass 03 · Quality</h3>
+      <p>Mobile layout, validation, error states, accessibility, attribution.</p>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Pass 04 · Portfolio polish</h3>
+      <p>Methodology, screenshots, demo reset, clean explanation.</p>
+    </div>
+  </div>
+  <h3>Never start the next pass until the current one is verified.</h3>
+</section>
+<section class="slide" id="slide-11" data-act="Act 2 · Stack &amp; Spec">
+  <p class="tag">10 · Spec before code</p>
+  <h1>The prompt</h1>
+  <p class="lead">Spec, not a vague wish. One pass at a time — then verify.</p>
+  <pre class="code"><button class="copy" onclick="copyPrompt(this)">Copy</button>You are building a Next.js app for a DRR portfolio.
+
+User: Parents deciding a school route after heavy rain.
+Purpose: Show whether the route is safe, a detour, or stay-home.
+Pages: One route-check page (ward selector + verdict).
+Data model: wards(id, name, rainfall, slope, note).
+API: read wards; compute verdict server-side.
+Tech stack: Next.js, TypeScript, Tailwind, Turso.
+Language: English.
+Seed data: 5 Bandung wards with sample profiles.
+Expected states: ward selected -> verdict shown; no ward -> prompt.
+Non-goals: no real warnings, no auth, no admin.
+
+Build Pass 01 only, then stop and report.</pre>
+  <p class="note">Build one pass · verify it · then continue. Prompt with a spec, not a wish.</p>
+</section>
 <section class="slide" id="slide-12" data-act="Act 3 · Agent Skills"></section>
 <section class="slide" id="slide-13" data-act="Act 3 · Agent Skills"></section>
 <section class="slide" id="slide-14" data-act="Act 3 · Agent Skills"></section>
@@ -213,6 +307,24 @@ pre.code .copy{float:right;background:#374151;color:#fff;border:0;border-radius:
 <section class="slide" id="slide-22" data-act="Act 6 · Your Portfolio"></section>
 
 </main>
+<script>
+function copyPrompt(btn) {
+  var pre = btn.closest('pre');
+  var text = pre.innerText.replace('Copy', '').trim();
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function () {
+      btn.textContent = 'Copied!';
+      setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+    });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    btn.textContent = 'Copied!';
+    setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+  }
+}
+</script>
 <div id="chrome"><span id="actLabel"></span><span id="counter"></span></div>
 <script>
 (function () {
