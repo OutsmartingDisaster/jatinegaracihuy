@@ -27,8 +27,9 @@ var checks = [
   { name: 'progress bar', find: 'id="progress"' },
   { name: 'nav dots', find: 'id="dots"' },
   { name: 'slide index', find: 'id="idx"' },
-  { name: 'scroll-snap base', find: 'scroll-snap-type' },
-  { name: 'controller class', find: 'IntersectionObserver' }
+  { name: 'stage wrapper', find: 'class="stage"' },
+  { name: 'scale-to-fit controller', find: 'function fit()' },
+  { name: 'active-class controller', find: 'classList.toggle(\'active\'' }
 ];
 
 checks.forEach(function (c) {
