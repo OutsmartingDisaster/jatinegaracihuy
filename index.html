@@ -294,9 +294,70 @@ Non-goals: no real warnings, no auth, no admin.
 Build Pass 01 only, then stop and report.</pre>
   <p class="note">Build one pass · verify it · then continue. Prompt with a spec, not a wish.</p>
 </section>
-<section class="slide" id="slide-12" data-act="Act 3 · Agent Skills"></section>
-<section class="slide" id="slide-13" data-act="Act 3 · Agent Skills"></section>
-<section class="slide" id="slide-14" data-act="Act 3 · Agent Skills"></section>
+<section class="slide" id="slide-12" data-act="Act 3 · Agent Skills">
+  <p class="tag">11 · Agent Skills</p>
+  <h1>What is a Skill?</h1>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">Definition</h3>
+      <p>A skill is a <strong>packaged workflow + knowledge</strong> that an agent loads on demand.</p>
+      <ul>
+        <li>Not a plugin — no code injected into every run</li>
+        <li>Not hardcoded behavior — it is loaded when the task matches</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Analogy</h3>
+      <p>A <strong>recipe card</strong>. You don't read every card in the box — you pull the one whose title matches the dish you're cooking.</p>
+      <p class="note">The agent follows the recipe, applies its tools, and produces the dish.</p>
+    </div>
+  </div>
+</section>
+<section class="slide" id="slide-13" data-act="Act 3 · Agent Skills">
+  <p class="tag">12 · Agent Skills</p>
+  <h1>Anatomy of a skill</h1>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">What's inside</h3>
+      <ul>
+        <li><strong>SKILL.md</strong> — the instructions: what the skill is for, the workflow to follow</li>
+        <li><strong>Optional scripts / resources</strong> — helpers the workflow can call</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="kicker">How it activates</h3>
+      <ul>
+        <li>Triggered by <strong>context</strong> — the task matches the skill's description</li>
+        <li>The agent reads the instructions, then follows the workflow</li>
+        <li>Skills are versioned — they evolve, so read the current version</li>
+      </ul>
+    </div>
+  </div>
+  <p class="lead">Skill = <em>how to do a class of work well</em>.</p>
+</section>
+<section class="slide" id="slide-14" data-act="Act 3 · Agent Skills">
+  <p class="tag">13 · Agent Skills</p>
+  <h1>Skills for DRR work</h1>
+  <div class="cols">
+    <div class="card">
+      <h3 class="kicker">Research &amp; evidence</h3>
+      <ul>
+        <li><span class="tool">quick-research</span> — structured evidence summaries</li>
+        <li><span class="tool">websearch</span> / <span class="tool">open-link</span> — context and source reading</li>
+        <li><span class="tool">a-stock-analysis</span>, market, data skills — pattern hunting</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="kicker">Build &amp; visuals</h3>
+      <ul>
+        <li><span class="tool">frontend-design</span> — polished interactive UI</li>
+        <li><span class="tool">mobile-app-ui-design</span> — mobile-first screens</li>
+        <li><span class="tool">generate-image</span> / <span class="tool">search-image</span> — assets and maps</li>
+      </ul>
+    </div>
+  </div>
+  <p class="lead">Pick skills per stage: research the case, design the UI, then build.</p>
+</section>
 <section class="slide" id="slide-15" data-act="Act 4 · MCP"></section>
 <section class="slide" id="slide-16" data-act="Act 4 · MCP"></section>
 <section class="slide" id="slide-17" data-act="Act 4 · MCP"></section>
