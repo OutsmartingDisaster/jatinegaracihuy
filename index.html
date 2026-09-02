@@ -3,678 +3,694 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SESI-5 · From Static to Interactive</title>
+<title>SESI-5 · From Static to Interactive — Kampung Melayu Flood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   THEME — "FLOOD OPS ROOM"
+   Dark navy, flood-cyan, warning-amber. Hazard-stripe accents.
+   ============================================================ */
 :root{
-  --bg:#FFFFFF; --ink:#111111; --muted:#6B7280;
-  --accent:#F59E0B; --danger:#EF4444; --safe:#10B981;
-  --serif: Georgia, 'Times New Roman', serif;
-  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace;
-  --line:#EEEEEE;
+  --bg:#081120; --bg2:#0d1a2e; --panel:#101f36; --panel2:#14263f;
+  --ink:#e9f1ff; --dim:#8fa5c8; --faint:#5b729a;
+  --water:#38bdf8; --cyan:#22d3ee; --amber:#fbbf24; --orange:#fb923c;
+  --danger:#f87171; --green:#4ade80;
+  --line:rgba(142,180,235,.16);
+  --hazard:repeating-linear-gradient(-45deg,#fbbf24 0 14px,#111 14px 28px);
+  --font-display:'Syne',sans-serif;
+  --font-body:'Instrument Sans',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+
+  --title-size:clamp(1.6rem,5vw,3.6rem);
+  --h2-size:clamp(1.1rem,3vw,2.4rem);
+  --h3-size:clamp(0.9rem,1.8vw,1.25rem);
+  --body-size:clamp(0.78rem,1.4vw,1rem);
+  --small-size:clamp(0.62rem,1vw,0.8rem);
+  --slide-padding:clamp(1rem,3.4vw,2.6rem);
+  --gap:clamp(0.5rem,1.4vw,1.4rem);
+  --ease-out-expo:cubic-bezier(0.16,1,0.3,1);
 }
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
-.slide{display:none;min-height:100vh;padding:64px 88px 120px;position:relative;max-width:1280px;margin:0 auto}
-.slide.active{display:block}
-.slide .tag{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
-.slide h1{font-family:var(--serif);font-size:58px;line-height:1.05;margin:.35em 0 .4em;font-weight:400}
-.slide h2{font-family:var(--serif);font-size:32px;line-height:1.15;font-weight:400;margin:0 0 .5em}
-.slide h3{font-family:var(--serif);font-size:20px;font-weight:400;margin:1.2em 0 .35em}
-.slide p{font-size:17px;color:#333}
-.slide ul{font-size:16px;color:#333}
-.slide li{margin:.25em 0}
-.tool{font-family:var(--mono);background:#F3F4F6;border:1px solid var(--line);border-radius:4px;padding:.05em .3em;font-size:.92em}
-.lead{font-size:20px;color:var(--muted)}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.card{border:1px solid var(--line);border-radius:10px;padding:20px 22px;background:#fff}
-.card h3{margin-top:0}
-.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
-.note{font-size:14px;color:var(--muted)}
-.badge{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding:3px 8px;border-radius:20px;text-transform:uppercase}
-.badge.amber{background:#FEF3C7;color:#92400E}
-.badge.red{background:#FEE2E2;color:#991B1B}
-.badge.green{background:#D1FAE5;color:#065F46}
-pre.code{background:#111;color:#E5E7EB;font-family:var(--mono);font-size:14px;line-height:1.5;padding:18px 20px;border-radius:10px;overflow-x:auto}
-pre.code .copy{float:right;background:#374151;color:#fff;border:0;border-radius:6px;padding:4px 10px;font-family:var(--mono);font-size:12px;cursor:pointer}
-#chrome{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;font-family:var(--mono);font-size:12px;color:var(--muted);background:rgba(255,255,255,.92);border-top:1px solid var(--line);z-index:50}
-#chrome #actLabel{letter-spacing:.12em;text-transform:uppercase}
-#counter{letter-spacing:.1em}
-#help{position:fixed;top:16px;right:20px;font-family:var(--mono);font-size:11px;color:var(--muted);z-index:50;text-align:right}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:2px}
+
+/* ============================================================
+   VIEWPORT BASE (mandatory) — every slide fits 100vh
+   ============================================================ */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow-x:hidden}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.45}
+.slide{width:100vw;height:100vh;height:100dvh;overflow:hidden;scroll-snap-align:start;
+  display:flex;flex-direction:column;position:relative;
+  background:
+    radial-gradient(1100px 500px at 85% -10%,rgba(56,189,248,.10),transparent 60%),
+    radial-gradient(900px 600px at -10% 110%,rgba(251,191,36,.06),transparent 55%),
+    var(--bg);
+}
+.slide-content{flex:1;max-height:100%;overflow:hidden;padding:var(--slide-padding);
+  display:flex;flex-direction:column;justify-content:center}
+
+/* ============================================================
+   CHROME — brand, index, progress, nav dots
+   ============================================================ */
+.deck-top{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;
+  align-items:center;padding:clamp(0.5rem,1.2vw,1rem) clamp(0.9rem,2.4vw,2rem);
+  font-family:var(--font-mono);font-size:var(--small-size);color:var(--faint);letter-spacing:.12em;
+  background:linear-gradient(rgba(8,17,32,.92),transparent);pointer-events:none}
+.deck-top b{color:var(--cyan);font-weight:500}
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--water);z-index:70;width:0%;box-shadow:0 0 12px rgba(56,189,248,.7)}
+.nav-dots{position:fixed;right:clamp(0.5rem,1.2vw,1.1rem);top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:7px}
+.nav-dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--faint);background:transparent;padding:0;cursor:pointer;opacity:.5;transition:all .25s}
+.nav-dots button.active{background:var(--amber);border-color:var(--amber);opacity:1;transform:scale(1.35)}
+.key-hint{position:fixed;bottom:clamp(0.3rem,1vw,.6rem);right:clamp(0.6rem,1.4vw,1.2rem);z-index:60;
+  font-family:var(--font-mono);font-size:var(--small-size);color:var(--faint);letter-spacing:.08em}
+
+/* ============================================================
+   TYPOGRAPHY + BUILDING BLOCKS (dense)
+   ============================================================ */
+.kicker{font-family:var(--font-mono);font-size:var(--small-size);letter-spacing:.22em;
+  text-transform:uppercase;color:var(--amber);display:inline-flex;align-items:center;gap:.5rem}
+.kicker::before{content:"";width:1.6rem;height:3px;background:var(--hazard);display:inline-block}
+h1{font-family:var(--font-display);font-weight:800;font-size:var(--title-size);line-height:1.02;letter-spacing:-.01em;margin:.35rem 0 .5rem}
+h1 .hl{color:var(--water)}
+h2{font-family:var(--font-display);font-weight:700;font-size:var(--h2-size);line-height:1.08;margin:.3rem 0 .6rem}
+h3{font-family:var(--font-display);font-weight:700;font-size:var(--h3-size);line-height:1.15}
+p{font-size:var(--body-size);color:var(--dim)}
+.sub{font-size:calc(var(--body-size)*1.15);color:var(--ink);max-width:56ch}
+.muted{color:var(--dim)}
+.mono{font-family:var(--font-mono)}
+.tag-cyan{color:var(--cyan)}
+.tag-amber{color:var(--amber)}
+.tag-red{color:var(--danger)}
+.tag-green{color:var(--green)}
+b,strong{color:var(--ink);font-weight:600}
+
+.grid{display:grid;gap:var(--gap)}
+.cols-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.cols-3{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+.cols-4{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
+
+.card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+  border-radius:14px;padding:clamp(0.7rem,1.4vw,1.3rem);position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--water);opacity:.5}
+.card.amber::before{background:var(--amber)}
+.card.red::before{background:var(--danger)}
+.card.green::before{background:var(--green)}
+.card .num{font-family:var(--font-display);font-weight:800;font-size:clamp(1.1rem,2.6vw,1.9rem);line-height:1;color:var(--water)}
+.card.amber .num{color:var(--amber)} .card.red .num{color:var(--danger)} .card.green .num{color:var(--green)}
+.card .lbl{font-family:var(--font-mono);font-size:var(--small-size);color:var(--faint);text-transform:uppercase;letter-spacing:.14em;display:block;margin-top:.3rem}
+.card p{font-size:calc(var(--body-size)*.96);color:var(--dim);margin-top:.45rem}
+.card ul{list-style:none;margin-top:.4rem}
+.card li{font-size:calc(var(--body-size)*.92);color:var(--dim);padding:.18rem 0 .18rem 1.1rem;position:relative}
+.card li::before{content:"▸";position:absolute;left:0;color:var(--cyan)}
+.card.amber li::before{color:var(--amber)}
+
+/* list rows */
+.rows{display:flex;flex-direction:column;gap:calc(var(--gap)*.5)}
+.row{display:grid;grid-template-columns:auto 1fr;gap:clamp(0.6rem,1.2vw,1.2rem);align-items:start;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:clamp(0.5rem,1vw,.9rem)}
+.row .k{font-family:var(--font-display);font-weight:700;font-size:clamp(0.9rem,2vw,1.5rem);color:var(--water);line-height:1;min-width:2.2ch}
+.row.amber .k{color:var(--amber)} .row.green .k{color:var(--green)} .row.red .k{color:var(--danger)}
+.row .t{font-size:calc(var(--body-size)*.95)} .row .t b{display:block;font-size:var(--body-size)}
+.row .d{font-size:var(--small-size);color:var(--faint);margin-top:.1rem}
+
+/* stack logo chips */
+.chip{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:var(--small-size);
+  border:1px solid var(--line);border-radius:999px;padding:.25rem .7rem;color:var(--dim);background:var(--panel)}
+.chip b{color:var(--ink)}
+
+/* code block + copy */
+.code{position:relative;background:#050b16;border:1px solid var(--line);border-radius:14px;
+  font-family:var(--font-mono);font-size:clamp(0.68rem,1.1vw,.86rem);line-height:1.55;
+  padding:clamp(0.7rem,1.4vw,1.3rem);overflow:auto;color:#cfe0f5;max-height:60vh}
+.code .copy{position:absolute;top:.6rem;right:.6rem;font-family:var(--font-mono);font-size:var(--small-size);
+  background:var(--amber);color:#111;border:0;border-radius:8px;padding:.28rem .6rem;cursor:pointer;font-weight:600}
+.code .k{color:#7dd3fc}.code .c{color:#5b729a}
+.tagline{font-family:var(--font-mono);font-size:var(--small-size);letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.rule{height:1px;background:var(--line);margin:calc(var(--gap)*.4) 0}
+
+/* quote block */
+.quote{border-left:3px solid var(--amber);padding:clamp(0.7rem,1.5vw,1.4rem) clamp(0.9rem,2vw,1.8rem);
+  background:var(--panel);border-radius:0 14px 14px 0;font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1rem,2.4vw,1.9rem);line-height:1.25;color:var(--ink);position:relative}
+.quote small{display:block;font-family:var(--font-mono);font-weight:400;font-size:var(--small-size);color:var(--faint);margin-top:.6rem;letter-spacing:.05em}
+
+/* flow arrows */
+.flow{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.step{font-family:var(--font-mono);font-size:var(--small-size);border:1px solid var(--line);
+  background:var(--panel);color:var(--dim);border-radius:10px;padding:.4rem .7rem;white-space:nowrap}
+.step b{color:var(--water)}
+.flow .arr{color:var(--faint);font-family:var(--font-mono)}
+
+/* pill tags */
+.pill{font-family:var(--font-mono);font-size:var(--small-size);border-radius:999px;padding:.18rem .6rem;
+  display:inline-block;letter-spacing:.06em}
+.pill.cyan{background:rgba(56,189,248,.15);color:var(--cyan);border:1px solid rgba(56,189,248,.4)}
+.pill.amber{background:rgba(251,191,36,.14);color:var(--amber);border:1px solid rgba(251,191,36,.4)}
+.pill.red{background:rgba(248,113,113,.14);color:var(--danger);border:1px solid rgba(248,113,113,.4)}
+.pill.green{background:rgba(74,222,128,.14);color:var(--green);border:1px solid rgba(74,222,128,.4)}
+.pill.ghost{background:transparent;color:var(--dim);border:1px dashed var(--line)}
+
+/* comparison split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+.bad h3{color:var(--danger)} .good h3{color:var(--green)}
+
+/* ============================================================
+   REVEAL ANIMATIONS (staggered via .visible)
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease-out-expo),transform .6s var(--ease-out-expo)}
+.slide.visible .reveal{opacity:1;transform:none}
+.slide.visible .d1{transition-delay:.06s}.slide.visible .d2{transition-delay:.12s}
+.slide.visible .d3{transition-delay:.18s}.slide.visible .d4{transition-delay:.24s}
+.slide.visible .d5{transition-delay:.3s}.slide.visible .d6{transition-delay:.36s}
+
+/* ============================================================
+   MINI APP — Kampung Melayu Flood (dashboard card)
+   ============================================================ */
+.app{background:#050b16;border:1px solid rgba(56,189,248,.35);border-radius:16px;overflow:hidden;
+  box-shadow:0 0 0 1px var(--line),0 20px 50px rgba(0,0,0,.4)}
+.app-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;
+  padding:.6rem 1rem;background:rgba(56,189,248,.08);border-bottom:1px solid var(--line)}
+.app-head .title{font-family:var(--font-display);font-weight:700;font-size:clamp(.85rem,1.6vw,1.1rem);color:var(--ink)}
+.app-head .title small{display:block;font-family:var(--font-mono);font-weight:400;font-size:var(--small-size);color:var(--faint);letter-spacing:.08em}
+.app-body{display:grid;grid-template-columns:1.2fr .9fr;gap:0}
+.app-left{padding:clamp(.7rem,1.2vw,1.1rem);border-right:1px solid var(--line)}
+.app-right{padding:clamp(.7rem,1.2vw,1.1rem);display:flex;flex-direction:column;gap:.5rem}
+.gauge{border:1px solid var(--line);border-radius:12px;padding:.55rem .7rem;background:var(--panel)}
+.gauge .lab{font-family:var(--font-mono);font-size:var(--small-size);color:var(--faint);text-transform:uppercase;letter-spacing:.12em}
+.gauge .val{font-family:var(--font-display);font-weight:800;font-size:clamp(1rem,2.2vw,1.6rem);color:var(--ink);line-height:1.1}
+.gauge .val small{font-family:var(--font-mono);font-size:var(--small-size);color:var(--faint);font-weight:400}
+.bar{height:6px;border-radius:4px;background:var(--bg2);margin-top:.35rem;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--water);border-radius:4px}
+select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-size);
+  background:var(--bg2);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.55rem .7rem}
+.verdict{font-family:var(--font-display);font-weight:800;text-align:center;border-radius:12px;
+  padding:clamp(.6rem,1vw,1rem);font-size:clamp(1rem,2vw,1.5rem);letter-spacing:.02em;line-height:1.1}
+.verdict small{display:block;font-family:var(--font-mono);font-weight:400;font-size:var(--small-size);margin-top:.25rem;letter-spacing:.05em;opacity:.85}
+.verdict.aman{background:rgba(74,222,128,.16);color:var(--green);border:1px solid rgba(74,222,128,.5)}
+.verdict.waspada{background:rgba(251,191,36,.15);color:var(--amber);border:1px solid rgba(251,191,36,.5)}
+.verdict.siaga{background:rgba(251,146,60,.16);color:var(--orange);border:1px solid rgba(251,146,60,.5)}
+.verdict.bahaya{background:rgba(248,113,113,.16);color:var(--danger);border:1px solid rgba(248,113,113,.5)}
+.disclaimer{margin-top:.6rem;border-left:3px solid var(--amber);padding:.4rem .7rem;background:rgba(251,191,36,.07);
+  font-size:var(--small-size);color:var(--dim)}
+.hist{font-size:calc(var(--body-size)*.9)}
+.hist li{list-style:none;padding:.22rem 0;border-bottom:1px dashed var(--line);color:var(--dim);display:flex;gap:.5rem;align-items:baseline}
+.hist li b{font-family:var(--font-mono);color:var(--ink);font-weight:500}
+.hist li span{color:var(--faint)}
+
+/* footer of demo */
+.side-note{font-size:calc(var(--body-size)*.85);color:var(--faint)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-height:700px){:root{--slide-padding:clamp(.8rem,3vw,1.4rem);--gap:clamp(.4rem,1vw,.8rem)}}
+@media (max-height:600px){.nav-dots,.key-hint{display:none}}
 @media (max-width:820px){
-  .slide{padding:40px 28px 110px}
-  .slide h1{font-size:36px}
-  .cols{grid-template-columns:1fr;gap:20px}
+  .cols-2,.cols-3,.cols-4,.split{grid-template-columns:1fr}
+  .app-body{grid-template-columns:1fr}
+  .app-left{border-right:0;border-bottom:1px solid var(--line)}
 }
+@media (max-width:600px){:root{--title-size:clamp(1.3rem,7vw,2rem)}}
 @media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{transition:none!important;animation:none!important}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
 }
-.app-card{border:2px solid var(--ink);border-radius:14px;padding:24px;background:#fff;max-width:560px}
-.app-card label{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px}
-#wardSelect{width:100%;font-size:17px;font-family:var(--sans);padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff}
-#verdict{margin-top:20px;padding:16px 18px;border-radius:10px;color:#fff;min-height:74px}
-#verdict .big{font-family:var(--serif);font-size:26px;margin-bottom:6px}
-#verdict .sub{font-size:15px;opacity:.92}
-#verdict.pending{background:var(--muted)}
-#verdict.safe{background:var(--safe)}
-#verdict.detour{background:var(--accent)}
-#verdict.stay{background:var(--danger)}
-.disclaimer{margin-top:18px;border-left:4px solid var(--accent);padding:10px 14px;background:#FFFBEB;font-size:13px;color:#92400E}
-.risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
-.risk-cell{border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:14px}
-.risk-cell b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 </style>
 </head>
 <body>
-<div id="help">← → to navigate · Home / End</div>
-<main id="deck">
+<div class="progress-bar" id="progress"></div>
+<div class="deck-top"><span><b>SESI-5</b> · Decode Risk. Ship Impact.</span><span id="idx">01</span></div>
+<nav class="nav-dots" id="dots" aria-label="Slides"></nav>
+<div class="key-hint">↑↓ or space · scroll · dots to jump</div>
 
-<section class="slide" id="slide-1" data-act="Act 1 · The Shift">
-  <p class="tag">U-INSPIRE 101 · Decode Risk. Ship Impact. · SESI-5</p>
-  <h1>From Static to Interactive</h1>
-  <p class="lead">Agent Skills · MCP · building your DRR portfolio with <span class="tool">freebuff</span> + <span class="tool">opencode</span></p>
-  <p class="note">The session: understand the tools, then ship a working prototype — not just an AI-generated infographic.</p>
-</section>
-<section class="slide" id="slide-2" data-act="Act 1 · The Shift">
-  <p class="tag">01 · Why this matters</p>
-  <h1>Why interactive <em>beats</em> infographic</h1>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">AI infographic</h3>
-      <ul>
-        <li>Explain — tells you something once</li>
-        <li>Static — the same image every time</li>
-        <li>One-way — you read, then it ends</li>
-        <li>Read-once — shared, admired, forgotten</li>
-      </ul>
+<!-- ============================================================
+     S1 · COVER
+     ============================================================ -->
+<section class="slide" data-act="Cover">
+  <div class="slide-content">
+    <span class="kicker reveal">U-INSPIRE 101 Bootcamp</span>
+    <h1 class="reveal d1">From static<br>to <span class="hl">interactive</span>.</h1>
+    <p class="sub reveal d2">Agent Skills · MCP · and a one-kecamatan flood prototype — shipped with <b class="mono tag-cyan">freebuff</b> + <b class="mono tag-cyan">opencode</b>.</p>
+    <div class="rule reveal d3"></div>
+    <div class="flow reveal d3">
+      <span class="step"><b>Case</b> — Kampung Melayu, Jatinegara</span><span class="arr">→</span>
+      <span class="step"><b>Evidence</b></span><span class="arr">→</span>
+      <span class="step"><b>Insight</b></span><span class="arr">→</span>
+      <span class="step"><b>Prototype</b></span><span class="arr">→</span>
+      <span class="step"><b>Deployed portfolio</b></span>
     </div>
-    <div class="card">
-      <h3 class="kicker">Interactive app</h3>
-      <ul>
-        <li>Explore — the user chooses the inputs</li>
-        <li>Decide — supports a real decision</li>
-        <li>Act — gives one clear next action</li>
-        <li>Reusable — deployed, linkable, testable</li>
-      </ul>
-    </div>
-  </div>
-  <h3>An infographic tells a story. A prototype supports a decision.</h3>
-  <p class="note">A portfolio prototype should prove the thinking behind the product — not just the product itself.</p>
-</section>
-<section class="slide" id="slide-3" data-act="Act 1 · The Shift">
-  <p class="tag">02 · The target</p>
-  <h1>The bar for your portfolio</h1>
-  <p class="lead">Build something small, evidence-based, usable, and honest about its limitations.</p>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">Small</h3>
-      <p>One location. One user group. One key journey.</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Evidence-based</h3>
-      <p>Every source carries a trail — URL, date, method, limitation, license.</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Usable</h3>
-      <p>Someone can try it and act on it — not just look at it.</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Honest</h3>
-      <p>Clearly labeled as exploratory. Not an official warning system.</p>
-    </div>
-  </div>
-  <h3>Deployed prototype, not a PDF.</h3>
-  <p class="note">This session shows the tools to go from idea → deployed: <span class="tool">freebuff</span>, <span class="tool">opencode</span>, skills, MCP.</p>
-</section>
-<section class="slide" id="slide-4" data-act="Act 2 · Stack &amp; Spec">
-  <p class="tag">03 · Meet the stack</p>
-  <h1>Your new stack</h1>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">Coding partners</h3>
-      <p><span class="tool">freebuff</span> — your agent CLI for building and iterating.</p>
-      <p><span class="tool">opencode</span> — your interactive agent workspace.</p>
-      <p class="note">You bring the case and the evidence. They bring tools, workflow, and building.</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Shipping layer</h3>
-      <p>App: Next.js + TypeScript + Tailwind (or your choice).</p>
-      <p>Data: <span class="tool">Turso</span> — SQLite that runs at the edge.</p>
-      <p>Deploy: <span class="tool">Cloudflare</span> / Vercel + a public URL.</p>
-    </div>
-  </div>
-  <h3>Four services to register — each one has a job.</h3>
-  <p class="lead">GitHub · Turso · Cloudflare · Gravatar</p>
-</section>
-<section class="slide" id="slide-5" data-act="Act 2 · Stack &amp; Spec">
-  <p class="tag">04 · Stack / GitHub</p>
-  <h1>GitHub — why register</h1>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">What it does</h3>
-      <ul>
-        <li>Source control — every pass tracked, auditable</li>
-        <li>Identity — used by Vercel, Cloudflare, and <span class="tool">opencode</span> for auth</li>
-        <li>Public profile — the first thing a reviewer sees</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Why it matters for THIS project</h3>
-      <p>Your repository is the <strong>proof</strong>: the PRD, the data catalog, the build passes, the README case study.</p>
-      <p class="note">Deliverable: a public repository with a case-study README.</p>
-    </div>
+    <p class="muted reveal d4" style="margin-top:clamp(.6rem,1.4vw,1.2rem)">Not just an AI-generated infographic. A working, honest prototype.</p>
   </div>
 </section>
-<section class="slide" id="slide-6" data-act="Act 2 · Stack &amp; Spec">
-  <p class="tag">05 · Stack / Turso</p>
-  <h1>Turso — why register</h1>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">What it does</h3>
-      <ul>
-        <li>SQLite-compatible database that runs at the edge</li>
-        <li>No server to provision or pay for</li>
-        <li>A connection string your app can read from anywhere</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Why it matters for THIS project</h3>
-      <p>Your wards, rainfall, slope, and risk scores live here as <strong>schema + seed data</strong>.</p>
-      <p>Your app reads real structured data — not hardcoded JS.</p>
-      <p class="note">Deliverable: a database URL your deployed app connects to via MCP.</p>
-    </div>
-  </div>
-</section>
-<section class="slide" id="slide-7" data-act="Act 2 · Stack &amp; Spec">
-  <p class="tag">06 · Stack / Cloudflare + Gravatar</p>
-  <h1>Cloudflare + Gravatar — why register</h1>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">Cloudflare</h3>
-      <ul>
-        <li>DNS + fast global deploy of static and edge apps</li>
-        <li>Alternative/companion to Vercel for the public URL</li>
-        <li>Free tier covers a bootcamp portfolio</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Gravatar</h3>
-      <ul>
-        <li>Free avatar that follows your email</li>
-        <li>Free subdomain: <span class="tool">yourname.gravatar.com</span></li>
-        <li>Your portfolio URL — a live link, not a file</li>
-      </ul>
-    </div>
-  </div>
-  <p class="lead">A public URL is what turns a prototype into a portfolio.</p>
-</section>
-<section class="slide" id="slide-8" data-act="Act 2 · Stack &amp; Spec">
-  <p class="tag">07 · Spec before code</p>
-  <h1>Why a PRD before code?</h1>
-  <p class="lead">Discipline before code — a PRD is the <strong>contract</strong> between you and your coding agent.</p>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">Shared understanding</h3>
-      <p>Both you and the agent agree on who the user is and what decision the app supports.</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Scope control</h3>
-      <p>Non-goals are as important as goals — the agent won't invent features you never asked for.</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Measurable completion</h3>
-      <p>"Done" means the spec's expected states are met — not "the screen looks nice."</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Without it</h3>
-      <p>The agent guesses, scope creeps, and the output is hard to audit.</p>
-    </div>
-  </div>
-</section>
-<section class="slide" id="slide-9" data-act="Act 2 · Stack &amp; Spec">
-  <p class="tag">08 · Spec before code</p>
-  <h1>Anatomy of a PRD</h1>
-  <p class="lead">One document covering everything — from stack to pixels.</p>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">Purpose</h3>
-      <ul>
-        <li><strong>User</strong> — who has the problem</li>
-        <li><strong>Purpose</strong> — which decision it supports</li>
-        <li><strong>Pages / flow</strong> — one core journey</li>
-      </ul>
-      <h3 class="kicker">Product</h3>
-      <ul>
-        <li><strong>Tech stack</strong> — framework, language, styling</li>
-        <li><strong>Database design</strong> — tables, schema, seed data</li>
-        <li><strong>API</strong> — endpoints / data access the app needs</li>
-        <li><strong>UI/UX flow</strong> — screens and the interaction between them</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Guardrails</h3>
-      <ul>
-        <li><strong>Constraints</strong> — stack rules, language, disclaimer</li>
-        <li><strong>Expected states</strong> — normal, empty, error</li>
-        <li><strong>Non-goals</strong> — what this version will NOT do</li>
-      </ul>
-      <p class="note">A PRD is a small file, not a novel — but it must be explicit.</p>
-    </div>
-  </div>
-</section>
-<section class="slide" id="slide-10" data-act="Act 2 · Stack &amp; Spec">
-  <p class="tag">09 · Spec before code</p>
-  <h1>Break it into small passes</h1>
-  <p class="lead">Each pass is demonstrable, has a small failure surface, and is easy to audit.</p>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">Pass 01 · Foundation</h3>
-      <p>App shell, navigation, schema, seed data, visible disclaimer.</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Pass 02 · Core journey</h3>
-      <p>One dashboard/map flow, one interaction, one action.</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Pass 03 · Quality</h3>
-      <p>Mobile layout, validation, error states, accessibility, attribution.</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Pass 04 · Portfolio polish</h3>
-      <p>Methodology, screenshots, demo reset, clean explanation.</p>
-    </div>
-  </div>
-  <h3>Never start the next pass until the current one is verified.</h3>
-</section>
-<section class="slide" id="slide-11" data-act="Act 2 · Stack &amp; Spec">
-  <p class="tag">10 · Spec before code</p>
-  <h1>The prompt</h1>
-  <p class="lead">Spec, not a vague wish. One pass at a time — then verify.</p>
-  <pre class="code"><button class="copy" onclick="copyPrompt(this)">Copy</button>You are building a Next.js app for a DRR portfolio.
 
-User: Parents deciding a school route after heavy rain.
-Purpose: Show whether the route is safe, a detour, or stay-home.
-Pages: One route-check page (ward selector + verdict).
-Data model: wards(id, name, rainfall, slope, note).
-API: read wards; compute verdict server-side.
-Tech stack: Next.js, TypeScript, Tailwind, Turso.
-Language: English.
-Seed data: 5 Bandung wards with sample profiles.
-Expected states: ward selected -> verdict shown; no ward -> prompt.
-Non-goals: no real warnings, no auth, no admin.
-
-Build Pass 01 only, then stop and report.</pre>
-  <p class="note">Build one pass · verify it · then continue. Prompt with a spec, not a wish.</p>
-</section>
-<section class="slide" id="slide-12" data-act="Act 3 · Agent Skills">
-  <p class="tag">11 · Agent Skills</p>
-  <h1>What is a Skill?</h1>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">Definition</h3>
-      <p>A skill is a <strong>packaged workflow + knowledge</strong> that an agent loads on demand.</p>
-      <ul>
-        <li>Not a plugin — no code injected into every run</li>
-        <li>Not hardcoded behavior — it is loaded when the task matches</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Analogy</h3>
-      <p>A <strong>recipe card</strong>. You don't read every card in the box — you pull the one whose title matches the dish you're cooking.</p>
-      <p class="note">The agent follows the recipe, applies its tools, and produces the dish.</p>
-    </div>
-  </div>
-</section>
-<section class="slide" id="slide-13" data-act="Act 3 · Agent Skills">
-  <p class="tag">12 · Agent Skills</p>
-  <h1>Anatomy of a skill</h1>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">What's inside</h3>
-      <ul>
-        <li><strong>SKILL.md</strong> — the instructions: what the skill is for, the workflow to follow</li>
-        <li><strong>Optional scripts / resources</strong> — helpers the workflow can call</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 class="kicker">How it activates</h3>
-      <ul>
-        <li>Triggered by <strong>context</strong> — the task matches the skill's description</li>
-        <li>The agent reads the instructions, then follows the workflow</li>
-        <li>Skills are versioned — they evolve, so read the current version</li>
-      </ul>
-    </div>
-  </div>
-  <p class="lead">Skill = <em>how to do a class of work well</em>.</p>
-</section>
-<section class="slide" id="slide-14" data-act="Act 3 · Agent Skills">
-  <p class="tag">13 · Agent Skills</p>
-  <h1>Skills for DRR work</h1>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">Research &amp; evidence</h3>
-      <ul>
-        <li><span class="tool">quick-research</span> — structured evidence summaries</li>
-        <li><span class="tool">websearch</span> / <span class="tool">open-link</span> — context and source reading</li>
-        <li><span class="tool">a-stock-analysis</span>, market, data skills — pattern hunting</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Build &amp; visuals</h3>
-      <ul>
-        <li><span class="tool">frontend-design</span> — polished interactive UI</li>
-        <li><span class="tool">mobile-app-ui-design</span> — mobile-first screens</li>
-        <li><span class="tool">generate-image</span> / <span class="tool">search-image</span> — assets and maps</li>
-      </ul>
-    </div>
-  </div>
-  <p class="lead">Pick skills per stage: research the case, design the UI, then build.</p>
-</section>
-<section class="slide" id="slide-15" data-act="Act 4 · MCP">
-  <p class="tag">14 · MCP</p>
-  <h1>What is MCP?</h1>
-  <p class="lead">Model Context Protocol — an <strong>open standard</strong> for agents to connect to external tools and data.</p>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">The idea</h3>
-      <ul>
-        <li>One protocol, many integrations</li>
-        <li>MCP <strong>servers</strong> expose tools and data to the agent</li>
-        <li>The agent calls them like built-in tools</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Mental model</h3>
-      <ul>
-        <li><strong>Skill</strong> = how to think / do (a procedure)</li>
-        <li><strong>MCP</strong> = what to reach / read (a live connection)</li>
-      </ul>
-    </div>
-  </div>
-</section>
-<section class="slide" id="slide-16" data-act="Act 4 · MCP">
-  <p class="tag">15 · MCP</p>
-  <h1>MCP in your project</h1>
-  <p class="lead">Live connections the agent uses while it builds — not one-off files.</p>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">Agent ↔ services</h3>
-      <ul>
-        <li><span class="tool">Turso</span> — read/write ward &amp; rainfall data</li>
-        <li><span class="tool">GitHub</span> — create the repo, push passes</li>
-        <li><span class="tool">Cloudflare</span> / Vercel — deploy the app</li>
-        <li>Data APIs — pull evidence into the schema</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Why it changes the build</h3>
-      <p>While writing code, the agent can <strong>read live data</strong> from your Turso database through MCP — schema, seed rows, sample queries.</p>
-      <p class="note">Your app ships connected to real data, not stubbed constants.</p>
-    </div>
-  </div>
-</section>
-<section class="slide" id="slide-17" data-act="Act 4 · MCP">
-  <p class="tag">16 · MCP</p>
-  <h1>Skill vs MCP</h1>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">Skill</h3>
-      <ul>
-        <li>Static packaged procedure</li>
-        <li>Activated by <strong>topic</strong></li>
-        <li>"How to think / do"</li>
-        <li>Example: frontend-design</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 class="kicker">MCP</h3>
-      <ul>
-        <li>Live connection to a tool/server</li>
-        <li>Activated by <strong>tool call</strong></li>
-        <li>"What to reach / read"</li>
-        <li>Example: Turso database</li>
-      </ul>
-    </div>
-  </div>
-  <h3>They work together.</h3>
-  <p class="lead">A skill defines the workflow; MCP gives it live data.</p>
-</section>
-<section class="slide" id="slide-18" data-act="Act 5 · Bandung Landslide">
-  <p class="tag">17 · From spec to deployed</p>
-  <h1>The case, bounded</h1>
-  <p class="lead">Parents in a Bandung school-route area struggle to decide whether it is safe to walk after heavy rain, because landslide-risk information is fragmented.</p>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">One location</h3>
-      <p>Five pilot wards in Bandung (Cidadap, Coblong, Bandung Wetan, Sukajadi, Cibeunying Kaler).</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">One user group</h3>
-      <p>Parents and school staff deciding the route to school.</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">One journey</h3>
-      <p>Check today's route risk → get one action (walk / detour / stay home).</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Why it fits</h3>
-      <p>Specific enough to research; small enough to prototype in 1–2 weeks.</p>
-    </div>
-  </div>
-</section>
-<section class="slide" id="slide-19" data-act="Act 5 · Bandung Landslide">
-  <p class="tag">18 · From spec to deployed</p>
-  <h1>The evidence</h1>
-  <p class="lead">Every source carries a trail — source, period, use, limitation.</p>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">Rainfall</h3>
-      <p><span class="tool">BMKG</span> / Open-Meteo — historical + forecast.</p>
-      <p class="note">Use: today's risk. Limitation: point forecasts, not street-level.</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Slope &amp; elevation</h3>
-      <p>Open elevation (DEM). Use: route slope risk.</p>
-      <p class="note">Limitation: regional resolution.</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Land cover</h3>
-      <p>Open land-cover data. Use: which areas slide-prone.</p>
-      <p class="note">Limitation: periodic, not real-time.</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Incident records</h3>
-      <p>Reported events / news timeline. Use: recurring locations.</p>
-      <p class="note">Limitation: contextual and exploratory — not official data.</p>
-    </div>
-  </div>
-  <p class="note">Official data = factual foundation. Crawled data = context only.</p>
-</section>
-<section class="slide" id="slide-20" data-act="Act 5 · Bandung Landslide">
-  <p class="tag">19 · From spec to deployed</p>
-  <h1>Live: Bandung Route Check</h1>
-  <p class="lead">The same story — now a decision, not a picture.</p>
-  <div class="cols">
-    <div class="app-card">
-      <label for="wardSelect">Choose a school-route ward</label>
-      <select id="wardSelect" aria-label="Select ward"></select>
-      <div class="risk-grid">
-        <div class="risk-cell"><b>Rainfall today</b><span id="rainVal">—</span></div>
-        <div class="risk-cell"><b>Slope risk</b><span id="slopeVal">—</span></div>
+<!-- ============================================================
+     S2 · THE ITCH
+     ============================================================ -->
+<section class="slide" data-act="The itch">
+  <div class="slide-content">
+    <span class="kicker reveal">The complaint</span>
+    <h2 class="reveal d1">A familiar feeling when you open InaRISK.</h2>
+    <div class="quote reveal d2">"ah inarisk jelek banget sih ini, mana lemot banget layernya kalo harus zoom sampe detail."</div>
+    <div class="rule reveal d3"></div>
+    <div class="grid cols-2 reveal d4">
+      <div class="card red">
+        <span class="lbl">The real problem</span>
+        <div class="num">1 kecamatan</div>
+        <p>You only need <b>one</b> kecamatan — but the platform makes you fight heavy layers, slow tiles, and endless zooming to get there.</p>
       </div>
-      <div id="verdict" class="pending"><span class="big">Select a ward</span><span class="sub">Sample data · exploratory</span></div>
-      <div class="disclaimer">This prototype is an exploratory portfolio project. It is not an official emergency-warning system and does not replace information from authorized agencies.</div>
+      <div class="card green">
+        <span class="lbl">The opportunity</span>
+        <div class="num">baju baru</div>
+        <p>Wrap the same risk idea in a <b>fast, focused, mobile-friendly</b> view. One place. Clear layers. No lag.</p>
+      </div>
     </div>
-    <div>
-      <div class="card">
-        <h3 class="kicker">What you're seeing</h3>
+  </div>
+</section>
+
+<!-- ============================================================
+     S3 · WHY INTERACTIVE
+     ============================================================ -->
+<section class="slide" data-act="Why interactive">
+  <div class="slide-content">
+    <span class="kicker reveal">Why this matters</span>
+    <h2 class="reveal d1">Interactive beats infographic.</h2>
+    <div class="split reveal d2" style="margin-bottom:.4rem">
+      <div class="card bad">
+        <h3>AI infographic</h3>
         <ul>
-          <li>Skill used: <span class="tool">frontend-design</span> — the interface</li>
-          <li>MCP connection: <span class="tool">Turso</span> — the ward data lives in a database</li>
-          <li>Sample data, clearly labeled — honest about limits</li>
+          <li>Explains once — then it ends</li>
+          <li>Static picture, same every time</li>
+          <li>Read, admire, forget</li>
+        </ul>
+      </div>
+      <div class="card good">
+        <h3>Interactive prototype</h3>
+        <ul>
+          <li>User picks the inputs</li>
+          <li>Supports a real decision</li>
+          <li>Deployed, linkable, testable</li>
         </ul>
       </div>
     </div>
-  </div>
-</section>
-<section class="slide" id="slide-21" data-act="Act 5 · Bandung Landslide">
-  <p class="tag">20 · From spec to deployed</p>
-  <h1>Deploy &amp; prove</h1>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">Ship checklist</h3>
-      <ul>
-        <li><span class="badge green">✔</span> Repo — GitHub, public, with README</li>
-        <li><span class="badge green">✔</span> Database — Turso, schema + seed</li>
-        <li><span class="badge green">✔</span> URL — Gravatar subdomain / Cloudflare</li>
-      </ul>
-      <p class="note">Example: <span class="tool">npx vercel --prod</span> or a Cloudflare Pages deploy.</p>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Test it</h3>
-      <p>"You expect heavy rain today. Use this prototype to decide what to do."</p>
-      <p>Test with 3–5 people like the target user. Watch, learn, make <strong>one</strong> focused iteration.</p>
+    <p class="sub reveal d3" style="font-size:calc(var(--body-size)*1.15)">A portfolio prototype proves the <b>thinking</b> behind a product — not just the pixels.</p>
+    <div class="flow reveal d4" style="margin-top:.4rem">
+      <span class="pill green">small</span><span class="pill cyan">evidence-based</span><span class="pill amber">usable</span><span class="pill red">honest about limits</span>
     </div>
   </div>
-  <h3>Be honest about limits.</h3>
-  <p class="note"><span class="badge green">Can claim</span> demonstrates the flow, data trail, and decision support · <span class="badge red">Cannot claim</span> official early-warning authority.</p>
-</section>
-<section class="slide" id="slide-22" data-act="Act 6 · Your Portfolio">
-  <p class="tag">21 · Your portfolio</p>
-  <h1>By the end, each participant has</h1>
-  <div class="cols">
-    <div class="card">
-      <h3 class="kicker">Your six deliverables</h3>
-      <ul>
-        <li>01 · A bounded local case</li>
-        <li>02 · A documented data catalog</li>
-        <li>03 · A problem statement + PRD</li>
-        <li>04 · A deployed prototype URL</li>
-        <li>05 · A GitHub repository</li>
-        <li>06 · A portfolio-ready case study</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 class="kicker">Next steps</h3>
-      <ul>
-        <li>Stuck or an install error? Ask in the group chat.</li>
-        <li>Pick your own case and write the PRD this week.</li>
-        <li>Run Pass 01 with <span class="tool">freebuff</span> or <span class="tool">opencode</span>.</li>
-      </ul>
-    </div>
-  </div>
-  <p class="lead">Decode Risk. Ship Impact.</p>
 </section>
 
-</main>
+<!-- ============================================================
+     S4 · CASE, BOUNDED
+     ============================================================ -->
+<section class="slide" data-act="The case">
+  <div class="slide-content">
+    <span class="kicker reveal">Case · bounded</span>
+    <h2 class="reveal d1">Kampung Melayu, Jatinegara — floods.</h2>
+    <p class="sub reveal d2">Residents near the Ciliwung struggle to recall <b>what happened where and when</b>, because flood history and impact are scattered across news and memories.</p>
+    <div class="grid cols-4 reveal d3">
+      <div class="card"><span class="lbl">01 location</span><div class="num">Kampung Melayu</div><p>Kelurahan in Jatinegara, Jakarta Timur, along the Ciliwung.</p></div>
+      <div class="card"><span class="lbl">02 user</span><div class="num">1 journey</div><p>"Is my area at risk, and what happened last time?"</p></div>
+      <div class="card amber"><span class="lbl">03 focus</span><div class="num">History + risk</div><p>Recurring events, typical depth, and the areas hit first.</p></div>
+      <div class="card"><span class="lbl">04 data</span><div class="num">Sample</div><p>Clearly-labeled exploratory data. Not a live warning tool.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S5 · THE DATA WALL
+     ============================================================ -->
+<section class="slide" data-act="Evidence">
+  <div class="slide-content">
+    <span class="kicker reveal">Evidence · the wall</span>
+    <h2 class="reveal d1">The data you <em>wanted</em> is not downloadable.</h2>
+    <div class="grid cols-3 reveal d2">
+      <div class="card red"><span class="lbl">InaRISK</span><p>Risk &amp; hazard layers exist — but they are slow, visual-only, and hard to pull cleanly.</p></div>
+      <div class="card red"><span class="lbl">BMKG weather</span><p>Rainfall history is real, but not exposed as a simple open feed for this prototype.</p></div>
+      <div class="card red"><span class="lbl">DKI SDA · TMA</span><p>River water-level data exists — not as an open API you can call from a demo.</p></div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <p class="sub reveal d3" style="font-size:calc(var(--body-size)*1.05)">So the honest move: build the <b>flow with sample + documented data</b>, label it clearly, and use official sources as <b>reference only</b>.</p>
+    <div class="flow reveal d4"><span class="pill amber">every source carries a trail</span><span class="pill amber">source · period · use · limitation</span><span class="pill ghost">crawl for context — never fake certainty</span></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S6 · STACK
+     ============================================================ -->
+<section class="slide" data-act="Meet the stack">
+  <div class="slide-content">
+    <span class="kicker reveal">Stack</span>
+    <h2 class="reveal d1">Coding partners + 4 accounts.</h2>
+    <div class="grid cols-2 reveal d2">
+      <div class="card">
+        <h3>Coding partners</h3>
+        <p style="margin-top:.3rem"><span class="chip"><b>freebuff</b></span> &nbsp; <span class="chip"><b>opencode</b></span></p>
+        <p>Your agent CLIs. You bring the case &amp; evidence; they bring tools, workflow, and the build.</p>
+      </div>
+      <div class="card">
+        <h3>Ship layer</h3>
+        <div class="flow" style="margin-top:.3rem"><span class="chip">Next.js</span><span class="chip">Turso <i>(DB)</i></span><span class="chip">Vercel/Cloudflare</span></div>
+        <p>Deployable web app on top of a real database — not a static image.</p>
+      </div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <div class="grid cols-4 reveal d3">
+      <div class="card"><span class="lbl">why</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">GitHub</div><p>Repo = your proof. Versioned PRD, passes, README case study.</p></div>
+      <div class="card"><span class="lbl">why</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Turso</div><p>Edge SQLite — ward data, TMA, events live here.</p></div>
+      <div class="card"><span class="lbl">why</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Cloudflare</div><p>DNS + deploy. Fast, global, free tier.</p></div>
+      <div class="card amber"><span class="lbl">why · your URL</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Gravatar</div><p>Free subdomain — a public link turns prototype into portfolio.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S7 · PRD BEFORE CODE
+     ============================================================ -->
+<section class="slide" data-act="Spec before code">
+  <div class="slide-content">
+    <span class="kicker reveal">Spec before code</span>
+    <h2 class="reveal d1">Write the PRD first.</h2>
+    <p class="sub reveal d2">Discipline before code. The PRD is the <b>contract</b> between you and your coding agent.</p>
+    <div class="grid cols-4 reveal d3">
+      <div class="card"><div class="num">1</div><p><b>Shared understanding</b> — user + decision agreed upfront.</p></div>
+      <div class="card"><div class="num">2</div><p><b>Scope control</b> — non-goals stop the agent from inventing features.</p></div>
+      <div class="card"><div class="num">3</div><p><b>Measurable done</b> — expected states, not "looks nice".</p></div>
+      <div class="card red"><div class="num">✗</div><p><b>Without it</b> — agent guesses, scope creeps, output is hard to audit.</p></div>
+    </div>
+    <div class="rule reveal d4"></div>
+    <p class="reveal d4"><b>Anatomy of a PRD</b> — everything from stack to pixels:</p>
+    <div class="flow reveal d5">
+      <span class="pill cyan">user</span><span class="pill cyan">purpose</span><span class="pill cyan">pages/flow</span>
+      <span class="pill amber">tech stack</span><span class="pill amber">DB schema</span><span class="pill amber">API</span><span class="pill amber">UI/UX</span>
+      <span class="pill ghost">constraints</span><span class="pill ghost">seed data</span><span class="pill ghost">expected states</span><span class="pill ghost">non-goals</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S8 · SMALL PASSES
+     ============================================================ -->
+<section class="slide" data-act="Small passes">
+  <div class="slide-content">
+    <span class="kicker reveal">Build in passes</span>
+    <h2 class="reveal d1">Break it down. Ship it demonstrable.</h2>
+    <div class="grid cols-4 reveal d2">
+      <div class="card green"><span class="lbl">Pass 01</span><div class="num">Foundation</div><p>App shell, nav, DB schema, seed data, visible disclaimer.</p></div>
+      <div class="card"><span class="lbl">Pass 02</span><div class="num">Core journey</div><p>Pick an event → see risk + impact. One action, done well.</p></div>
+      <div class="card amber"><span class="lbl">Pass 03</span><div class="num">Quality</div><p>Mobile layout, error states, accessibility, attribution.</p></div>
+      <div class="card"><span class="lbl">Pass 04</span><div class="num">Polish</div><p>Methodology, screenshots, demo reset, clean README.</p></div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <p class="reveal d3" style="font-size:calc(var(--body-size)*1.1)"><b>Why?</b> Each pass is demo-able, has a small failure surface, and is easy to audit. <b>Never start pass N+1 until pass N is verified.</b></p>
+  </div>
+</section>
+
+<!-- ============================================================
+     S9 · THE PROMPT
+     ============================================================ -->
+<section class="slide" data-act="The prompt">
+  <div class="slide-content">
+    <span class="kicker reveal">Spec, not a wish</span>
+    <h2 class="reveal d1">The prompt that ships.</h2>
+    <div class="code reveal d2" id="promptBox"><button class="copy" onclick="copyPrompt(this)">Copy</button><span class="k">You are building</span> a Next.js flood-history app for a DRR portfolio.
+<span class="k">User:</span> A resident of Kampung Melayu, Jatinegara.
+<span class="k">Purpose:</span> See past flood events &amp; typical impact for their kelurahan.
+<span class="k">Pages:</span> One dashboard — event selector + risk verdict.
+<span class="k">Data model:</span> events(id, year, tma_cm, rainfall, areas_hit, note).
+<span class="k">API:</span> read events; classify risk from tma + rainfall.
+<span class="k">Stack:</span> Next.js, TypeScript, Tailwind, Turso.
+<span class="k">Language:</span> English. <span class="k">Seed:</span> 5 labeled sample events.
+<span class="k">States:</span> event picked → verdict; none → prompt to choose.
+<span class="k">Non-goals:</span> no live TMA, no official warning, no auth.
+<span class="c">// Build Pass 01 only, then stop and report.</span></div>
+    <p class="muted reveal d3" style="margin-top:.5rem">One pass at a time · verify · then continue.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     S10 · WHAT IS A SKILL
+     ============================================================ -->
+<section class="slide" data-act="Agent skills">
+  <div class="slide-content">
+    <span class="kicker reveal">Agent Skills</span>
+    <h2 class="reveal d1">What is a <em>Skill</em>?</h2>
+    <div class="split reveal d2">
+      <div class="card">
+        <h3>Definition</h3>
+        <p>A skill is a <b>packaged workflow + knowledge</b> an agent loads on demand.</p>
+        <ul><li>Not a plugin — nothing injected every run</li><li>Loaded only when the task matches</li></ul>
+      </div>
+      <div class="card amber">
+        <h3>Recipe card</h3>
+        <p>You don't read every card in the box — you pull the one whose title matches the dish. The agent reads <span class="mono">SKILL.md</span> and follows the workflow.</p>
+      </div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <h3 class="reveal d3">Skills map to the DRR pipeline</h3>
+    <div class="grid cols-4 reveal d4">
+      <div class="card"><span class="lbl">research</span><p><span class="mono tag-cyan">quick-research</span>, <span class="mono tag-cyan">websearch</span> — build the evidence trail.</p></div>
+      <div class="card"><span class="lbl">build</span><p><span class="mono tag-cyan">frontend-design</span>, code skills — the interactive UI.</p></div>
+      <div class="card"><span class="lbl">visual</span><p><span class="mono tag-cyan">generate-image</span> — maps &amp; assets.</p></div>
+      <div class="card"><span class="lbl">evidence</span><p><span class="mono tag-cyan">datasheets</span>-style data skills — structure the source trail.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S11 · WHAT IS MCP
+     ============================================================ -->
+<section class="slide" data-act="MCP">
+  <div class="slide-content">
+    <span class="kicker reveal">MCP</span>
+    <h2 class="reveal d1">What is <em>MCP</em>?</h2>
+    <p class="sub reveal d2">Model Context Protocol — an open standard for agents to <b>connect to external tools &amp; data</b>.</p>
+    <div class="grid cols-2 reveal d3">
+      <div class="card">
+        <h3>MCP servers = live reach</h3>
+        <ul><li>Expose tools &amp; data to the agent</li><li>Called like built-in tools, while it codes</li></ul>
+      </div>
+      <div class="card amber">
+        <h3>In this project</h3>
+        <ul><li><b>Turso</b> — read the events schema &amp; seed</li><li><b>GitHub</b> — repo, push passes</li><li><b>Cloudflare/Vercel</b> — deploy</li></ul>
+      </div>
+    </div>
+    <div class="rule reveal d4"></div>
+    <div class="split reveal d4">
+      <div class="card"><span class="lbl">Skill</span><p>static procedure · by topic · <b>"how to think"</b></p></div>
+      <div class="card green"><span class="lbl">MCP</span><p>live connection · by tool call · <b>"what to reach"</b></p></div>
+    </div>
+    <p class="reveal d5" style="margin-top:.5rem"><b>Together:</b> a skill defines the workflow — MCP gives it live data.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     S12 · THE PROTOTYPE (interactive)
+     ============================================================ -->
+<section class="slide" data-act="The prototype">
+  <div class="slide-content">
+    <span class="kicker reveal">From PRD → deployed</span>
+    <h2 class="reveal d1">Kampung Melayu Flood — <span class="tag-cyan mono">route through history</span></h2>
+    <div class="grid" style="grid-template-columns:1.4fr 1fr;gap:var(--gap)">
+      <div class="app reveal d2">
+        <div class="app-head">
+          <div class="title">Kampung Melayu · Jatinegara<small>Sample data — exploratory portfolio demo</small></div>
+          <span class="pill amber">ciliwung</span>
+        </div>
+        <div class="app-body">
+          <div class="app-left">
+            <label style="font-family:var(--font-mono);font-size:var(--small-size);color:var(--faint);letter-spacing:.1em;text-transform:uppercase">Pick a flood event</label>
+            <select id="evSelect" style="margin-top:.4rem"></select>
+            <ul class="hist" id="evHist" style="margin-top:.6rem"></ul>
+          </div>
+          <div class="app-right">
+            <div class="gauge"><span class="lab">River TMA (Manggarai)</span><div class="val" id="evTma">—<small> cm</small></div><div class="bar"><i id="evTmaBar" style="width:0%"></i></div></div>
+            <div class="gauge"><span class="lab">Rainfall</span><div class="val" id="evRain">—</div></div>
+            <div class="verdict" id="evVerdict"><span style="font-size:clamp(.7rem,1.2vw,.9rem)">select an event</span></div>
+            <div class="disclaimer">This prototype is an exploratory portfolio project. It is not an official emergency-warning system and does not replace information from authorized agencies.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card reveal d3">
+          <h3>What you're seeing</h3>
+          <ul>
+            <li>Skill <b class="mono tag-cyan">frontend-design</b> → this UI</li>
+            <li>MCP <b class="mono tag-cyan">Turso</b> → events read from a DB</li>
+            <li>Sample data, clearly labeled</li>
+            <li>One decision, one journey</li>
+          </ul>
+        </div>
+        <div class="card amber reveal d4" style="margin-top:var(--gap)">
+          <h3>Honest about limits</h3>
+          <p class="side-note">Illustrates the flow &amp; the evidence trail. Can't claim live warning authority.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S13 · DEPLOY & PROVE
+     ============================================================ -->
+<section class="slide" data-act="Deploy & prove">
+  <div class="slide-content">
+    <span class="kicker reveal">Proof</span>
+    <h2 class="reveal d1">Deploy. Test. Prove.</h2>
+    <div class="grid cols-3 reveal d2">
+      <div class="card green"><span class="lbl">ship</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Repo + DB + URL</div><p>GitHub repo, Turso schema, live link on Gravatar/Cloudflare.</p></div>
+      <div class="card"><span class="lbl">test</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">3–5 people</div><p>"Expect heavy rain — use this to decide." Watch, learn, one iteration.</p></div>
+      <div class="card amber"><span class="lbl">frame</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Limits</div><p>Demonstrates flow + data trail. Not an official early-warning system.</p></div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <div class="grid cols-3 reveal d3">
+      <div class="card"><span class="lbl">deliverable</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.1rem)">Bounded local case</div></div>
+      <div class="card"><span class="lbl">deliverable</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.1rem)">Data catalog + PRD</div></div>
+      <div class="card"><span class="lbl">deliverable</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.1rem)">Deployed URL + repo</div></div>
+    </div>
+    <div class="rule reveal d4"></div>
+    <p class="reveal d4" style="margin-top:.2rem"><b>Stuck? Install error?</b> Ask in the group. Pick your own case, write the PRD, run Pass 01.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTROLLER + MINI APP
+     ============================================================ -->
 <script>
-function copyPrompt(btn) {
-  var pre = btn.closest('pre');
-  var text = pre.innerText.replace('Copy', '').trim();
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(function () {
-      btn.textContent = 'Copied!';
-      setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+/* ============ PURE LOGIC (unit-tested by tools/verify.js) ============ */
+// PURE-START
+var PURE = {};
+PURE.EVENTS = [
+  { id:'ev2013', year:'Jan 2013', tma:950, rain:'extreme', impact:'Major Jakarta flood', depth:'>200 cm', note:'Worst in a decade — Ciliwung overflowed, thousands displaced.', hit:['Kampung Melayu','Bidara Cina'] },
+  { id:'ev2015', year:'Feb 2015', tma:690, rain:'heavy', impact:'Riverbank flooding', depth:'80–150 cm', note:'RW along Ciliwung flooded for days.', hit:['Kampung Melayu'] },
+  { id:'ev2020', year:'Jan 2020', tma:880, rain:'extreme', impact:'New Year flood', depth:'150–200 cm', note:'Widespread DKI flood; Kampung Melayu hit overnight.', hit:['Kampung Melayu','Bidara Cina'] },
+  { id:'ev2021', year:'Feb 2021', tma:760, rain:'heavy', impact:'Ciliwung overflow', depth:'100–180 cm', note:'TMA passed siaga at Manggarai; riverbank RTs flooded.', hit:['Kampung Melayu'] },
+  { id:'evToday', year:'Today', tma:470, rain:'moderate', impact:'Standby', depth:'0 cm', note:'Sample forecast — watch the Ciliwung gauge.', hit:['Kampung Melayu'] }
+];
+PURE.classify = function (tma, rain) {
+  var level = 'aman';
+  if (tma >= 850) level = 'bahaya';
+  else if (tma >= 700) level = 'siaga';
+  else if (tma >= 550) level = 'waspada';
+  if (level !== 'bahaya' && rain === 'extreme') { level = level === 'aman' ? 'waspada' : 'siaga'; }
+  var meta = {
+    aman:    { label:'AMAN',    color:'green', advice:'Normal conditions. Stay aware.' },
+    waspada: { label:'WASPADA', color:'amber', advice:'Be ready. Avoid low riverbank routes.' },
+    siaga:   { label:'SIAGA',   color:'orange', advice:'High water — prepare to move valuables.' },
+    bahaya:  { label:'BAHAYA',  color:'red', advice:'Leave low-lying areas. Follow official info.' }
+  };
+  return { key: level, label: meta[level].label, tone: meta[level].color, advice: meta[level].advice };
+};
+// PURE-END
+
+/* ============ SLIDE PRESENTATION CONTROLLER ============ */
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var dotsBox = document.getElementById('dots');
+  var idxBox = document.getElementById('idx');
+  var prog = document.getElementById('progress');
+  var current = 0;
+
+  // build nav dots (always clear first)
+  dotsBox.innerHTML = '';
+  slides.forEach(function (s, i) {
+    var b = document.createElement('button');
+    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    b.addEventListener('click', function () { go(i); });
+    dotsBox.appendChild(b);
+  });
+
+  function show(i) {
+    current = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach(function (s, idx) {
+      s.classList.toggle('visible', idx === current);
     });
+    var dots = dotsBox.querySelectorAll('button');
+    dots.forEach(function (d, idx) { d.classList.toggle('active', idx === current); });
+    idxBox.textContent = String(current + 1).padStart(2, '0');
+    prog.style.width = ((current + 1) / slides.length * 100) + '%';
+  }
+  function go(i) { slides[current].scrollIntoView({ behavior: 'smooth' }); show(i); }
+
+  // IntersectionObserver marks the active slide on scroll
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          current = slides.indexOf(en.target);
+          show(current);
+        }
+      });
+    }, { threshold: 0.6 });
+    slides.forEach(function (s) { io.observe(s); });
+  }
+
+  // keyboard nav
+  document.addEventListener('keydown', function (e) {
+    var tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'select' || tag === 'textarea') return;
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(current + 1); }
+    else if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); go(current - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); go(0); }
+    else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+  });
+
+  show(0);
+})();
+
+/* ============ PROMPT COPY ============ */
+function copyPrompt(btn) {
+  var box = btn.closest('.code');
+  var text = box.innerText.replace('Copy', '').trim();
+  function done() { btn.textContent = 'Copied!'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done);
   } else {
     var ta = document.createElement('textarea');
     ta.value = text; document.body.appendChild(ta); ta.select();
-    document.execCommand('copy'); document.body.removeChild(ta);
-    btn.textContent = 'Copied!';
-    setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+    document.execCommand('copy'); document.body.removeChild(ta); done();
   }
 }
-</script>
-<script>
-// PURE-START
-var PURE = {};
-PURE.WARDS = [
-  { id: 'cidadap', name: 'Cidadap', rain: 'heavy', slope: 'high',
-    safeNote: 'Route is clear today.', detourNote: 'Use the main road — avoid the hill path.',
-    stayNote: 'High rain on steep ground. Stay home today.' },
-  { id: 'coblong', name: 'Coblong', rain: 'moderate', slope: 'high',
-    safeNote: 'Route is clear today.', detourNote: 'Take the flat route along the canal.',
-    stayNote: 'Steep slopes are unstable. Avoid travel.' },
-  { id: 'bandung-wetan', name: 'Bandung Wetan', rain: 'moderate', slope: 'low',
-    safeNote: 'Low rain and flat terrain. Safe to walk.',
-    detourNote: 'Minor risk — use the primary road.',
-    stayNote: 'Unusual conditions — stay home today.' },
-  { id: 'sukajadi', name: 'Sukajadi', rain: 'heavy', slope: 'low',
-    safeNote: 'Flat terrain — walking is fine.',
-    detourNote: 'Heavy rain on low risk — take the covered route.',
-    stayNote: 'Heavy rain — avoid exposed roads.' },
-  { id: 'cibeunying-kaler', name: 'Cibeunying Kaler', rain: 'moderate', slope: 'moderate',
-    safeNote: 'Route is clear today.', detourNote: 'Use the southern road — safer gradient.',
-    stayNote: 'Conditions worsening — stay home today.' }
-];
-PURE.verdict = function (p) {
-  var rainHeavy = p.rain === 'heavy';
-  var slopeHigh = p.slope === 'high';
-  if (rainHeavy && slopeHigh) {
-    return { key: 'stay', label: 'Stay home', note: p.stayNote };
-  }
-  if (rainHeavy || slopeHigh) {
-    return { key: 'detour', label: 'Take a detour', note: p.detourNote };
-  }
-  return { key: 'safe', label: 'Safe to walk', note: p.safeNote };
-};
-// PURE-END
+
+/* ============ MINI APP ============ */
 (function () {
-  var select = document.getElementById('wardSelect');
-  var rainVal = document.getElementById('rainVal');
-  var slopeVal = document.getElementById('slopeVal');
-  var verdict = document.getElementById('verdict');
-  function renderVerdict(id) {
-    if (!id) {
-      verdict.className = 'pending';
-      verdict.innerHTML = '<span class="big">Select a ward</span><span class="sub">Sample data · exploratory</span>';
-      rainVal.textContent = '—'; slopeVal.textContent = '—';
-      return;
-    }
-    var ward = null;
-    for (var i = 0; i < PURE.WARDS.length; i++) {
-      if (PURE.WARDS[i].id === id) { ward = PURE.WARDS[i]; break; }
-    }
-    if (!ward) return;
-    rainVal.textContent = ward.rain.charAt(0).toUpperCase() + ward.rain.slice(1);
-    slopeVal.textContent = ward.slope.charAt(0).toUpperCase() + ward.slope.slice(1);
-    var v = PURE.verdict(ward);
-    verdict.className = v.key;
-    verdict.innerHTML = '<span class="big">' + v.label + '</span><span class="sub">' + v.note + '</span>';
-  }
-  PURE.WARDS.forEach(function (w) {
-    var opt = document.createElement('option');
-    opt.value = w.id; opt.textContent = w.name;
-    select.appendChild(opt);
+  var select = document.getElementById('evSelect');
+  var tmaEl = document.getElementById('evTma');
+  var tmaBar = document.getElementById('evTmaBar');
+  var rainEl = document.getElementById('evRain');
+  var verdictEl = document.getElementById('evVerdict');
+  var histEl = document.getElementById('evHist');
+
+  PURE.EVENTS.forEach(function (e) {
+    var o = document.createElement('option');
+    o.value = e.id; o.textContent = e.year + ' · ' + e.impact;
+    select.appendChild(o);
   });
-  select.addEventListener('change', function () { renderVerdict(select.value); });
-})();
-</script>
-<div id="chrome"><span id="actLabel"></span><span id="counter"></span></div>
-<script>
-(function () {
-  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
-  var counter = document.getElementById('counter');
-  var actLabel = document.getElementById('actLabel');
-  var current = 0;
-  function render() {
-    slides.forEach(function (s, i) { s.classList.toggle('active', i === current); });
-    counter.textContent = (current + 1) + ' / ' + slides.length;
-    actLabel.textContent = slides[current].getAttribute('data-act') || '';
+
+  function render(id) {
+    var ev = null;
+    for (var i = 0; i < PURE.EVENTS.length; i++) if (PURE.EVENTS[i].id === id) { ev = PURE.EVENTS[i]; break; }
+    if (!ev) return;
+    var v = PURE.classify(ev.tma, ev.rain);
+    tmaEl.innerHTML = ev.tma + '<small> cm</small>';
+    tmaBar.style.width = Math.min(100, ev.tma / 10) + '%';
+    tmaBar.style.background = v.tone === 'red' ? '#f87171' : v.tone === 'orange' ? '#fb923c' : v.tone === 'amber' ? '#fbbf24' : '#4ade80';
+    rainEl.textContent = ev.rain.charAt(0).toUpperCase() + ev.rain.slice(1);
+    verdictEl.className = 'verdict ' + v.key;
+    verdictEl.innerHTML = v.label + '<small>' + v.advice + ' · est. depth ' + ev.depth + '</small>';
+    histEl.innerHTML = '';
+    var items = [['Areas hit', ev.hit.join(', ')], ['Impact', ev.impact], ['Note', ev.note]];
+    items.forEach(function (pair) {
+      var li = document.createElement('li');
+      var b = document.createElement('b'); b.textContent = pair[0] + ':';
+      var s = document.createElement('span'); s.textContent = pair[1];
+      li.appendChild(b); li.appendChild(s);
+      histEl.appendChild(li);
+    });
   }
-  function goTo(n) {
-    current = Math.max(0, Math.min(slides.length - 1, n));
-    render();
-  }
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goTo(current + 1); }
-    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goTo(current - 1); }
-    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
-    else if (e.key === 'End') { e.preventDefault(); goTo(slides.length - 1); }
-  });
-  render();
+
+  select.addEventListener('change', function () { render(select.value); });
+  render(PURE.EVENTS[0].id);
 })();
 </script>
 </body>
