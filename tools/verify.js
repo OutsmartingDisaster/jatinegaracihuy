@@ -23,7 +23,7 @@ var slides = extractSlides(html);
 
 var checks = [
   { name: 'doctype', find: '<!DOCTYPE html>' },
-  { name: 'slide count = 24', find: 'slide' },
+  { name: 'slide count = 25', find: 'slide' },
   { name: 'progress bar', find: 'id="progress"' },
   { name: 'nav dots', find: 'id="dots"' },
   { name: 'slide index', find: 'id="idx"' },
@@ -37,33 +37,34 @@ checks.forEach(function (c) {
   report(c.name, ok);
 });
 
-report('slides array length is 24', slides.length === 24);
+report('slides array length is 25', slides.length === 25);
 
 var titles = [
   'From static',                                    // 1 cover
   'A familiar feeling when you open InaRISK.',      // 2 itch
-  'Interactive beats infographic.',                 // 3 why
-  'Kampung Melayu, Jatinegara',                     // 4 case
-  'The data you',                                   // 5 wall
-  "Today's session",                                // 6 flow
-  'What you ship today.',                           // 7 outcome
-  'Before you start.',                              // 8 prereq
-  'Accounts — checklist.',                          // 9 accounts
-  'Write the PRD first.',                           // 10 prd
-  'freebuff',                                       // 11 freebuff
-  'opencode',                                       // 12 opencode
-  'Passes, with acceptance criteria.',              // 13 passes
-  'Turso',                                          // 14 turso
-  'Deploy — pick your path.',                       // 15 deploy
-  'Errors &amp; agent etiquette.',                  // 16 errors
-  'What is a',                                      // 17 skill
-  'What is',                                        // 18 mcp
-  'Skills in practice',                             // 19 skills in practice
-  'MCP in practice',                                // 20 mcp in practice
-  'Jatinegara workflow',                            // 21 skill + mcp workflow
-  'route through history',                          // 22 prototype
-  'Definition of done.',                            // 23 done
-  "Now it's your turn."                             // 24 your turn
+  'Case →',                                          // 3 portfolio
+  'Interactive beats infographic.',                 // 4 why
+  'Kampung Melayu, Jatinegara',                     // 5 case
+  'The data you',                                   // 6 wall
+  "Today's session",                                // 7 flow
+  'What you ship today.',                           // 8 outcome
+  'Before you start.',                              // 9 prereq
+  'Accounts — checklist.',                          // 10 accounts
+  'Write the PRD first.',                           // 11 prd
+  'freebuff',                                       // 12 freebuff
+  'opencode',                                       // 13 opencode
+  'Passes, with acceptance criteria.',              // 14 passes
+  'Turso',                                          // 15 turso
+  'Deploy — pick your path.',                       // 16 deploy
+  'Errors &amp; agent etiquette.',                  // 17 errors
+  'What is a',                                      // 18 skill
+  'What is',                                        // 19 mcp
+  'Skills in practice',                             // 20 skills in practice
+  'MCP in practice',                                // 21 mcp in practice
+  'Jatinegara workflow',                            // 22 skill + mcp workflow
+  'route through history',                          // 23 prototype
+  'Definition of done.',                            // 24 done
+  "Now it's your turn."                             // 25 your turn
 ];
 
 titles.forEach(function (t, i) {
