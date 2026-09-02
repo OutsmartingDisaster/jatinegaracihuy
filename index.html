@@ -6,241 +6,242 @@
 <title>SESI-5 · From Static to Interactive — Kampung Melayu Flood</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   THEME — "FLOOD OPS ROOM"
-   Dark navy, flood-cyan, warning-amber. Hazard-stripe accents.
+   THEME — CIVIC / FLOOD MAP
+   Pure white paper, Ciliwung river-teal, warning amber.
+   The aesthetic of a laminated flood map on a warung wall.
    ============================================================ */
 :root{
-  --bg:#081120; --bg2:#0d1a2e; --panel:#101f36; --panel2:#14263f;
-  --ink:#e9f1ff; --dim:#8fa5c8; --faint:#5b729a;
-  --water:#38bdf8; --cyan:#22d3ee; --amber:#fbbf24; --orange:#fb923c;
-  --danger:#f87171; --green:#4ade80;
-  --line:rgba(142,180,235,.16);
-  --hazard:repeating-linear-gradient(-45deg,#fbbf24 0 14px,#111 14px 28px);
-  --font-display:'Syne',sans-serif;
-  --font-body:'Instrument Sans',sans-serif;
-  --font-mono:'IBM Plex Mono',monospace;
+  --bg:oklch(1 0 0);
+  --surface:oklch(0.976 0.008 170);
+  --surface-2:oklch(0.945 0.012 170);
+  --ink:oklch(0.16 0.02 165);
+  --muted:oklch(0.44 0.02 165);
+  --line:oklch(0.88 0.016 170);
+  --primary:oklch(0.42 0.115 172);
+  --primary-deep:oklch(0.3 0.095 172);
+  --primary-soft:oklch(0.94 0.03 172);
+  --accent:oklch(0.7 0.135 78);
+  --accent-soft:oklch(0.955 0.045 80);
+  --danger:oklch(0.5 0.17 26);
+  --danger-soft:oklch(0.955 0.045 26);
+  --safe:oklch(0.5 0.12 150);
+  --safe-soft:oklch(0.955 0.045 150);
 
-  --title-size:clamp(1.6rem,5vw,3.6rem);
-  --h2-size:clamp(1.1rem,3vw,2.4rem);
-  --h3-size:clamp(0.9rem,1.8vw,1.25rem);
-  --body-size:clamp(0.78rem,1.4vw,1rem);
-  --small-size:clamp(0.62rem,1vw,0.8rem);
-  --slide-padding:clamp(1rem,3.4vw,2.6rem);
-  --gap:clamp(0.5rem,1.4vw,1.4rem);
+  --font-display:'Bricolage Grotesque',sans-serif;
+  --font-body:'Figtree',sans-serif;
+  --font-data:'JetBrains Mono',monospace;
+
+  --title-size:clamp(1.7rem,5.2vw,3.9rem);
+  --h2-size:clamp(1.15rem,3.1vw,2.4rem);
+  --h3-size:clamp(0.95rem,1.9vw,1.3rem);
+  --body-size:clamp(0.8rem,1.4vw,1.02rem);
+  --small-size:clamp(0.64rem,1vw,0.8rem);
+  --slide-padding:clamp(1.1rem,3.6vw,2.8rem);
+  --gap:clamp(0.55rem,1.5vw,1.4rem);
   --ease-out-expo:cubic-bezier(0.16,1,0.3,1);
 }
 
-/* ============================================================
-   VIEWPORT BASE (mandatory) — every slide fits 100vh
-   ============================================================ */
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow-x:hidden}
 html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.45}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.48;-webkit-font-smoothing:antialiased}
+
 .slide{width:100vw;height:100vh;height:100dvh;overflow:hidden;scroll-snap-align:start;
-  display:flex;flex-direction:column;position:relative;
-  background:
-    radial-gradient(1100px 500px at 85% -10%,rgba(56,189,248,.10),transparent 60%),
-    radial-gradient(900px 600px at -10% 110%,rgba(251,191,36,.06),transparent 55%),
-    var(--bg);
-}
+  display:flex;flex-direction:column;position:relative}
 .slide-content{flex:1;max-height:100%;overflow:hidden;padding:var(--slide-padding);
   display:flex;flex-direction:column;justify-content:center}
 
 /* ============================================================
-   CHROME — brand, index, progress, nav dots
+   CHROME — thin civic bar (not an eyebrow)
    ============================================================ */
 .deck-top{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;
-  align-items:center;padding:clamp(0.5rem,1.2vw,1rem) clamp(0.9rem,2.4vw,2rem);
-  font-family:var(--font-mono);font-size:var(--small-size);color:var(--faint);letter-spacing:.12em;
-  background:linear-gradient(rgba(8,17,32,.92),transparent);pointer-events:none}
-.deck-top b{color:var(--cyan);font-weight:500}
-.progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--water);z-index:70;width:0%;box-shadow:0 0 12px rgba(56,189,248,.7)}
+  align-items:center;gap:1rem;padding:clamp(0.55rem,1.2vw,0.95rem) clamp(0.95rem,2.4vw,2rem);
+  font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);letter-spacing:.06em;
+  border-bottom:1px solid var(--line);background:color-mix(in oklab,var(--bg) 92%,transparent);
+  backdrop-filter:blur(6px)}
+.deck-top .brand b{color:var(--primary-deep);font-weight:600}
+.deck-top .page{display:flex;align-items:center;gap:.6rem}
+.deck-top .page b{color:var(--ink);font-weight:600}
+.rule-teal{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--primary);opacity:.9}
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--primary);z-index:70;width:0%}
 .nav-dots{position:fixed;right:clamp(0.5rem,1.2vw,1.1rem);top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:7px}
-.nav-dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--faint);background:transparent;padding:0;cursor:pointer;opacity:.5;transition:all .25s}
-.nav-dots button.active{background:var(--amber);border-color:var(--amber);opacity:1;transform:scale(1.35)}
+.nav-dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--muted);background:transparent;padding:0;cursor:pointer;opacity:.45;transition:all .25s}
+.nav-dots button.active{background:var(--primary);border-color:var(--primary);opacity:1;transform:scale(1.35)}
 .key-hint{position:fixed;bottom:clamp(0.3rem,1vw,.6rem);right:clamp(0.6rem,1.4vw,1.2rem);z-index:60;
-  font-family:var(--font-mono);font-size:var(--small-size);color:var(--faint);letter-spacing:.08em}
+  font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);letter-spacing:.05em}
 
 /* ============================================================
-   TYPOGRAPHY + BUILDING BLOCKS (dense)
+   TYPE
    ============================================================ */
-.kicker{font-family:var(--font-mono);font-size:var(--small-size);letter-spacing:.22em;
-  text-transform:uppercase;color:var(--amber);display:inline-flex;align-items:center;gap:.5rem}
-.kicker::before{content:"";width:1.6rem;height:3px;background:var(--hazard);display:inline-block}
-h1{font-family:var(--font-display);font-weight:800;font-size:var(--title-size);line-height:1.02;letter-spacing:-.01em;margin:.35rem 0 .5rem}
-h1 .hl{color:var(--water)}
-h2{font-family:var(--font-display);font-weight:700;font-size:var(--h2-size);line-height:1.08;margin:.3rem 0 .6rem}
-h3{font-family:var(--font-display);font-weight:700;font-size:var(--h3-size);line-height:1.15}
-p{font-size:var(--body-size);color:var(--dim)}
-.sub{font-size:calc(var(--body-size)*1.15);color:var(--ink);max-width:56ch}
-.muted{color:var(--dim)}
-.mono{font-family:var(--font-mono)}
-.tag-cyan{color:var(--cyan)}
-.tag-amber{color:var(--amber)}
-.tag-red{color:var(--danger)}
-.tag-green{color:var(--green)}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;letter-spacing:-0.025em}
+h1{font-weight:800;font-size:var(--title-size);line-height:1.0;letter-spacing:-0.03em;margin:.2rem 0 .55rem}
+h1 .hl{color:var(--primary)}
+h2{font-weight:700;font-size:var(--h2-size);line-height:1.06;margin:.25rem 0 .55rem}
+h3{font-weight:700;font-size:var(--h3-size);line-height:1.15}
+p{font-size:var(--body-size);color:var(--muted);max-width:65ch}
+.sub{font-size:calc(var(--body-size)*1.16);color:var(--ink);max-width:52ch;text-wrap:pretty}
 b,strong{color:var(--ink);font-weight:600}
+.data{font-family:var(--font-data)}
+.tag-teal{color:var(--primary-deep)}
+.tag-amber{color:oklch(0.55 0.12 78)}
+.rule{height:1px;background:var(--line);margin:calc(var(--gap)*0.45) 0}
+
+/* ============================================================
+   SURFACES — full borders, tinted fills. No side-stripes.
+   ============================================================ */
+.card{border:1px solid var(--line);border-radius:14px;background:var(--surface);
+  padding:clamp(0.75rem,1.4vw,1.25rem);overflow:hidden}
+.card.flat{background:var(--bg)}
+.card .num{font-family:var(--font-display);font-weight:800;font-size:clamp(1.05rem,2.4vw,1.75rem);line-height:1.05;color:var(--primary-deep)}
+.card .lbl{font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);text-transform:uppercase;letter-spacing:.1em;display:block;margin-top:.3rem}
+.card p{font-size:calc(var(--body-size)*0.96);margin-top:.45rem;color:var(--muted)}
+.card ul{list-style:none;margin-top:.45rem}
+.card li{font-size:calc(var(--body-size)*0.92);color:var(--muted);padding:.2rem 0;display:flex;gap:.6rem;align-items:baseline}
+.card li::before{content:"—";color:var(--primary);flex:none}
+
+/* tonal fills for status */
+.tint-teal{background:var(--primary-soft);border-color:color-mix(in oklab,var(--primary) 30%,transparent)}
+.tint-amber{background:var(--accent-soft);border-color:color-mix(in oklab,var(--accent) 40%,transparent)}
+.tint-red{background:var(--danger-soft);border-color:color-mix(in oklab,var(--danger) 35%,transparent)}
+.tint-green{background:var(--safe-soft);border-color:color-mix(in oklab,var(--safe) 35%,transparent)}
 
 .grid{display:grid;gap:var(--gap)}
-.cols-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.cols-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))}
 .cols-3{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
 .cols-4{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
 
-.card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
-  border-radius:14px;padding:clamp(0.7rem,1.4vw,1.3rem);position:relative;overflow:hidden}
-.card::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--water);opacity:.5}
-.card.amber::before{background:var(--amber)}
-.card.red::before{background:var(--danger)}
-.card.green::before{background:var(--green)}
-.card .num{font-family:var(--font-display);font-weight:800;font-size:clamp(1.1rem,2.6vw,1.9rem);line-height:1;color:var(--water)}
-.card.amber .num{color:var(--amber)} .card.red .num{color:var(--danger)} .card.green .num{color:var(--green)}
-.card .lbl{font-family:var(--font-mono);font-size:var(--small-size);color:var(--faint);text-transform:uppercase;letter-spacing:.14em;display:block;margin-top:.3rem}
-.card p{font-size:calc(var(--body-size)*.96);color:var(--dim);margin-top:.45rem}
-.card ul{list-style:none;margin-top:.4rem}
-.card li{font-size:calc(var(--body-size)*.92);color:var(--dim);padding:.18rem 0 .18rem 1.1rem;position:relative}
-.card li::before{content:"▸";position:absolute;left:0;color:var(--cyan)}
-.card.amber li::before{color:var(--amber)}
+/* ============================================================
+   PILLS / LEGEND (map legend style)
+   ============================================================ */
+.pill{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-data);font-size:var(--small-size);
+  border-radius:999px;padding:.22rem .7rem;border:1px solid var(--line);background:var(--bg);color:var(--muted)}
+.pill b{color:var(--ink);font-weight:600}
+.pill.solid{background:var(--primary);border-color:var(--primary);color:#fff}
+.pill.warn{background:var(--accent);border-color:var(--accent);color:#fff}
+.pill.dot::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--primary);flex:none}
+.pill.dot.amber::before{background:var(--accent)}
+.pill.dot.red::before{background:var(--danger)}
+.pill.dot.green::before{background:var(--safe)}
 
-/* list rows */
-.rows{display:flex;flex-direction:column;gap:calc(var(--gap)*.5)}
-.row{display:grid;grid-template-columns:auto 1fr;gap:clamp(0.6rem,1.2vw,1.2rem);align-items:start;
-  background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:clamp(0.5rem,1vw,.9rem)}
-.row .k{font-family:var(--font-display);font-weight:700;font-size:clamp(0.9rem,2vw,1.5rem);color:var(--water);line-height:1;min-width:2.2ch}
-.row.amber .k{color:var(--amber)} .row.green .k{color:var(--green)} .row.red .k{color:var(--danger)}
-.row .t{font-size:calc(var(--body-size)*.95)} .row .t b{display:block;font-size:var(--body-size)}
-.row .d{font-size:var(--small-size);color:var(--faint);margin-top:.1rem}
-
-/* stack logo chips */
-.chip{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:var(--small-size);
-  border:1px solid var(--line);border-radius:999px;padding:.25rem .7rem;color:var(--dim);background:var(--panel)}
-.chip b{color:var(--ink)}
-
-/* code block + copy */
-.code{position:relative;background:#050b16;border:1px solid var(--line);border-radius:14px;
-  font-family:var(--font-mono);font-size:clamp(0.68rem,1.1vw,.86rem);line-height:1.55;
-  padding:clamp(0.7rem,1.4vw,1.3rem);overflow:auto;color:#cfe0f5;max-height:60vh}
-.code .copy{position:absolute;top:.6rem;right:.6rem;font-family:var(--font-mono);font-size:var(--small-size);
-  background:var(--amber);color:#111;border:0;border-radius:8px;padding:.28rem .6rem;cursor:pointer;font-weight:600}
-.code .k{color:#7dd3fc}.code .c{color:#5b729a}
-.tagline{font-family:var(--font-mono);font-size:var(--small-size);letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
-.rule{height:1px;background:var(--line);margin:calc(var(--gap)*.4) 0}
-
-/* quote block */
-.quote{border-left:3px solid var(--amber);padding:clamp(0.7rem,1.5vw,1.4rem) clamp(0.9rem,2vw,1.8rem);
-  background:var(--panel);border-radius:0 14px 14px 0;font-family:var(--font-display);font-weight:700;
-  font-size:clamp(1rem,2.4vw,1.9rem);line-height:1.25;color:var(--ink);position:relative}
-.quote small{display:block;font-family:var(--font-mono);font-weight:400;font-size:var(--small-size);color:var(--faint);margin-top:.6rem;letter-spacing:.05em}
-
-/* flow arrows */
 .flow{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
-.step{font-family:var(--font-mono);font-size:var(--small-size);border:1px solid var(--line);
-  background:var(--panel);color:var(--dim);border-radius:10px;padding:.4rem .7rem;white-space:nowrap}
-.step b{color:var(--water)}
-.flow .arr{color:var(--faint);font-family:var(--font-mono)}
+.step{font-family:var(--font-data);font-size:var(--small-size);border:1px solid var(--line);
+  background:var(--surface);color:var(--muted);border-radius:10px;padding:.42rem .7rem;white-space:nowrap}
+.step b{color:var(--primary-deep)}
+.flow .arr{color:var(--muted);font-family:var(--font-data)}
 
-/* pill tags */
-.pill{font-family:var(--font-mono);font-size:var(--small-size);border-radius:999px;padding:.18rem .6rem;
-  display:inline-block;letter-spacing:.06em}
-.pill.cyan{background:rgba(56,189,248,.15);color:var(--cyan);border:1px solid rgba(56,189,248,.4)}
-.pill.amber{background:rgba(251,191,36,.14);color:var(--amber);border:1px solid rgba(251,191,36,.4)}
-.pill.red{background:rgba(248,113,113,.14);color:var(--danger);border:1px solid rgba(248,113,113,.4)}
-.pill.green{background:rgba(74,222,128,.14);color:var(--green);border:1px solid rgba(74,222,128,.4)}
-.pill.ghost{background:transparent;color:var(--dim);border:1px dashed var(--line)}
+/* ============================================================
+   QUOTE — the InaRISK complaint (a real voice, not a mock)
+   ============================================================ */
+.quote{font-family:var(--font-display);font-weight:700;font-size:clamp(1.05rem,2.5vw,1.95rem);line-height:1.22;
+  color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:clamp(0.9rem,1.8vw,1.6rem) clamp(1rem,2.2vw,2rem)}
+.quote small{display:block;font-family:var(--font-data);font-weight:400;font-size:var(--small-size);color:var(--muted);margin-top:.7rem}
 
 /* comparison split */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
-.bad h3{color:var(--danger)} .good h3{color:var(--green)}
+.bad h3{color:var(--danger)} .good h3{color:var(--safe)}
 
 /* ============================================================
-   REVEAL ANIMATIONS (staggered via .visible)
+   CODE + COPY
    ============================================================ */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease-out-expo),transform .6s var(--ease-out-expo)}
+.code{position:relative;background:var(--ink);border-radius:14px;color:oklch(0.92 0.01 170);
+  font-family:var(--font-data);font-size:clamp(0.68rem,1.05vw,.84rem);line-height:1.6;
+  padding:clamp(0.8rem,1.5vw,1.3rem);overflow:auto;max-height:58vh}
+.code .copy{position:absolute;top:.6rem;right:.6rem;font-family:var(--font-data);font-size:var(--small-size);
+  background:var(--accent);color:#fff;border:0;border-radius:8px;padding:.28rem .6rem;cursor:pointer;font-weight:600}
+.code .k{color:oklch(0.75 0.1 190)}
+.code .c{color:oklch(0.7 0 0 / .55)}
+
+/* ============================================================
+   MINI APP — Kampung Melayu flood gauge
+   ============================================================ */
+.app{background:var(--bg);border:1px solid var(--primary);border-radius:16px;overflow:hidden;box-shadow:0 1px 0 var(--line)}
+.app-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;
+  padding:.65rem 1rem;background:var(--primary);color:#fff}
+.app-head .title{font-family:var(--font-display);font-weight:700;font-size:clamp(.85rem,1.6vw,1.1rem)}
+.app-head .title small{display:block;font-family:var(--font-data);font-weight:400;font-size:var(--small-size);opacity:.85;letter-spacing:.04em}
+.app-body{display:grid;grid-template-columns:1.2fr .9fr;gap:0}
+.app-left{padding:clamp(.7rem,1.2vw,1.05rem);border-right:1px solid var(--line)}
+.app-right{padding:clamp(.7rem,1.2vw,1.05rem);display:flex;flex-direction:column;gap:.5rem;background:var(--surface)}
+.gauge{border:1px solid var(--line);border-radius:12px;padding:.5rem .7rem;background:var(--bg)}
+.gauge .lab{font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.gauge .val{font-family:var(--font-display);font-weight:800;font-size:clamp(1rem,2.1vw,1.55rem);color:var(--ink);line-height:1.1}
+.gauge .val small{font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);font-weight:400}
+.bar{height:6px;border-radius:4px;background:var(--surface-2);margin-top:.35rem;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--primary);border-radius:4px}
+select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-size);
+  background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.55rem .7rem}
+.verdict{font-family:var(--font-display);font-weight:800;text-align:center;border-radius:12px;
+  padding:clamp(.6rem,1vw,.95rem);font-size:clamp(1rem,1.9vw,1.4rem);letter-spacing:.02em;line-height:1.1}
+.verdict small{display:block;font-family:var(--font-data);font-weight:400;font-size:var(--small-size);margin-top:.25rem;letter-spacing:.04em;opacity:.9}
+.verdict.aman{background:var(--safe);color:#fff}
+.verdict.waspada{background:var(--accent);color:#fff}
+.verdict.siaga{background:oklch(0.62 0.15 55);color:#fff}
+.verdict.bahaya{background:var(--danger);color:#fff}
+.disclaimer{margin-top:.6rem;padding:.4rem .7rem;background:var(--accent-soft);border:1px solid color-mix(in oklab,var(--accent) 35%,transparent);
+  font-size:var(--small-size);color:var(--ink);border-radius:8px}
+.hist{font-size:calc(var(--body-size)*0.9)}
+.hist li{list-style:none;padding:.24rem 0;border-bottom:1px dashed var(--line);color:var(--muted);display:flex;gap:.5rem;align-items:baseline}
+.hist li b{font-family:var(--font-data);color:var(--ink);font-weight:500;flex:none}
+.hist li span{color:var(--muted)}
+.side-note{font-size:calc(var(--body-size)*0.85);color:var(--muted)}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s var(--ease-out-expo),transform .55s var(--ease-out-expo)}
 .slide.visible .reveal{opacity:1;transform:none}
 .slide.visible .d1{transition-delay:.06s}.slide.visible .d2{transition-delay:.12s}
 .slide.visible .d3{transition-delay:.18s}.slide.visible .d4{transition-delay:.24s}
-.slide.visible .d5{transition-delay:.3s}.slide.visible .d6{transition-delay:.36s}
-
-/* ============================================================
-   MINI APP — Kampung Melayu Flood (dashboard card)
-   ============================================================ */
-.app{background:#050b16;border:1px solid rgba(56,189,248,.35);border-radius:16px;overflow:hidden;
-  box-shadow:0 0 0 1px var(--line),0 20px 50px rgba(0,0,0,.4)}
-.app-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;
-  padding:.6rem 1rem;background:rgba(56,189,248,.08);border-bottom:1px solid var(--line)}
-.app-head .title{font-family:var(--font-display);font-weight:700;font-size:clamp(.85rem,1.6vw,1.1rem);color:var(--ink)}
-.app-head .title small{display:block;font-family:var(--font-mono);font-weight:400;font-size:var(--small-size);color:var(--faint);letter-spacing:.08em}
-.app-body{display:grid;grid-template-columns:1.2fr .9fr;gap:0}
-.app-left{padding:clamp(.7rem,1.2vw,1.1rem);border-right:1px solid var(--line)}
-.app-right{padding:clamp(.7rem,1.2vw,1.1rem);display:flex;flex-direction:column;gap:.5rem}
-.gauge{border:1px solid var(--line);border-radius:12px;padding:.55rem .7rem;background:var(--panel)}
-.gauge .lab{font-family:var(--font-mono);font-size:var(--small-size);color:var(--faint);text-transform:uppercase;letter-spacing:.12em}
-.gauge .val{font-family:var(--font-display);font-weight:800;font-size:clamp(1rem,2.2vw,1.6rem);color:var(--ink);line-height:1.1}
-.gauge .val small{font-family:var(--font-mono);font-size:var(--small-size);color:var(--faint);font-weight:400}
-.bar{height:6px;border-radius:4px;background:var(--bg2);margin-top:.35rem;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--water);border-radius:4px}
-select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-size);
-  background:var(--bg2);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.55rem .7rem}
-.verdict{font-family:var(--font-display);font-weight:800;text-align:center;border-radius:12px;
-  padding:clamp(.6rem,1vw,1rem);font-size:clamp(1rem,2vw,1.5rem);letter-spacing:.02em;line-height:1.1}
-.verdict small{display:block;font-family:var(--font-mono);font-weight:400;font-size:var(--small-size);margin-top:.25rem;letter-spacing:.05em;opacity:.85}
-.verdict.aman{background:rgba(74,222,128,.16);color:var(--green);border:1px solid rgba(74,222,128,.5)}
-.verdict.waspada{background:rgba(251,191,36,.15);color:var(--amber);border:1px solid rgba(251,191,36,.5)}
-.verdict.siaga{background:rgba(251,146,60,.16);color:var(--orange);border:1px solid rgba(251,146,60,.5)}
-.verdict.bahaya{background:rgba(248,113,113,.16);color:var(--danger);border:1px solid rgba(248,113,113,.5)}
-.disclaimer{margin-top:.6rem;border-left:3px solid var(--amber);padding:.4rem .7rem;background:rgba(251,191,36,.07);
-  font-size:var(--small-size);color:var(--dim)}
-.hist{font-size:calc(var(--body-size)*.9)}
-.hist li{list-style:none;padding:.22rem 0;border-bottom:1px dashed var(--line);color:var(--dim);display:flex;gap:.5rem;align-items:baseline}
-.hist li b{font-family:var(--font-mono);color:var(--ink);font-weight:500}
-.hist li span{color:var(--faint)}
-
-/* footer of demo */
-.side-note{font-size:calc(var(--body-size)*.85);color:var(--faint)}
+.slide.visible .d5{transition-delay:.3s}
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-height:700px){:root{--slide-padding:clamp(.8rem,3vw,1.4rem);--gap:clamp(.4rem,1vw,.8rem)}}
+@media (max-height:700px){:root{--slide-padding:clamp(.8rem,3vw,1.5rem);--gap:clamp(.4rem,1vw,.8rem)}}
 @media (max-height:600px){.nav-dots,.key-hint{display:none}}
 @media (max-width:820px){
   .cols-2,.cols-3,.cols-4,.split{grid-template-columns:1fr}
   .app-body{grid-template-columns:1fr}
   .app-left{border-right:0;border-bottom:1px solid var(--line)}
 }
-@media (max-width:600px){:root{--title-size:clamp(1.3rem,7vw,2rem)}}
+@media (max-width:600px){:root{--title-size:clamp(1.4rem,7vw,2.1rem)}}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
 <div class="progress-bar" id="progress"></div>
-<div class="deck-top"><span><b>SESI-5</b> · Decode Risk. Ship Impact.</span><span id="idx">01</span></div>
+<div class="deck-top">
+  <span class="brand"><b>SESI-5</b> · Decode Risk. Ship Impact.</span>
+  <span class="page"><span class="rule-teal" style="display:none"></span><b id="idx">01</b><span>/13</span></span>
+</div>
 <nav class="nav-dots" id="dots" aria-label="Slides"></nav>
-<div class="key-hint">↑↓ or space · scroll · dots to jump</div>
+<div class="key-hint">scroll · ↑↓ · dots</div>
 
 <!-- ============================================================
      S1 · COVER
      ============================================================ -->
 <section class="slide" data-act="Cover">
   <div class="slide-content">
-    <span class="kicker reveal">U-INSPIRE 101 Bootcamp</span>
+    <span class="pill dot reveal">CIVIC DATA PROTOTYPE</span>
     <h1 class="reveal d1">From static<br>to <span class="hl">interactive</span>.</h1>
-    <p class="sub reveal d2">Agent Skills · MCP · and a one-kecamatan flood prototype — shipped with <b class="mono tag-cyan">freebuff</b> + <b class="mono tag-cyan">opencode</b>.</p>
+    <p class="sub reveal d2">Agent Skills · MCP · and a one-kecamatan flood prototype — shipped with <b class="data tag-teal">freebuff</b> + <b class="data tag-teal">opencode</b>.</p>
     <div class="rule reveal d3"></div>
     <div class="flow reveal d3">
-      <span class="step"><b>Case</b> — Kampung Melayu, Jatinegara</span><span class="arr">→</span>
+      <span class="step"><b>Case</b> · Kampung Melayu, Jatinegara</span><span class="arr">→</span>
       <span class="step"><b>Evidence</b></span><span class="arr">→</span>
       <span class="step"><b>Insight</b></span><span class="arr">→</span>
       <span class="step"><b>Prototype</b></span><span class="arr">→</span>
       <span class="step"><b>Deployed portfolio</b></span>
     </div>
-    <p class="muted reveal d4" style="margin-top:clamp(.6rem,1.4vw,1.2rem)">Not just an AI-generated infographic. A working, honest prototype.</p>
+    <p class="muted reveal d4" style="margin-top:clamp(.6rem,1.4vw,1.1rem)">Not just an AI-generated infographic. A working, honest prototype.</p>
   </div>
 </section>
 
@@ -249,18 +250,17 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
      ============================================================ -->
 <section class="slide" data-act="The itch">
   <div class="slide-content">
-    <span class="kicker reveal">The complaint</span>
     <h2 class="reveal d1">A familiar feeling when you open InaRISK.</h2>
-    <div class="quote reveal d2">"ah inarisk jelek banget sih ini, mana lemot banget layernya kalo harus zoom sampe detail."</div>
+    <div class="quote reveal d2">"ah inarisk jelek banget sih ini, mana lemot banget layernya kalo harus zoom sampe detail."<small>— a bootcamp participant, day one</small></div>
     <div class="rule reveal d3"></div>
     <div class="grid cols-2 reveal d4">
-      <div class="card red">
-        <span class="lbl">The real problem</span>
+      <div class="card tint-red">
+        <span class="lbl">the real problem</span>
         <div class="num">1 kecamatan</div>
-        <p>You only need <b>one</b> kecamatan — but the platform makes you fight heavy layers, slow tiles, and endless zooming to get there.</p>
+        <p>You only need <b>one</b> kecamatan — but heavy layers, slow tiles, and endless zooming get in the way.</p>
       </div>
-      <div class="card green">
-        <span class="lbl">The opportunity</span>
+      <div class="card tint-green">
+        <span class="lbl">the opportunity</span>
         <div class="num">baju baru</div>
         <p>Wrap the same risk idea in a <b>fast, focused, mobile-friendly</b> view. One place. Clear layers. No lag.</p>
       </div>
@@ -273,9 +273,8 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
      ============================================================ -->
 <section class="slide" data-act="Why interactive">
   <div class="slide-content">
-    <span class="kicker reveal">Why this matters</span>
     <h2 class="reveal d1">Interactive beats infographic.</h2>
-    <div class="split reveal d2" style="margin-bottom:.4rem">
+    <div class="split reveal d2">
       <div class="card bad">
         <h3>AI infographic</h3>
         <ul>
@@ -295,7 +294,7 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
     </div>
     <p class="sub reveal d3" style="font-size:calc(var(--body-size)*1.15)">A portfolio prototype proves the <b>thinking</b> behind a product — not just the pixels.</p>
     <div class="flow reveal d4" style="margin-top:.4rem">
-      <span class="pill green">small</span><span class="pill cyan">evidence-based</span><span class="pill amber">usable</span><span class="pill red">honest about limits</span>
+      <span class="pill dot green">small</span><span class="pill dot">evidence-based</span><span class="pill dot amber">usable</span><span class="pill dot red">honest about limits</span>
     </div>
   </div>
 </section>
@@ -305,13 +304,12 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
      ============================================================ -->
 <section class="slide" data-act="The case">
   <div class="slide-content">
-    <span class="kicker reveal">Case · bounded</span>
     <h2 class="reveal d1">Kampung Melayu, Jatinegara — floods.</h2>
     <p class="sub reveal d2">Residents near the Ciliwung struggle to recall <b>what happened where and when</b>, because flood history and impact are scattered across news and memories.</p>
     <div class="grid cols-4 reveal d3">
       <div class="card"><span class="lbl">01 location</span><div class="num">Kampung Melayu</div><p>Kelurahan in Jatinegara, Jakarta Timur, along the Ciliwung.</p></div>
       <div class="card"><span class="lbl">02 user</span><div class="num">1 journey</div><p>"Is my area at risk, and what happened last time?"</p></div>
-      <div class="card amber"><span class="lbl">03 focus</span><div class="num">History + risk</div><p>Recurring events, typical depth, and the areas hit first.</p></div>
+      <div class="card tint-teal"><span class="lbl">03 focus</span><div class="num">History + risk</div><p>Recurring events, typical depth, and the areas hit first.</p></div>
       <div class="card"><span class="lbl">04 data</span><div class="num">Sample</div><p>Clearly-labeled exploratory data. Not a live warning tool.</p></div>
     </div>
   </div>
@@ -322,16 +320,15 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
      ============================================================ -->
 <section class="slide" data-act="Evidence">
   <div class="slide-content">
-    <span class="kicker reveal">Evidence · the wall</span>
     <h2 class="reveal d1">The data you <em>wanted</em> is not downloadable.</h2>
     <div class="grid cols-3 reveal d2">
-      <div class="card red"><span class="lbl">InaRISK</span><p>Risk &amp; hazard layers exist — but they are slow, visual-only, and hard to pull cleanly.</p></div>
-      <div class="card red"><span class="lbl">BMKG weather</span><p>Rainfall history is real, but not exposed as a simple open feed for this prototype.</p></div>
-      <div class="card red"><span class="lbl">DKI SDA · TMA</span><p>River water-level data exists — not as an open API you can call from a demo.</p></div>
+      <div class="card tint-red"><span class="lbl">InaRISK</span><p>Risk &amp; hazard layers exist — but slow, visual-only, and hard to pull cleanly.</p></div>
+      <div class="card tint-red"><span class="lbl">BMKG weather</span><p>Rainfall history is real, but not exposed as a simple open feed for this prototype.</p></div>
+      <div class="card tint-red"><span class="lbl">DKI SDA · TMA</span><p>River water-level data exists — not as an open API you can call from a demo.</p></div>
     </div>
     <div class="rule reveal d3"></div>
     <p class="sub reveal d3" style="font-size:calc(var(--body-size)*1.05)">So the honest move: build the <b>flow with sample + documented data</b>, label it clearly, and use official sources as <b>reference only</b>.</p>
-    <div class="flow reveal d4"><span class="pill amber">every source carries a trail</span><span class="pill amber">source · period · use · limitation</span><span class="pill ghost">crawl for context — never fake certainty</span></div>
+    <div class="flow reveal d4"><span class="pill warn">every source carries a trail</span><span class="pill">source · period · use · limitation</span><span class="pill">crawl for context — never fake certainty</span></div>
   </div>
 </section>
 
@@ -340,26 +337,25 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
      ============================================================ -->
 <section class="slide" data-act="Meet the stack">
   <div class="slide-content">
-    <span class="kicker reveal">Stack</span>
     <h2 class="reveal d1">Coding partners + 4 accounts.</h2>
     <div class="grid cols-2 reveal d2">
       <div class="card">
         <h3>Coding partners</h3>
-        <p style="margin-top:.3rem"><span class="chip"><b>freebuff</b></span> &nbsp; <span class="chip"><b>opencode</b></span></p>
+        <p style="margin-top:.3rem"><span class="pill"><b>freebuff</b></span> &nbsp; <span class="pill"><b>opencode</b></span></p>
         <p>Your agent CLIs. You bring the case &amp; evidence; they bring tools, workflow, and the build.</p>
       </div>
       <div class="card">
         <h3>Ship layer</h3>
-        <div class="flow" style="margin-top:.3rem"><span class="chip">Next.js</span><span class="chip">Turso <i>(DB)</i></span><span class="chip">Vercel/Cloudflare</span></div>
+        <div class="flow" style="margin-top:.3rem"><span class="pill">Next.js</span><span class="pill">Turso</span><span class="pill">Vercel / Cloudflare</span></div>
         <p>Deployable web app on top of a real database — not a static image.</p>
       </div>
     </div>
     <div class="rule reveal d3"></div>
     <div class="grid cols-4 reveal d3">
-      <div class="card"><span class="lbl">why</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">GitHub</div><p>Repo = your proof. Versioned PRD, passes, README case study.</p></div>
-      <div class="card"><span class="lbl">why</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Turso</div><p>Edge SQLite — ward data, TMA, events live here.</p></div>
-      <div class="card"><span class="lbl">why</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Cloudflare</div><p>DNS + deploy. Fast, global, free tier.</p></div>
-      <div class="card amber"><span class="lbl">why · your URL</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Gravatar</div><p>Free subdomain — a public link turns prototype into portfolio.</p></div>
+      <div class="card flat"><span class="lbl">why · proof</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">GitHub</div><p>Repo = your proof. Versioned PRD, passes, README case study.</p></div>
+      <div class="card flat"><span class="lbl">why · data</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Turso</div><p>Edge SQLite — ward data, TMA, events live here.</p></div>
+      <div class="card flat"><span class="lbl">why · host</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Cloudflare</div><p>DNS + deploy. Fast, global, free tier.</p></div>
+      <div class="card flat"><span class="lbl">why · url</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Gravatar</div><p>Free subdomain — a public link turns prototype into portfolio.</p></div>
     </div>
   </div>
 </section>
@@ -369,21 +365,20 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
      ============================================================ -->
 <section class="slide" data-act="Spec before code">
   <div class="slide-content">
-    <span class="kicker reveal">Spec before code</span>
     <h2 class="reveal d1">Write the PRD first.</h2>
     <p class="sub reveal d2">Discipline before code. The PRD is the <b>contract</b> between you and your coding agent.</p>
     <div class="grid cols-4 reveal d3">
       <div class="card"><div class="num">1</div><p><b>Shared understanding</b> — user + decision agreed upfront.</p></div>
       <div class="card"><div class="num">2</div><p><b>Scope control</b> — non-goals stop the agent from inventing features.</p></div>
       <div class="card"><div class="num">3</div><p><b>Measurable done</b> — expected states, not "looks nice".</p></div>
-      <div class="card red"><div class="num">✗</div><p><b>Without it</b> — agent guesses, scope creeps, output is hard to audit.</p></div>
+      <div class="card tint-red"><div class="num">✗</div><p><b>Without it</b> — agent guesses, scope creeps, output is hard to audit.</p></div>
     </div>
     <div class="rule reveal d4"></div>
     <p class="reveal d4"><b>Anatomy of a PRD</b> — everything from stack to pixels:</p>
     <div class="flow reveal d5">
-      <span class="pill cyan">user</span><span class="pill cyan">purpose</span><span class="pill cyan">pages/flow</span>
-      <span class="pill amber">tech stack</span><span class="pill amber">DB schema</span><span class="pill amber">API</span><span class="pill amber">UI/UX</span>
-      <span class="pill ghost">constraints</span><span class="pill ghost">seed data</span><span class="pill ghost">expected states</span><span class="pill ghost">non-goals</span>
+      <span class="pill dot">user</span><span class="pill dot">purpose</span><span class="pill dot">pages / flow</span>
+      <span class="pill solid">tech stack</span><span class="pill solid">DB schema</span><span class="pill solid">API</span><span class="pill solid">UI / UX</span>
+      <span class="pill">constraints</span><span class="pill">seed data</span><span class="pill">expected states</span><span class="pill">non-goals</span>
     </div>
   </div>
 </section>
@@ -393,12 +388,11 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
      ============================================================ -->
 <section class="slide" data-act="Small passes">
   <div class="slide-content">
-    <span class="kicker reveal">Build in passes</span>
     <h2 class="reveal d1">Break it down. Ship it demonstrable.</h2>
     <div class="grid cols-4 reveal d2">
-      <div class="card green"><span class="lbl">Pass 01</span><div class="num">Foundation</div><p>App shell, nav, DB schema, seed data, visible disclaimer.</p></div>
+      <div class="card tint-green"><span class="lbl">Pass 01</span><div class="num">Foundation</div><p>App shell, nav, DB schema, seed data, visible disclaimer.</p></div>
       <div class="card"><span class="lbl">Pass 02</span><div class="num">Core journey</div><p>Pick an event → see risk + impact. One action, done well.</p></div>
-      <div class="card amber"><span class="lbl">Pass 03</span><div class="num">Quality</div><p>Mobile layout, error states, accessibility, attribution.</p></div>
+      <div class="card tint-amber"><span class="lbl">Pass 03</span><div class="num">Quality</div><p>Mobile layout, error states, accessibility, attribution.</p></div>
       <div class="card"><span class="lbl">Pass 04</span><div class="num">Polish</div><p>Methodology, screenshots, demo reset, clean README.</p></div>
     </div>
     <div class="rule reveal d3"></div>
@@ -411,7 +405,6 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
      ============================================================ -->
 <section class="slide" data-act="The prompt">
   <div class="slide-content">
-    <span class="kicker reveal">Spec, not a wish</span>
     <h2 class="reveal d1">The prompt that ships.</h2>
     <div class="code reveal d2" id="promptBox"><button class="copy" onclick="copyPrompt(this)">Copy</button><span class="k">You are building</span> a Next.js flood-history app for a DRR portfolio.
 <span class="k">User:</span> A resident of Kampung Melayu, Jatinegara.
@@ -433,7 +426,6 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
      ============================================================ -->
 <section class="slide" data-act="Agent skills">
   <div class="slide-content">
-    <span class="kicker reveal">Agent Skills</span>
     <h2 class="reveal d1">What is a <em>Skill</em>?</h2>
     <div class="split reveal d2">
       <div class="card">
@@ -441,18 +433,18 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
         <p>A skill is a <b>packaged workflow + knowledge</b> an agent loads on demand.</p>
         <ul><li>Not a plugin — nothing injected every run</li><li>Loaded only when the task matches</li></ul>
       </div>
-      <div class="card amber">
+      <div class="card tint-amber">
         <h3>Recipe card</h3>
-        <p>You don't read every card in the box — you pull the one whose title matches the dish. The agent reads <span class="mono">SKILL.md</span> and follows the workflow.</p>
+        <p>You don't read every card in the box — you pull the one whose title matches the dish. The agent reads <span class="data">SKILL.md</span> and follows the workflow.</p>
       </div>
     </div>
     <div class="rule reveal d3"></div>
     <h3 class="reveal d3">Skills map to the DRR pipeline</h3>
     <div class="grid cols-4 reveal d4">
-      <div class="card"><span class="lbl">research</span><p><span class="mono tag-cyan">quick-research</span>, <span class="mono tag-cyan">websearch</span> — build the evidence trail.</p></div>
-      <div class="card"><span class="lbl">build</span><p><span class="mono tag-cyan">frontend-design</span>, code skills — the interactive UI.</p></div>
-      <div class="card"><span class="lbl">visual</span><p><span class="mono tag-cyan">generate-image</span> — maps &amp; assets.</p></div>
-      <div class="card"><span class="lbl">evidence</span><p><span class="mono tag-cyan">datasheets</span>-style data skills — structure the source trail.</p></div>
+      <div class="card flat"><span class="lbl">research</span><p><span class="data tag-teal">quick-research</span>, <span class="data tag-teal">websearch</span> — build the evidence trail.</p></div>
+      <div class="card flat"><span class="lbl">build</span><p><span class="data tag-teal">frontend-design</span>, code skills — the interactive UI.</p></div>
+      <div class="card flat"><span class="lbl">visual</span><p><span class="data tag-teal">generate-image</span> — maps &amp; assets.</p></div>
+      <div class="card flat"><span class="lbl">evidence</span><p>data skills — structure the source trail.</p></div>
     </div>
   </div>
 </section>
@@ -462,7 +454,6 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
      ============================================================ -->
 <section class="slide" data-act="MCP">
   <div class="slide-content">
-    <span class="kicker reveal">MCP</span>
     <h2 class="reveal d1">What is <em>MCP</em>?</h2>
     <p class="sub reveal d2">Model Context Protocol — an open standard for agents to <b>connect to external tools &amp; data</b>.</p>
     <div class="grid cols-2 reveal d3">
@@ -470,15 +461,15 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
         <h3>MCP servers = live reach</h3>
         <ul><li>Expose tools &amp; data to the agent</li><li>Called like built-in tools, while it codes</li></ul>
       </div>
-      <div class="card amber">
+      <div class="card tint-amber">
         <h3>In this project</h3>
-        <ul><li><b>Turso</b> — read the events schema &amp; seed</li><li><b>GitHub</b> — repo, push passes</li><li><b>Cloudflare/Vercel</b> — deploy</li></ul>
+        <ul><li><b>Turso</b> — read the events schema &amp; seed</li><li><b>GitHub</b> — repo, push passes</li><li><b>Cloudflare / Vercel</b> — deploy</li></ul>
       </div>
     </div>
     <div class="rule reveal d4"></div>
     <div class="split reveal d4">
-      <div class="card"><span class="lbl">Skill</span><p>static procedure · by topic · <b>"how to think"</b></p></div>
-      <div class="card green"><span class="lbl">MCP</span><p>live connection · by tool call · <b>"what to reach"</b></p></div>
+      <div class="card flat"><span class="lbl">Skill</span><p>static procedure · by topic · <b>"how to think"</b></p></div>
+      <div class="card tint-green"><span class="lbl">MCP</span><p>live connection · by tool call · <b>"what to reach"</b></p></div>
     </div>
     <p class="reveal d5" style="margin-top:.5rem"><b>Together:</b> a skill defines the workflow — MCP gives it live data.</p>
   </div>
@@ -489,17 +480,17 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
      ============================================================ -->
 <section class="slide" data-act="The prototype">
   <div class="slide-content">
-    <span class="kicker reveal">From PRD → deployed</span>
-    <h2 class="reveal d1">Kampung Melayu Flood — <span class="tag-cyan mono">route through history</span></h2>
+    <span class="pill dot reveal">FROM PRD → DEPLOYED</span>
+    <h2 class="reveal d1">Kampung Melayu Flood — <span class="data tag-teal">route through history</span></h2>
     <div class="grid" style="grid-template-columns:1.4fr 1fr;gap:var(--gap)">
       <div class="app reveal d2">
         <div class="app-head">
           <div class="title">Kampung Melayu · Jatinegara<small>Sample data — exploratory portfolio demo</small></div>
-          <span class="pill amber">ciliwung</span>
+          <span class="pill" style="background:rgba(255,255,255,.18);border-color:transparent;color:#fff">ciliwung</span>
         </div>
         <div class="app-body">
           <div class="app-left">
-            <label style="font-family:var(--font-mono);font-size:var(--small-size);color:var(--faint);letter-spacing:.1em;text-transform:uppercase">Pick a flood event</label>
+            <label style="font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);letter-spacing:.1em;text-transform:uppercase">Pick a flood event</label>
             <select id="evSelect" style="margin-top:.4rem"></select>
             <ul class="hist" id="evHist" style="margin-top:.6rem"></ul>
           </div>
@@ -515,13 +506,13 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
         <div class="card reveal d3">
           <h3>What you're seeing</h3>
           <ul>
-            <li>Skill <b class="mono tag-cyan">frontend-design</b> → this UI</li>
-            <li>MCP <b class="mono tag-cyan">Turso</b> → events read from a DB</li>
+            <li>Skill <b class="data tag-teal">frontend-design</b> → this UI</li>
+            <li>MCP <b class="data tag-teal">Turso</b> → events read from a DB</li>
             <li>Sample data, clearly labeled</li>
             <li>One decision, one journey</li>
           </ul>
         </div>
-        <div class="card amber reveal d4" style="margin-top:var(--gap)">
+        <div class="card tint-amber reveal d4" style="margin-top:var(--gap)">
           <h3>Honest about limits</h3>
           <p class="side-note">Illustrates the flow &amp; the evidence trail. Can't claim live warning authority.</p>
         </div>
@@ -535,18 +526,17 @@ select#evSelect{width:100%;font-family:var(--font-mono);font-size:var(--small-si
      ============================================================ -->
 <section class="slide" data-act="Deploy & prove">
   <div class="slide-content">
-    <span class="kicker reveal">Proof</span>
     <h2 class="reveal d1">Deploy. Test. Prove.</h2>
     <div class="grid cols-3 reveal d2">
-      <div class="card green"><span class="lbl">ship</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Repo + DB + URL</div><p>GitHub repo, Turso schema, live link on Gravatar/Cloudflare.</p></div>
+      <div class="card tint-green"><span class="lbl">ship</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Repo + DB + URL</div><p>GitHub repo, Turso schema, live link on Gravatar / Cloudflare.</p></div>
       <div class="card"><span class="lbl">test</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">3–5 people</div><p>"Expect heavy rain — use this to decide." Watch, learn, one iteration.</p></div>
-      <div class="card amber"><span class="lbl">frame</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Limits</div><p>Demonstrates flow + data trail. Not an official early-warning system.</p></div>
+      <div class="card tint-amber"><span class="lbl">frame</span><div class="num" style="font-size:clamp(.9rem,2vw,1.3rem)">Limits</div><p>Demonstrates flow + data trail. Not an official early-warning system.</p></div>
     </div>
     <div class="rule reveal d3"></div>
     <div class="grid cols-3 reveal d3">
-      <div class="card"><span class="lbl">deliverable</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.1rem)">Bounded local case</div></div>
-      <div class="card"><span class="lbl">deliverable</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.1rem)">Data catalog + PRD</div></div>
-      <div class="card"><span class="lbl">deliverable</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.1rem)">Deployed URL + repo</div></div>
+      <div class="card flat"><span class="lbl">deliverable</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.05rem)">Bounded local case</div></div>
+      <div class="card flat"><span class="lbl">deliverable</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.05rem)">Data catalog + PRD</div></div>
+      <div class="card flat"><span class="lbl">deliverable</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.05rem)">Deployed URL + repo</div></div>
     </div>
     <div class="rule reveal d4"></div>
     <p class="reveal d4" style="margin-top:.2rem"><b>Stuck? Install error?</b> Ask in the group. Pick your own case, write the PRD, run Pass 01.</p>
@@ -574,12 +564,12 @@ PURE.classify = function (tma, rain) {
   else if (tma >= 550) level = 'waspada';
   if (level !== 'bahaya' && rain === 'extreme') { level = level === 'aman' ? 'waspada' : 'siaga'; }
   var meta = {
-    aman:    { label:'AMAN',    color:'green', advice:'Normal conditions. Stay aware.' },
-    waspada: { label:'WASPADA', color:'amber', advice:'Be ready. Avoid low riverbank routes.' },
-    siaga:   { label:'SIAGA',   color:'orange', advice:'High water — prepare to move valuables.' },
-    bahaya:  { label:'BAHAYA',  color:'red', advice:'Leave low-lying areas. Follow official info.' }
+    aman:    { label:'AMAN',    tone:'green', advice:'Normal conditions. Stay aware.' },
+    waspada: { label:'WASPADA', tone:'amber', advice:'Be ready. Avoid low riverbank routes.' },
+    siaga:   { label:'SIAGA',   tone:'orange', advice:'High water — prepare to move valuables.' },
+    bahaya:  { label:'BAHAYA',  tone:'red', advice:'Leave low-lying areas. Follow official info.' }
   };
-  return { key: level, label: meta[level].label, tone: meta[level].color, advice: meta[level].advice };
+  return { key: level, label: meta[level].label, tone: meta[level].tone, advice: meta[level].advice };
 };
 // PURE-END
 
@@ -591,7 +581,6 @@ PURE.classify = function (tma, rain) {
   var prog = document.getElementById('progress');
   var current = 0;
 
-  // build nav dots (always clear first)
   dotsBox.innerHTML = '';
   slides.forEach(function (s, i) {
     var b = document.createElement('button');
@@ -602,9 +591,7 @@ PURE.classify = function (tma, rain) {
 
   function show(i) {
     current = Math.max(0, Math.min(slides.length - 1, i));
-    slides.forEach(function (s, idx) {
-      s.classList.toggle('visible', idx === current);
-    });
+    slides.forEach(function (s, idx) { s.classList.toggle('visible', idx === current); });
     var dots = dotsBox.querySelectorAll('button');
     dots.forEach(function (d, idx) { d.classList.toggle('active', idx === current); });
     idxBox.textContent = String(current + 1).padStart(2, '0');
@@ -612,20 +599,15 @@ PURE.classify = function (tma, rain) {
   }
   function go(i) { slides[current].scrollIntoView({ behavior: 'smooth' }); show(i); }
 
-  // IntersectionObserver marks the active slide on scroll
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) {
-          current = slides.indexOf(en.target);
-          show(current);
-        }
+        if (en.isIntersecting) { current = slides.indexOf(en.target); show(current); }
       });
     }, { threshold: 0.6 });
     slides.forEach(function (s) { io.observe(s); });
   }
 
-  // keyboard nav
   document.addEventListener('keydown', function (e) {
     var tag = (e.target.tagName || '').toLowerCase();
     if (tag === 'input' || tag === 'select' || tag === 'textarea') return;
@@ -674,7 +656,7 @@ function copyPrompt(btn) {
     var v = PURE.classify(ev.tma, ev.rain);
     tmaEl.innerHTML = ev.tma + '<small> cm</small>';
     tmaBar.style.width = Math.min(100, ev.tma / 10) + '%';
-    tmaBar.style.background = v.tone === 'red' ? '#f87171' : v.tone === 'orange' ? '#fb923c' : v.tone === 'amber' ? '#fbbf24' : '#4ade80';
+    tmaBar.style.background = v.tone === 'red' ? 'var(--danger)' : v.tone === 'orange' ? 'oklch(0.62 0.15 55)' : v.tone === 'amber' ? 'var(--accent)' : 'var(--safe)';
     rainEl.textContent = ev.rain.charAt(0).toUpperCase() + ev.rain.slice(1);
     verdictEl.className = 'verdict ' + v.key;
     verdictEl.innerHTML = v.label + '<small>' + v.advice + ' · est. depth ' + ev.depth + '</small>';
