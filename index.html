@@ -243,7 +243,7 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 <div class="progress-bar" id="progress"></div>
 <div class="deck-top">
   <span class="brand"><b>SESI-5</b> · Decode Risk. Ship Impact.</span>
-  <span class="page"><b id="idx">01</b><span>/22</span></span>
+  <span class="page"><b id="idx">01</b><span>/24</span></span>
 </div>
 <nav class="nav-dots" id="dots" aria-label="Slides"></nav>
 <div class="key-hint">scroll · ↑↓ · dots</div>
@@ -706,7 +706,88 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S19 · THE PROTOTYPE (interactive)
+     S19 · SKILLS IN PRACTICE — IMPECCABLE
+     ============================================================ -->
+<section class="slide" data-act="Skills in practice">
+  <div class="slide-content">
+    <h2 class="reveal d1">Skills in practice — <span class="data tag-teal">impeccable</span>.</h2>
+    <p class="sub reveal d2">Say "pake skill impeccable" and the agent loads the workflow — rules that keep your Jatinegara dashboard from looking like AI slop.</p>
+    <div class="split reveal d3">
+      <div class="card">
+        <h3>What the skill enforces</h3>
+        <ul>
+          <li>No reflex-reject fonts (Syne, Inter, Space Grotesk…)</li>
+          <li>No side-stripes, gradient text, or striped backgrounds</li>
+          <li>No numbered eyebrows above every section</li>
+          <li>OKLCH colors, WCAG contrast, real hierarchy</li>
+        </ul>
+      </div>
+      <div class="card tint-teal">
+        <span class="lbl">for the Jatinegara case</span>
+        <div class="num" style="font-size:clamp(.95rem,2.1vw,1.5rem)">Civic, not generic</div>
+        <p>A public-information look — like a flood map on a warung wall. Distinctive, readable, honest.</p>
+      </div>
+    </div>
+    <div class="rule reveal d4"></div>
+    <div class="code small reveal d4"><span class="k">You:</span> "pakai skill impeccable untuk review dashboard Kampung Melayu"<br>
+<span class="k">Agent:</span> loads SKILL.md → checks palette, typography, spacing, contrast → fixes and reports changes.</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     S20 · MCP IN PRACTICE — QGIS + GEE
+     ============================================================ -->
+<section class="slide" data-act="MCP in practice">
+  <div class="slide-content">
+    <h2 class="reveal d1">MCP in practice — <span class="data tag-teal">QGIS</span> + <span class="data tag-teal">GEE</span>.</h2>
+    <p class="sub reveal d2">MCP servers give the agent live access to GIS and satellite tools — so analysis happens inside the conversation, not by hand.</p>
+    <div class="grid cols-2 reveal d3">
+      <div class="card">
+        <span class="lbl">QGIS MCP · spatial analysis</span>
+        <ul>
+          <li><b>Load</b> InaRISK hazard layer → clip to Jatinegara</li>
+          <li><b>Intersect</b> with kelurahan boundaries → Kampung Melayu</li>
+          <li><b>Compute</b> flooded area per kelurahan</li>
+          <li><b>Export</b> GeoJSON for the web app</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="lbl">GEE MCP · satellite analysis</span>
+        <ul>
+          <li><b>Sentinel-1 SAR</b> flood detection (before/after)</li>
+          <li><b>DEM</b> elevation → slope risk for the case</li>
+          <li><b>Compare</b> 2013, 2020, 2021 flood extents</li>
+          <li><b>Export</b> GeoTIFF / CSV for evidence</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rule reveal d4"></div>
+    <p class="reveal d4" style="font-size:calc(var(--body-size)*1.02)"><b>Prompt:</b> "Pakai GEE MCP. Deteksi genangan Jan 2020 di Jatinegara, clip ke Kampung Melayu, hitung luas, export GeoJSON."</p>
+    <p class="muted reveal d5">QGIS &amp; GEE MCP must be installed &amp; configured first — like Turso or GitHub MCP.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     S21 · SKILL + MCP WORKFLOW
+     ============================================================ -->
+<section class="slide" data-act="Skill + MCP workflow">
+  <div class="slide-content">
+    <h2 class="reveal d1">Skill + MCP — the Jatinegara workflow.</h2>
+    <div class="grid cols-3 reveal d2">
+      <div class="card tint-teal"><span class="lbl">01 · research</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.05rem)">quick-research skill</div><p><span class="data">websearch MCP</span> → flood timeline &amp; impact narrative.</p></div>
+      <div class="card"><span class="lbl">02 · satellite</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.05rem)">GEE MCP</div><p>Flood polygons per event — 2013, 2020, 2021.</p></div>
+      <div class="card"><span class="lbl">03 · GIS</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.05rem)">QGIS MCP</div><p>InaRISK clip → Jatinegara, intersect kelurahan.</p></div>
+      <div class="card"><span class="lbl">04 · build</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.05rem)">frontend-design skill</div><p><span class="data">Turso MCP</span> → interactive flood dashboard.</p></div>
+      <div class="card tint-amber"><span class="lbl">05 · polish</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.05rem)">impeccable skill</div><p>Contrast, hierarchy, civic look — fixed before ship.</p></div>
+      <div class="card tint-green"><span class="lbl">06 · deploy</span><div class="num" style="font-size:clamp(.8rem,1.7vw,1.05rem)">MCP servers</div><p><span class="data">GitHub + Vercel</span> → live portfolio URL.</p></div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <p class="reveal d3" style="font-size:calc(var(--body-size)*1.05)"><b>Pattern:</b> skill decides <em>how</em>, MCP supplies <em>what</em>. Research → evidence → insight → prototype → deployed.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     S22 · THE PROTOTYPE (interactive)
      ============================================================ -->
 <section class="slide" data-act="The prototype">
   <div class="slide-content">
@@ -752,7 +833,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S20 · DEFINITION OF DONE
+     S23 · DEFINITION OF DONE
      ============================================================ -->
 <section class="slide" data-act="Done">
   <div class="slide-content">
@@ -778,7 +859,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S21 · NOW IT'S YOUR TURN
+     S24 · NOW IT'S YOUR TURN
      ============================================================ -->
 <section class="slide" data-act="Your turn">
   <div class="slide-content">

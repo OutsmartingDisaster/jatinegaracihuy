@@ -23,7 +23,7 @@ var slides = extractSlides(html);
 
 var checks = [
   { name: 'doctype', find: '<!DOCTYPE html>' },
-  { name: 'slide count = 21', find: 'slide' },
+  { name: 'slide count = 24', find: 'slide' },
   { name: 'progress bar', find: 'id="progress"' },
   { name: 'nav dots', find: 'id="dots"' },
   { name: 'slide index', find: 'id="idx"' },
@@ -36,7 +36,7 @@ checks.forEach(function (c) {
   report(c.name, ok);
 });
 
-report('slides array length is 21', slides.length === 21);
+report('slides array length is 24', slides.length === 24);
 
 var titles = [
   'From static',                                    // 1 cover
@@ -57,9 +57,12 @@ var titles = [
   'Errors &amp; agent etiquette.',                  // 16 errors
   'What is a',                                      // 17 skill
   'What is',                                        // 18 mcp
-  'route through history',                          // 19 prototype
-  'Definition of done.',                            // 20 done
-  "Now it's your turn."                             // 21 your turn
+  'Skills in practice',                             // 19 skills in practice
+  'MCP in practice',                                // 20 mcp in practice
+  'Jatinegara workflow',                            // 21 skill + mcp workflow
+  'route through history',                          // 22 prototype
+  'Definition of done.',                            // 23 done
+  "Now it's your turn."                             // 24 your turn
 ];
 
 titles.forEach(function (t, i) {
