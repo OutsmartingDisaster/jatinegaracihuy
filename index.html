@@ -240,7 +240,7 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 <div class="stage" id="stage">
 <div class="deck-top">
   <span class="brand"><b>SESI-5</b> · Decode Risk. Ship Impact.</span>
-  <span class="page"><b id="idx">01</b><span>/25</span></span>
+  <span class="page"><b id="idx">01</b><span>/26</span></span>
 </div>
 <nav class="nav-dots" id="dots" aria-label="Slides"></nav>
 <div class="key-hint">← → · space · dots · F11</div>
@@ -395,7 +395,43 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 </section>
 
 <!-- ============================================================
-     S7 · SESSION FLOW
+     S7 · REAL SCRAPING — DKI + InaRISK
+     ============================================================ -->
+<section class="slide" data-act="Real scraping">
+  <div class="slide-content">
+    <span class="pill dot reveal">IT CAN BE DONE — HERE'S HOW</span>
+    <h2 class="reveal d1">We scraped it anyway.</h2>
+    <div class="split reveal d2" style="margin-top:.2rem">
+      <div class="card">
+        <span class="lbl">DKI flood · TMA / rain / sluice</span>
+        <h3><span class="data tag-teal">scraper-banjirdki.py</span></h3>
+        <p style="margin-top:.2rem">Loops every day × 24 hours on the public <b>DKI flood archive</b>, saves GeoJSON per day.</p>
+        <div class="code small" style="margin-top:.4rem">map_report/{jenis}/{YYYY-MM-DD}/{HH}
+<span class="c"># pos_pengamatan · hujan · pintu_air</span></div>
+      </div>
+      <div class="card">
+        <span class="lbl">InaRISK · hazard / risk / vulnerability</span>
+        <h3><span class="data tag-teal">download_indeks_*.py</span></h3>
+        <p style="margin-top:.2rem">Pulls InaRISK layers from the public <b>GeoServer (WCS 2.0.1)</b> — chunked by bbox, assembled locally, validated.</p>
+        <div class="code small" style="margin-top:.4rem">geoserver/wcs?request=GetCoverage
+<span class="c"># raster__INDEKS_BAHAYA_BANJIR1</span></div>
+      </div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <h3 class="reveal d3">How to find endpoints like these — 5 steps</h3>
+    <div class="grid cols-5 reveal d4" style="margin-top:.3rem">
+      <div class="card flat"><div class="num" style="font-size:1rem">01</div><p><b>Open</b> the public site</p></div>
+      <div class="card flat"><div class="num" style="font-size:1rem">02</div><p><b>F12 → Network</b>, then use the site</p></div>
+      <div class="card flat"><div class="num" style="font-size:1rem">03</div><p><b>Spot the API</b> (Fetch/JSON)</p></div>
+      <div class="card flat"><div class="num" style="font-size:1rem">04</div><p><b>Check OGC</b> — try GetCapabilities</p></div>
+      <div class="card flat"><div class="num" style="font-size:1rem">05</div><p><b>Verify</b> URL in a new tab</p></div>
+    </div>
+    <p class="muted reveal d5" style="margin-top:.3rem"><b>Key trick:</b> GeoServer's <span class="data">GetCapabilities</span> lists every layer — no login needed.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     S8 · SESSION FLOW
      ============================================================ -->
 <section class="slide" data-act="Session flow">
   <div class="slide-content">
@@ -416,7 +452,7 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 </section>
 
 <!-- ============================================================
-     S8 · WHAT YOU SHIP TODAY
+     S9 · WHAT YOU SHIP TODAY
      ============================================================ -->
 <section class="slide" data-act="Outcome">
   <div class="slide-content">
@@ -444,7 +480,7 @@ select#evSelect{width:100%;font-family:var(--font-data);font-size:var(--small-si
 </section>
 
 <!-- ============================================================
-     S9 · BEFORE YOU START
+     S10 · BEFORE YOU START
      ============================================================ -->
 <section class="slide" data-act="Prerequisites">
   <div class="slide-content">
@@ -470,7 +506,7 @@ npm -v</div>
 </section>
 
 <!-- ============================================================
-     S10 · ACCOUNT CHECKLIST
+     S11 · ACCOUNT CHECKLIST
      ============================================================ -->
 <section class="slide" data-act="Accounts">
   <div class="slide-content">
@@ -492,7 +528,7 @@ npm -v</div>
 </section>
 
 <!-- ============================================================
-     S11 · PRD BEFORE CODE
+     S12 · PRD BEFORE CODE
      ============================================================ -->
 <section class="slide" data-act="Spec before code">
   <div class="slide-content">
@@ -568,7 +604,7 @@ How to test the journey. Report.</div>
 </section>
 
 <!-- ============================================================
-     S14 · PASSES + ACCEPTANCE CRITERIA
+     S15 · PASSES + ACCEPTANCE CRITERIA
      ============================================================ -->
 <section class="slide" data-act="Passes">
   <div class="slide-content">
@@ -599,7 +635,7 @@ How to test the journey. Report.</div>
 </section>
 
 <!-- ============================================================
-     S15 · TURSO SETUP
+     S16 · TURSO SETUP
      ============================================================ -->
 <section class="slide" data-act="Turso">
   <div class="slide-content">
@@ -638,7 +674,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S16 · DEPLOYMENT
+     S17 · DEPLOYMENT
      ============================================================ -->
 <section class="slide" data-act="Deploy">
   <div class="slide-content">
@@ -659,7 +695,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S17 · ERRORS + ETIQUETTE
+     S18 · ERRORS + ETIQUETTE
      ============================================================ -->
 <section class="slide" data-act="Errors & etiquette">
   <div class="slide-content">
@@ -691,7 +727,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S18 · WHAT IS A SKILL
+     S19 · WHAT IS A SKILL
      ============================================================ -->
 <section class="slide" data-act="Agent skills">
   <div class="slide-content">
@@ -719,7 +755,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S19 · WHAT IS MCP
+     S20 · WHAT IS MCP
      ============================================================ -->
 <section class="slide" data-act="MCP">
   <div class="slide-content">
@@ -807,7 +843,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S22 · SKILL + MCP WORKFLOW
+     S23 · SKILL + MCP WORKFLOW
      ============================================================ -->
 <section class="slide" data-act="Skill + MCP workflow">
   <div class="slide-content">
@@ -826,7 +862,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S23 · THE PROTOTYPE (interactive)
+     S24 · THE PROTOTYPE (interactive)
      ============================================================ -->
 <section class="slide" data-act="The prototype">
   <div class="slide-content">
@@ -872,7 +908,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S24 · DEFINITION OF DONE
+     S25 · DEFINITION OF DONE
      ============================================================ -->
 <section class="slide" data-act="Done">
   <div class="slide-content">
@@ -898,7 +934,7 @@ VALUES (2013, 210, 120, 'RT near Ciliwung', 'Sample'),
 </section>
 
 <!-- ============================================================
-     S25 · NOW IT'S YOUR TURN
+     S26 · NOW IT'S YOUR TURN
      ============================================================ -->
 <section class="slide" data-act="Your turn">
   <div class="slide-content">
