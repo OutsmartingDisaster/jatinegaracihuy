@@ -86,10 +86,12 @@ repo/
 └─ docs/deploy-switching.md     # update: 40 rute, konsolidasi TMA, D1, tahap aktual
 ```
 
-**URL produksi (semua gratis, tanpa custom domain):**
-- Frontend: `https://jatinegara-siaga.pages.dev`
-- API: `https://jatinegara-api.<account-subdomain>.workers.dev`
-- Tiles/aset: `https://pub-<hash>.r2.dev` (R2 public bucket, Range-ready untuk `pmtiles://`)
+**URL produksi (semua gratis, tanpa custom domain) — nama terkunci 2026-09-04:**
+- Frontend (Pages project `jatinegarasahabatair`): `https://jatinegarasahabatair.pages.dev`
+- API (Worker `jatinegarasahabatair-api`): `https://jatinegarasahabatair-api.<account-subdomain>.workers.dev`
+  (account subdomain `*.workers.dev` didaftarkan sekali per akun; tiap Worker punya prefix sendiri)
+- Tiles/aset (bucket `jatinegarasahabatair-tiles`): `https://pub-<hash>.r2.dev`
+  (R2 public URL berbasis hash — TIDAK bisa dipilih nama; kalau mau nama, sajikan via Worker route di atas bucket)
 
 Frontend dibuild dengan `VITE_API_BASE=https://…workers.dev` + `VITE_TILE_BASE=https://pub-….r2.dev`
 — tidak perlu `_routes.json`/rewrite sama sekali (konfigurasi absolut, bukan proxy).
@@ -119,4 +121,42 @@ Frontend dibuild dengan `VITE_API_BASE=https://…workers.dev` + `VITE_TILE_BASE
 ## 7. Belum diputuskan
 
 - CI/CD: GitHub Actions `wrangler deploy` atau deploy manual dulu?
-- Nama project/bucket: `jatinegara-siaga` / `jatinegara-siaga-tiles` (default usulan)?
+
+## 8. Multi-project & multi-subdomain di free tier (pertanyaan 2026-09-04)
+
+**Jawaban singkat: ya.** Nama project/subdomain per layanan tidak bentrok satu sama lain,
+dan kuota yang mengikat adalah kuota *account-level* (di-share antar semua project):
+
+### Kuota yang DI-SHARE semua project (yang perlu diwaspadai)
+| Kuota | Free limit | Catatan multi-project |
+|---|---|---|
+| Workers requests | 100 rb/hari | **total semua Worker digabung** |
+| Pages builds | 500/bln | **total semua Pages project digabung** |
+| D1 row-read | 5 jt/hari | **total semua DB digabung** |
+| R2 storage 10 GB, Class-A 1 jt, Class-B 10 jt | | **total per akun** |
+| KV write 1 rb/hari | | **total semua namespace digabung** |
+| Cron Triggers | 5/akun | dibagi antar project |
+| Access | 50 user/akun | dibagi antar project |
+
+### Kuota yang PER-PROJECT/PER-RESOURCE (tidak saling makan)
+- Workers: **100 Worker per akun**, tiap Worker punya bundle 3 MB & CPU 10 ms sendiri
+- Pages: **100 project per akun**, masing-masing dapat `*.pages.dev` subdomain sendiri + 20 rb file (25 MiB/file)
+- D1: **50 database per akun (free)**, masing-masing 5 GB
+- R2: **1.000 bucket per akun**, masing-masing bisa punya public `pub-*.r2.dev` sendiri
+- KV: banyak namespace, tiap namespace 100 rb read/hari (read share account? — verifikasi saat pembuatan; write 1 rb/hari jelas per akun)
+- Routes per zone: 1.000; custom domain per zone: 100 (bukan relevan untuk subdomain gratis)
+
+### Konvensi penamaan untuk multi-project (usulan, terkunci untuk project ini)
+| Resource | Nama | URL gratis |
+|---|---|---|
+| Pages | `jatinegarasahabatair` | `https://jatinegarasahabatair.pages.dev` |
+| Worker API | `jatinegarasahabatair-api` | `https://jatinegarasahabatair-api.<account>.workers.dev` |
+| R2 | `jatinegarasahabatair-tiles` | `https://pub-<hash>.r2.dev` |
+| D1 | `jatinegarasahabatair` | (tanpa URL; binding `DB`) |
+| KV | `CACHE` | (binding) |
+
+**Implikasi praktis untuk project ini:** 1 Pages + 1 Worker + 1 bucket + 1 DB + 1 KV
+hanya mengonsumsi ~1/100 dari kuota jumlah-resource; yang benar-benar perlu dipantau
+adalah request harian Worker (100 rb) dan R2 Class-B bila trafik naik. Proyek kedua
+mis. `dashboard` bisa jadi Pages project terpisah (`dashboard.pages.dev`) tanpa menambah
+beban ke kuota jumlah.
