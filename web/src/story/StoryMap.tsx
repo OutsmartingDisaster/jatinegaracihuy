@@ -82,6 +82,10 @@ export default function StoryMap({ onReady }: Props) {
     mapRef.current = map;
     (window as unknown as { __storyMap?: MLMap }).__storyMap = map; // debug/automation hook
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
+    // Self-heal: terapkan chapter aktif setiap map idle (idempoten — skip bila
+    // target == prev). Menutup celah bila style belum loaded saat retry habis.
+    const onIdle = () => applyChapter(useApp.getState().activeChapter);
+    map.on("idle", onIdle);
     map.on("error", (e: { error?: { message?: string } }) => {
       if (e.error?.message && !e.error.message.includes("Failed to fetch")) setMapError(e.error.message);
     });
@@ -102,7 +106,7 @@ export default function StoryMap({ onReady }: Props) {
         setMapError(String(err));
       }
     });
-    return () => { map.remove(); mapRef.current = null; };
+    return () => { map.off("idle", onIdle); map.remove(); mapRef.current = null; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [applyChapter]);
 

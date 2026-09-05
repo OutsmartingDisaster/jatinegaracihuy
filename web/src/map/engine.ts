@@ -16,7 +16,9 @@ const BASE_CENTER: [number, number] = [106.895, -6.216];
 export function baseStyle(): StyleSpecification {
   return {
     version: 8,
-    glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+    // TANPA glyphs: tidak ada layer symbol/teks, dan URL font eksternal membuat
+    // isStyleLoaded() tertahan (mirror statis: semua layer vektor stuck opacity 0
+    // bila demotiles tidak terjangkau) — basemap raster tidak butuh glyphs.
     sources: {
       basemap: {
         type: "raster",
