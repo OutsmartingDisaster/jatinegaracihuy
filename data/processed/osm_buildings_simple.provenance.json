@@ -1,0 +1,26 @@
+{
+  "dataset": "ds_osm_buildings_simple",
+  "derived_from": "data/processed/osm_buildings_clip.geojson",
+  "script": "tools/simplify_buildings.py",
+  "generated_at": "2026-09-05T04:00:48.865832+00:00",
+  "params": {
+    "drop_properties": true,
+    "coord_precision": 5,
+    "simplify_m": 5.0,
+    "preserve_topology": true
+  },
+  "input": {
+    "features": 37825,
+    "bytes": 11136976,
+    "sha256": "6f93ce3136dc972091a21ac99da56301210625b6df51d9a9782a8898e70053e0"
+  },
+  "output": {
+    "features": 37825,
+    "bytes": 6722172,
+    "sha256": "49fb4ed95f66a4093d53e5c2630b910cc42c169faf4baa2edf464d8cff8c6a03",
+    "dropped_degenerate": 0
+  },
+  "ratio": 0.604,
+  "quality": "Q1-visual (disederhanakan untuk render; bukan untuk analisis)",
+  "note": "Properties dibuang total \u2014 layer hanya fill statis. File clip utuh tetap menjadi sumber kebenaran."
+}

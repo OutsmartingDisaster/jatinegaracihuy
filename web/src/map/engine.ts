@@ -7,9 +7,9 @@ import { UNKNOWN } from "./palette";
 
 /* ---------- Map engine (PRD v6.1 Phase 4.1 MapStateController) ----------
  * All sources are loaded once (small PMTiles/GeoJSON); chapters change
- * VISIBILITY + camera only, with eased transitions. Buildings (10.8 MB)
- * are lazy-loaded on first demand (spatial §65–66: never load everything
- * on first render). */
+ * VISIBILITY + camera only, with eased transitions. Buildings (simplified
+ * ~6.7 MB, 37.8k footprints — tools/simplify_buildings.py) are lazy-loaded
+ * on first demand (spatial §65–66: never load everything on first render). */
 
 const BASE_CENTER: [number, number] = [106.895, -6.216];
 
@@ -420,7 +420,7 @@ let buildingsLoaded = false;
 export function ensureBuildings(map: MLMap) {
   if (buildingsLoaded) return;
   buildingsLoaded = true;
-  fetch(spatial("osm_buildings_clip.geojson"))
+  fetch(spatial("osm_buildings_simple.geojson"))
     .then((r) => r.json())
     .then((gj: FeatureCollection) => {
       const src = map.getSource("buildings") as maplibregl.GeoJSONSource | undefined;

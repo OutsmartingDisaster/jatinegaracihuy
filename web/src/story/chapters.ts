@@ -33,15 +33,17 @@ export interface ChapterDef {
   component?: "risk-eq" | "risk-card" | "priority-card" | "event-timeline" | "cta";
 }
 
-const BASE_CENTER: [number, number] = [106.899, -6.212];
+const BASE_CENTER: [number, number] = [106.8762, -6.229];
 
 /** Deep-audit fix (2026-09-04): satu kamera untuk seluruh cerita.
  * Chapter dulu memakai center/zoom berbeda-beda sehingga peta melompat saat
  * scroll ("belum sejajar"). Sekarang kamera identik antar chapter — perubahan
- * hanya pada layer & opasitas; zoom detail opsional per chapter dihapus. */
+ * hanya pada layer & opasitas; zoom detail opsional per chapter dihapus.
+ * Center = centroid bbox kecamatan (2026-09-05: geser dari timur-laut agar
+ * konten tepat di tengah panel, bukan kiri-bawah). */
 export const STORY_CAMERA: { center: [number, number]; zoom: number } = {
   center: BASE_CENTER,
-  zoom: 13.0,
+  zoom: 13.5,
 };
 
 export const CHAPTERS: ChapterDef[] = [
@@ -54,7 +56,7 @@ export const CHAPTERS: ChapterDef[] = [
       "Di kawasan yang padat dan terus berkembang, hubungan antara sungai, permukiman, infrastruktur, dan kehidupan sehari-hari membuat banjir bukan sekadar persoalan genangan.",
       "Jatinegara adalah kecamatan di Jakarta Timur dengan delapan kelurahan — dari Kampung Melayu di tepi Ciliwung hingga Cipinang Besar Utara di jalur kereta dan pasar.",
     ],
-    camera: { center: BASE_CENTER, zoom: 12.8 },
+    camera: { center: STORY_CAMERA.center, zoom: STORY_CAMERA.zoom },
     layers: [
       { id: "water", opacity: 0.9 },
       { id: "roads", opacity: 0.5 },

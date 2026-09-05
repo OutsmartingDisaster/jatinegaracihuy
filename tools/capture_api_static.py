@@ -47,7 +47,7 @@ SPATIAL = [
     ("data/processed", "inarisk_kerentanan.geojson"),
     ("data/processed", "osm_water_clip.geojson"),
     ("data/processed", "osm_roads_clip.geojson"),
-    ("data/processed", "osm_buildings_clip.geojson"),
+    ("data/processed", "osm_buildings_simple.geojson"),
     ("data/processed", "flood_rw_choropleth_v1.geojson"),
     ("data/processed", "flood_events_points_v1.geojson"),
     ("data/processed", "osm_facilities_clip.geojson"),
