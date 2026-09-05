@@ -30,3 +30,21 @@ data/governance.db
 
 # TS incremental build cacheweb/tsconfig.tsbuildinfo
 web/tsconfig.tsbuildinfo
+
+# local-only artifacts (not for public repo)
+/slide/
+/prd.md
+/prd-phase-tasks.md
+/freebuff-sg.ps1
+/statistik_kelurahan_jatinegara.xlsx
+/buat_statistik_jatinegara.py
+/PRODUCT.md
+/freebuff-sg-bridge.cjs
+/DATA_LOCATIONS.md
+/web-dev.log
+/docs/plans/
+/docs/deploy-switching.md
+/docs/governance/
+/docs/superpowers/
+/docs/PANDUAN-PRESENTASI-STEP-BY-STEP.md
+/docs/assets/
