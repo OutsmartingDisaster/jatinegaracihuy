@@ -1,0 +1,21 @@
+{
+  "dataset_id": "ds_flood_events_points_raw",
+  "description": "Titik kejadian banjir/genangan terdokumentasi 2021-2025 di Kecamatan Jatinegara, Jakarta Timur — 54 kejadian. Disusun dari liputan media (Antara, detikcom, Kompas TV, kumparan, TribunJakarta, Beritajakarta) dan rekap resmi (Pemkot Jakarta Timur REKAP BANJIR TAHUN 2025 via PPID, Kemenkes/Pusdalops). Koordinat = proxy per metode yang tercatat di kolom coordinate_method (kelurahan_proxy / road_proxy / locality_proxy) — BUKAN hasil survei lapangan.",
+  "source": {
+    "description": "Kurasi manual dari sumber publik (lihat kolom source & source_url per baris)",
+    "files": ["jatinegara_flood_events_2021_2025.csv"],
+    "sha256": "99e7eb7d008b36ad6bf9d87870654135ccc91f9d46cd62179763d0e7f3390cbb",
+    "period": "2021-2025",
+    "event_count": 54,
+    "per_year": { "2021": 4, "2022": 5, "2023": 8, "2024": 4, "2025": 33 }
+  },
+  "status": "RAW",
+  "collected_at": "2026-09-05",
+  "collected_by": "web research session (kurasi berita + rekap resmi Pemkot Jaktim 2025)",
+  "known_limitations": [
+    "Koordinat proxy (kelurahan/jalan/lokalitas) — presisi rendah, bukan pola genangan terukur",
+    "Laporan berita = unverified (Q4); rekap Pemkot Jaktim 2025 = resmi tapi tanggung jawab pelaporannya di kelurahan",
+    "54 = jumlah yang TERDOKUMENTASI — bukan seluruh kejadian yang terjadi (coverage gap tetap ada, terutama genangan drainase kecil)",
+    "Kelurahan Bali Mester, Rawa Bunga, Cipinang Cempedak, Cipinang Besar Utara/Selatan belum punya titik pada dataset ini — absen titik ≠ tidak pernah kejadian"
+  ]
+}

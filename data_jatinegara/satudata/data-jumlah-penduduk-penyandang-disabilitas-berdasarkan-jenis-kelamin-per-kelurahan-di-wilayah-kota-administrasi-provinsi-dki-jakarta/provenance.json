@@ -1,0 +1,11 @@
+{
+  "dataset_id": "satudata_data-jumlah-penduduk-penyandang-disabilitas-berdasarkan-jenis-kelamin-per-kelurahan-di-wilayah-kota-administrasi-provinsi-dki-jakarta",
+  "source": "Satu Data Jakarta (satudata.jakarta.go.id)",
+  "source_url": "https://satudata.jakarta.go.id/open-data/detail?kategori=dataset&page_url=data-jumlah-penduduk-penyandang-disabilitas-berdasarkan-jenis-kelamin-per-kelurahan-di-wilayah-kota-administrasi-provinsi-dki-jakarta",
+  "rows": 7154,
+  "total_reported": 7154,
+  "pages_fetched": 287,
+  "acquired_at": "2026-09-02T21:36:55.462859+00:00",
+  "status": "RAW",
+  "processing_script": "tools/download_disabilitas.py"
+}

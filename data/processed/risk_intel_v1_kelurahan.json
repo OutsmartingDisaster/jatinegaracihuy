@@ -1,0 +1,820 @@
+{
+  "dataset_id": "risk_intel_v1_kelurahan_jatinegara",
+  "version": "v1",
+  "served_by_future_api": "GET /api/kelurahan/:name/risk (Phase 3 §41-§42)",
+  "generated_at": "2026-09-03T05:14:51.252888+00:00",
+  "kelurahan": {
+    "KAMPUNG MELAYU": {
+      "risk": {
+        "score": 0.9082,
+        "category": "VERY HIGH",
+        "version": "fri_v1"
+      },
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "contributors": {
+        "hazard": 0.35,
+        "exposure": 0.25,
+        "vulnerability": 0.25,
+        "capacity": 0.0582
+      },
+      "top_contributors": [
+        "hazard",
+        "exposure",
+        "vulnerability"
+      ],
+      "evidence_ids": [
+        "EVD-E-2021-01",
+        "EVD-E-2021-02",
+        "EVD-E-2022-01",
+        "EVD-E-2022-02",
+        "EVD-E-2024-01",
+        "EVD-E-2025-01",
+        "EVD-E-2025-02",
+        "EVD-E-2025-03",
+        "EVD-PPID-001",
+        "EVD-PPID-002"
+      ],
+      "evidence_count": 10,
+      "input_freshness": [
+        {
+          "status": "Unknown",
+          "reason": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui",
+          "dataset": "InaRISK bahaya/kerentanan (BNPB)",
+          "note": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui"
+        },
+        {
+          "status": "Fresh",
+          "data_age_months": 0,
+          "last_updated": "2026-09-03",
+          "dataset": "OSM buildings/facilities/roads/water",
+          "note": "ekstraksi Overpass hari ini; OSM berubah terus (crowdsourced)"
+        },
+        {
+          "status": "Stale",
+          "data_age_months": 63.1,
+          "last_updated": "2021-06-01",
+          "dataset": "Copernicus GLO-30 DEM",
+          "note": "mosaik GLO-30 (avg ~2011-2021); tangentDEM rilis 2021"
+        }
+      ],
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "priority": {
+        "kelurahan": "KAMPUNG MELAYU",
+        "priority_score": 0.9541,
+        "components": {
+          "risk": 0.9082,
+          "exposure": 1.0,
+          "evidence_strength": 1.0
+        },
+        "rationale": "Risiko VERY HIGH (fri_v1 0.91); 8 event banjir terdokumentasi 2021-2025; 2 titik rawan resmi (PPID); capacity gap: cannot be reliably estimated",
+        "priority_rank": 1
+      },
+      "narrative_warga": {
+        "narrative": "Kampung Melayu memiliki risiko banjir VERY HIGH (fri_v1). Risiko terutama dipengaruhi oleh tingkat bahaya banjir, kepadatan bangunan, kerentanan sosial. Data menunjukkan 8 banjir terdokumentasi 2021-2025; 2 titik rawan resmi.",
+        "actions": [
+          "Cek shelter/penampungan terdekat",
+          "Siapkan dokumen penting dalam wadah kedap air",
+          "Kenali rute evakuasi",
+          "Laporkan genangan di aplikasi (Phase 5)"
+        ],
+        "data_note": "Narasi dihasilkan dari structured data (fri_v1 + evidence); tanpa fakta di luar dataset (PRD §37)"
+      },
+      "analis_decomposition": {
+        "sub_scores": {
+          "hazard": 1.0,
+          "exposure": 1.0,
+          "vulnerability": 1.0,
+          "capacity_inverted": 0.3878
+        },
+        "raw_indicators": {
+          "hazard_mean": 0.7089000940322876,
+          "msvi_proxy": 0.866475522518158,
+          "building_count": 2388,
+          "building_density_per_km2": 4976.1,
+          "facility_evac_capable": 37,
+          "ppid_penampungan_count": 9,
+          "flood_events_2021_2025": 8
+        },
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    },
+    "BIDARA CINA": {
+      "risk": {
+        "score": 0.7739,
+        "category": "VERY HIGH",
+        "version": "fri_v1"
+      },
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "contributors": {
+        "hazard": 0.3201,
+        "exposure": 0.2066,
+        "vulnerability": 0.2472,
+        "capacity": 0.0
+      },
+      "top_contributors": [
+        "hazard",
+        "vulnerability",
+        "exposure"
+      ],
+      "evidence_ids": [],
+      "evidence_count": 0,
+      "input_freshness": [
+        {
+          "status": "Unknown",
+          "reason": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui",
+          "dataset": "InaRISK bahaya/kerentanan (BNPB)",
+          "note": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui"
+        },
+        {
+          "status": "Fresh",
+          "data_age_months": 0,
+          "last_updated": "2026-09-03",
+          "dataset": "OSM buildings/facilities/roads/water",
+          "note": "ekstraksi Overpass hari ini; OSM berubah terus (crowdsourced)"
+        },
+        {
+          "status": "Stale",
+          "data_age_months": 63.1,
+          "last_updated": "2021-06-01",
+          "dataset": "Copernicus GLO-30 DEM",
+          "note": "mosaik GLO-30 (avg ~2011-2021); tangentDEM rilis 2021"
+        }
+      ],
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "priority": {
+        "kelurahan": "BIDARA CINA",
+        "priority_score": 0.5936,
+        "components": {
+          "risk": 0.7739,
+          "exposure": 0.8266,
+          "evidence_strength": 0.0
+        },
+        "rationale": "Risiko VERY HIGH (fri_v1 0.77); capacity gap: cannot be reliably estimated",
+        "priority_rank": 3
+      },
+      "narrative_warga": {
+        "narrative": "Bidara Cina memiliki risiko banjir VERY HIGH (fri_v1). Risiko terutama dipengaruhi oleh tingkat bahaya banjir, kerentanan sosial, kepadatan bangunan. Data menunjukkan titik rawan/kejadian belum terdokumentasi.",
+        "actions": [
+          "Cek shelter/penampungan terdekat",
+          "Siapkan dokumen penting dalam wadah kedap air",
+          "Kenali rute evakuasi",
+          "Laporkan genangan di aplikasi (Phase 5)"
+        ],
+        "data_note": "Narasi dihasilkan dari structured data (fri_v1 + evidence); tanpa fakta di luar dataset (PRD §37)"
+      },
+      "analis_decomposition": {
+        "sub_scores": {
+          "hazard": 0.9145,
+          "exposure": 0.8266,
+          "vulnerability": 0.9888,
+          "capacity_inverted": 0.0
+        },
+        "raw_indicators": {
+          "hazard_mean": 0.650081992149353,
+          "msvi_proxy": 0.8573192954063416,
+          "building_count": 5713,
+          "building_density_per_km2": 4580.9,
+          "facility_evac_capable": 74,
+          "ppid_penampungan_count": 0,
+          "flood_events_2021_2025": 0
+        },
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    },
+    "BALI MESTER": {
+      "risk": {
+        "score": 0.4103,
+        "category": "MEDIUM",
+        "version": "fri_v1"
+      },
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "contributors": {
+        "hazard": 0.1347,
+        "exposure": 0.0,
+        "vulnerability": 0.1257,
+        "capacity": 0.15
+      },
+      "top_contributors": [
+        "capacity",
+        "hazard",
+        "vulnerability"
+      ],
+      "evidence_ids": [],
+      "evidence_count": 0,
+      "input_freshness": [
+        {
+          "status": "Unknown",
+          "reason": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui",
+          "dataset": "InaRISK bahaya/kerentanan (BNPB)",
+          "note": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui"
+        },
+        {
+          "status": "Fresh",
+          "data_age_months": 0,
+          "last_updated": "2026-09-03",
+          "dataset": "OSM buildings/facilities/roads/water",
+          "note": "ekstraksi Overpass hari ini; OSM berubah terus (crowdsourced)"
+        },
+        {
+          "status": "Stale",
+          "data_age_months": 63.1,
+          "last_updated": "2021-06-01",
+          "dataset": "Copernicus GLO-30 DEM",
+          "note": "mosaik GLO-30 (avg ~2011-2021); tangentDEM rilis 2021"
+        }
+      ],
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "priority": {
+        "kelurahan": "BALI MESTER",
+        "priority_score": 0.2051,
+        "components": {
+          "risk": 0.4103,
+          "exposure": 0.0,
+          "evidence_strength": 0.0
+        },
+        "rationale": "Risiko MEDIUM (fri_v1 0.41); capacity gap: cannot be reliably estimated",
+        "priority_rank": 7
+      },
+      "narrative_warga": {
+        "narrative": "Bali Mester memiliki risiko banjir MEDIUM (fri_v1). Risiko terutama dipengaruhi oleh keterbatasan kapasitas penanganan, tingkat bahaya banjir, kerentanan sosial. Data menunjukkan titik rawan/kejadian belum terdokumentasi.",
+        "actions": [
+          "Cek shelter/penampungan terdekat",
+          "Siapkan dokumen penting dalam wadah kedap air",
+          "Kenali rute evakuasi",
+          "Laporkan genangan di aplikasi (Phase 5)"
+        ],
+        "data_note": "Narasi dihasilkan dari structured data (fri_v1 + evidence); tanpa fakta di luar dataset (PRD §37)"
+      },
+      "analis_decomposition": {
+        "sub_scores": {
+          "hazard": 0.3847,
+          "exposure": 0.0,
+          "vulnerability": 0.5027,
+          "capacity_inverted": 1.0
+        },
+        "raw_indicators": {
+          "hazard_mean": 0.2858494222164154,
+          "msvi_proxy": 0.45878392457962036,
+          "building_count": 1812,
+          "building_density_per_km2": 2697.0,
+          "facility_evac_capable": 25,
+          "ppid_penampungan_count": 0,
+          "flood_events_2021_2025": 0
+        },
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    },
+    "RAWA BUNGA": {
+      "risk": {
+        "score": 0.1492,
+        "category": "LOW",
+        "version": "fri_v1"
+      },
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "contributors": {
+        "hazard": 0.0,
+        "exposure": 0.0022,
+        "vulnerability": 0.0,
+        "capacity": 0.1469
+      },
+      "top_contributors": [
+        "capacity",
+        "exposure",
+        "hazard"
+      ],
+      "evidence_ids": [
+        "EVD-PPID-003"
+      ],
+      "evidence_count": 1,
+      "input_freshness": [
+        {
+          "status": "Unknown",
+          "reason": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui",
+          "dataset": "InaRISK bahaya/kerentanan (BNPB)",
+          "note": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui"
+        },
+        {
+          "status": "Fresh",
+          "data_age_months": 0,
+          "last_updated": "2026-09-03",
+          "dataset": "OSM buildings/facilities/roads/water",
+          "note": "ekstraksi Overpass hari ini; OSM berubah terus (crowdsourced)"
+        },
+        {
+          "status": "Stale",
+          "data_age_months": 63.1,
+          "last_updated": "2021-06-01",
+          "dataset": "Copernicus GLO-30 DEM",
+          "note": "mosaik GLO-30 (avg ~2011-2021); tangentDEM rilis 2021"
+        }
+      ],
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "priority": {
+        "kelurahan": "RAWA BUNGA",
+        "priority_score": 0.1268,
+        "components": {
+          "risk": 0.1492,
+          "exposure": 0.0089,
+          "evidence_strength": 0.2
+        },
+        "rationale": "Risiko LOW (fri_v1 0.15); 1 titik rawan resmi (PPID); capacity gap: cannot be reliably estimated",
+        "priority_rank": 8
+      },
+      "narrative_warga": {
+        "narrative": "Rawa Bunga memiliki risiko banjir LOW (fri_v1). Risiko terutama dipengaruhi oleh keterbatasan kapasitas penanganan, kepadatan bangunan, tingkat bahaya banjir. Data menunjukkan 1 titik rawan resmi.",
+        "actions": [
+          "Cek shelter/penampungan terdekat",
+          "Siapkan dokumen penting dalam wadah kedap air",
+          "Kenali rute evakuasi",
+          "Laporkan genangan di aplikasi (Phase 5)"
+        ],
+        "data_note": "Narasi dihasilkan dari structured data (fri_v1 + evidence); tanpa fakta di luar dataset (PRD §37)"
+      },
+      "analis_decomposition": {
+        "sub_scores": {
+          "hazard": 0.0,
+          "exposure": 0.0089,
+          "vulnerability": 0.0,
+          "capacity_inverted": 0.9796
+        },
+        "raw_indicators": {
+          "hazard_mean": 0.021330837160348892,
+          "msvi_proxy": 0.04673819988965988,
+          "building_count": 2304,
+          "building_density_per_km2": 2717.3,
+          "facility_evac_capable": 26,
+          "ppid_penampungan_count": 0,
+          "flood_events_2021_2025": 0
+        },
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    },
+    "CIPINANG CEMPEDAK": {
+      "risk": {
+        "score": 0.6541,
+        "category": "HIGH",
+        "version": "fri_v1"
+      },
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "contributors": {
+        "hazard": 0.2115,
+        "exposure": 0.1362,
+        "vulnerability": 0.2115,
+        "capacity": 0.0949
+      },
+      "top_contributors": [
+        "hazard",
+        "vulnerability",
+        "exposure"
+      ],
+      "evidence_ids": [
+        "EVD-PPID-007",
+        "EVD-PPID-008",
+        "EVD-PPID-009",
+        "EVD-PPID-010",
+        "EVD-PPID-011"
+      ],
+      "evidence_count": 5,
+      "input_freshness": [
+        {
+          "status": "Unknown",
+          "reason": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui",
+          "dataset": "InaRISK bahaya/kerentanan (BNPB)",
+          "note": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui"
+        },
+        {
+          "status": "Fresh",
+          "data_age_months": 0,
+          "last_updated": "2026-09-03",
+          "dataset": "OSM buildings/facilities/roads/water",
+          "note": "ekstraksi Overpass hari ini; OSM berubah terus (crowdsourced)"
+        },
+        {
+          "status": "Stale",
+          "data_age_months": 63.1,
+          "last_updated": "2021-06-01",
+          "dataset": "Copernicus GLO-30 DEM",
+          "note": "mosaik GLO-30 (avg ~2011-2021); tangentDEM rilis 2021"
+        }
+      ],
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "priority": {
+        "kelurahan": "CIPINANG CEMPEDAK",
+        "priority_score": 0.7133,
+        "components": {
+          "risk": 0.6541,
+          "exposure": 0.545,
+          "evidence_strength": 1.0
+        },
+        "rationale": "Risiko HIGH (fri_v1 0.65); 5 titik rawan resmi (PPID); capacity gap: cannot be reliably estimated",
+        "priority_rank": 2
+      },
+      "narrative_warga": {
+        "narrative": "Cipinang Cempedak memiliki risiko banjir HIGH (fri_v1). Risiko terutama dipengaruhi oleh tingkat bahaya banjir, kerentanan sosial, kepadatan bangunan. Data menunjukkan 5 titik rawan resmi.",
+        "actions": [
+          "Cek shelter/penampungan terdekat",
+          "Siapkan dokumen penting dalam wadah kedap air",
+          "Kenali rute evakuasi",
+          "Laporkan genangan di aplikasi (Phase 5)"
+        ],
+        "data_note": "Narasi dihasilkan dari structured data (fri_v1 + evidence); tanpa fakta di luar dataset (PRD §37)"
+      },
+      "analis_decomposition": {
+        "sub_scores": {
+          "hazard": 0.6042,
+          "exposure": 0.545,
+          "vulnerability": 0.8458,
+          "capacity_inverted": 0.6327
+        },
+        "raw_indicators": {
+          "hazard_mean": 0.4367814362049103,
+          "msvi_proxy": 0.7400897145271301,
+          "building_count": 6335,
+          "building_density_per_km2": 3939.0,
+          "facility_evac_capable": 39,
+          "ppid_penampungan_count": 2,
+          "flood_events_2021_2025": 0
+        },
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    },
+    "CIPINANG MUARA": {
+      "risk": {
+        "score": 0.5294,
+        "category": "MEDIUM",
+        "version": "fri_v1"
+      },
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "contributors": {
+        "hazard": 0.214,
+        "exposure": 0.1183,
+        "vulnerability": 0.1971,
+        "capacity": 0.0
+      },
+      "top_contributors": [
+        "hazard",
+        "vulnerability",
+        "exposure"
+      ],
+      "evidence_ids": [
+        "EVD-E-2025-04",
+        "EVD-PPID-015",
+        "EVD-PPID-016"
+      ],
+      "evidence_count": 3,
+      "input_freshness": [
+        {
+          "status": "Unknown",
+          "reason": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui",
+          "dataset": "InaRISK bahaya/kerentanan (BNPB)",
+          "note": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui"
+        },
+        {
+          "status": "Fresh",
+          "data_age_months": 0,
+          "last_updated": "2026-09-03",
+          "dataset": "OSM buildings/facilities/roads/water",
+          "note": "ekstraksi Overpass hari ini; OSM berubah terus (crowdsourced)"
+        },
+        {
+          "status": "Stale",
+          "data_age_months": 63.1,
+          "last_updated": "2021-06-01",
+          "dataset": "Copernicus GLO-30 DEM",
+          "note": "mosaik GLO-30 (avg ~2011-2021); tangentDEM rilis 2021"
+        }
+      ],
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "priority": {
+        "kelurahan": "CIPINANG MUARA",
+        "priority_score": 0.558,
+        "components": {
+          "risk": 0.5294,
+          "exposure": 0.4731,
+          "evidence_strength": 0.7
+        },
+        "rationale": "Risiko MEDIUM (fri_v1 0.53); 1 event banjir terdokumentasi 2021-2025; 2 titik rawan resmi (PPID); capacity gap: cannot be reliably estimated",
+        "priority_rank": 4
+      },
+      "narrative_warga": {
+        "narrative": "Cipinang Muara memiliki risiko banjir MEDIUM (fri_v1). Risiko terutama dipengaruhi oleh tingkat bahaya banjir, kerentanan sosial, kepadatan bangunan. Data menunjukkan 1 banjir terdokumentasi 2021-2025; 2 titik rawan resmi.",
+        "actions": [
+          "Cek shelter/penampungan terdekat",
+          "Siapkan dokumen penting dalam wadah kedap air",
+          "Kenali rute evakuasi",
+          "Laporkan genangan di aplikasi (Phase 5)"
+        ],
+        "data_note": "Narasi dihasilkan dari structured data (fri_v1 + evidence); tanpa fakta di luar dataset (PRD §37)"
+      },
+      "analis_decomposition": {
+        "sub_scores": {
+          "hazard": 0.6115,
+          "exposure": 0.4731,
+          "vulnerability": 0.7883,
+          "capacity_inverted": 0.0
+        },
+        "raw_indicators": {
+          "hazard_mean": 0.4417838454246521,
+          "msvi_proxy": 0.6929750442504883,
+          "building_count": 10054,
+          "building_density_per_km2": 3775.3,
+          "facility_evac_capable": 70,
+          "ppid_penampungan_count": 2,
+          "flood_events_2021_2025": 1
+        },
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    },
+    "CIPINANG BESAR SELATAN": {
+      "risk": {
+        "score": 0.379,
+        "category": "MEDIUM",
+        "version": "fri_v1"
+      },
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "contributors": {
+        "hazard": 0.1748,
+        "exposure": 0.0106,
+        "vulnerability": 0.1538,
+        "capacity": 0.0398
+      },
+      "top_contributors": [
+        "hazard",
+        "vulnerability",
+        "capacity"
+      ],
+      "evidence_ids": [
+        "EVD-PPID-012"
+      ],
+      "evidence_count": 1,
+      "input_freshness": [
+        {
+          "status": "Unknown",
+          "reason": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui",
+          "dataset": "InaRISK bahaya/kerentanan (BNPB)",
+          "note": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui"
+        },
+        {
+          "status": "Fresh",
+          "data_age_months": 0,
+          "last_updated": "2026-09-03",
+          "dataset": "OSM buildings/facilities/roads/water",
+          "note": "ekstraksi Overpass hari ini; OSM berubah terus (crowdsourced)"
+        },
+        {
+          "status": "Stale",
+          "data_age_months": 63.1,
+          "last_updated": "2021-06-01",
+          "dataset": "Copernicus GLO-30 DEM",
+          "note": "mosaik GLO-30 (avg ~2011-2021); tangentDEM rilis 2021"
+        }
+      ],
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "priority": {
+        "kelurahan": "CIPINANG BESAR SELATAN",
+        "priority_score": 0.2501,
+        "components": {
+          "risk": 0.379,
+          "exposure": 0.0424,
+          "evidence_strength": 0.2
+        },
+        "rationale": "Risiko MEDIUM (fri_v1 0.38); 1 titik rawan resmi (PPID); capacity gap: cannot be reliably estimated",
+        "priority_rank": 6
+      },
+      "narrative_warga": {
+        "narrative": "Cipinang Besar Selatan memiliki risiko banjir MEDIUM (fri_v1). Risiko terutama dipengaruhi oleh tingkat bahaya banjir, kerentanan sosial, keterbatasan kapasitas penanganan. Data menunjukkan 1 titik rawan resmi.",
+        "actions": [
+          "Cek shelter/penampungan terdekat",
+          "Siapkan dokumen penting dalam wadah kedap air",
+          "Kenali rute evakuasi",
+          "Laporkan genangan di aplikasi (Phase 5)"
+        ],
+        "data_note": "Narasi dihasilkan dari structured data (fri_v1 + evidence); tanpa fakta di luar dataset (PRD §37)"
+      },
+      "analis_decomposition": {
+        "sub_scores": {
+          "hazard": 0.4994,
+          "exposure": 0.0424,
+          "vulnerability": 0.6153,
+          "capacity_inverted": 0.2653
+        },
+        "raw_indicators": {
+          "hazard_mean": 0.36470067501068115,
+          "msvi_proxy": 0.5511595606803894,
+          "building_count": 4747,
+          "building_density_per_km2": 2793.6,
+          "facility_evac_capable": 57,
+          "ppid_penampungan_count": 2,
+          "flood_events_2021_2025": 0
+        },
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    },
+    "CIPINANG BESAR UTARA": {
+      "risk": {
+        "score": 0.6049,
+        "category": "HIGH",
+        "version": "fri_v1"
+      },
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "contributors": {
+        "hazard": 0.1647,
+        "exposure": 0.1449,
+        "vulnerability": 0.1728,
+        "capacity": 0.1224
+      },
+      "top_contributors": [
+        "vulnerability",
+        "hazard",
+        "exposure"
+      ],
+      "evidence_ids": [
+        "EVD-PPID-013",
+        "EVD-PPID-014"
+      ],
+      "evidence_count": 2,
+      "input_freshness": [
+        {
+          "status": "Unknown",
+          "reason": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui",
+          "dataset": "InaRISK bahaya/kerentanan (BNPB)",
+          "note": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui"
+        },
+        {
+          "status": "Fresh",
+          "data_age_months": 0,
+          "last_updated": "2026-09-03",
+          "dataset": "OSM buildings/facilities/roads/water",
+          "note": "ekstraksi Overpass hari ini; OSM berubah terus (crowdsourced)"
+        },
+        {
+          "status": "Stale",
+          "data_age_months": 63.1,
+          "last_updated": "2021-06-01",
+          "dataset": "Copernicus GLO-30 DEM",
+          "note": "mosaik GLO-30 (avg ~2011-2021); tangentDEM rilis 2021"
+        }
+      ],
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "priority": {
+        "kelurahan": "CIPINANG BESAR UTARA",
+        "priority_score": 0.5473,
+        "components": {
+          "risk": 0.6049,
+          "exposure": 0.5794,
+          "evidence_strength": 0.4
+        },
+        "rationale": "Risiko HIGH (fri_v1 0.60); 2 titik rawan resmi (PPID); capacity gap: cannot be reliably estimated",
+        "priority_rank": 5
+      },
+      "narrative_warga": {
+        "narrative": "Cipinang Besar Utara memiliki risiko banjir HIGH (fri_v1). Risiko terutama dipengaruhi oleh kerentanan sosial, tingkat bahaya banjir, kepadatan bangunan. Data menunjukkan 2 titik rawan resmi.",
+        "actions": [
+          "Cek shelter/penampungan terdekat",
+          "Siapkan dokumen penting dalam wadah kedap air",
+          "Kenali rute evakuasi",
+          "Laporkan genangan di aplikasi (Phase 5)"
+        ],
+        "data_note": "Narasi dihasilkan dari structured data (fri_v1 + evidence); tanpa fakta di luar dataset (PRD §37)"
+      },
+      "analis_decomposition": {
+        "sub_scores": {
+          "hazard": 0.4707,
+          "exposure": 0.5794,
+          "vulnerability": 0.6914,
+          "capacity_inverted": 0.8163
+        },
+        "raw_indicators": {
+          "hazard_mean": 0.34494301676750183,
+          "msvi_proxy": 0.6134699583053589,
+          "building_count": 4548,
+          "building_density_per_km2": 4017.6,
+          "facility_evac_capable": 32,
+          "ppid_penampungan_count": 1,
+          "flood_events_2021_2025": 0
+        },
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    }
+  }
+}

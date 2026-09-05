@@ -1,0 +1,26 @@
+{
+  "dataset_id": "satudata_data-kejadian-bencana-banjir",
+  "title": "Data Kejadian Bencana Banjir",
+  "source": "Satu Data Jakarta (satudata.jakarta.go.id)",
+  "source_url": "https://satudata.jakarta.go.id/open-data/detail?kategori=dataset&page_url=data-kejadian-bencana-banjir",
+  "api": "https://satudata.jakarta.go.id/backend/api/v2/satudata/detail",
+  "rows": 392,
+  "total_reported": 392,
+  "periode": [
+    {
+      "periode_data": "202603"
+    },
+    {
+      "periode_data": "202509"
+    },
+    {
+      "periode_data": "202506"
+    },
+    {
+      "periode_data": "202503"
+    }
+  ],
+  "acquired_at": "2026-09-02T20:31:07.368779+00:00",
+  "status": "RAW",
+  "processing_script": "tools/download_satudata.py"
+}

@@ -1,0 +1,30 @@
+{
+  "dataset_id": "tma_v1_jatinegara",
+  "name": "TMA Ciliwung-Jatinegara v1 (DSDA)",
+  "version": "1.0",
+  "status": "PUBLISHED",
+  "source": "DSDA DKI Jakarta (dump harian lokal data/data-tma)",
+  "acquired_at": "2026-09-04T10:06:05.630654+00:00",
+  "processed_at": "2026-09-04T10:06:05.630654+00:00",
+  "processing": {
+    "environment": "Python (json aggregation + peak lag analysis, deterministic)",
+    "processing_script": "tools/build_tma.py",
+    "processing_version": "tma-v1"
+  },
+  "outputs": {
+    "file": "data/processed/tma_v1.json",
+    "crs": null
+  },
+  "inputs": [
+    "data/data-tma/*.json (2011 files)",
+    "data/raw/flood_history.json"
+  ],
+  "method": {
+    "name": "tma-v1",
+    "description": "station filtering (Ciliwung corridor only), per-event TMA validation vs flood history, empirical peak-to-peak lag Katulampa->Manggarai; Jatinegara estimate = per-km extrapolation (PROXY, low confidence)"
+  },
+  "record_count": 148065,
+  "quality_level": "Q2",
+  "validator": "tools/check_governance.py (automated) + data-steward review",
+  "checksum": "sha256:3e467dff96dbd1918e70fabcb99a7c33119323f29916e872c39ff388e5142a78"
+}

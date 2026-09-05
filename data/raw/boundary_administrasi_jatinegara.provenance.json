@@ -1,0 +1,48 @@
+{
+  "dataset_id": "boundary_administrasi_jatinegara_raw",
+  "layer": "administrative_boundaries",
+  "source": "DPMPTSP Provinsi DKI Jakarta",
+  "source_urls": {
+    "kecamatan_service": "https://gis-dpmptsp.jakarta.go.id/arcgis/rest/services/Hosted/Batas_Administrasi_Kecamatan_Jakarta/FeatureServer/0",
+    "kelurahan_service": "https://gis-dpmptsp.jakarta.go.id/arcgis/rest/services/Hosted/Batas_Administrasi_Kelurahan_DKI_Jakarta/FeatureServer/85"
+  },
+  "request_urls": {
+    "kecamatan": "https://gis-dpmptsp.jakarta.go.id/arcgis/rest/services/Hosted/Batas_Administrasi_Kecamatan_Jakarta/FeatureServer/0/query?outFields=%2A&returnGeometry=true&outSR=4326&f=geojson&resultRecordCount=2000&where=wadmkc+%3D+%27JATINEGARA%27",
+    "kelurahan": "https://gis-dpmptsp.jakarta.go.id/arcgis/rest/services/Hosted/Batas_Administrasi_Kelurahan_DKI_Jakarta/FeatureServer/85/query?outFields=%2A&returnGeometry=true&outSR=4326&f=geojson&resultRecordCount=2000&where=wadmkc+%3D+%27JATINEGARA%27"
+  },
+  "acquired_at": "2026-09-02T19:36:12.337674+00:00",
+  "crs": "EPSG:4326",
+  "format": "GeoJSON FeatureCollection",
+  "coverage": {
+    "kecamatan": "JATINEGARA",
+    "kelurahan_count": 8,
+    "kelurahan": [
+      "BALI MESTER",
+      "BIDARA CINA",
+      "CIPINANG BESAR SELATAN",
+      "CIPINANG BESAR UTARA",
+      "CIPINANG CEMPEDAK",
+      "CIPINANG MUARA",
+      "KAMPUNG MELAYU",
+      "RAWA BUNGA"
+    ]
+  },
+  "boundary_status": "INDICATIVE",
+  "boundary_note": "Service description states that city, district, and village boundaries are indicative, sourced from 2019 boundary affirmation and 2021 kelurahan coordination.",
+  "outputs": {
+    "kecamatan": {
+      "file": "boundary_kecamatan_jatinegara.geojson",
+      "feature_count": 1,
+      "size_bytes": 220979
+    },
+    "kelurahan": {
+      "file": "boundary_kelurahan_jatinegara.geojson",
+      "feature_count": 8,
+      "size_bytes": 562540
+    }
+  },
+  "processing_version": "raw-filtered-epsg4326",
+  "processing_script": "tools/download_boundaries.py",
+  "status": "RAW",
+  "elapsed_seconds": 1.27
+}

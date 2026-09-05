@@ -1,0 +1,77 @@
+{
+  "dataset_id": "inarisk_kerentanan_banjir_jatinegara_class_v1",
+  "name": "InaRISK Indeks Kerentanan Banjir — Jatinegara (4 kelas)",
+  "version": "1.0",
+  "source": {
+    "provider": "BNPB InaRISK (ArcGIS ImageServer)",
+    "layer": "layer_kerentanan_banjir",
+    "source_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/layer_kerentanan_banjir/ImageServer",
+    "raw_dataset": "data/raw/layer_kerentanan_banjir_jatinegara.tif",
+    "raw_provenance": "data/raw/layer_kerentanan_banjir_jatinegara.provenance.json"
+  },
+  "mask": {
+    "dataset": "Batas administratif Kecamatan Jatinegara",
+    "file": "data/raw/boundary_kecamatan_jatinegara.geojson",
+    "crs": "EPSG:4326"
+  },
+  "processing": {
+    "environment": "QGIS via QGIS MCP (project workspace: qgis/jatinegara_etl.qgz)",
+    "steps": [
+      {
+        "step": 1,
+        "algorithm": "gdal:cliprasterbymasklayer",
+        "input": "data/raw/layer_kerentanan_banjir_jatinegara.tif",
+        "mask": "data/raw/boundary_kecamatan_jatinegara.geojson",
+        "output": "data/processed/kerentanan_clip.tif",
+        "params": {"KEEP_RESOLUTION": true, "CROP_TO_CUTLINE": true, "NODATA": -9999}
+      },
+      {
+        "step": 2,
+        "algorithm": "native:reclassifybytable",
+        "input": "data/processed/kerentanan_clip.tif",
+        "output": "data/processed/kerentanan_class.tif",
+        "params": {
+          "table": [[0, 0.25, 1], [0.25, 0.5, 2], [0.5, 0.75, 3], [0.75, 1000, 4]],
+          "range_boundaries": "min <= value < max",
+          "class_labels": {"1": "Rendah", "2": "Sedang", "3": "Tinggi", "4": "Sangat Tinggi"},
+          "methodology_note": "Kuartil indeks kerentanan (rentang 0-1) per metadata layanan BNPB. Threshold dapat direvisi dengan metodologi terdokumentasi; perubahan wajib menaikkan versi dataset."
+        }
+      },
+      {
+        "step": 3,
+        "algorithm": "gdal:polygonize",
+        "input": "data/processed/kerentanan_class.tif",
+        "output": "data/processed/kerentanan_poly.gpkg",
+        "params": {"FIELD": "class", "EIGHT_CONNECTEDNESS": true}
+      },
+      {
+        "step": 4,
+        "algorithm": "native:fixgeometries",
+        "input": "data/processed/kerentanan_poly.gpkg",
+        "output": "data/processed/kerentanan_poly_fixed.gpkg",
+        "note": "Polygonize menghasilkan geometri invalid; diperbaiki sebelum dissolve"
+      },
+      {
+        "step": 5,
+        "algorithm": "native:dissolve",
+        "input": "data/processed/kerentanan_poly_fixed.gpkg",
+        "output": "data/processed/kerentanan_class_dissolved.gpkg",
+        "params": {"FIELD": "class", "SEPARATE_DISJOINT": true}
+      }
+    ]
+  },
+  "outputs": {
+    "class_raster": "data/processed/kerentanan_class.tif",
+    "dissolved_vector": "data/processed/kerentanan_class_dissolved.gpkg",
+    "crs": "EPSG:3395",
+    "pixel_size_m": 100.3,
+    "pixel_type": "Float32",
+    "class_distribution_px": {"1": 245, "2": 54, "3": 29, "4": 711}
+  },
+  "quality_level": "Q2",
+  "confidence": "High",
+  "status": "PUBLISHED",
+  "processing_script": "QGIS MCP operations (logged above); validasi: tools/validate_processed.py",
+  "processed_at": "2026-09-03",
+  "validator": "tools/validate_processed.py (crs, kelas, geometri GPKG)"
+}

@@ -1,0 +1,7 @@
+{
+  "dataset_id": "bpbd_gis_open_data",
+  "source": "Portal Open Data BPBD DKI Jakarta (https://gis-bpbd.jakarta.go.id/open-data-bpbd/)",
+  "acquired_at": "2026-09-02T20:45:35.657698+00:00",
+  "status": "RAW",
+  "processing_script": "tools/download_bpbd.py"
+}

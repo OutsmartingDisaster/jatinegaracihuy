@@ -1,0 +1,54 @@
+{
+  "graph_version": "1.0",
+  "description": "Dependency declaration for derived datasets (etl §70-71). If an input changes, downstream outputs can be identified for reprocessing. Edge: dependencies[input] -> [outputs].",
+  "dependencies": {
+    "ds_inarisk_layer_bahaya_banjir_jatinegara_raw": [
+      "ds_inarisk_bahaya_banjir_jatinegara_class"
+    ],
+    "ds_inarisk_layer_kerentanan_banjir_jatinegara_raw": [
+      "ds_inarisk_kerentanan_banjir_jatinegara_class"
+    ],
+    "ds_boundary_administrasi_jatinegara_raw": [
+      "ds_inarisk_bahaya_banjir_jatinegara_class",
+      "ds_inarisk_kerentanan_banjir_jatinegara_class",
+      "ds_osm_buildings_jatinegara_clip",
+      "ds_osm_facilities_jatinegara_clip",
+      "ds_osm_roads_jatinegara_clip",
+      "ds_osm_water_jatinegara_clip"
+    ],
+    "ds_osm_buildings_jatinegara_raw": ["ds_osm_buildings_jatinegara_clip"],
+    "ds_osm_facilities_jatinegara_raw": ["ds_osm_facilities_jatinegara_clip"],
+    "ds_osm_roads_jatinegara_raw": ["ds_osm_roads_jatinegara_clip"],
+    "ds_osm_water_jatinegara_raw": ["ds_osm_water_jatinegara_clip"],
+    "ds_inarisk_bahaya_banjir_jatinegara_class": [
+      "ds_fri_v1_kelurahan_jatinegara",
+      "ds_risk_intel_v1_kelurahan"
+    ],
+    "ds_inarisk_kerentanan_banjir_jatinegara_class": [
+      "ds_fri_v1_kelurahan_jatinegara",
+      "ds_risk_intel_v1_kelurahan"
+    ],
+    "ds_osm_buildings_jatinegara_clip": ["ds_fri_v1_kelurahan_jatinegara"],
+    "ds_osm_facilities_jatinegara_clip": [
+      "ds_fri_v1_kelurahan_jatinegara",
+      "ds_priority_v1_kelurahan",
+      "ds_risk_intel_v1_kelurahan"
+    ],
+    "ds_flood_history": [
+      "ds_fri_v1_kelurahan_jatinegara",
+      "ds_priority_v1_kelurahan",
+      "ds_risk_intel_v1_kelurahan",
+      "ds_evidence",
+      "ds_temporal_synthesis_v1_kelurahan"
+    ],
+    "ds_fri_v1_kelurahan_jatinegara": [
+      "ds_priority_v1_kelurahan",
+      "ds_risk_intel_v1_kelurahan"
+    ],
+    "ds_priority_v1_kelurahan": ["ds_risk_intel_v1_kelurahan"]
+  },
+  "methodology_dependencies": {
+    "meth_fri_v1": ["ds_fri_v1_kelurahan_jatinegara"],
+    "meth_priority_v1": ["ds_priority_v1_kelurahan"]
+  }
+}

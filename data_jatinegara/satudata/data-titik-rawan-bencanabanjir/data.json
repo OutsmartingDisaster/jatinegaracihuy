@@ -1,0 +1,1388 @@
+[
+ {
+  "rn": "1",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Mampang Prapatan",
+  "kelurahan": "Bangka",
+  "latitude": "-6214879",
+  "longitude": "106819983"
+ },
+ {
+  "rn": "2",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Bendungan Hilir",
+  "latitude": "-6201581",
+  "longitude": "106808297"
+ },
+ {
+  "rn": "3",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Bendungan Hilir",
+  "latitude": "-6208086",
+  "longitude": "106808687"
+ },
+ {
+  "rn": "4",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Bendungan Hilir",
+  "latitude": "-6207986",
+  "longitude": "106808755"
+ },
+ {
+  "rn": "5",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Bendungan Hilir",
+  "latitude": "-6200481",
+  "longitude": "106810587"
+ },
+ {
+  "rn": "6",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Bendungan Hilir",
+  "latitude": "-6199486",
+  "longitude": "106813522"
+ },
+ {
+  "rn": "7",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Bendungan Hilir",
+  "latitude": "-6214857",
+  "longitude": "106815124"
+ },
+ {
+  "rn": "8",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Jatinegara",
+  "kelurahan": "Bidara Cina",
+  "latitude": "-6240897",
+  "longitude": "106866261"
+ },
+ {
+  "rn": "9",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Senen",
+  "kelurahan": "Bungur",
+  "latitude": "-6168909",
+  "longitude": "106846348"
+ },
+ {
+  "rn": "10",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Senen",
+  "kelurahan": "Bungur",
+  "latitude": "-6168901",
+  "longitude": "106846352"
+ },
+ {
+  "rn": "11",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Cakung",
+  "kelurahan": "Cakung Barat",
+  "latitude": "-6174049",
+  "longitude": "106939457"
+ },
+ {
+  "rn": "12",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Cempaka Baru",
+  "latitude": "-6170335",
+  "longitude": "106860745"
+ },
+ {
+  "rn": "13",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Cempaka Baru",
+  "latitude": "-6172293",
+  "longitude": "106860909"
+ },
+ {
+  "rn": "14",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Cempaka Putih",
+  "kelurahan": "Cempaka Putih Barat",
+  "latitude": "-6183807",
+  "longitude": "106867573"
+ },
+ {
+  "rn": "15",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Cempaka Putih",
+  "kelurahan": "Cempaka Putih Timur",
+  "latitude": "-6173712",
+  "longitude": "106870379"
+ },
+ {
+  "rn": "16",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Ciracas",
+  "kelurahan": "Cibubur",
+  "latitude": "-6350042",
+  "longitude": "106876385"
+ },
+ {
+  "rn": "17",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Jagakarsa",
+  "kelurahan": "Ciganjur",
+  "latitude": "-6324882",
+  "longitude": "106804457"
+ },
+ {
+  "rn": "18",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Pancoran",
+  "kelurahan": "Cikoko",
+  "latitude": "-6245382",
+  "longitude": "106852330"
+ },
+ {
+  "rn": "19",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Cilandak",
+  "kelurahan": "Cilandak Barat",
+  "latitude": "-6282455",
+  "longitude": "106791809"
+ },
+ {
+  "rn": "20",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Cilandak",
+  "kelurahan": "Cilandak Barat",
+  "latitude": "-6285200",
+  "longitude": "106816500"
+ },
+ {
+  "rn": "21",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Cipayung",
+  "kelurahan": "Cilangkap",
+  "latitude": "-6333835",
+  "longitude": "106903111"
+ },
+ {
+  "rn": "22",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Kramatjati",
+  "kelurahan": "Cililitan",
+  "latitude": "-6259398",
+  "longitude": "106865302"
+ },
+ {
+  "rn": "23",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Cilandak",
+  "kelurahan": "Cipete Selatan",
+  "latitude": "-6274007",
+  "longitude": "106798651"
+ },
+ {
+  "rn": "24",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Kebayoran Baru",
+  "kelurahan": "Cipete Utara",
+  "latitude": "-6266900",
+  "longitude": "106797200"
+ },
+ {
+  "rn": "25",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Pulogadung",
+  "kelurahan": "Cipinang",
+  "latitude": "-6210873",
+  "longitude": "106898512"
+ },
+ {
+  "rn": "26",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Jatinegara",
+  "kelurahan": "Cipinang Besar Selatan",
+  "latitude": "-6235883",
+  "longitude": "106878484"
+ },
+ {
+  "rn": "27",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Makasar",
+  "kelurahan": "Cipinang Melayu",
+  "latitude": "-6252134",
+  "longitude": "106872832"
+ },
+ {
+  "rn": "28",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Jatinegara",
+  "kelurahan": "Cipinang Muara",
+  "latitude": "-6237389",
+  "longitude": "106891973"
+ },
+ {
+  "rn": "29",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Ciracas",
+  "kelurahan": "Ciracas",
+  "latitude": "-6334218",
+  "longitude": "106875612"
+ },
+ {
+  "rn": "30",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Duren Sawit",
+  "kelurahan": "Duren Sawit",
+  "latitude": "-6229540",
+  "longitude": "106909939"
+ },
+ {
+  "rn": "31",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kebon Jeruk",
+  "kelurahan": "Duri Kepa",
+  "latitude": "-6188200",
+  "longitude": "106773600"
+ },
+ {
+  "rn": "32",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kebon Jeruk",
+  "kelurahan": "Duri Kepa",
+  "latitude": "-6190500",
+  "longitude": "106777800"
+ },
+ {
+  "rn": "33",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Johar Baru",
+  "kelurahan": "Galur",
+  "latitude": "-6181500",
+  "longitude": "106865000"
+ },
+ {
+  "rn": "34",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Johar Baru",
+  "kelurahan": "Galur",
+  "latitude": "-6180800",
+  "longitude": "106865300"
+ },
+ {
+  "rn": "35",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Cilandak",
+  "kelurahan": "Gandaria Selatan",
+  "latitude": "-6270603",
+  "longitude": "106794008"
+ },
+ {
+  "rn": "36",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Cilandak",
+  "kelurahan": "Gandaria Selatan",
+  "latitude": "-6270574",
+  "longitude": "106794031"
+ },
+ {
+  "rn": "37",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Pasar Rebo",
+  "kelurahan": "Gedong",
+  "latitude": "-6330614",
+  "longitude": "106900151"
+ },
+ {
+  "rn": "38",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Gelora",
+  "latitude": "-6207666",
+  "longitude": "106796311"
+ },
+ {
+  "rn": "39",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Gelora",
+  "latitude": "-6213994",
+  "longitude": "106798204"
+ },
+ {
+  "rn": "40",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Taman Sari",
+  "kelurahan": "Glodok",
+  "latitude": "-6146278",
+  "longitude": "106812754"
+ },
+ {
+  "rn": "41",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Kebayoran Baru",
+  "kelurahan": "Gunung",
+  "latitude": "-6234800",
+  "longitude": "106788432"
+ },
+ {
+  "rn": "42",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Gunung Sahari Selatan",
+  "latitude": "-6162319",
+  "longitude": "106842265"
+ },
+ {
+  "rn": "43",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Gunung Sahari Selatan",
+  "latitude": "-6157092",
+  "longitude": "106846986"
+ },
+ {
+  "rn": "44",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Sawah Besar",
+  "kelurahan": "Gunung Sahari Utara",
+  "latitude": "-6152995",
+  "longitude": "106838638"
+ },
+ {
+  "rn": "45",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Sawah Besar",
+  "kelurahan": "Gunung Sahari Utara",
+  "latitude": "-6153002",
+  "longitude": "106838645"
+ },
+ {
+  "rn": "46",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Harapan Mulya",
+  "latitude": "-6167877",
+  "longitude": "106857622"
+ },
+ {
+  "rn": "47",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Jagakarsa",
+  "kelurahan": "Jagakarsa",
+  "latitude": "-6332747",
+  "longitude": "106817370"
+ },
+ {
+  "rn": "48",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Pasar Minggu",
+  "kelurahan": "Jati Padang",
+  "latitude": "-6285610",
+  "longitude": "106834860"
+ },
+ {
+  "rn": "49",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kembangan",
+  "kelurahan": "Joglo",
+  "latitude": "-6220500",
+  "longitude": "106758900"
+ },
+ {
+  "rn": "50",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Pancoran",
+  "kelurahan": "Kalibata",
+  "latitude": "-6260452",
+  "longitude": "106846903"
+ },
+ {
+  "rn": "51",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kalideres",
+  "kelurahan": "Kalideres",
+  "latitude": "-6149429",
+  "longitude": "106711682"
+ },
+ {
+  "rn": "52",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Utara",
+  "kecamatan": "Penjaringan",
+  "kelurahan": "Kamal Muara",
+  "latitude": "-6098122",
+  "longitude": "106714183"
+ },
+ {
+  "rn": "53",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Utara",
+  "kecamatan": "Penjaringan",
+  "kelurahan": "Kamal Muara",
+  "latitude": "-6098124",
+  "longitude": "106714198"
+ },
+ {
+  "rn": "54",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Kampung Bali",
+  "latitude": "-6186117",
+  "longitude": "106811091"
+ },
+ {
+  "rn": "55",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Kampung Bali",
+  "latitude": "-6184936",
+  "longitude": "106812860"
+ },
+ {
+  "rn": "56",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Jatinegara",
+  "kelurahan": "Kampung Melayu",
+  "latitude": "-6216456",
+  "longitude": "106857421"
+ },
+ {
+  "rn": "57",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Johar Baru",
+  "kelurahan": "Kampung Rawa",
+  "latitude": "-6185000",
+  "longitude": "106860000"
+ },
+ {
+  "rn": "58",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Cengkareng",
+  "kelurahan": "Kapuk",
+  "latitude": "-6131298",
+  "longitude": "106746082"
+ },
+ {
+  "rn": "59",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Sawah Besar",
+  "kelurahan": "Karang Anyar",
+  "latitude": "-6155767",
+  "longitude": "106828933"
+ },
+ {
+  "rn": "60",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Karet Tengsin",
+  "latitude": "-6205626",
+  "longitude": "106811009"
+ },
+ {
+  "rn": "61",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Karet Tengsin",
+  "latitude": "-6205642",
+  "longitude": "106811248"
+ },
+ {
+  "rn": "62",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Karet Tengsin",
+  "latitude": "-6212001",
+  "longitude": "106814925"
+ },
+ {
+  "rn": "63",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Sawah Besar",
+  "kelurahan": "Kartini",
+  "latitude": "-6155178",
+  "longitude": "106831415"
+ },
+ {
+  "rn": "64",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Sawah Besar",
+  "kelurahan": "Kartini",
+  "latitude": "-6153339",
+  "longitude": "106831681"
+ },
+ {
+  "rn": "65",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Taman Sari",
+  "kelurahan": "Keagungan",
+  "latitude": "-6149031",
+  "longitude": "106813084"
+ },
+ {
+  "rn": "66",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kebon Jeruk",
+  "kelurahan": "Kebon Jeruk",
+  "latitude": "-6194400",
+  "longitude": "106784400"
+ },
+ {
+  "rn": "67",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kebon Jeruk",
+  "kelurahan": "Kebon Jeruk",
+  "latitude": "-6192000",
+  "longitude": "106785000"
+ },
+ {
+  "rn": "68",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kebon Jeruk",
+  "kelurahan": "Kebon Jeruk",
+  "latitude": "-6188000",
+  "longitude": "106787500"
+ },
+ {
+  "rn": "69",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Kebon Kosong",
+  "latitude": "-6159754",
+  "longitude": "106855071"
+ },
+ {
+  "rn": "70",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Kebon Kosong",
+  "latitude": "-6153246",
+  "longitude": "106858076"
+ },
+ {
+  "rn": "71",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Matraman",
+  "kelurahan": "Kebon Manggis",
+  "latitude": "-6205578",
+  "longitude": "106855678"
+ },
+ {
+  "rn": "72",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Kebon Melati",
+  "latitude": "-6191972",
+  "longitude": "106811037"
+ },
+ {
+  "rn": "73",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Kebon Melati",
+  "latitude": "-6197517",
+  "longitude": "106821078"
+ },
+ {
+  "rn": "74",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Menteng",
+  "kelurahan": "Kebon Sirih",
+  "latitude": "-6184198",
+  "longitude": "106829183"
+ },
+ {
+  "rn": "75",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kebon Jeruk",
+  "kelurahan": "Kedoya Selatan",
+  "latitude": "-6183631",
+  "longitude": "106756812"
+ },
+ {
+  "rn": "76",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kebon Jeruk",
+  "kelurahan": "Kedoya Utara",
+  "latitude": "-6165857",
+  "longitude": "106762902"
+ },
+ {
+  "rn": "77",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kebon Jeruk",
+  "kelurahan": "Kelapa Dua",
+  "latitude": "-6201500",
+  "longitude": "106780800"
+ },
+ {
+  "rn": "78",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kebon Jeruk",
+  "kelurahan": "Kelapa Dua",
+  "latitude": "-6200200",
+  "longitude": "106782100"
+ },
+ {
+  "rn": "79",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Ciracas",
+  "kelurahan": "Kelapa Dua Wetan",
+  "latitude": "-6343959",
+  "longitude": "106884645"
+ },
+ {
+  "rn": "80",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Kemayoran",
+  "latitude": "-6163971",
+  "longitude": "106847811"
+ },
+ {
+  "rn": "81",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kembangan",
+  "kelurahan": "Kembangan Selatan",
+  "latitude": "-6189305",
+  "longitude": "106720422"
+ },
+ {
+  "rn": "82",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kembangan",
+  "kelurahan": "Kembangan Selatan",
+  "latitude": "-6185138",
+  "longitude": "106729812"
+ },
+ {
+  "rn": "83",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kembangan",
+  "kelurahan": "Kembangan Selatan",
+  "latitude": "-6183246",
+  "longitude": "106751758"
+ },
+ {
+  "rn": "84",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kembangan",
+  "kelurahan": "Kembangan Selatan",
+  "latitude": "-6184890",
+  "longitude": "106753945"
+ },
+ {
+  "rn": "85",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Senen",
+  "kelurahan": "Kenari",
+  "latitude": "-6199700",
+  "longitude": "106849600"
+ },
+ {
+  "rn": "86",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Senen",
+  "kelurahan": "Kenari",
+  "latitude": "-6199000",
+  "longitude": "106850000"
+ },
+ {
+  "rn": "87",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Duren Sawit",
+  "kelurahan": "Klender",
+  "latitude": "-6217263",
+  "longitude": "106903684"
+ },
+ {
+  "rn": "88",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Duren Sawit",
+  "kelurahan": "Klender",
+  "latitude": "-6219344",
+  "longitude": "106906959"
+ },
+ {
+  "rn": "89",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Duren Sawit",
+  "kelurahan": "Klender",
+  "latitude": "-6219319",
+  "longitude": "106912853"
+ },
+ {
+  "rn": "90",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Senen",
+  "kelurahan": "Kramat",
+  "latitude": "-6185179",
+  "longitude": "106847774"
+ },
+ {
+  "rn": "91",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Kramatjati",
+  "kelurahan": "Kramatjati",
+  "latitude": "-6285297",
+  "longitude": "106873239"
+ },
+ {
+  "rn": "92",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Taman Sari",
+  "kelurahan": "Krukut",
+  "latitude": "-6155482",
+  "longitude": "106816473"
+ },
+ {
+  "rn": "93",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Taman Sari",
+  "kelurahan": "Krukut",
+  "latitude": "-6155495",
+  "longitude": "106816498"
+ },
+ {
+  "rn": "94",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Mampang Prapatan",
+  "kelurahan": "Kuningan Barat",
+  "latitude": "-6235233",
+  "longitude": "106818793"
+ },
+ {
+  "rn": "95",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Cilandak",
+  "kelurahan": "Lebak Bulus",
+  "latitude": "-6304579",
+  "longitude": "106784439"
+ },
+ {
+  "rn": "96",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Cilandak",
+  "kelurahan": "Lebak Bulus",
+  "latitude": "-6304567",
+  "longitude": "106784483"
+ },
+ {
+  "rn": "97",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Utara",
+  "kecamatan": "Pademangan",
+  "kelurahan": "Pademangan Timur",
+  "latitude": "-6137315",
+  "longitude": "106840332"
+ },
+ {
+  "rn": "98",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Utara",
+  "kecamatan": "Pademangan",
+  "kelurahan": "Pademangan Timur",
+  "latitude": "-6128940",
+  "longitude": "106845678"
+ },
+ {
+  "rn": "99",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Sawah Besar",
+  "kelurahan": "Pasar Baru",
+  "latitude": "-6161633",
+  "longitude": "106834092"
+ },
+ {
+  "rn": "100",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Senen",
+  "kelurahan": "Paseban",
+  "latitude": "-6191782",
+  "longitude": "106853845"
+ },
+ {
+  "rn": "101",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kalideres",
+  "kelurahan": "Pegadungan",
+  "latitude": "-6124765",
+  "longitude": "106697982"
+ },
+ {
+  "rn": "102",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Utara",
+  "kecamatan": "Kelapa Gading",
+  "kelurahan": "Pegangsaan Dua",
+  "latitude": "-6148132",
+  "longitude": "106916171"
+ },
+ {
+  "rn": "103",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Utara",
+  "kecamatan": "Kelapa Gading",
+  "kelurahan": "Pegangsaan Dua",
+  "latitude": "-6149947",
+  "longitude": "106917667"
+ },
+ {
+  "rn": "104",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Pasar Rebo",
+  "kelurahan": "Pekayon",
+  "latitude": "-6347948",
+  "longitude": "106875841"
+ },
+ {
+  "rn": "105",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Mampang Prapatan",
+  "kelurahan": "Pela Mampang",
+  "latitude": "-6185596",
+  "longitude": "106815066"
+ },
+ {
+  "rn": "106",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Mampang Prapatan",
+  "kelurahan": "Pela Mampang",
+  "latitude": "-6243300",
+  "longitude": "106823300"
+ },
+ {
+  "rn": "107",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Pancoran",
+  "kelurahan": "Pengadegan",
+  "latitude": "-6251315",
+  "longitude": "106861639"
+ },
+ {
+  "rn": "108",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Utara",
+  "kecamatan": "Penjaringan",
+  "kelurahan": "Penjaringan",
+  "latitude": "-6132554",
+  "longitude": "106781685"
+ },
+ {
+  "rn": "109",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Utara",
+  "kecamatan": "Penjaringan",
+  "kelurahan": "Penjaringan",
+  "latitude": "-6222643",
+  "longitude": "106833510"
+ },
+ {
+  "rn": "110",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Petamburan",
+  "latitude": "-6193107",
+  "longitude": "106807957"
+ },
+ {
+  "rn": "111",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Tanah Abang",
+  "kelurahan": "Petamburan",
+  "latitude": "-6193109",
+  "longitude": "106807962"
+ },
+ {
+  "rn": "112",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Kebayoran Baru",
+  "kelurahan": "Petogogan",
+  "latitude": "-6244265",
+  "longitude": "106813506"
+ },
+ {
+  "rn": "113",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Gambir",
+  "kelurahan": "Petojo Utara",
+  "latitude": "-6170490",
+  "longitude": "106813488"
+ },
+ {
+  "rn": "114",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Gambir",
+  "kelurahan": "Petojo Utara",
+  "latitude": "-6170492",
+  "longitude": "106819228"
+ },
+ {
+  "rn": "115",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Gambir",
+  "kelurahan": "Petojo Utara",
+  "latitude": "-6170485",
+  "longitude": "106819291"
+ },
+ {
+  "rn": "116",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Utara",
+  "kecamatan": "Penjaringan",
+  "kelurahan": "Pluit",
+  "latitude": "-6108098",
+  "longitude": "106769752"
+ },
+ {
+  "rn": "117",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Duren Sawit",
+  "kelurahan": "Pondok Kelapa",
+  "latitude": "-6240000",
+  "longitude": "106930000"
+ },
+ {
+  "rn": "118",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Duren Sawit",
+  "kelurahan": "Pondok Kopi",
+  "latitude": "-6232401",
+  "longitude": "106942957"
+ },
+ {
+  "rn": "119",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Cilandak",
+  "kelurahan": "Pondok Labu",
+  "latitude": "-6306464",
+  "longitude": "106798521"
+ },
+ {
+  "rn": "120",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Ciracas",
+  "kelurahan": "Rambutan",
+  "latitude": "-6301845",
+  "longitude": "106872099"
+ },
+ {
+  "rn": "121",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Cakung",
+  "kelurahan": "Rawa Terate",
+  "latitude": "-6185812",
+  "longitude": "106922767"
+ },
+ {
+  "rn": "122",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Cempaka Putih",
+  "kelurahan": "Rawasari",
+  "latitude": "-6193721",
+  "longitude": "106857843"
+ },
+ {
+  "rn": "123",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Cempaka Putih",
+  "kelurahan": "Rawasari",
+  "latitude": "-6188808",
+  "longitude": "106870325"
+ },
+ {
+  "rn": "124",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Cempaka Putih",
+  "kelurahan": "Rawasari",
+  "latitude": "-6187052",
+  "longitude": "106874630"
+ },
+ {
+  "rn": "125",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kalideres",
+  "kelurahan": "Semanan",
+  "latitude": "-6149430",
+  "longitude": "106711681"
+ },
+ {
+  "rn": "126",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Senen",
+  "kelurahan": "Senen",
+  "latitude": "-6181047",
+  "longitude": "106835454"
+ },
+ {
+  "rn": "127",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Serdang",
+  "latitude": "-6153518",
+  "longitude": "106857110"
+ },
+ {
+  "rn": "128",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Serdang",
+  "latitude": "-6155041",
+  "longitude": "106859323"
+ },
+ {
+  "rn": "129",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Serdang",
+  "latitude": "-6156895",
+  "longitude": "106861167"
+ },
+ {
+  "rn": "130",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Serdang",
+  "latitude": "-6159361",
+  "longitude": "106863941"
+ },
+ {
+  "rn": "131",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kembangan",
+  "kelurahan": "Srengseng",
+  "latitude": "-6123770",
+  "longitude": "106715936"
+ },
+ {
+  "rn": "132",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kebon Jeruk",
+  "kelurahan": "Sukabumi Selatan",
+  "latitude": "-6219514",
+  "longitude": "106770077"
+ },
+ {
+  "rn": "133",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kebon Jeruk",
+  "kelurahan": "Sukabumi Utara",
+  "latitude": "-6217800",
+  "longitude": "106781500"
+ },
+ {
+  "rn": "134",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kebon Jeruk",
+  "kelurahan": "Sukabumi Utara",
+  "latitude": "-6218500",
+  "longitude": "106782000"
+ },
+ {
+  "rn": "135",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Kebon Jeruk",
+  "kelurahan": "Sukabumi Utara",
+  "latitude": "-6220000",
+  "longitude": "106782500"
+ },
+ {
+  "rn": "136",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Sumur Batu",
+  "latitude": "-6166934",
+  "longitude": "106873935"
+ },
+ {
+  "rn": "137",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Utara",
+  "kecamatan": "Tanjung Priok",
+  "kelurahan": "Sunter Agung",
+  "latitude": "-6147667",
+  "longitude": "106854893"
+ },
+ {
+  "rn": "138",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Utara",
+  "kecamatan": "Tanjung Priok",
+  "kelurahan": "Sunter Agung",
+  "latitude": "-6126866",
+  "longitude": "106857188"
+ },
+ {
+  "rn": "139",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Ciracas",
+  "kelurahan": "Susukan",
+  "latitude": "-6307380",
+  "longitude": "106868174"
+ },
+ {
+  "rn": "140",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Makasar",
+  "kelurahan": "Makasar",
+  "latitude": "-6271194",
+  "longitude": "106894547"
+ },
+ {
+  "rn": "141",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Sawah Besar",
+  "kelurahan": "Mangga Dua Selatan",
+  "latitude": "-6173491",
+  "longitude": "106889216"
+ },
+ {
+  "rn": "142",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Tebet",
+  "kelurahan": "Manggarai",
+  "latitude": "-6209834",
+  "longitude": "106850523"
+ },
+ {
+  "rn": "143",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Taman Sari",
+  "kelurahan": "Maphar",
+  "latitude": "-6155700",
+  "longitude": "106818462"
+ },
+ {
+  "rn": "144",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Taman Sari",
+  "kelurahan": "Taman Sari",
+  "latitude": "-6150654",
+  "longitude": "106823277"
+ },
+ {
+  "rn": "145",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Johar Baru",
+  "kelurahan": "Tanah Tinggi",
+  "latitude": "-6179500",
+  "longitude": "106865500"
+ },
+ {
+  "rn": "146",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Johar Baru",
+  "kelurahan": "Tanah Tinggi",
+  "latitude": "-6180000",
+  "longitude": "106866000"
+ },
+ {
+  "rn": "147",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Jagakarsa",
+  "kelurahan": "Tanjung Barat",
+  "latitude": "-6309537",
+  "longitude": "106850701"
+ },
+ {
+  "rn": "148",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Barat",
+  "kecamatan": "Grogol Petamburan",
+  "kelurahan": "Tanjung Duren Utara",
+  "latitude": "-6152345",
+  "longitude": "106742567"
+ },
+ {
+  "rn": "149",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Mampang Prapatan",
+  "kelurahan": "Tegal Parang",
+  "latitude": "-6251000",
+  "longitude": "106829400"
+ },
+ {
+  "rn": "150",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Selatan",
+  "kecamatan": "Mampang Prapatan",
+  "kelurahan": "Tegal Parang",
+  "latitude": "-6249880",
+  "longitude": "106833540"
+ },
+ {
+  "rn": "151",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Timur",
+  "kecamatan": "Kramatjati",
+  "kelurahan": "Tengah",
+  "latitude": "-6289985",
+  "longitude": "106864540"
+ },
+ {
+  "rn": "152",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Utara",
+  "kecamatan": "Koja",
+  "kelurahan": "Tugu Utara",
+  "latitude": "-6121722",
+  "longitude": "106913180"
+ },
+ {
+  "rn": "153",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Utan Panjang",
+  "latitude": "-6165459",
+  "longitude": "106852223"
+ },
+ {
+  "rn": "154",
+  "periode_data": "2024",
+  "wilayah": "Kota Adm. Jakarta Pusat",
+  "kecamatan": "Kemayoran",
+  "kelurahan": "Utan Panjang",
+  "latitude": "-6170706",
+  "longitude": "106865251"
+ }
+]

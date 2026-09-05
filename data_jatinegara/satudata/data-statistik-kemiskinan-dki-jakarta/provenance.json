@@ -1,0 +1,35 @@
+{
+  "dataset_id": "satudata_data-statistik-kemiskinan-dki-jakarta",
+  "title": "Data Statistik Kemiskinan DKI Jakarta",
+  "source": "Satu Data Jakarta (satudata.jakarta.go.id)",
+  "source_url": "https://satudata.jakarta.go.id/open-data/detail?kategori=dataset&page_url=data-statistik-kemiskinan-dki-jakarta",
+  "api": "https://satudata.jakarta.go.id/backend/api/v2/satudata/detail",
+  "rows": 28,
+  "total_reported": 28,
+  "periode": [
+    {
+      "periode_data": "2008"
+    },
+    {
+      "periode_data": "2010"
+    },
+    {
+      "periode_data": "2009"
+    },
+    {
+      "periode_data": "2007"
+    },
+    {
+      "periode_data": "2012"
+    },
+    {
+      "periode_data": "2006"
+    },
+    {
+      "periode_data": "2011"
+    }
+  ],
+  "acquired_at": "2026-09-02T20:35:33.684697+00:00",
+  "status": "RAW",
+  "processing_script": "tools/download_satudata.py"
+}

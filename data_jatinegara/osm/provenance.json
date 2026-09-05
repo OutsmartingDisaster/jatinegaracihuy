@@ -1,0 +1,58 @@
+{
+  "dataset_id": "osm_bangunan_jatinegara",
+  "source": "OpenStreetMap via Overpass API (boundary relation + building count)",
+  "bbox": "-6.245,106.855,-6.205,106.905",
+  "acquired_at": "2026-09-02T20:54:17.374928+00:00",
+  "rows": [
+    {
+      "kelurahan": "Bali Mester",
+      "osm_relation_id": 5802141,
+      "admin_level": "7",
+      "jumlah_bangunan_osm": "1787"
+    },
+    {
+      "kelurahan": "Kampung Melayu",
+      "osm_relation_id": 5802251,
+      "admin_level": "7",
+      "jumlah_bangunan_osm": "2561"
+    },
+    {
+      "kelurahan": "Bidara Cina",
+      "osm_relation_id": 5802368,
+      "admin_level": "7",
+      "jumlah_bangunan_osm": "5806"
+    },
+    {
+      "kelurahan": "Cipinang Cempedak",
+      "osm_relation_id": 5802261,
+      "admin_level": "7",
+      "jumlah_bangunan_osm": "6316"
+    },
+    {
+      "kelurahan": "Rawa Bunga",
+      "osm_relation_id": 5802173,
+      "admin_level": "7",
+      "jumlah_bangunan_osm": "2331"
+    },
+    {
+      "kelurahan": "Cipinang Besar Utara",
+      "osm_relation_id": 5802232,
+      "admin_level": "7",
+      "jumlah_bangunan_osm": "4553"
+    },
+    {
+      "kelurahan": "Cipinang Besar Selatan",
+      "osm_relation_id": 5802278,
+      "admin_level": "7",
+      "jumlah_bangunan_osm": "4462"
+    },
+    {
+      "kelurahan": "Cipinang Muara",
+      "osm_relation_id": 5802234,
+      "admin_level": "7",
+      "jumlah_bangunan_osm": "10362"
+    }
+  ],
+  "status": "RAW",
+  "processing_script": "tools/osm_buildings.py"
+}

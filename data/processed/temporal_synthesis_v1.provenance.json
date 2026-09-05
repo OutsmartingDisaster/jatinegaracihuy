@@ -1,0 +1,31 @@
+{
+  "dataset_id": "temporal_synthesis_v1_kelurahan",
+  "name": "Temporal Synthesis of Flood Events 2021-2025",
+  "version": "1.0",
+  "status": "PUBLISHED",
+  "source": "Jatinegara Siaga ETL (derived from flood_history.json)",
+  "acquired_at": "2026-09-04T04:07:11.007560+00:00",
+  "processed_at": "2026-09-04T04:07:11.007560+00:00",
+  "processing": {
+    "environment": "Python (json aggregation, deterministic)",
+    "processing_script": "tools/build_temporal_synthesis.py",
+    "processing_version": "temporal-synthesis-v1"
+  },
+  "outputs": {
+    "file": "data/processed/temporal_synthesis_v1.json",
+    "crs": null
+  },
+  "inputs": [
+    "data/raw/flood_history.json"
+  ],
+  "input_event_count": 9,
+  "method": {
+    "name": "temporal-synthesis-v1",
+    "description": "event counts per year; recurrence/interval/density per kelurahan; repeated areas (>= 2 years active)",
+    "repeat_min_years": 2
+  },
+  "record_count": 9,
+  "quality_level": "Q2",
+  "validator": "tools/check_governance.py (automated) + data-steward review",
+  "checksum": "sha256:2c663f4f406c03ba3a00d8429a2e37c6de2a4e64b650ae10c325f02737c31b63"
+}

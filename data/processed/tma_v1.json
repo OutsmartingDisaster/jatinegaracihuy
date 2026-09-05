@@ -1,0 +1,2255 @@
+{
+  "dataset_id": "tma_v1_jatinegara",
+  "version": "1.0",
+  "generated_at": "2026-09-04T10:06:05.630654+00:00",
+  "source": "DSDA DKI Jakarta — TMA harian (dump lokal data/data-tma, 2021-03-01..2026-09-01, 2.011 file)",
+  "note": "TMA = tinggi muka air (cm dari titik ukur stasiun, BUKAN elevasi permukaan laut); status siaga 4=normal 3=waspada 2=siaga 1=awas",
+  "window": {
+    "first": "2021-03-01",
+    "last": "2026-09-01",
+    "days_total": 2011,
+    "gaps": 0
+  },
+  "stations_kept": [
+    {
+      "name": "Bendung Katulampa",
+      "kind": "pos",
+      "river": "Ciliwung",
+      "role": "upstream_trigger",
+      "coord": [
+        106.837077,
+        -6.633096
+      ],
+      "records": 37672,
+      "window": [
+        "2021-03-01",
+        "2026-09-01"
+      ],
+      "status_labels": {
+        "1": "awas",
+        "2": "siaga",
+        "3": "waspada",
+        "4": "normal"
+      }
+    },
+    {
+      "name": "Pos Depok",
+      "kind": "pos",
+      "river": "Ciliwung",
+      "role": "mid_checkpoint",
+      "coord": [
+        106.831844,
+        -6.400526
+      ],
+      "records": 38097,
+      "window": [
+        "2021-03-01",
+        "2026-09-01"
+      ],
+      "status_labels": {
+        "1": "awas",
+        "2": "siaga",
+        "3": "waspada",
+        "4": "normal"
+      }
+    },
+    {
+      "name": "PA. Karet",
+      "kind": "pintu_air",
+      "river": "Ciliwung",
+      "role": "gate_upstream",
+      "coord": [
+        106.809817,
+        -6.19837
+      ],
+      "records": 37937,
+      "window": [
+        "2021-03-01",
+        "2026-09-01"
+      ],
+      "status_labels": {
+        "1": "awas",
+        "2": "siaga",
+        "3": "waspada",
+        "4": "normal"
+      }
+    },
+    {
+      "name": "Manggarai BKB",
+      "kind": "pintu_air",
+      "river": "Ciliwung",
+      "role": "gate_distribution",
+      "coord": [
+        106.848439,
+        -6.207903
+      ],
+      "records": 38148,
+      "window": [
+        "2021-03-01",
+        "2026-09-01"
+      ],
+      "status_labels": {
+        "1": "awas",
+        "2": "siaga",
+        "3": "waspada",
+        "4": "normal"
+      }
+    },
+    {
+      "name": "Pos Cipinang Hulu",
+      "kind": "pos",
+      "river": "Kali Cipinang",
+      "role": "tributary_at_jatinegara",
+      "coord": [
+        106.883873,
+        -6.374284
+      ],
+      "records": 34148,
+      "window": [
+        "2021-03-01",
+        "2026-09-01"
+      ],
+      "status_labels": {
+        "1": "awas",
+        "2": "siaga",
+        "3": "waspada",
+        "4": "normal"
+      }
+    },
+    {
+      "name": "Manggarai KCL",
+      "kind": "pintu_air",
+      "river": "Ciliwung",
+      "role": "gate_distribution_fallback",
+      "coord": [
+        106.848439,
+        -6.207903
+      ],
+      "records": 31443,
+      "window": null,
+      "note": "pendamping BKB pada gate yang sama; dipakai sebagai fallback baris kosong"
+    }
+  ],
+  "stations_eliminated": [
+    {
+      "name": "Pos Angke Hulu",
+      "reason": "Kali Angke (Aliran Barat) — tidak mengalir ke Jatinegara"
+    },
+    {
+      "name": "Pos Krukut Hulu",
+      "reason": "Kali Krukut (Aliran Barat) — tidak mengalir ke Jatinegara"
+    },
+    {
+      "name": "Pos Pesanggrahan",
+      "reason": "Kali Pesanggrahan (Aliran Barat) — tidak mengalir ke Jatinegara"
+    },
+    {
+      "name": "Pos Sunter Hulu",
+      "reason": "Kali Sunter (Aliran Timur-Utara) — di luar koridor menuju Jatinegara"
+    },
+    {
+      "name": "Waduk Pluit",
+      "reason": "Pesisir utara — tangkapan air paling hilir, tidak informatif untuk Jatinegara"
+    },
+    {
+      "name": "Ancol Flushing / Istiqlal / Jembatan Merah (2) / Kampung Gusti / Pasar Ikan-Laut / Pulo Gadung / PA. Marina / Tangki",
+      "reason": "Pintu air sistem Barat/pesisir/timur-laut — bukan koridor Ciliwung-Jatinegara"
+    }
+  ],
+  "elimination_rule": "hanya koridor Ciliwung (plus Kali Cipinang yang bermuara di Jatinegara); sistem Aliran Barat/Utara/Pesisir dieliminasi",
+  "travel_time": {
+    "methodology": "tma-v1 travel time: lag puncak-puncak Katulampa->Manggarai BKB per kejadian (window 0..48h); median dilaporkan",
+    "events_used": 7,
+    "lag_median_hours": 12.6,
+    "lag_min_hours": 0.3,
+    "lag_max_hours": 42.3,
+    "per_km_minutes": 15.9,
+    "distance_km_straight_line": 47.4,
+    "est_jatinegara_hours": 14.1,
+    "est_jatinegara_method": "proxy: ekstrapolasi per-km ke 53.0 km straight-line; TANPA gauge TMA di Jatinegara — confidence low (Rule 04/10)",
+    "per_event": [
+      {
+        "event_id": "E-2025-04",
+        "event_date": "2025-11-18",
+        "katulampa_peak_cm": 80,
+        "katulampa_at": "2025-11-19T16:40:00",
+        "manggarai_peak_cm": 670,
+        "manggarai_at": "2025-11-19T17:00:00",
+        "lag_hours": 0.3
+      },
+      {
+        "event_id": "E-2022-02",
+        "event_date": "2022-11-07",
+        "katulampa_peak_cm": 120,
+        "katulampa_at": "2022-11-05T17:08:00",
+        "manggarai_peak_cm": 785,
+        "manggarai_at": "2022-11-06T05:00:00",
+        "lag_hours": 11.9
+      },
+      {
+        "event_id": "E-2025-03",
+        "event_date": "2025-12-07",
+        "katulampa_peak_cm": 90,
+        "katulampa_at": "2025-12-05T15:34:00",
+        "manggarai_peak_cm": 715,
+        "manggarai_at": "2025-12-06T04:00:00",
+        "lag_hours": 12.4
+      },
+      {
+        "event_id": "E-2022-01",
+        "event_date": "2022-02-17",
+        "katulampa_peak_cm": 100,
+        "katulampa_at": "2022-02-16T18:24:00",
+        "manggarai_peak_cm": 795,
+        "manggarai_at": "2022-02-17T07:00:00",
+        "lag_hours": 12.6
+      },
+      {
+        "event_id": "E-2024-01",
+        "event_date": "2024-11-28",
+        "katulampa_peak_cm": 110,
+        "katulampa_at": "2024-11-27T18:17:00",
+        "manggarai_peak_cm": 840,
+        "manggarai_at": "2024-11-28T07:00:00",
+        "lag_hours": 12.7
+      },
+      {
+        "event_id": "E-2025-02",
+        "event_date": "2025-07-06",
+        "katulampa_peak_cm": 150,
+        "katulampa_at": "2025-07-05T18:19:00",
+        "manggarai_peak_cm": 850,
+        "manggarai_at": "2025-07-06T17:00:00",
+        "lag_hours": 22.7
+      },
+      {
+        "event_id": "E-2025-01",
+        "event_date": "2025-03-04",
+        "katulampa_peak_cm": 220,
+        "katulampa_at": "2025-03-02T21:44:00",
+        "manggarai_peak_cm": 850,
+        "manggarai_at": "2025-03-04T16:00:00",
+        "lag_hours": 42.3
+      }
+    ]
+  },
+  "event_validation": [
+    {
+      "event_id": "E-2021-01",
+      "event_date": "2021-02-08",
+      "kelurahan": "Kampung Melayu",
+      "status": "out_of_window",
+      "note": "di luar cakupan data TMA (mulai 2021-03-01) — coverage gap, bukan 'tidak terjadi'"
+    },
+    {
+      "event_id": "E-2021-02",
+      "event_date": "2021-02-19",
+      "kelurahan": "Kampung Melayu",
+      "status": "out_of_window",
+      "note": "di luar cakupan data TMA (mulai 2021-03-01) — coverage gap, bukan 'tidak terjadi'"
+    },
+    {
+      "event_id": "E-2022-01",
+      "event_date": "2022-02-17",
+      "kelurahan": "Kampung Melayu",
+      "status": "validated",
+      "peak_tma_cm": 100,
+      "peak_status": "waspada",
+      "peak_at": "2022-02-16T18:24:00",
+      "hours_above_waspada": 0,
+      "first_above_waspada_at": null,
+      "note": "TMA Katulampa window -1..+1 hari"
+    },
+    {
+      "event_id": "E-2022-02",
+      "event_date": "2022-11-07",
+      "kelurahan": "Kampung Melayu",
+      "status": "validated",
+      "peak_tma_cm": 120,
+      "peak_status": "waspada",
+      "peak_at": "2022-11-05T17:08:00",
+      "hours_above_waspada": 0,
+      "first_above_waspada_at": null,
+      "note": "TMA Katulampa window -1..+1 hari"
+    },
+    {
+      "event_id": "E-2024-01",
+      "event_date": "2024-11-28",
+      "kelurahan": "Kampung Melayu",
+      "status": "validated",
+      "peak_tma_cm": 110,
+      "peak_status": "waspada",
+      "peak_at": "2024-11-27T18:17:00",
+      "hours_above_waspada": 0,
+      "first_above_waspada_at": null,
+      "note": "TMA Katulampa window -1..+1 hari"
+    },
+    {
+      "event_id": "E-2025-01",
+      "event_date": "2025-03-04",
+      "kelurahan": "Kampung Melayu",
+      "status": "validated",
+      "peak_tma_cm": 220,
+      "peak_status": "awas",
+      "peak_at": "2025-03-02T21:44:00",
+      "hours_above_waspada": 3,
+      "first_above_waspada_at": "2025-03-02T21:44:00",
+      "note": "TMA Katulampa window -1..+1 hari"
+    },
+    {
+      "event_id": "E-2025-02",
+      "event_date": "2025-07-06",
+      "kelurahan": "Kampung Melayu",
+      "status": "validated",
+      "peak_tma_cm": 150,
+      "peak_status": "waspada",
+      "peak_at": "2025-07-05T18:19:00",
+      "hours_above_waspada": 0,
+      "first_above_waspada_at": null,
+      "note": "TMA Katulampa window -1..+1 hari"
+    },
+    {
+      "event_id": "E-2025-03",
+      "event_date": "2025-12-07",
+      "kelurahan": "Kampung Melayu",
+      "status": "validated",
+      "peak_tma_cm": 90,
+      "peak_status": "waspada",
+      "peak_at": "2025-12-05T15:34:00",
+      "hours_above_waspada": 0,
+      "first_above_waspada_at": null,
+      "note": "TMA Katulampa window -1..+1 hari"
+    },
+    {
+      "event_id": "E-2025-04",
+      "event_date": "2025-11-18",
+      "kelurahan": "Cipinang Muara",
+      "status": "validated",
+      "peak_tma_cm": 70,
+      "peak_status": "normal",
+      "peak_at": "2025-11-18T15:00:00",
+      "hours_above_waspada": 0,
+      "first_above_waspada_at": null,
+      "note": "TMA Katulampa window -1..+1 hari"
+    }
+  ],
+  "events_detail": [
+    {
+      "event_id": "E-2021-01",
+      "event_date": "2021-02-08",
+      "kelurahan": "Kampung Melayu",
+      "status": "out_of_window",
+      "weather_days": [],
+      "rain_days": 0,
+      "pluit_peak_tma_cm": null,
+      "pluit_samples": 0,
+      "note": "Waduk Pluit = satu-satunya waduk di dataset DSDA (pesisir utara); relevansi ke Jatinegara terbatas — konteks, bukan penyebab"
+    },
+    {
+      "event_id": "E-2021-02",
+      "event_date": "2021-02-19",
+      "kelurahan": "Kampung Melayu",
+      "status": "out_of_window",
+      "weather_days": [],
+      "rain_days": 0,
+      "pluit_peak_tma_cm": null,
+      "pluit_samples": 0,
+      "note": "Waduk Pluit = satu-satunya waduk di dataset DSDA (pesisir utara); relevansi ke Jatinegara terbatas — konteks, bukan penyebab"
+    },
+    {
+      "event_id": "E-2022-01",
+      "event_date": "2022-02-17",
+      "kelurahan": "Kampung Melayu",
+      "status": "validated",
+      "weather_days": [
+        {
+          "date": "2022-02-16",
+          "dominant": "Terang",
+          "rain_observations": 16,
+          "total_observations": 186
+        },
+        {
+          "date": "2022-02-17",
+          "dominant": "Terang",
+          "rain_observations": 0,
+          "total_observations": 176
+        },
+        {
+          "date": "2022-02-18",
+          "dominant": "Mendung Tipis",
+          "rain_observations": 2,
+          "total_observations": 181
+        }
+      ],
+      "rain_days": 2,
+      "pluit_peak_tma_cm": -180,
+      "pluit_samples": 67,
+      "note": "Waduk Pluit = satu-satunya waduk di dataset DSDA (pesisir utara); relevansi ke Jatinegara terbatas — konteks, bukan penyebab"
+    },
+    {
+      "event_id": "E-2022-02",
+      "event_date": "2022-11-07",
+      "kelurahan": "Kampung Melayu",
+      "status": "validated",
+      "weather_days": [
+        {
+          "date": "2022-11-06",
+          "dominant": "Terang",
+          "rain_observations": 0,
+          "total_observations": 187
+        },
+        {
+          "date": "2022-11-07",
+          "dominant": "Mendung Tipis",
+          "rain_observations": 5,
+          "total_observations": 183
+        },
+        {
+          "date": "2022-11-08",
+          "dominant": "Terang",
+          "rain_observations": 5,
+          "total_observations": 172
+        }
+      ],
+      "rain_days": 2,
+      "pluit_peak_tma_cm": -170,
+      "pluit_samples": 69,
+      "note": "Waduk Pluit = satu-satunya waduk di dataset DSDA (pesisir utara); relevansi ke Jatinegara terbatas — konteks, bukan penyebab"
+    },
+    {
+      "event_id": "E-2024-01",
+      "event_date": "2024-11-28",
+      "kelurahan": "Kampung Melayu",
+      "status": "validated",
+      "weather_days": [
+        {
+          "date": "2024-11-27",
+          "dominant": "Terang",
+          "rain_observations": 14,
+          "total_observations": 177
+        },
+        {
+          "date": "2024-11-28",
+          "dominant": "Terang",
+          "rain_observations": 0,
+          "total_observations": 190
+        },
+        {
+          "date": "2024-11-29",
+          "dominant": "Terang",
+          "rain_observations": 0,
+          "total_observations": 187
+        }
+      ],
+      "rain_days": 1,
+      "pluit_peak_tma_cm": -175,
+      "pluit_samples": 70,
+      "note": "Waduk Pluit = satu-satunya waduk di dataset DSDA (pesisir utara); relevansi ke Jatinegara terbatas — konteks, bukan penyebab"
+    },
+    {
+      "event_id": "E-2025-01",
+      "event_date": "2025-03-04",
+      "kelurahan": "Kampung Melayu",
+      "status": "validated",
+      "weather_days": [
+        {
+          "date": "2025-03-03",
+          "dominant": "Mendung Tipis",
+          "rain_observations": 13,
+          "total_observations": 185
+        },
+        {
+          "date": "2025-03-04",
+          "dominant": "Mendung",
+          "rain_observations": 14,
+          "total_observations": 159
+        },
+        {
+          "date": "2025-03-05",
+          "dominant": "Terang",
+          "rain_observations": 0,
+          "total_observations": 185
+        }
+      ],
+      "rain_days": 2,
+      "pluit_peak_tma_cm": -135,
+      "pluit_samples": 64,
+      "note": "Waduk Pluit = satu-satunya waduk di dataset DSDA (pesisir utara); relevansi ke Jatinegara terbatas — konteks, bukan penyebab"
+    },
+    {
+      "event_id": "E-2025-02",
+      "event_date": "2025-07-06",
+      "kelurahan": "Kampung Melayu",
+      "status": "validated",
+      "weather_days": [
+        {
+          "date": "2025-07-05",
+          "dominant": "Terang",
+          "rain_observations": 12,
+          "total_observations": 171
+        },
+        {
+          "date": "2025-07-06",
+          "dominant": "Terang",
+          "rain_observations": 24,
+          "total_observations": 157
+        },
+        {
+          "date": "2025-07-07",
+          "dominant": "Terang",
+          "rain_observations": 22,
+          "total_observations": 165
+        }
+      ],
+      "rain_days": 3,
+      "pluit_peak_tma_cm": -125,
+      "pluit_samples": 63,
+      "note": "Waduk Pluit = satu-satunya waduk di dataset DSDA (pesisir utara); relevansi ke Jatinegara terbatas — konteks, bukan penyebab"
+    },
+    {
+      "event_id": "E-2025-03",
+      "event_date": "2025-12-07",
+      "kelurahan": "Kampung Melayu",
+      "status": "validated",
+      "weather_days": [
+        {
+          "date": "2025-12-06",
+          "dominant": "Terang",
+          "rain_observations": 3,
+          "total_observations": 185
+        },
+        {
+          "date": "2025-12-07",
+          "dominant": "Terang",
+          "rain_observations": 2,
+          "total_observations": 166
+        },
+        {
+          "date": "2025-12-08",
+          "dominant": "Terang",
+          "rain_observations": 0,
+          "total_observations": 147
+        }
+      ],
+      "rain_days": 2,
+      "pluit_peak_tma_cm": -155,
+      "pluit_samples": 62,
+      "note": "Waduk Pluit = satu-satunya waduk di dataset DSDA (pesisir utara); relevansi ke Jatinegara terbatas — konteks, bukan penyebab"
+    },
+    {
+      "event_id": "E-2025-04",
+      "event_date": "2025-11-18",
+      "kelurahan": "Cipinang Muara",
+      "status": "validated",
+      "weather_days": [
+        {
+          "date": "2025-11-17",
+          "dominant": "Terang",
+          "rain_observations": 1,
+          "total_observations": 165
+        },
+        {
+          "date": "2025-11-18",
+          "dominant": "Terang",
+          "rain_observations": 17,
+          "total_observations": 181
+        },
+        {
+          "date": "2025-11-19",
+          "dominant": "Terang",
+          "rain_observations": 3,
+          "total_observations": 183
+        }
+      ],
+      "rain_days": 3,
+      "pluit_peak_tma_cm": -155,
+      "pluit_samples": 65,
+      "note": "Waduk Pluit = satu-satunya waduk di dataset DSDA (pesisir utara); relevansi ke Jatinegara terbatas — konteks, bukan penyebab"
+    }
+  ],
+  "journey": {
+    "methodology": "tma-v1 journey: rute koridor Ciliwung; ETA kumulatif dari kecepatan empiris (per-km median lag Katulampa->Manggarai); timeline = puncak TMA aktual per stasiun pada satu kejadian representatif (lag = median); berita hilir dicocokkan tanggal ±4 hari.",
+    "route": [
+      {
+        "station": "Bendung Katulampa",
+        "coord": [
+          106.837077,
+          -6.633096
+        ],
+        "km": 0.0,
+        "eta_hours": 0.0,
+        "median_peak_cm": 110,
+        "role": "hulu (Bogor)"
+      },
+      {
+        "station": "Pos Depok",
+        "coord": [
+          106.831844,
+          -6.400526
+        ],
+        "km": 36.2,
+        "eta_hours": 6.3,
+        "median_peak_cm": 250,
+        "role": "tengah Ciliwung"
+      },
+      {
+        "station": "Manggarai BKB",
+        "coord": [
+          106.848439,
+          -6.207903
+        ],
+        "km": 72.4,
+        "eta_hours": 12.6,
+        "median_peak_cm": 795,
+        "role": "gerbang distribusi"
+      },
+      {
+        "station": "Jatinegara",
+        "coord": [
+          106.899,
+          -6.216
+        ],
+        "km": 73.5,
+        "eta_hours": 12.7,
+        "median_peak_cm": null,
+        "role": "muara Kali Cipinang ke Ciliwung (TMA lokal: PROXY)"
+      }
+    ],
+    "river": {
+      "coords": [
+        [
+          106.83702,
+          -6.63334
+        ],
+        [
+          106.83348,
+          -6.63346
+        ],
+        [
+          106.83022,
+          -6.63222
+        ],
+        [
+          106.82748,
+          -6.62992
+        ],
+        [
+          106.82615,
+          -6.62674
+        ],
+        [
+          106.82331,
+          -6.62473
+        ],
+        [
+          106.82039,
+          -6.62271
+        ],
+        [
+          106.81889,
+          -6.61947
+        ],
+        [
+          106.81652,
+          -6.61703
+        ],
+        [
+          106.81306,
+          -6.61625
+        ],
+        [
+          106.81018,
+          -6.61452
+        ],
+        [
+          106.81033,
+          -6.61102
+        ],
+        [
+          106.80757,
+          -6.60882
+        ],
+        [
+          106.80531,
+          -6.60608
+        ],
+        [
+          106.80313,
+          -6.60338
+        ],
+        [
+          106.80109,
+          -6.60045
+        ],
+        [
+          106.80026,
+          -6.59713
+        ],
+        [
+          106.80048,
+          -6.59378
+        ],
+        [
+          106.79898,
+          -6.59056
+        ],
+        [
+          106.7977,
+          -6.58748
+        ],
+        [
+          106.79771,
+          -6.5845
+        ],
+        [
+          106.79805,
+          -6.58117
+        ],
+        [
+          106.80097,
+          -6.57911
+        ],
+        [
+          106.80231,
+          -6.57591
+        ],
+        [
+          106.80497,
+          -6.57379
+        ],
+        [
+          106.80732,
+          -6.57104
+        ],
+        [
+          106.80762,
+          -6.56795
+        ],
+        [
+          106.80774,
+          -6.56466
+        ],
+        [
+          106.80878,
+          -6.56175
+        ],
+        [
+          106.80925,
+          -6.5586
+        ],
+        [
+          106.80748,
+          -6.55556
+        ],
+        [
+          106.80566,
+          -6.55313
+        ],
+        [
+          106.8035,
+          -6.55108
+        ],
+        [
+          106.80168,
+          -6.54855
+        ],
+        [
+          106.80161,
+          -6.54528
+        ],
+        [
+          106.80135,
+          -6.54291
+        ],
+        [
+          106.80078,
+          -6.54016
+        ],
+        [
+          106.80327,
+          -6.53773
+        ],
+        [
+          106.80425,
+          -6.53438
+        ],
+        [
+          106.80439,
+          -6.53109
+        ],
+        [
+          106.80568,
+          -6.5286
+        ],
+        [
+          106.80748,
+          -6.52616
+        ],
+        [
+          106.80428,
+          -6.5252
+        ],
+        [
+          106.80376,
+          -6.52171
+        ],
+        [
+          106.80254,
+          -6.51919
+        ],
+        [
+          106.80431,
+          -6.51645
+        ],
+        [
+          106.80129,
+          -6.51753
+        ],
+        [
+          106.80045,
+          -6.5145
+        ],
+        [
+          106.79778,
+          -6.51304
+        ],
+        [
+          106.80085,
+          -6.51143
+        ],
+        [
+          106.79939,
+          -6.50842
+        ],
+        [
+          106.79845,
+          -6.50633
+        ],
+        [
+          106.79723,
+          -6.50382
+        ],
+        [
+          106.79946,
+          -6.5046
+        ],
+        [
+          106.7998,
+          -6.50269
+        ],
+        [
+          106.79931,
+          -6.50037
+        ],
+        [
+          106.80279,
+          -6.49968
+        ],
+        [
+          106.80285,
+          -6.49697
+        ],
+        [
+          106.80567,
+          -6.49704
+        ],
+        [
+          106.80795,
+          -6.49557
+        ],
+        [
+          106.80745,
+          -6.49203
+        ],
+        [
+          106.80764,
+          -6.48954
+        ],
+        [
+          106.80934,
+          -6.48711
+        ],
+        [
+          106.81029,
+          -6.48966
+        ],
+        [
+          106.81383,
+          -6.48934
+        ],
+        [
+          106.8144,
+          -6.48796
+        ],
+        [
+          106.81406,
+          -6.48552
+        ],
+        [
+          106.81401,
+          -6.48375
+        ],
+        [
+          106.81429,
+          -6.48096
+        ],
+        [
+          106.81515,
+          -6.47806
+        ],
+        [
+          106.8156,
+          -6.47494
+        ],
+        [
+          106.81619,
+          -6.47174
+        ],
+        [
+          106.81481,
+          -6.46849
+        ],
+        [
+          106.815,
+          -6.46564
+        ],
+        [
+          106.81803,
+          -6.46513
+        ],
+        [
+          106.81531,
+          -6.46418
+        ],
+        [
+          106.81571,
+          -6.46202
+        ],
+        [
+          106.81364,
+          -6.4601
+        ],
+        [
+          106.81624,
+          -6.45838
+        ],
+        [
+          106.81412,
+          -6.45562
+        ],
+        [
+          106.81457,
+          -6.45227
+        ],
+        [
+          106.81559,
+          -6.4495
+        ],
+        [
+          106.81394,
+          -6.44652
+        ],
+        [
+          106.81252,
+          -6.44416
+        ],
+        [
+          106.81387,
+          -6.44287
+        ],
+        [
+          106.8136,
+          -6.43975
+        ],
+        [
+          106.81399,
+          -6.43672
+        ],
+        [
+          106.81225,
+          -6.43442
+        ],
+        [
+          106.81453,
+          -6.43211
+        ],
+        [
+          106.81675,
+          -6.43078
+        ],
+        [
+          106.81371,
+          -6.42975
+        ],
+        [
+          106.81558,
+          -6.42689
+        ],
+        [
+          106.81774,
+          -6.42883
+        ],
+        [
+          106.81837,
+          -6.42623
+        ],
+        [
+          106.81857,
+          -6.4232
+        ],
+        [
+          106.82188,
+          -6.42204
+        ],
+        [
+          106.81915,
+          -6.42025
+        ],
+        [
+          106.81975,
+          -6.41819
+        ],
+        [
+          106.81983,
+          -6.41594
+        ],
+        [
+          106.81818,
+          -6.4131
+        ],
+        [
+          106.81924,
+          -6.40966
+        ],
+        [
+          106.8196,
+          -6.40638
+        ],
+        [
+          106.82311,
+          -6.40633
+        ],
+        [
+          106.82615,
+          -6.40472
+        ],
+        [
+          106.82688,
+          -6.40353
+        ],
+        [
+          106.82946,
+          -6.40223
+        ],
+        [
+          106.83194,
+          -6.39987
+        ],
+        [
+          106.83024,
+          -6.39804
+        ],
+        [
+          106.82925,
+          -6.39568
+        ],
+        [
+          106.83172,
+          -6.3948
+        ],
+        [
+          106.82939,
+          -6.39293
+        ],
+        [
+          106.83031,
+          -6.39053
+        ],
+        [
+          106.83214,
+          -6.3914
+        ],
+        [
+          106.83375,
+          -6.38822
+        ],
+        [
+          106.83221,
+          -6.38558
+        ],
+        [
+          106.83197,
+          -6.38249
+        ],
+        [
+          106.83546,
+          -6.38202
+        ],
+        [
+          106.83773,
+          -6.38081
+        ],
+        [
+          106.83935,
+          -6.37858
+        ],
+        [
+          106.8379,
+          -6.37608
+        ],
+        [
+          106.84122,
+          -6.37567
+        ],
+        [
+          106.84159,
+          -6.37251
+        ],
+        [
+          106.83874,
+          -6.37082
+        ],
+        [
+          106.83838,
+          -6.36939
+        ],
+        [
+          106.84145,
+          -6.36804
+        ],
+        [
+          106.83884,
+          -6.36759
+        ],
+        [
+          106.83978,
+          -6.36468
+        ],
+        [
+          106.8392,
+          -6.36146
+        ],
+        [
+          106.83813,
+          -6.36402
+        ],
+        [
+          106.83735,
+          -6.36115
+        ],
+        [
+          106.83804,
+          -6.35911
+        ],
+        [
+          106.8359,
+          -6.35868
+        ],
+        [
+          106.83605,
+          -6.35612
+        ],
+        [
+          106.83663,
+          -6.3548
+        ],
+        [
+          106.83567,
+          -6.35179
+        ],
+        [
+          106.83917,
+          -6.3518
+        ],
+        [
+          106.83809,
+          -6.3486
+        ],
+        [
+          106.83933,
+          -6.346
+        ],
+        [
+          106.8387,
+          -6.34323
+        ],
+        [
+          106.83582,
+          -6.34449
+        ],
+        [
+          106.83731,
+          -6.34166
+        ],
+        [
+          106.84018,
+          -6.34255
+        ],
+        [
+          106.83952,
+          -6.34075
+        ],
+        [
+          106.84035,
+          -6.33753
+        ],
+        [
+          106.83978,
+          -6.33428
+        ],
+        [
+          106.84157,
+          -6.33221
+        ],
+        [
+          106.84222,
+          -6.33104
+        ],
+        [
+          106.84058,
+          -6.32843
+        ],
+        [
+          106.84227,
+          -6.32757
+        ],
+        [
+          106.84233,
+          -6.32464
+        ],
+        [
+          106.84005,
+          -6.32216
+        ],
+        [
+          106.83903,
+          -6.3216
+        ],
+        [
+          106.83975,
+          -6.31884
+        ],
+        [
+          106.84307,
+          -6.3182
+        ],
+        [
+          106.84506,
+          -6.31651
+        ],
+        [
+          106.84776,
+          -6.31522
+        ],
+        [
+          106.84827,
+          -6.31744
+        ],
+        [
+          106.84878,
+          -6.31855
+        ],
+        [
+          106.851,
+          -6.31659
+        ],
+        [
+          106.85165,
+          -6.31367
+        ],
+        [
+          106.85312,
+          -6.3111
+        ],
+        [
+          106.85501,
+          -6.31382
+        ],
+        [
+          106.85787,
+          -6.31179
+        ],
+        [
+          106.85689,
+          -6.3096
+        ],
+        [
+          106.85759,
+          -6.3063
+        ],
+        [
+          106.85684,
+          -6.30447
+        ],
+        [
+          106.85451,
+          -6.30228
+        ],
+        [
+          106.85428,
+          -6.29943
+        ],
+        [
+          106.85155,
+          -6.30107
+        ],
+        [
+          106.85018,
+          -6.29869
+        ],
+        [
+          106.8523,
+          -6.29802
+        ],
+        [
+          106.85112,
+          -6.29575
+        ],
+        [
+          106.85442,
+          -6.29591
+        ],
+        [
+          106.85297,
+          -6.29416
+        ],
+        [
+          106.85389,
+          -6.29232
+        ],
+        [
+          106.85317,
+          -6.29052
+        ],
+        [
+          106.8512,
+          -6.29287
+        ],
+        [
+          106.84947,
+          -6.29021
+        ],
+        [
+          106.85086,
+          -6.28798
+        ],
+        [
+          106.84795,
+          -6.28743
+        ],
+        [
+          106.84836,
+          -6.28431
+        ],
+        [
+          106.84812,
+          -6.28231
+        ],
+        [
+          106.85049,
+          -6.27968
+        ],
+        [
+          106.84717,
+          -6.27968
+        ],
+        [
+          106.84889,
+          -6.27722
+        ],
+        [
+          106.85178,
+          -6.27606
+        ],
+        [
+          106.85205,
+          -6.27315
+        ],
+        [
+          106.85439,
+          -6.27194
+        ],
+        [
+          106.85658,
+          -6.27169
+        ],
+        [
+          106.85548,
+          -6.26984
+        ],
+        [
+          106.85594,
+          -6.26845
+        ],
+        [
+          106.85436,
+          -6.26548
+        ],
+        [
+          106.85675,
+          -6.26426
+        ],
+        [
+          106.85453,
+          -6.26274
+        ],
+        [
+          106.8568,
+          -6.26284
+        ],
+        [
+          106.85962,
+          -6.26181
+        ],
+        [
+          106.86044,
+          -6.25829
+        ],
+        [
+          106.86007,
+          -6.25613
+        ],
+        [
+          106.85893,
+          -6.25471
+        ],
+        [
+          106.85784,
+          -6.25308
+        ],
+        [
+          106.86047,
+          -6.2511
+        ],
+        [
+          106.8618,
+          -6.25394
+        ],
+        [
+          106.86222,
+          -6.25113
+        ],
+        [
+          106.86364,
+          -6.24884
+        ],
+        [
+          106.862,
+          -6.24571
+        ],
+        [
+          106.86255,
+          -6.24216
+        ],
+        [
+          106.86316,
+          -6.23861
+        ],
+        [
+          106.8655,
+          -6.2372
+        ],
+        [
+          106.86689,
+          -6.2382
+        ],
+        [
+          106.86525,
+          -6.23511
+        ],
+        [
+          106.86534,
+          -6.23257
+        ],
+        [
+          106.86371,
+          -6.23007
+        ],
+        [
+          106.86477,
+          -6.22689
+        ],
+        [
+          106.86461,
+          -6.22452
+        ],
+        [
+          106.86407,
+          -6.22191
+        ],
+        [
+          106.8618,
+          -6.21991
+        ],
+        [
+          106.86016,
+          -6.2212
+        ],
+        [
+          106.86201,
+          -6.21813
+        ],
+        [
+          106.86248,
+          -6.21634
+        ],
+        [
+          106.8594,
+          -6.21666
+        ],
+        [
+          106.85682,
+          -6.21717
+        ],
+        [
+          106.85731,
+          -6.21397
+        ],
+        [
+          106.85679,
+          -6.21175
+        ],
+        [
+          106.85369,
+          -6.21024
+        ],
+        [
+          106.85054,
+          -6.20856
+        ],
+        [
+          106.84964,
+          -6.20579
+        ],
+        [
+          106.85298,
+          -6.20606
+        ],
+        [
+          106.85563,
+          -6.20482
+        ],
+        [
+          106.8542,
+          -6.20227
+        ],
+        [
+          106.85118,
+          -6.20178
+        ],
+        [
+          106.85032,
+          -6.20028
+        ]
+      ],
+      "cum_km": [
+        0.0,
+        0.39,
+        0.78,
+        1.17,
+        1.55,
+        1.94,
+        2.33,
+        2.73,
+        3.1,
+        3.49,
+        3.87,
+        4.25,
+        4.64,
+        5.04,
+        5.42,
+        5.82,
+        6.19,
+        6.56,
+        6.96,
+        7.33,
+        7.66,
+        8.03,
+        8.42,
+        8.8,
+        9.18,
+        9.58,
+        9.92,
+        10.29,
+        10.63,
+        10.98,
+        11.37,
+        11.71,
+        12.03,
+        12.38,
+        12.74,
+        13.0,
+        13.32,
+        13.7,
+        14.09,
+        14.45,
+        14.76,
+        15.1,
+        15.47,
+        15.86,
+        16.17,
+        16.53,
+        16.88,
+        17.23,
+        17.57,
+        17.95,
+        18.32,
+        18.57,
+        18.88,
+        19.14,
+        19.36,
+        19.62,
+        20.01,
+        20.31,
+        20.63,
+        20.93,
+        21.32,
+        21.6,
+        21.92,
+        22.23,
+        22.62,
+        22.78,
+        23.06,
+        23.25,
+        23.56,
+        23.9,
+        24.24,
+        24.6,
+        24.99,
+        25.31,
+        25.65,
+        25.97,
+        26.21,
+        26.52,
+        26.87,
+        27.25,
+        27.63,
+        27.95,
+        28.33,
+        28.63,
+        28.84,
+        29.19,
+        29.52,
+        29.84,
+        30.2,
+        30.49,
+        30.84,
+        31.22,
+        31.54,
+        31.84,
+        32.17,
+        32.56,
+        32.92,
+        33.16,
+        33.41,
+        33.77,
+        34.17,
+        34.53,
+        34.92,
+        35.3,
+        35.46,
+        35.78,
+        36.16,
+        36.43,
+        36.71,
+        37.0,
+        37.33,
+        37.62,
+        37.84,
+        38.24,
+        38.57,
+        38.92,
+        39.31,
+        39.59,
+        39.9,
+        40.22,
+        40.59,
+        40.94,
+        41.3,
+        41.47,
+        41.84,
+        42.13,
+        42.47,
+        42.83,
+        43.14,
+        43.46,
+        43.7,
+        43.94,
+        44.23,
+        44.39,
+        44.74,
+        45.12,
+        45.5,
+        45.82,
+        46.13,
+        46.48,
+        46.83,
+        47.16,
+        47.38,
+        47.74,
+        48.11,
+        48.41,
+        48.56,
+        48.9,
+        49.11,
+        49.43,
+        49.81,
+        49.93,
+        50.25,
+        50.62,
+        50.91,
+        51.24,
+        51.5,
+        51.63,
+        51.96,
+        52.29,
+        52.62,
+        52.98,
+        53.37,
+        53.64,
+        54.01,
+        54.23,
+        54.58,
+        54.9,
+        55.25,
+        55.55,
+        55.8,
+        56.08,
+        56.45,
+        56.7,
+        56.93,
+        57.14,
+        57.48,
+        57.83,
+        58.12,
+        58.45,
+        58.8,
+        59.02,
+        59.41,
+        59.78,
+        60.11,
+        60.46,
+        60.78,
+        61.07,
+        61.31,
+        61.55,
+        61.71,
+        62.09,
+        62.38,
+        62.68,
+        62.93,
+        63.27,
+        63.66,
+        63.91,
+        64.11,
+        64.33,
+        64.69,
+        65.04,
+        65.35,
+        65.65,
+        66.04,
+        66.43,
+        66.83,
+        67.14,
+        67.32,
+        67.71,
+        67.99,
+        68.32,
+        68.69,
+        68.96,
+        69.25,
+        69.59,
+        69.82,
+        70.21,
+        70.42,
+        70.76,
+        71.05,
+        71.41,
+        71.66,
+        72.04,
+        72.44,
+        72.76,
+        73.13,
+        73.45,
+        73.78,
+        74.12,
+        74.31
+      ],
+      "length_km": 74.31,
+      "source": "OpenStreetMap Ciliwung centerline (Overpass)"
+    },
+    "median": {
+      "lag_katulampa_manggarai_hours": 12.6,
+      "per_km_minutes": 10.4,
+      "est_jatinegara_hours": 14.1,
+      "events_used": 7
+    },
+    "example_event": "E-2022-01",
+    "example_date": "2022-02-17",
+    "timeline": [
+      {
+        "station": "Bendung Katulampa",
+        "tma_cm": 100,
+        "at": "2022-02-16T18:24:00",
+        "siaga": "waspada"
+      },
+      {
+        "station": "Pos Depok",
+        "tma_cm": 220,
+        "at": "2022-02-16T22:08:00",
+        "siaga": "waspada"
+      },
+      {
+        "station": "Manggarai BKB",
+        "tma_cm": 795,
+        "at": "2022-02-17T07:00:00",
+        "siaga": "waspada"
+      },
+      {
+        "station": "Pos Cipinang Hulu",
+        "tma_cm": 155,
+        "at": "2022-02-16T20:15:00",
+        "siaga": "waspada"
+      },
+      {
+        "station": "Waduk Pluit",
+        "tma_cm": -180,
+        "at": "2022-02-16T23:00:00",
+        "siaga": "normal",
+        "context": true
+      }
+    ],
+    "news_pair": {
+      "upstream": {
+        "label": "HULU — Bendung Katulampa",
+        "text": "Katulampa tercatat waspada (100 cm) pada 2022-02-16 18:24",
+        "at": "2022-02-16T18:24:00"
+      },
+      "downstream": {
+        "label": "HILIR — Jatinegara / Kampung Melayu",
+        "headline": "Luapan Kali Ciliwung (Bendung Katulampa Siaga 3)",
+        "publisher": "Kompas TV",
+        "snippet": "",
+        "url": "https://www.kompas.tv",
+        "at": "2022-02-17"
+      },
+      "lag_hours": 12.6
+    },
+    "caveat": "Jatinegara tidak punya pos TMA sendiri; ETA-nya PROXY per-km (confidence low). Waduk Pluit disertakan sebagai konteks, bukan bagian koridor.",
+    "corridor_points": [
+      {
+        "name": "Bendung Katulampa",
+        "type": "pos",
+        "coord": [
+          106.83708,
+          -6.6331
+        ],
+        "arc_km": 0.0,
+        "d_river_km": 0.03
+      },
+      {
+        "name": "Pos Depok",
+        "type": "pos",
+        "coord": [
+          106.83184,
+          -6.40053
+        ],
+        "arc_km": 36.16,
+        "d_river_km": 0.07
+      },
+      {
+        "name": "Pintu Air Setu Babakan",
+        "type": "hujan",
+        "coord": [
+          106.82653,
+          -6.3385
+        ],
+        "arc_km": 46.48,
+        "d_river_km": 1.22
+      },
+      {
+        "name": "Pompa Pengadegan",
+        "type": "hujan",
+        "coord": [
+          106.86178,
+          -6.25039
+        ],
+        "arc_km": 65.35,
+        "d_river_km": 0.1
+      },
+      {
+        "name": "Pompa Cawang Wika - Brantas",
+        "type": "hujan",
+        "coord": [
+          106.87818,
+          -6.24066
+        ],
+        "arc_km": 67.32,
+        "d_river_km": 1.28
+      },
+      {
+        "name": "Pompa Kebon Baru Jalan J",
+        "type": "hujan",
+        "coord": [
+          106.86494,
+          -6.23476
+        ],
+        "arc_km": 67.71,
+        "d_river_km": 0.05
+      },
+      {
+        "name": "Pompa Kebon Nanas",
+        "type": "hujan",
+        "coord": [
+          106.87709,
+          -6.23187
+        ],
+        "arc_km": 67.99,
+        "d_river_km": 1.3
+      },
+      {
+        "name": "Pompa  Kebon Baru Jalan D",
+        "type": "hujan",
+        "coord": [
+          106.86399,
+          -6.23178
+        ],
+        "arc_km": 67.99,
+        "d_river_km": 0.17
+      },
+      {
+        "name": "Pompa Bidara Cina",
+        "type": "hujan",
+        "coord": [
+          106.86467,
+          -6.22933
+        ],
+        "arc_km": 68.32,
+        "d_river_km": 0.13
+      },
+      {
+        "name": "Pompa UPPPP",
+        "type": "hujan",
+        "coord": [
+          106.8765,
+          -6.22664
+        ],
+        "arc_km": 68.69,
+        "d_river_km": 1.3
+      },
+      {
+        "name": "Kebon Baru Rw 1",
+        "type": "hujan",
+        "coord": [
+          106.86355,
+          -6.22564
+        ],
+        "arc_km": 68.96,
+        "d_river_km": 0.17
+      },
+      {
+        "name": "Pompa Kampung Pulo",
+        "type": "hujan",
+        "coord": [
+          106.8628,
+          -6.2174
+        ],
+        "arc_km": 70.21,
+        "d_river_km": 0.12
+      },
+      {
+        "name": "Pompa Bukit Duri 1",
+        "type": "hujan",
+        "coord": [
+          106.8617,
+          -6.21828
+        ],
+        "arc_km": 70.21,
+        "d_river_km": 0.04
+      },
+      {
+        "name": "Pompa Bukit Duri 6",
+        "type": "hujan",
+        "coord": [
+          106.85824,
+          -6.21722
+        ],
+        "arc_km": 70.76,
+        "d_river_km": 0.14
+      },
+      {
+        "name": "Pintu Air KW 31 & Gg. Kelor",
+        "type": "hujan",
+        "coord": [
+          106.86174,
+          -6.21125
+        ],
+        "arc_km": 71.66,
+        "d_river_km": 0.55
+      },
+      {
+        "name": "Manggarai BKB",
+        "type": "pintu",
+        "coord": [
+          106.84844,
+          -6.2079
+        ],
+        "arc_km": 72.44,
+        "d_river_km": 0.24
+      },
+      {
+        "name": "Manggarai KCL",
+        "type": "pintu",
+        "coord": [
+          106.84844,
+          -6.2079
+        ],
+        "arc_km": 72.44,
+        "d_river_km": 0.24
+      },
+      {
+        "name": "Pintu Air Manggarai",
+        "type": "hujan",
+        "coord": [
+          106.84844,
+          -6.2079
+        ],
+        "arc_km": 72.44,
+        "d_river_km": 0.24
+      }
+    ],
+    "waduk": [
+      {
+        "name": "Waduk Pluit",
+        "type": "pos",
+        "coord": [
+          106.79665,
+          -6.10908
+        ],
+        "arc_km": 74.31,
+        "on_corridor": false
+      },
+      {
+        "name": "Rumah Pompa Waduk Melati",
+        "type": "hujan",
+        "coord": [
+          106.81798,
+          -6.20084
+        ],
+        "arc_km": 72.76,
+        "on_corridor": false
+      },
+      {
+        "name": "Pompa Waduk Rawa Badak",
+        "type": "hujan",
+        "coord": [
+          106.89674,
+          -6.12107
+        ],
+        "arc_km": 73.78,
+        "on_corridor": false
+      },
+      {
+        "name": "Pompa Waduk Teluk Gong",
+        "type": "hujan",
+        "coord": [
+          106.77765,
+          -6.1335
+        ],
+        "arc_km": 74.31,
+        "on_corridor": false
+      },
+      {
+        "name": "Pintu Air Waduk Prapanca(Walikota)",
+        "type": "hujan",
+        "coord": [
+          106.80952,
+          -6.24972
+        ],
+        "arc_km": 62.68,
+        "on_corridor": false
+      },
+      {
+        "name": "Pintu Air Setu Babakan",
+        "type": "hujan",
+        "coord": [
+          106.82653,
+          -6.3385
+        ],
+        "arc_km": 46.48,
+        "on_corridor": true
+      },
+      {
+        "name": "Pompa Waduk Pondok Labu",
+        "type": "hujan",
+        "coord": [
+          106.80789,
+          -6.30339
+        ],
+        "arc_km": 50.25,
+        "on_corridor": false
+      },
+      {
+        "name": "Waduk Oasis",
+        "type": "hujan",
+        "coord": [
+          106.8063,
+          -6.24812
+        ],
+        "arc_km": 62.68,
+        "on_corridor": false
+      },
+      {
+        "name": "Pompa Waduk Wijaya Kusuma",
+        "type": "hujan",
+        "coord": [
+          106.793,
+          -6.15224
+        ],
+        "arc_km": 74.31,
+        "on_corridor": false
+      },
+      {
+        "name": "Pompa Waduk Tomang Barat",
+        "type": "hujan",
+        "coord": [
+          106.77995,
+          -6.16716
+        ],
+        "arc_km": 74.31,
+        "on_corridor": false
+      },
+      {
+        "name": "Pompa Waduk Sunter Utara",
+        "type": "hujan",
+        "coord": [
+          106.86642,
+          -6.12056
+        ],
+        "arc_km": 74.31,
+        "on_corridor": false
+      },
+      {
+        "name": "Pompa Waduk Sunter Selatan",
+        "type": "hujan",
+        "coord": [
+          106.861,
+          -6.14989
+        ],
+        "arc_km": 74.31,
+        "on_corridor": false
+      },
+      {
+        "name": "Pompa Waduk Muara Angke",
+        "type": "hujan",
+        "coord": [
+          106.76801,
+          -6.10747
+        ],
+        "arc_km": 74.31,
+        "on_corridor": false
+      },
+      {
+        "name": "Waduk Grogol",
+        "type": "hujan",
+        "coord": [
+          106.793,
+          -6.157
+        ],
+        "arc_km": 74.31,
+        "on_corridor": false
+      }
+    ],
+    "weather_validation": {
+      "total_stations": 122,
+      "valid_coords": 122,
+      "invalid_coords": [],
+      "suspect_far": [
+        "Rumah Pompa Wijaya Kusuma",
+        "Rumah Pompa Teratai Kembangan Utara"
+      ],
+      "on_corridor": 14,
+      "note": "valid = koordinat dalam Jabodetabek; suspect_far = >30 km dari Ciliwung (kemungkinan placeholder/salah input); on_corridor = <=1.5 km dari alur"
+    },
+    "news_sync": [
+      {
+        "date": "2021-04-29",
+        "publisher": "antaranews",
+        "url": "https://www.antaranews.com/berita/2128214/banjir-kembali-rendam-permukiman-warga-di-kampung-melayu",
+        "upstream": [
+          "Banjir di permukiman padat penduduk ini terjadi akibat luapan Kali Ciliwung setelah pada Rabu (28/4) malam Bendung Katulampa berstatus siaga tiga setelah diguyur hujan."
+        ],
+        "downstream": [
+          "Jakarta (ANTARA) - Permukiman warga yang berada di Kebon Pala, Kampung Melayu, Jakarta Timur, kembali tergenang banjir setinggi kurang lebih 70 cm pada Kamis pagi."
+        ],
+        "quality": "Q4 media (unverified)"
+      },
+      {
+        "date": "2022-08-15",
+        "publisher": "republika",
+        "url": "https://news.republika.co.id/berita/rgnfij382/kampung-melayu-siaga-banjir-susulan-akibat-luapan-sungai-ciliwung",
+        "upstream": [
+          "Sebelumnya tinggi muka air di Bendungan Katulampa, Bogor, sempat berstatus siaga dua, pada Ahad (14/8) malam.",
+          "Pos pemantauan mencatat, tinggi muka air Katulampa berada di angka 180 sentimeter."
+        ],
+        "downstream": [
+          "REPUBLIKA.CO.ID, JAKARTA -- Kelurahan Kampung Melayu, Jakarta Timur, tetap bersiaga terhadap kemungkinan banjir susulan agar dapat menyiapkan langkah antisipasi ketika musibah itu kembali merendam RW 004 dan RW 005 Kebon Pala akibat luapan Kali Ciliwung.",
+          "Lurah Kampung Melayu, Angga Harjuno di Jakarta, Senin (15/8/2022), mengatakan, saat ini banjir yang merendam permukiman warga Kebon Pala sejak pukul 04.00 WIB tersebut telah surut."
+        ],
+        "quality": "Q4 media (unverified)"
+      },
+      {
+        "date": "2023-02-27",
+        "publisher": "republika",
+        "url": "https://news.republika.co.id/berita/rqpsio463/kali-ciliwung-meluap-banjir-kepung-warga-kampung-melayu",
+        "upstream": [
+          "Sebelumnya, hujan dengan intensitas sedang hingga lebat melanda sebagian besar wilayah DKI Jakarta dan sekitarnya pada Ahad (26/2/2023) hingga Senin pagi, menyebabkan kenaikan status siaga Pintu Air Manggarai menjadi siaga tiga atau Waspada.",
+          "Kemudian, pintu air lain juga siaga tiga atau waspada yakni Bendung Katulampa, Pintu Air Karet, Pos Angke Hulu, Pos Sunter Hulu."
+        ],
+        "downstream": [
+          "REPUBLIKA.CO.ID,  JAKARTA -- Badan Penanggulangan Bencana Daerah (BPBD) DKI medata Kali Ciliwung kembali meluap mengakibatkan banjir setinggi satu meter di Kampung Melayu, Jakarta Timur.",
+          "Kemudian di Kelurahan Cawang ada dua RT dengan ketinggian 90 cm akibat luapan Kali Ciliwung, selanjutnya di Kelurahan Bidara Cina ada lima RT dengan ketinggian hingga 90 cm juga akibat luapan Kali Ciliwung dan Kampung Melayu setinggi satu meter di dua RT."
+        ],
+        "quality": "Q4 media (unverified)"
+      },
+      {
+        "date": "2023-11-30",
+        "publisher": "antaranews",
+        "url": "https://www.antaranews.com/berita/3848784/banjir-kampung-melayu-puluhan-orang-mengungsi",
+        "upstream": [
+          "Hujan menyebabkan status Bendung Katulampa ditingkatkan menjadi siaga 2 pada Rabu (29/11) pukul 20.10 WIB, Pos Depok siaga 2 pada Rabu (29/11) pukul 23.00 WIB, Pos Pesanggrahan siaga 3 (waspada) pada Kamis pukul 01.00 WIB, Pos Angke Hulu siaga 3 (waspada) pada Kamis pukul 04.00 WIB, dan Pintu Air Manggarai siaga 3 (waspada) pada Kamis pukul 08.00 WIB."
+        ],
+        "downstream": [
+          "Jakarta (ANTARA) - .Banjir di Kampung Melayu mengakibatkan 31 orang harus mengungsi ke Masjid Jami Ihtihadul Ikhwan, kelurahan setempat, Kamis.",
+          "Kepala Satuan Pelaksana Pengolahan Data dan Informasi Kebencanaan Badan Penanggulangan Bencana Daerah (BPBD) DKI Jakarta Michael Sitanggang mengatakan berdasarkan data terbaru pukul 15.00 WIB, sebanyak 21 RT di Kelurahan Kampung Melayu terendam banjir dengan ketinggian 30-165 sentimeter."
+        ],
+        "quality": "Q4 media (unverified)"
+      }
+    ],
+    "example_rain": {
+      "Pintu Air Manggarai": 55.0,
+      "Pompa Kebon Nanas": 30.0,
+      "Pompa Bidara Cina": 47.0,
+      "Pompa Cawang Wika - Brantas": 32.0,
+      "Pompa Kampung Pulo": 50.0,
+      "Pompa UPPPP": 30.0,
+      "Pintu Air KW 31 & Gg. Kelor": 50.0,
+      "Pompa Bukit Duri 1": 49.0,
+      "Pompa  Kebon Baru Jalan D": 40.0,
+      "Pompa Kebon Baru Jalan J": 34.0,
+      "Pompa Pengadegan": 36.0,
+      "Pompa Bukit Duri 6": 37.0,
+      "Kebon Baru Rw 1": 48.0,
+      "Pintu Air Setu Babakan": 28.0
+    }
+  },
+  "weather_note": "cuaca harian = observasi dominan di titik pantau DSDA (bukan BMKG); rain_observations = jumlah entri cuaca hujan per hari",
+  "pluit_note": "TMA Waduk Pluit (cm) disertakan sebagai konteks waduk satu-satunya di dataset; sistemnya pesisir, bukan koridor Ciliwung",
+  "daily_weather_days": 1660,
+  "validation_summary": {
+    "total_events": 9,
+    "validated": 7,
+    "out_of_window": 2,
+    "with_waspada_or_higher": 6
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "dataset_id": "tma_daily_v1_jatinegara",
+  "name": "TMA agregasi harian koridor Ciliwung-Jatinegara v1 (DSDA)",
+  "version": "1.0",
+  "status": "PUBLISHED",
+  "source": "DSDA DKI Jakarta (agregasi dari dump harian lokal data/data-tma)",
+  "acquired_at": "2026-09-04T10:06:05.630654+00:00",
+  "processed_at": "2026-09-04T10:06:05.630654+00:00",
+  "processing": {
+    "environment": "Python (daily max/mean aggregation, deterministic)",
+    "processing_script": "tools/build_tma.py",
+    "processing_version": "tma-daily-v1"
+  },
+  "outputs": {
+    "file": "data/processed/tma_daily_v1.json",
+    "crs": null
+  },
+  "inputs": [
+    "data/data-tma/*.json (2011 files)"
+  ],
+  "method": {
+    "name": "tma-daily-v1",
+    "description": "per station per day: max+hour, mean, worst siaga code, count; empirical siaga bands"
+  },
+  "record_count": 8300,
+  "quality_level": "Q2",
+  "validator": "tools/check_governance.py (automated) + data-steward review",
+  "checksum": "sha256:4a8c57ddbcdf3f26c5ed839cfa7181c4f56e3a8d66f28fcb83feffd2ce2ce8a9"
+}

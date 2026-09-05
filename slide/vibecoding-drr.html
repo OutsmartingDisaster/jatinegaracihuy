@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibecoding for Disaster & Climate Resilience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   THEME — DRR / CLIMATE RESILIENCE
+   Dark background, electric blue accent, clean and technical.
+   ============================================================ */
+:root{
+  --bg:oklch(0.13 0.015 260);
+  --surface:oklch(0.17 0.015 260);
+  --surface-2:oklch(0.21 0.018 260);
+  --ink:oklch(0.95 0.01 260);
+  --muted:oklch(0.6 0.02 260);
+  --line:oklch(0.28 0.02 260);
+  --primary:oklch(0.65 0.17 250);
+  --primary-deep:oklch(0.55 0.15 250);
+  --primary-soft:oklch(0.22 0.04 250);
+  --accent:oklch(0.72 0.16 80);
+  --accent-soft:oklch(0.22 0.04 80);
+  --danger:oklch(0.6 0.18 25);
+  --danger-soft:oklch(0.22 0.04 25);
+  --safe:oklch(0.65 0.15 155);
+  --safe-soft:oklch(0.22 0.04 155);
+  --purple:oklch(0.65 0.18 300);
+  --purple-soft:oklch(0.22 0.04 300);
+
+  --font-display:'Bricolage Grotesque',sans-serif;
+  --font-body:'Figtree',sans-serif;
+  --font-data:'JetBrains Mono',monospace;
+
+  --title-size:3.6rem;
+  --h2-size:2.2rem;
+  --h3-size:1.4rem;
+  --body-size:1.1rem;
+  --small-size:0.78rem;
+  --slide-padding:2.2rem;
+  --gap:1rem;
+  --ease-out-expo:cubic-bezier(0.16,1,0.3,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.46;-webkit-font-smoothing:antialiased}
+
+/* ============================================================
+   DECK STAGE — fixed 16:9, letterboxed, scaled to window
+   ============================================================ */
+.deck{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(1200px 700px at 50% -10%,rgba(59,130,246,.08),transparent 60%),var(--bg)}
+.stage{position:relative;width:1280px;height:720px;flex:none;
+  background:var(--bg);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden}
+.slide.active{display:flex}
+.slide-content{flex:1;min-height:0;overflow:hidden;padding:var(--slide-padding);
+  display:flex;flex-direction:column;justify-content:center}
+
+/* Part divider slides */
+.slide.part-divider .slide-content{align-items:center;text-align:center;justify-content:center}
+
+/* ============================================================
+   CHROME
+   ============================================================ */
+.deck-top{position:absolute;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;
+  align-items:center;gap:1rem;padding:0.5rem 1.5rem 0.45rem;pointer-events:none;
+  font-family:var(--font-data);font-size:0.72rem;color:var(--muted);letter-spacing:.06em;
+  border-bottom:1px solid var(--line)}
+.deck-top .brand b{color:var(--primary);font-weight:600}
+.deck-top .page{display:flex;align-items:center;gap:.5rem;pointer-events:auto}
+.deck-top .page b{color:var(--ink);font-weight:600}
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--primary);z-index:70;width:0%}
+.nav-dots{position:absolute;right:0.8rem;top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:5px}
+.nav-dots button{width:8px;height:8px;border-radius:50%;border:1px solid var(--muted);background:transparent;padding:0;cursor:pointer;opacity:.4;transition:all .25s}
+.nav-dots button.active{background:var(--primary);border-color:var(--primary);opacity:1;transform:scale(1.4)}
+.key-hint{position:absolute;bottom:0.4rem;right:1rem;z-index:60;
+  font-family:var(--font-data);font-size:0.62rem;color:var(--muted);letter-spacing:.05em}
+
+/* ============================================================
+   TYPE
+   ============================================================ */
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;letter-spacing:-0.025em}
+h1{font-weight:800;font-size:var(--title-size);line-height:1.0;letter-spacing:-0.03em;margin:.15rem 0 .5rem}
+h1 .hl{color:var(--primary)}
+h2{font-weight:700;font-size:var(--h2-size);line-height:1.08;margin:.2rem 0 .45rem}
+h3{font-weight:700;font-size:var(--h3-size);line-height:1.15}
+p{font-size:var(--body-size);color:var(--muted);max-width:65ch}
+.sub{font-size:calc(var(--body-size)*1.1);color:var(--ink);max-width:52ch;text-wrap:pretty}
+b,strong{color:var(--ink);font-weight:600}
+.data{font-family:var(--font-data)}
+.tag-blue{color:var(--primary)}
+.rule{height:1px;background:var(--line);margin:calc(var(--gap)*0.4) 0}
+
+/* ============================================================
+   SURFACES
+   ============================================================ */
+.card{border:1px solid var(--line);border-radius:14px;background:var(--surface);
+  padding:1rem;overflow:hidden}
+.card.flat{background:var(--bg)}
+.card .num{font-family:var(--font-display);font-weight:800;font-size:1.5rem;line-height:1.05;color:var(--primary)}
+.card .lbl{font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);text-transform:uppercase;letter-spacing:.1em;display:block;margin-top:.25rem}
+.card p{font-size:calc(var(--body-size)*0.92);margin-top:.35rem;color:var(--muted)}
+.card ul{list-style:none;margin-top:.35rem}
+.card li{font-size:calc(var(--body-size)*0.88);color:var(--muted);padding:.15rem 0;display:flex;gap:.5rem;align-items:baseline}
+.card li::before{content:"—";color:var(--primary);flex:none}
+
+.tint-blue{background:var(--primary-soft);border-color:color-mix(in oklab,var(--primary) 30%,transparent)}
+.tint-amber{background:var(--accent-soft);border-color:color-mix(in oklab,var(--accent) 35%,transparent)}
+.tint-red{background:var(--danger-soft);border-color:color-mix(in oklab,var(--danger) 30%,transparent)}
+.tint-green{background:var(--safe-soft);border-color:color-mix(in oklab,var(--safe) 30%,transparent)}
+.tint-purple{background:var(--purple-soft);border-color:color-mix(in oklab,var(--purple) 30%,transparent)}
+
+.grid{display:grid;gap:var(--gap)}
+.cols-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.cols-3{grid-template-columns:repeat(auto-fit,minmax(min(100%,195px),1fr))}
+.cols-4{grid-template-columns:repeat(auto-fit,minmax(min(100%,145px),1fr))}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+.bad h3{color:var(--danger)} .good h3{color:var(--safe)}
+
+/* ============================================================
+   PILLS / FLOW
+   ============================================================ */
+.pill{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--font-data);font-size:var(--small-size);
+  border-radius:999px;padding:.2rem .65rem;border:1px solid var(--line);background:var(--surface);color:var(--muted)}
+.pill b{color:var(--ink);font-weight:600}
+.pill.solid{background:var(--primary);border-color:var(--primary);color:#fff}
+.pill.warn{background:var(--accent);border-color:var(--accent);color:#fff}
+.pill.dot::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--primary);flex:none}
+.pill.dot.amber::before{background:var(--accent)}
+.pill.dot.red::before{background:var(--danger)}
+.pill.dot.green::before{background:var(--safe)}
+.pill.dot.purple::before{background:var(--purple)}
+
+.flow{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center}
+.step{font-family:var(--font-data);font-size:var(--small-size);border:1px solid var(--line);
+  background:var(--surface);color:var(--muted);border-radius:10px;padding:.35rem .65rem;white-space:nowrap}
+.step b{color:var(--primary)}
+.flow .arr{color:var(--muted);font-family:var(--font-data)}
+
+.quote{font-family:var(--font-display);font-weight:700;font-size:1.85rem;line-height:1.22;
+  color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:1.2rem 1.5rem}
+.quote small{display:block;font-family:var(--font-data);font-weight:400;font-size:var(--small-size);color:var(--muted);margin-top:.6rem}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+.table-wrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
+.table{width:100%;border-collapse:collapse;font-size:calc(var(--body-size)*0.85)}
+.table th{font-family:var(--font-data);font-size:var(--small-size);text-transform:uppercase;letter-spacing:.08em;
+  color:var(--muted);text-align:left;padding:.4rem .65rem;background:var(--surface-2);border-bottom:1px solid var(--line)}
+.table td{padding:.4rem .65rem;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top}
+.table td b{color:var(--ink);font-weight:600}
+.table tr:last-child td{border-bottom:0}
+.table .mono{font-family:var(--font-data);font-size:calc(var(--body-size)*0.8);word-break:break-all}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+.tl{display:flex;flex-direction:column;gap:.25rem}
+.tl .t{display:grid;grid-template-columns:auto 1fr;gap:.55rem;align-items:center;
+  border:1px solid var(--line);border-radius:10px;padding:.28rem .65rem;background:var(--surface)}
+.tl .n{font-family:var(--font-data);color:var(--primary);font-weight:600;min-width:1.8ch}
+.tl .d{font-size:calc(var(--body-size)*0.88);color:var(--muted)}
+.tl .d b{color:var(--ink);font-weight:600}
+
+/* ============================================================
+   CHECKLIST
+   ============================================================ */
+.check{list-style:none;display:flex;flex-direction:column;gap:.28rem}
+.check li{display:flex;gap:.55rem;align-items:baseline;font-size:calc(var(--body-size)*0.92);color:var(--muted)}
+.check li b{color:var(--ink);font-weight:600}
+.check li::before{content:"✓";color:var(--safe);font-weight:800;flex:none}
+
+/* ============================================================
+   CODE
+   ============================================================ */
+.code{position:relative;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;color:oklch(0.88 0.01 250);
+  font-family:var(--font-data);font-size:0.82rem;line-height:1.55;
+  padding:.9rem;overflow:auto;max-height:360px}
+.code .copy{position:absolute;top:.5rem;right:.5rem;font-family:var(--font-data);font-size:var(--small-size);
+  background:var(--primary);color:#fff;border:0;border-radius:8px;padding:.22rem .5rem;cursor:pointer;font-weight:600}
+.code .k{color:oklch(0.78 0.12 250)}
+.code .c{color:oklch(0.55 0 0 / .55)}
+.code .str{color:oklch(0.72 0.14 155)}
+.code.small{font-size:0.75rem;padding:.8rem}
+
+/* ============================================================
+   METRIC DASHBOARD
+   ============================================================ */
+.metric{border:1px solid var(--line);border-radius:12px;padding:.5rem .7rem;background:var(--surface);text-align:center}
+.metric .val{font-family:var(--font-display);font-weight:800;font-size:1.6rem;color:var(--primary);line-height:1.1}
+.metric .lab{font-family:var(--font-data);font-size:var(--small-size);color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:.2rem}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease-out-expo),transform .5s var(--ease-out-expo)}
+.slide.active .reveal{opacity:1;transform:none}
+.slide.active .d1{transition-delay:.05s}.slide.active .d2{transition-delay:.1s}
+.slide.active .d3{transition-delay:.15s}.slide.active .d4{transition-delay:.2s}
+.slide.active .d5{transition-delay:.25s}.slide.active .d6{transition-delay:.3s}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+<div class="deck">
+<div class="stage" id="stage">
+<div class="deck-top">
+  <span class="brand"><b>VIBECODING</b> · Disaster & Climate Resilience</span>
+  <span class="page"><b id="idx">01</b><span>/52</span></span>
+</div>
+<nav class="nav-dots" id="dots" aria-label="Slides"></nav>
+<div class="key-hint">← → · space · dots · F11</div>
+
+<!-- ============================================================
+     PART 01 — THINK LIKE A RESILIENCE BUILDER
+     ============================================================ -->
+
+<!-- S1 · TITLE -->
+<section class="slide">
+  <div class="slide-content">
+    <span class="pill dot reveal">WORKSHOP · DISASTER RISK REDUCTION</span>
+    <h1 class="reveal d1">Vibecoding for<br><span class="hl">Disaster &amp; Climate</span><br>Resilience.</h1>
+    <p class="sub reveal d2">Building evidence-driven digital tools with AI agents.</p>
+    <div class="rule reveal d3"></div>
+    <div class="flow reveal d3">
+      <span class="step"><b>IDEA</b></span><span class="arr">→</span>
+      <span class="step"><b>RESEARCH</b></span><span class="arr">→</span>
+      <span class="step"><b>DATA</b></span><span class="arr">→</span>
+      <span class="step"><b>GIS</b></span><span class="arr">→</span>
+      <span class="step"><b>PRD</b></span><span class="arr">→</span>
+      <span class="step"><b>CODE</b></span><span class="arr">→</span>
+      <span class="step"><b>DEPLOY</b></span><span class="arr">→</span>
+      <span class="step"><b>ITERATE</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- S2 · WHAT ARE WE BUILDING -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">What are we building?</h2>
+    <p class="sub reveal d2">Not just websites. <b>Digital resilience tools.</b></p>
+    <div class="grid cols-3 reveal d3">
+      <div class="card"><div class="num">🌊</div><p><b>Flood intelligence</b></p></div>
+      <div class="card"><div class="num">🌡️</div><p><b>Heat-risk mapping</b></p></div>
+      <div class="card"><div class="num">🏃</div><p><b>Evacuation tools</b></p></div>
+      <div class="card"><div class="num">⚠️</div><p><b>Early warning dashboards</b></p></div>
+      <div class="card"><div class="num">📱</div><p><b>Citizen reporting</b></p></div>
+      <div class="card"><div class="num">🗺️</div><p><b>Climate vulnerability maps</b></p></div>
+    </div>
+    <div class="rule reveal d4"></div>
+    <div class="quote reveal d4" style="font-size:1.5rem">"Can we turn fragmented disaster data into something people can actually use?"</div>
+  </div>
+</section>
+
+<!-- S3 · THE DRR VIBE CODING LOOP -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">The DRR Vibe Coding Loop</h2>
+    <div class="split reveal d2">
+      <div class="code small"><span class="k">DISASTER QUESTION</span>
+         │
+         ▼
+      <span class="k">BRAINSTORM</span>
+         │
+         ▼
+      <span class="k">RESEARCH</span>
+         │
+         ▼
+      <span class="k">DATA DISCOVERY</span>
+         │
+    ┌───┴───┐
+    ▼       ▼
+ <span class="str">SCRAPING</span>  <span class="str">APIs</span>
+    └───┬───┘
+        ▼
+   <span class="k">GIS / EO DATA</span>
+        │
+        ▼
+      <span class="k">PRD</span>
+        │
+        ▼
+   <span class="k">AI AGENT BUILD</span>
+        │
+        ▼
+    <span class="k">GIT + TEST</span></div>
+      <div class="code small"><span class="c">  continued...</span>
+   <span class="k">GIT + TEST</span>
+        │
+        ▼
+   <span class="k">CLOUDFLARE</span>
+        │
+        ▼
+   <span class="k">PRODUCTION</span>
+        │
+        ▼
+    <span class="k">FEEDBACK</span>
+        │
+        └────↺</div>
+    </div>
+    <p class="reveal d3" style="margin-top:.5rem"><b>Key:</b> it's a loop, not a line. Every deploy feeds back into the next question.</p>
+  </div>
+</section>
+
+<!-- S4 · THE NEW TEAM -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">The New Team</h2>
+    <p class="sub reveal d2">AI agent is not just an "AI programmer." In DRR projects, it's a <b>multi-role collaborator</b>.</p>
+    <div class="split reveal d3">
+      <div class="table-wrap">
+        <table class="table">
+          <tr><th>Role</th><th>AI helps with</th></tr>
+          <tr><td><b>Researcher</b></td><td>Literature, reports, evidence</td></tr>
+          <tr><td><b>Data analyst</b></td><td>Cleaning, statistics, validation</td></tr>
+          <tr><td><b>GIS analyst</b></td><td>Spatial analysis, overlays</td></tr>
+          <tr><td><b>EO analyst</b></td><td>Satellite imagery, indices</td></tr>
+          <tr><td><b>Data engineer</b></td><td>ETL pipelines, APIs</td></tr>
+          <tr><td><b>Developer</b></td><td>Web application, APIs</td></tr>
+          <tr><td><b>DevOps</b></td><td>CI/CD, deployment</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="card tint-blue">
+          <span class="lbl">human stays</span>
+          <div class="num" style="font-size:1.3rem">Decision maker<br>+ domain expert<br>+ validator</div>
+        </div>
+        <div class="card tint-amber" style="margin-top:var(--gap)">
+          <span class="lbl">principle</span>
+          <p><b>Orchestrate, don't replace.</b> The human sets direction. The agent executes and explores.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PART 02 — FROM PROBLEM TO RESEARCH
+     ============================================================ -->
+<section class="slide part-divider">
+  <div class="slide-content">
+    <span class="pill dot purple reveal">PART 02</span>
+    <h1 class="reveal d1" style="font-size:3rem;margin-top:1rem">From Problem<br>to <span class="hl">Research</span></h1>
+    <p class="reveal d2" style="font-size:var(--body-size);color:var(--muted);margin-top:.5rem">Start with the right question, not the right tool.</p>
+  </div>
+</section>
+
+<!-- S5 · START WITH A DISASTER QUESTION -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Start with a disaster question</h2>
+    <div class="split reveal d2">
+      <div class="card bad">
+        <span class="lbl">weak question</span>
+        <div class="quote" style="font-size:1.3rem;border:1px solid color-mix(in oklab,var(--danger) 30%,transparent)">"Saya mau bikin aplikasi banjir."</div>
+      </div>
+      <div class="card good">
+        <span class="lbl">strong question</span>
+        <div class="quote" style="font-size:1.2rem;border:1px solid color-mix(in oklab,var(--safe) 30%,transparent)">"Mengapa titik banjir tertentu terus berulang dalam 5 tahun terakhir?"</div>
+      </div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <div class="grid cols-2 reveal d3">
+      <div class="card"><p>"Apakah perubahan land cover berhubungan dengan peningkatan flood exposure?"</p></div>
+      <div class="card"><p>"Berapa banyak penduduk dalam 15 menit walking distance dari TES?"</p></div>
+      <div class="card"><p>"Bagaimana heat exposure berbeda antar-kelurahan?"</p></div>
+      <div class="card"><p>"Apakah warning infrastructure di lokasi yang paling membutuhkan?"</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S6 · DISASTER RESEARCH FRAMEWORK -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Disaster Research Framework</h2>
+    <div class="grid cols-3 reveal d2">
+      <div class="card tint-red">
+        <span class="lbl">Hazard</span>
+        <p><b>Apa bahayanya?</b></p>
+        <ul><li>Flood</li><li>Earthquake</li><li>Landslide</li><li>Tsunami</li><li>Extreme heat</li></ul>
+      </div>
+      <div class="card tint-amber">
+        <span class="lbl">Exposure</span>
+        <p><b>Apa yang berada di sana?</b></p>
+        <ul><li>Population</li><li>Buildings</li><li>Roads</li><li>Schools</li><li>Hospitals</li></ul>
+      </div>
+      <div class="card tint-blue">
+        <span class="lbl">Vulnerability</span>
+        <p><b>Siapa yang paling rentan?</b></p>
+        <ul><li>Age</li><li>Income</li><li>Disability</li><li>Access</li><li>History</li></ul>
+      </div>
+    </div>
+    <div class="split reveal d3" style="margin-top:var(--gap)">
+      <div class="card tint-green">
+        <span class="lbl">Capacity</span>
+        <p><b>Apa kapasitas yang tersedia?</b></p>
+        <p>Infrastructure, resources, response systems.</p>
+      </div>
+      <div class="card tint-purple">
+        <span class="lbl">Risk</span>
+        <div class="code small" style="margin-top:.3rem"><span class="k">RISK</span>
+=
+<span class="str">HAZARD</span> × <span class="str">EXPOSURE</span> × <span class="str">VULNERABILITY</span>
+÷ <span class="k">CAPACITY</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S7 · RESEARCH AGENT -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Research Agent</h2>
+    <p class="sub reveal d2">Give the agent a structured research prompt. It should <b>never invent data</b>.</p>
+    <div class="code reveal d3"><button class="copy" onclick="copyPrompt(this)">Copy</button><span class="k">Act as a disaster-risk researcher.</span>
+
+Research this question: <span class="str">[QUESTION]</span>
+
+Identify:
+<span class="c">1. Existing evidence</span>
+<span class="c">2. Relevant datasets</span>
+<span class="c">3. Government sources</span>
+<span class="c">4. Scientific literature</span>
+<span class="c">5. Existing tools</span>
+<span class="c">6. Spatial datasets</span>
+<span class="c">7. Temporal datasets</span>
+<span class="c">8. Data gaps</span>
+<span class="c">9. Uncertainties</span>
+<span class="c">10. Potential methods</span>
+
+<span class="k">Do not invent data.</span>
+
+Separate:
+- <span class="str">verified facts</span>
+- <span class="str">assumptions</span>
+- <span class="str">hypotheses</span>
+- <span class="str">missing information</span></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PART 03 — DATA IS THE RAW MATERIAL
+     ============================================================ -->
+<section class="slide part-divider">
+  <div class="slide-content">
+    <span class="pill dot purple reveal">PART 03</span>
+    <h1 class="reveal d1" style="font-size:3rem;margin-top:1rem">Data Is the<br><span class="hl">Raw Material</span></h1>
+    <p class="reveal d2" style="font-size:var(--body-size);color:var(--muted);margin-top:.5rem">Observation · Exposure · Impact</p>
+  </div>
+</section>
+
+<!-- S8 · DISASTER DATA UNIVERSE -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Disaster Data Universe</h2>
+    <div class="split reveal d2">
+      <div class="code small"><span class="k">           DISASTER DATA</span>
+                │
+    ┌───────────┼───────────┐
+    ▼           ▼           ▼
+<span class="str">OBSERVATION</span> <span class="str">EXPOSURE</span>  <span class="str">IMPACT</span>
+    │           │           │
+ satellite    buildings   deaths
+  rainfall    population  damage
+   sensors      roads     displacement
+   river      schools     disruption
+  seismic    hospitals    reports</div>
+      <div>
+        <div class="card">
+          <span class="lbl">Observation</span>
+          <p>Satellite, rainfall, sensors, river levels, seismic.</p>
+        </div>
+        <div class="card" style="margin-top:var(--gap)">
+          <span class="lbl">Exposure</span>
+          <p>Buildings, population, roads, schools, hospitals.</p>
+        </div>
+        <div class="card" style="margin-top:var(--gap)">
+          <span class="lbl">Impact</span>
+          <p>Deaths, damage, displacement, service disruption.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S9 · DATA SOURCES -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Data Sources — Indonesia</h2>
+    <div class="grid cols-3 reveal d2">
+      <div class="card tint-blue">
+        <span class="lbl">Government</span>
+        <ul>
+          <li><b>BNPB</b> / DIBI / InaRISK</li>
+          <li><b>BMKG</b> weather & climate</li>
+          <li><b>BIG</b> geospatial agency</li>
+          <li><b>BPS</b> statistics</li>
+          <li><b>PUPR</b> infrastructure</li>
+        </ul>
+      </div>
+      <div class="card tint-green">
+        <span class="lbl">Satellite / EO</span>
+        <ul>
+          <li><b>Sentinel-1/2</b></li>
+          <li><b>Landsat</b></li>
+          <li><b>MODIS / VIIRS</b></li>
+          <li><b>ALOS DEM</b></li>
+          <li><b>Google Earth Engine</b></li>
+        </ul>
+      </div>
+      <div class="card tint-amber">
+        <span class="lbl">Climate</span>
+        <ul>
+          <li><b>ERA5</b> reanalysis</li>
+          <li><b>CHIRPS</b> rainfall</li>
+          <li><b>WorldClim</b></li>
+          <li><b>Drought indices</b></li>
+          <li><b>Surface temperature</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <p class="reveal d3"><b>InaRISK</b> provides layers for flood, extreme weather, earthquake, wildfire, drought, volcanic, landslide, tsunami, and multi-hazard. <b>BNPB</b> exposes ArcGIS REST services programmatically.</p>
+  </div>
+</section>
+
+<!-- S10 · EARTH OBSERVATION -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Earth Observation</h2>
+    <div class="split reveal d2">
+      <div class="card">
+        <span class="lbl">Satellite</span>
+        <ul>
+          <li><b>Sentinel-1</b> — SAR, all-weather</li>
+          <li><b>Sentinel-2</b> — optical, 10m</li>
+          <li><b>Landsat</b> — 30m, decades of data</li>
+          <li><b>MODIS / VIIRS</b> — daily global</li>
+          <li><b>ALOS</b> — radar DEM</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="lbl">Climate variables</span>
+        <ul>
+          <li><b>ERA5</b> — reanalysis</li>
+          <li><b>CHIRPS</b> — rainfall</li>
+          <li><b>Temperature</b></li>
+          <li><b>Drought indices</b></li>
+          <li><b>Soil moisture</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <p class="reveal d3"><b>Google Earth Engine</b> provides a catalog of public Earth-science datasets: satellite imagery, DEM, land cover, climate, atmospheric, fire, drought, surface water, and more.</p>
+  </div>
+</section>
+
+<!-- S11 · STAC -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Don't Download Everything.</h2>
+    <p class="sub reveal d2">Use <b class="tag-blue">STAC</b> — SpatioTemporal Asset Catalog.</p>
+    <div class="split reveal d3">
+      <div class="card tint-blue">
+        <span class="lbl">What STAC does</span>
+        <p>Provides a <b>standard structure</b> for finding and describing geospatial assets by <b>spatial + temporal metadata</b>. STAC API enables programmatic dataset search.</p>
+      </div>
+      <div class="code small"><span class="k">STAC SEARCH WORKFLOW</span>
+
+QUESTION
+   ↓
+AOI <span class="c">(area of interest)</span>
+   ↓
+DATE RANGE
+   ↓
+<span class="str">STAC SEARCH</span>
+   ↓
+AVAILABLE IMAGERY
+   ↓
+PROCESS
+   ↓
+RESULT</div>
+    </div>
+  </div>
+</section>
+
+<!-- S12 · SCRAPING PRIORITY -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Scraping is not the first choice.</h2>
+    <div class="split reveal d2">
+      <div class="card tint-green">
+        <span class="lbl">Priority order</span>
+        <div class="tl">
+          <div class="t"><span class="n">01</span><span class="d"><b>Official API</b></span></div>
+          <div class="t"><span class="n">02</span><span class="d"><b>Open Dataset</b></span></div>
+          <div class="t"><span class="n">03</span><span class="d"><b>STAC</b></span></div>
+          <div class="t"><span class="n">04</span><span class="d"><b>Download</b></span></div>
+          <div class="t tint-amber"><span class="n">05</span><span class="d"><b>Web scraping</b></span></div>
+          <div class="t tint-red"><span class="n">06</span><span class="d"><b>Manual collection</b></span></div>
+        </div>
+      </div>
+      <div>
+        <div class="card tint-amber">
+          <span class="lbl">scrape when</span>
+          <ul>
+            <li>Data not available via API</li>
+            <li>Data only on web pages</li>
+            <li>Historical reports</li>
+            <li>News archives</li>
+            <li>PDF reports</li>
+            <li>Public dashboards</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S13 · DISASTER SCRAPING PIPELINE -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Disaster Scraping Pipeline</h2>
+    <div class="code reveal d2"><span class="k">NEWS / REPORT</span>
+      │
+      ▼
+   <span class="str">SCRAPER</span>
+      │
+      ▼
+ <span class="c">RAW DOCUMENT</span>
+      │
+      ▼
+ <span class="k">AI EXTRACTION</span>
+      │
+ ┌───┼──────────────┐
+ ▼   ▼              ▼
+<span class="str">DATE</span> <span class="str">LOCATION</span>    <span class="str">HAZARD</span>
+ │     │              │
+ └─────┼──────────────┘
+       ▼
+   <span class="k">GEOCODING</span>
+       │
+       ▼
+   <span class="k">VALIDATION</span>
+       │
+       ▼
+  <span class="str">GEOJSON / DB</span></div>
+    <p class="reveal d3" style="margin-top:.5rem"><b>Key:</b> scrape for <b>context</b>, never for fake certainty. Every source carries a trail.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     PART 04 — THE DRR MCP TOOLBOX
+     ============================================================ -->
+<section class="slide part-divider">
+  <div class="slide-content">
+    <span class="pill dot purple reveal">PART 04</span>
+    <h1 class="reveal d1" style="font-size:3rem;margin-top:1rem">The DRR<br><span class="hl">MCP Toolbox</span></h1>
+    <p class="reveal d2" style="font-size:var(--body-size);color:var(--muted);margin-top:.5rem">QGIS · GEE · Geospatial ecosystem</p>
+  </div>
+</section>
+
+<!-- S14 · MCP FOR DISASTER RESEARCH -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">MCP for Disaster Research</h2>
+    <div class="code reveal d2"><span class="k">                 AI AGENT</span>
+                    │
+     ┌──────────────┼──────────────┐
+     ▼              ▼              ▼
+  <span class="str">QGIS MCP</span>      <span class="str">GEE MCP</span>      <span class="k">Web MCP</span>
+     │              │              │
+     ▼              ▼              ▼
+ Spatial       EO analysis    Research
+ analysis                         │
+     │              │              │
+     └──────────────┼──────────────┘
+                    ▼
+                 <span class="k">PRODUCT</span></div>
+    <div class="grid cols-3 reveal d3" style="margin-top:var(--gap)">
+      <div class="card tint-blue"><span class="lbl">QGIS MCP</span><p><b>100+ tools</b> — layer management, feature editing, spatial processing, rendering, layout.</p></div>
+      <div class="card tint-green"><span class="lbl">GEE MCP</span><p><b>Dataset discovery</b>, metadata, imagery availability, analysis, code generation.</p></div>
+      <div class="card tint-amber"><span class="lbl">77+ servers</span><p>Geocoding, routing, PostGIS, STAC, weather, maritime, aviation across <b>10 categories</b>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S15 · QGIS MCP -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">QGIS MCP — <span class="tag-blue">AI ↔ QGIS</span></h2>
+    <div class="split reveal d2">
+      <div class="card">
+        <span class="lbl">capabilities</span>
+        <ul>
+          <li><b>Create</b> project</li>
+          <li><b>Load</b> layers</li>
+          <li><b>Inspect</b> layers</li>
+          <li><b>Spatial processing</b></li>
+          <li><b>Feature editing</b></li>
+          <li><b>Rendering &amp; styling</b></li>
+          <li><b>Map layouts</b></li>
+          <li><b>PyQGIS</b> scripting</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card tint-blue">
+          <span class="lbl">DRR use case</span>
+          <div class="quote" style="font-size:1.1rem">"Overlay flood hazard dengan sekolah dan populasi."</div>
+          <div class="code small" style="margin-top:.4rem"><span class="k">Agent can:</span>
+load flood layer
++ load school layer
++ buffer / intersect
++ calculate exposure
++ render map</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S16 · GEE MCP -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">GEE MCP — <span class="tag-blue">AI ↔ Earth Observation</span></h2>
+    <div class="split reveal d2">
+      <div class="card">
+        <span class="lbl">capabilities</span>
+        <ul>
+          <li><b>Dataset discovery</b></li>
+          <li><b>Dataset metadata</b></li>
+          <li><b>Imagery availability</b></li>
+          <li><b>Analysis primitives</b></li>
+          <li><b>GEE Python code generation</b></li>
+          <li><b>Execution &amp; iterative fixing</b></li>
+        </ul>
+      </div>
+      <div>
+        <div class="card tint-blue">
+          <span class="lbl">example workflow</span>
+          <div class="quote" style="font-size:1.05rem">"Cari Sentinel-2 untuk Jakarta, Jan 2025, cloud &lt;20%, hitung NDVI."</div>
+          <div class="code small" style="margin-top:.4rem"><span class="k">QUESTION</span>
+  ↓
+<span class="str">GEE DATASET DISCOVERY</span>
+  ↓
+CHECK AVAILABILITY
+  ↓
+<span class="k">GENERATE CODE</span>
+  ↓
+RUN → VALIDATE → RESULT</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S17 · OTHER GEOSPATIAL MCP -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Beyond QGIS + GEE</h2>
+    <p class="sub reveal d2">The geo-MCP ecosystem now covers <b>77+ servers in 10 categories</b>.</p>
+    <div class="grid cols-4 reveal d3">
+      <div class="card"><div class="num" style="font-size:1.1rem">📍</div><p><b>Geocoding</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">🧭</div><p><b>Routing</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">🗺️</div><p><b>Maps</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">🗄️</div><p><b>PostGIS</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">🛰️</div><p><b>STAC</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">🌍</div><p><b>EO</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">🌤️</div><p><b>Weather</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">⚓</div><p><b>Maritime</b></p></div>
+    </div>
+    <div class="rule reveal d4"></div>
+    <p class="reveal d4"><b>Pattern:</b> one AI agent + multiple MCP servers = multi-tool reasoning across GIS, EO, climate, and infrastructure data.</p>
+  </div>
+</section>
+
+<!-- S18 · MCP TOOLBOX TABLE -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">MCP Toolbox</h2>
+    <div class="split reveal d2">
+      <div class="table-wrap">
+        <table class="table">
+          <tr><th colspan="2" style="color:var(--primary)">CORE</th></tr>
+          <tr><td><b>QGIS</b></td><td>GIS analysis</td></tr>
+          <tr><td><b>GEE</b></td><td>Satellite / EO</td></tr>
+          <tr><td><b>GitHub</b></td><td>Repository</td></tr>
+          <tr><td><b>Browser</b></td><td>Web research</td></tr>
+          <tr><td><b>Cloudflare</b></td><td>Deployment</td></tr>
+          <tr><td><b>Docs</b></td><td>Documentation</td></tr>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <tr><th colspan="2" style="color:var(--accent)">GEO</th></tr>
+          <tr><td><b>STAC</b></td><td>Imagery discovery</td></tr>
+          <tr><td><b>Geocoding</b></td><td>Location</td></tr>
+          <tr><td><b>Routing</b></td><td>Evacuation</td></tr>
+          <tr><td><b>PostGIS</b></td><td>Spatial database</td></tr>
+          <tr><td><b>Weather</b></td><td>Weather / climate</td></tr>
+          <tr><td><b>OSM</b></td><td>Infrastructure</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S19 · MCP VS API -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">MCP vs API</h2>
+    <div class="split reveal d2">
+      <div class="card">
+        <span class="lbl">API</span>
+        <div class="code small"><span class="k">Human</span>
+   ↓
+API call
+   ↓
+<span class="str">Result</span></div>
+        <p>One step. Human drives every call.</p>
+      </div>
+      <div class="card tint-blue">
+        <span class="lbl">MCP</span>
+        <div class="code small"><span class="k">Human</span>
+   ↓
+<span class="str">AI Agent</span>
+   ↓
+Choose tool
+   ↓
+API / GIS / database
+   ↓
+<span class="k">Interpret result</span>
+   ↓
+Next tool</div>
+        <p>Multi-step reasoning across tools.</p>
+      </div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <div class="quote reveal d3" style="font-size:1.5rem;text-align:center">MCP enables <span class="tag-blue">multi-step reasoning across tools</span></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PART 05 — SKILLS
+     ============================================================ -->
+<section class="slide part-divider">
+  <div class="slide-content">
+    <span class="pill dot purple reveal">PART 05</span>
+    <h1 class="reveal d1" style="font-size:3rem;margin-top:1rem"><span class="hl">Skills</span></h1>
+    <p class="reveal d2" style="font-size:var(--body-size);color:var(--muted);margin-top:.5rem">Reusable domain instructions for the agent.</p>
+  </div>
+</section>
+
+<!-- S20 · WHAT IS A SKILL -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">What is a <em>Skill</em>?</h2>
+    <p class="sub reveal d2">Skill = <b>reusable domain instruction</b>. Not "tolong bikin peta" — but a structured methodology.</p>
+    <div class="split reveal d3">
+      <div class="card tint-red">
+        <span class="lbl">without skill</span>
+        <div class="quote" style="font-size:1.1rem">"Tolong bikin peta banjir."</div>
+        <p style="margin-top:.5rem">Agent guesses. Inconsistent output. No methodology.</p>
+      </div>
+      <div class="card tint-green">
+        <span class="lbl">with skill</span>
+        <div class="code small"><span class="k">DISASTER MAPPING SKILL</span>
+
+<span class="c">1.</span> Define hazard
+<span class="c">2.</span> Define AOI
+<span class="c">3.</span> Validate CRS
+<span class="c">4.</span> Inspect geometry
+<span class="c">5.</span> Check temporal consistency
+<span class="c">6.</span> Overlay exposure
+<span class="c">7.</span> Calculate statistics
+<span class="c">8.</span> Validate result
+<span class="c">9.</span> Document assumptions
+<span class="c">10.</span> Export GeoJSON</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S21 · DRR SKILL LIBRARY -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">DRR Skill Library</h2>
+    <p class="reveal d2" style="margin-bottom:.3rem">Workshop starter repository structure:</p>
+    <div class="split reveal d3">
+      <div class="code small"><span class="k">skills/</span>
+│
+├── <span class="str">disaster-research/</span>
+├── <span class="str">hazard-analysis/</span>
+├── <span class="str">risk-analysis/</span>
+├── <span class="str">vulnerability-analysis/</span>
+├── <span class="str">climate-risk/</span>
+│
+├── <span class="k">gis/</span>
+├── <span class="k">qgis/</span>
+├── <span class="str">remote-sensing/</span>
+├── <span class="k">google-earth-engine/</span>
+├── <span class="str">stac/</span>
+│
+├── <span class="c">geocoding/</span>
+├── <span class="c">routing/</span>
+├── <span class="c">geojson/</span>
+├── <span class="c">spatial-database/</span></div>
+      <div class="code small"><span class="c">  continued...</span>
+│
+├── <span class="str">data-scraping/</span>
+├── <span class="str">data-cleaning/</span>
+├── <span class="str">data-validation/</span>
+├── <span class="str">metadata/</span>
+│
+├── <span class="k">data-visualization/</span>
+├── <span class="k">map-design/</span>
+├── <span class="k">information-design/</span>
+│
+├── <span class="c">accessibility/</span>
+├── <span class="c">citizen-science/</span>
+├── <span class="c">early-warning/</span>
+├── <span class="c">evacuation/</span>
+│
+├── <span class="str">web-development/</span>
+├── <span class="str">api-design/</span>
+├── <span class="str">cloudflare/</span>
+│
+├── <span class="k">testing/</span>
+├── <span class="k">security/</span>
+├── <span class="k">git/</span>
+└── <span class="k">deployment/</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- S22 · DISASTER RESEARCH SKILL -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Disaster Research Skill</h2>
+    <p class="sub reveal d2">The skill must <b>constrain</b> the agent — prevent hallucination and bad practice.</p>
+    <div class="split reveal d3">
+      <div class="card tint-red">
+        <span class="lbl">NEVER</span>
+        <ul>
+          <li>Invent disaster statistics</li>
+          <li>Invent coordinates</li>
+          <li>Mix incompatible datasets</li>
+          <li>Hide uncertainty</li>
+          <li>Treat model output as observation</li>
+        </ul>
+      </div>
+      <div class="card tint-green">
+        <span class="lbl">ALWAYS</span>
+        <ul>
+          <li>Cite source</li>
+          <li>Preserve provenance</li>
+          <li>Record date, CRS, resolution</li>
+          <li>Record temporal coverage</li>
+          <li>Identify assumptions</li>
+          <li>Validate results</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S23 · GIS SKILL -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">GIS Skill</h2>
+    <p class="sub reveal d2">The agent must always check:</p>
+    <div class="grid cols-3 reveal d3">
+      <div class="card"><div class="num" style="font-size:1.1rem">📐</div><p><b>CRS</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">🔷</div><p><b>Geometry</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">📦</div><p><b>Extent</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">📏</div><p><b>Resolution</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">📅</div><p><b>Temporal</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">🔲</div><p><b>NoData</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">📐</div><p><b>Units</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">🎯</div><p><b>Accuracy</b></p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">📋</div><p><b>License</b></p></div>
+    </div>
+    <div class="rule reveal d4"></div>
+    <div class="quote reveal d4" style="font-size:1.4rem;text-align:center;border-left:3px solid var(--danger);border-radius:0 16px 16px 0">A beautiful map can still be <span style="color:var(--danger)">completely wrong</span>.</div>
+  </div>
+</section>
+
+<!-- S24 · REMOTE SENSING SKILL -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Remote Sensing Skill</h2>
+    <div class="split reveal d2">
+      <div class="code small"><span class="k">WORKFLOW</span>
+
+AOI
+  ↓
+DATE RANGE
+  ↓
+<span class="str">SENSOR</span>
+  ↓
+DATASET
+  ↓
+<span class="k">CLOUD MASK</span>
+  ↓
+PREPROCESS
+  ↓
+<span class="str">INDEX</span>
+  ↓
+VALIDATE
+  ↓
+<span class="k">EXPORT</span></div>
+      <div>
+        <div class="card">
+          <span class="lbl">common indices</span>
+          <ul>
+            <li><b>NDVI</b> — vegetation health</li>
+            <li><b>NDWI</b> — water detection</li>
+            <li><b>NDBI</b> — built-up area</li>
+            <li><b>LST</b> — land surface temperature</li>
+            <li><b>Burned area</b></li>
+            <li><b>Flood extent</b></li>
+            <li><b>Vegetation loss</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S25 · CLIMATE RISK SKILL -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Climate Risk Skill</h2>
+    <div class="code reveal d2"><span class="k">BASELINE</span>
+   +
+<span class="str">HAZARD TREND</span>
+   +
+<span class="k">CLIMATE PROJECTION</span>
+   +
+<span class="str">EXPOSURE</span>
+   +
+<span class="k">VULNERABILITY</span>
+   ↓
+<span class="str">CLIMATE RISK</span></div>
+    <div class="grid cols-3 reveal d3" style="margin-top:var(--gap)">
+      <div class="card tint-red"><span class="lbl">example</span><p><b>Extreme heat exposure 2030</b></p></div>
+      <div class="card tint-blue"><span class="lbl">example</span><p><b>Coastal inundation 2050</b></p></div>
+      <div class="card tint-amber"><span class="lbl">example</span><p><b>Urban flood risk</b></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S26 · CITIZEN SCIENCE SKILL -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Citizen Science Skill</h2>
+    <div class="split reveal d2">
+      <div>
+        <div class="card tint-amber">
+          <span class="lbl">key principle</span>
+          <div class="quote" style="font-size:1.2rem">Citizen data ≠ authoritative data</div>
+          <p style="margin-top:.4rem">Always distinguish from official sources.</p>
+        </div>
+        <div class="card" style="margin-top:var(--gap)">
+          <span class="lbl">metadata for each report</span>
+          <ul>
+            <li><b>Who</b> — reporter identity</li>
+            <li><b>When</b> — timestamp</li>
+            <li><b>Where</b> — coordinates</li>
+            <li><b>What</b> — observation</li>
+            <li><b>Evidence</b> — photo / description</li>
+            <li><b>Confidence</b> — self-assessed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="code small"><span class="k">CITIZEN REPORT PIPELINE</span>
+
+OBSERVATION
+   ↓
+<span class="str">VALIDATION</span>
+   ↓
+CONFIDENCE SCORE
+   ↓
+<span class="k">ANALYSIS</span>
+
+<span class="c">Each report needs:</span>
+- verification status
+- source trail
+- spatial accuracy note
+- temporal accuracy note</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PART 06 — PRD FOR DRR PROJECTS
+     ============================================================ -->
+<section class="slide part-divider">
+  <div class="slide-content">
+    <span class="pill dot purple reveal">PART 06</span>
+    <h1 class="reveal d1" style="font-size:3rem;margin-top:1rem">PRD for<br><span class="hl">DRR Projects</span></h1>
+    <p class="reveal d2" style="font-size:var(--body-size);color:var(--muted);margin-top:.5rem">Problem → Decision → User → Data → Analysis → Output → Action</p>
+  </div>
+</section>
+
+<!-- S27 · DRR PRD -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">DRR PRD</h2>
+    <p class="sub reveal d2">Not "bikin dashboard banjir." A DRR PRD must explain the <b>full chain</b>.</p>
+    <div class="code reveal d3"><span class="k">PROBLEM</span>
+   ↓
+<span class="str">DECISION</span>  <span class="c">← what decision does this support?</span>
+   ↓
+<span class="k">USER</span>  <span class="c">← who uses this?</span>
+   ↓
+<span class="str">DATA</span>  <span class="c">← what evidence?</span>
+   ↓
+<span class="k">ANALYSIS</span>  <span class="c">← what method?</span>
+   ↓
+<span class="str">OUTPUT</span>  <span class="c">← what form?</span>
+   ↓
+<span class="k">ACTION</span>  <span class="c">← what happens next?</span></div>
+  </div>
+</section>
+
+<!-- S28 · DECISION-CENTRIC PRODUCT -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Decision-Centric Product</h2>
+    <div class="split reveal d2">
+      <div class="card bad">
+        <span class="lbl">dashboard biasa</span>
+        <div class="quote" style="font-size:1.1rem">"Ini peta banjir."</div>
+        <p style="margin-top:.5rem">Looks nice. Doesn't support a decision.</p>
+      </div>
+      <div class="card good">
+        <span class="lbl">decision-support</span>
+        <div class="quote" style="font-size:1.1rem">"Sekolah mana yang perlu diprioritaskan untuk evacuation planning?"</div>
+        <p style="margin-top:.5rem">Drives action. Specific user. Measurable.</p>
+      </div>
+    </div>
+    <div class="split reveal d3" style="margin-top:var(--gap)">
+      <div class="card bad">
+        <span class="lbl">dashboard biasa</span>
+        <div class="quote" style="font-size:1.1rem">"Ini rainfall."</div>
+      </div>
+      <div class="card good">
+        <span class="lbl">decision-support</span>
+        <div class="quote" style="font-size:1.1rem">"Apakah rainfall saat ini melewati threshold untuk tindakan?"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S29 · DRR PRODUCT ARCHITECTURE -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">DRR Product Architecture</h2>
+    <div class="code reveal d2"><span class="k">DATA</span>
+│
+├── Government
+├── Satellite
+├── Sensors
+├── Citizen
+├── News
+└── Climate
+       │
+       ▼
+<span class="str">DATA PIPELINE</span>
+       │
+       ▼
+<span class="k">DATABASE</span>
+       │
+       ▼
+<span class="str">ANALYSIS</span>
+       │
+       ▼
+<span class="k">API</span>
+       │
+       ▼
+<span class="str">WEB APPLICATION</span>
+       │
+       ▼
+<span class="k">DECISION</span>
+       │
+       ▼
+<span class="str">ACTION</span></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PART 07 — CLOUDFLARE-FIRST DRR STACK
+     ============================================================ -->
+<section class="slide part-divider">
+  <div class="slide-content">
+    <span class="pill dot purple reveal">PART 07</span>
+    <h1 class="reveal d1" style="font-size:3rem;margin-top:1rem">Cloudflare-First<br><span class="hl">DRR Stack</span></h1>
+    <p class="reveal d2" style="font-size:var(--body-size);color:var(--muted);margin-top:.5rem">Workers · D1 · R2 · KV · Queues</p>
+  </div>
+</section>
+
+<!-- S30 · CLOUDFLARE STACK -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Cloudflare Stack</h2>
+    <div class="split reveal d2">
+      <div class="code small"><span class="k">Frontend</span>
+Astro / React
+      │
+      ▼
+<span class="str">Cloudflare Workers</span>
+      │
+ ┌────┼────────────┐
+ ▼    ▼            ▼
+<span class="k">D1</span>   <span class="str">R2</span>           <span class="k">KV</span>
+ │    │            │
+ ▼    ▼            ▼
+SQL  Files       Cache
+      │
+      ▼
+<span class="str">Queues</span>
+      │
+      ▼
+Data processing</div>
+      <div>
+        <div class="grid cols-2">
+          <div class="card"><div class="num" style="font-size:1rem">D1</div><p>Relational data, GeoJSON</p></div>
+          <div class="card"><div class="num" style="font-size:1rem">R2</div><p>Raster files, assets</p></div>
+          <div class="card"><div class="num" style="font-size:1rem">KV</div><p>Cache, config</p></div>
+          <div class="card"><div class="num" style="font-size:1rem">Queues</div><p>Async scraping</p></div>
+        </div>
+        <div class="card tint-blue" style="margin-top:var(--gap)">
+          <span class="lbl">add when needed</span>
+          <p><b>Durable Objects</b> · <b>Hyperdrive</b> · <b>Vectorize</b> · <b>Workers AI</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S31 · WHAT GOES WHERE -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">What Goes Where?</h2>
+    <div class="table-wrap reveal d2">
+      <table class="table">
+        <tr><th>Requirement</th><th>Tool</th></tr>
+        <tr><td><b>Website</b></td><td class="mono">Workers</td></tr>
+        <tr><td><b>API</b></td><td class="mono">Workers</td></tr>
+        <tr><td><b>Relational data</b></td><td class="mono">D1</td></tr>
+        <tr><td><b>GeoJSON</b></td><td class="mono">R2 / D1</td></tr>
+        <tr><td><b>Raster files</b></td><td class="mono">R2</td></tr>
+        <tr><td><b>Cache</b></td><td class="mono">KV</td></tr>
+        <tr><td><b>Async scraping</b></td><td class="mono">Queues</td></tr>
+        <tr><td><b>Realtime</b></td><td class="mono">Durable Objects</td></tr>
+        <tr><td><b>External PostgreSQL</b></td><td class="mono">Hyperdrive</td></tr>
+        <tr><td><b>AI inference</b></td><td class="mono">Workers AI</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- S32 · DRR PROJECTS -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">DRR Projects for This Stack</h2>
+    <div class="grid cols-4 reveal d2">
+      <div class="card tint-blue"><div class="num">01</div><p><b>Flood Intelligence</b></p></div>
+      <div class="card"><div class="num">02</div><p><b>Community Disaster Reporting</b></p></div>
+      <div class="card tint-amber"><div class="num">03</div><p><b>Urban Heat Dashboard</b></p></div>
+      <div class="card"><div class="num">04</div><p><b>Evacuation Planner</b></p></div>
+      <div class="card tint-green"><div class="num">05</div><p><b>Sensor Monitoring</b></p></div>
+      <div class="card"><div class="num">06</div><p><b>Climate Vulnerability Explorer</b></p></div>
+      <div class="card tint-purple"><div class="num">07</div><p><b>Disaster Event Archive</b></p></div>
+      <div class="card"><div class="num">08</div><p><b>Living Coastal Atlas</b></p></div>
+    </div>
+    <div class="grid cols-2 reveal d3" style="margin-top:var(--gap)">
+      <div class="card tint-red"><div class="num">09</div><p><b>Early Warning Dashboard</b></p></div>
+      <div class="card tint-blue"><div class="num">10</div><p><b>Citizen Science Platform</b></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PART 08 — BUILD
+     ============================================================ -->
+<section class="slide part-divider">
+  <div class="slide-content">
+    <span class="pill dot purple reveal">PART 08</span>
+    <h1 class="reveal d1" style="font-size:3rem;margin-top:1rem"><span class="hl">Build</span></h1>
+    <p class="reveal d2" style="font-size:var(--body-size);color:var(--muted);margin-top:.5rem">Environment · Agent model · Task decomposition</p>
+  </div>
+</section>
+
+<!-- S33 · ENVIRONMENT -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Environment</h2>
+    <div class="grid cols-3 reveal d2">
+      <div class="card tint-blue"><div class="num" style="font-size:1.1rem">🐙</div><p><b>GitHub</b><br>Version control + collaboration</p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">🗺️</div><p><b>QGIS</b><br>Spatial analysis desktop</p></div>
+      <div class="card tint-green"><div class="num" style="font-size:1.1rem">🛰️</div><p><b>Google Earth Engine</b><br>Satellite analysis</p></div>
+      <div class="card"><div class="num" style="font-size:1.1rem">🟢</div><p><b>Node.js</b><br>Runtime</p></div>
+      <div class="card tint-amber"><div class="num" style="font-size:1.1rem">🔀</div><p><b>Git</b><br>Source control</p></div>
+      <div class="card tint-purple"><div class="num" style="font-size:1.1rem">🤖</div><p><b>Freebuff / OpenCode</b><br>AI coding agents</p></div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <div class="card tint-blue reveal d3"><span class="lbl">infrastructure</span><p><b>Cloudflare</b> — Workers, D1, R2, Pages, CI/CD. The entire production stack.</p></div>
+  </div>
+</section>
+
+<!-- S34 · FREEBUFF VS OPENCODE -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Freebuff vs OpenCode</h2>
+    <div class="split reveal d2">
+      <div class="card tint-green">
+        <span class="lbl">Beginner → Freebuff</span>
+        <ul>
+          <li><b>Easier onboarding</b></li>
+          <li>Agent-first design</li>
+          <li>Minimal configuration</li>
+          <li>Works in browser</li>
+        </ul>
+      </div>
+      <div class="card tint-blue">
+        <span class="lbl">Advanced → OpenCode</span>
+        <ul>
+          <li><b>Multiple LLM providers</b></li>
+          <li>BYOK (bring your own key)</li>
+          <li>Local models support</li>
+          <li>Flexible MCP configuration</li>
+          <li>Strong MCP workflow</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rule reveal d3"></div>
+    <p class="reveal d3"><b>Both work.</b> Pick based on your team's experience level. The agent does the heavy lifting either way.</p>
+  </div>
+</section>
+
+<!-- S35 · AGENT OPERATING MODEL -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Agent Operating Model</h2>
+    <div class="code reveal d2"><span class="k">YOU</span>
+ │
+ ├── <span class="str">Problem</span>
+ ├── <span class="str">Context</span>
+ ├── <span class="str">Constraints</span>
+ └── <span class="str">Acceptance criteria</span>
+          │
+          ▼
+       <span class="k">AI AGENT</span>
+          │
+     ┌────┼────┐
+     ▼    ▼    ▼
+  <span class="str">Skills</span> <span class="k">MCP</span>  <span class="str">Repo</span>
+     │    │    │
+     └────┼────┘
+          ▼
+       <span class="k">ACTION</span>
+          │
+          ▼
+       <span class="str">VERIFY</span></div>
+    <p class="reveal d3" style="margin-top:.5rem"><b>You</b> define the problem. <b>Agent</b> uses skills, MCP tools, and the repo to execute. <b>You</b> verify.</p>
+  </div>
+</section>
+
+<!-- S36 · DON'T SAY THIS -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Don't Say This</h2>
+    <div class="split reveal d2">
+      <div class="card bad">
+        <span class="lbl">too vague</span>
+        <div class="quote" style="font-size:1.3rem">"Build me a disaster dashboard."</div>
+        <p style="margin-top:.5rem">Agent guesses everything. Result is unreliable.</p>
+      </div>
+      <div class="card good">
+        <span class="lbl">structured prompt</span>
+        <div class="code small" style="margin-top:.3rem"><span class="k">Inspect the repository first.</span>
+
+Understand:
+- existing architecture
+- dataset
+- database
+- components
+- deployment
+
+Then <span class="str">propose an implementation plan</span>.
+
+Do not modify code yet.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S37 · TASK DECOMPOSITION -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Task Decomposition</h2>
+    <div class="split reveal d2">
+      <div class="code small"><span class="k">EPIC</span>
+│
+├── <span class="str">Data ingestion</span>
+├── <span class="str">Database</span>
+├── <span class="str">API</span>
+├── <span class="str">Map</span>
+├── <span class="str">Visualization</span>
+├── <span class="str">UX</span>
+├── <span class="str">Testing</span>
+└── <span class="str">Deployment</span></div>
+      <div>
+        <div class="card tint-blue">
+          <span class="lbl">agent works on</span>
+          <div class="quote" style="font-size:1.3rem">One bounded task at a time.</div>
+          <p style="margin-top:.4rem">One pass per prompt. Stop. Report. Verify. Continue.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PART 09 — GIT + CI/CD
+     ============================================================ -->
+<section class="slide part-divider">
+  <div class="slide-content">
+    <span class="pill dot purple reveal">PART 09</span>
+    <h1 class="reveal d1" style="font-size:3rem;margin-top:1rem">Git + <span class="hl">CI/CD</span></h1>
+    <p class="reveal d2" style="font-size:var(--body-size);color:var(--muted);margin-top:.5rem">Version control, provenance, automated validation.</p>
+  </div>
+</section>
+
+<!-- S38 · GIT FROM DAY ONE -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Git From Day One</h2>
+    <div class="split reveal d2">
+      <div class="code small"><span class="c"># start the repo</span>
+git init
+git add .
+git commit -m <span class="str">"initial project"</span>
+
+<span class="c"># then for every change</span>
+<span class="k">feature</span>
+  ↓
+<span class="str">test</span>
+  ↓
+<span class="k">commit</span>
+  ↓
+<span class="str">push</span></div>
+      <div>
+        <div class="card">
+          <span class="lbl">why</span>
+          <ul>
+            <li><b>Track every decision</b></li>
+            <li><b>Rollback mistakes</b></li>
+            <li><b>Evidence trail</b> for the project</li>
+            <li><b>Collaboration</b> with team</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S39 · DRR DATA PROVENANCE -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">DRR Data Provenance</h2>
+    <p class="sub reveal d2">Git isn't just for code. Track your <b>data lineage</b>.</p>
+    <div class="split reveal d3">
+      <div class="code small"><span class="k">data/</span>
+├── <span class="str">raw/</span>
+├── <span class="str">processed/</span>
+├── <span class="str">derived/</span>
+├── <span class="k">metadata/</span>
+└── <span class="c">provenance/</span></div>
+      <div class="card">
+        <span class="lbl">every dataset needs</span>
+        <ul>
+          <li><b>source</b> — where it came from</li>
+          <li><b>date</b> — when collected</li>
+          <li><b>license</b> — usage rights</li>
+          <li><b>method</b> — how processed</li>
+          <li><b>CRS</b> — coordinate system</li>
+          <li><b>resolution</b> — spatial detail</li>
+          <li><b>version</b> — iteration number</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S40 · CI/CD -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">CI/CD Pipeline</h2>
+    <div class="code reveal d2"><span class="k">git push</span>
+   │
+   ▼
+<span class="str">GitHub</span>
+   │
+   ▼
+<span class="k">CI</span>
+ ├── lint
+ ├── test
+ ├── typecheck
+ ├── build
+ └── <span class="str">data validation</span>
+   │
+   ▼
+<span class="k">Cloudflare</span>
+   │
+   ▼
+<span class="str">PRODUCTION</span></div>
+    <p class="reveal d3" style="margin-top:.5rem"><b>Cloudflare</b> provides Workers Builds for Git integration + GitHub Actions for custom pipelines.</p>
+  </div>
+</section>
+
+<!-- S41 · DISASTER DATA CI -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Disaster Data CI</h2>
+    <p class="sub reveal d2">This is what makes DRR projects <b>different</b> from regular web apps.</p>
+    <div class="split reveal d3">
+      <div class="card tint-blue">
+        <span class="lbl">data CI checks</span>
+        <ul class="check">
+          <li><b>GeoJSON valid</b></li>
+          <li><b>CRS correct</b></li>
+          <li><b>Geometry valid</b></li>
+          <li><b>No duplicate IDs</b></li>
+          <li><b>Required fields exist</b></li>
+          <li><b>Dates valid</b></li>
+          <li><b>Coordinates within AOI</b></li>
+          <li><b>Dataset metadata exists</b></li>
+          <li><b>Source URL exists</b></li>
+        </ul>
+      </div>
+      <div>
+        <div class="card tint-amber">
+          <span class="lbl">why this matters</span>
+          <p>A broken GeoJSON silently produces a <b>wrong map</b>. CI catches it before anyone sees it.</p>
+        </div>
+        <div class="card" style="margin-top:var(--gap)">
+          <span class="lbl">regular web CI</span>
+          <p>lint · test · build</p>
+        </div>
+        <div class="card tint-blue" style="margin-top:var(--gap)">
+          <span class="lbl">DRR web CI</span>
+          <p>lint · test · build + <b>data validation + spatial checks</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PART 10 — DEPLOY
+     ============================================================ -->
+<section class="slide part-divider">
+  <div class="slide-content">
+    <span class="pill dot purple reveal">PART 10</span>
+    <h1 class="reveal d1" style="font-size:3rem;margin-top:1rem"><span class="hl">Deploy</span></h1>
+    <p class="reveal d2" style="font-size:var(--body-size);color:var(--muted);margin-top:.5rem">Local → GitHub → CI/CD → Cloudflare → Production</p>
+  </div>
+</section>
+
+<!-- S42 · LOCAL TO PRODUCTION -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Local → Production</h2>
+    <div class="code reveal d2"><span class="k">LOCAL</span>
+ │
+ ├── <span class="str">QGIS</span>
+ ├── <span class="str">GEE</span>
+ ├── <span class="k">AI Agent</span>
+ └── <span class="str">Web App</span>
+       │
+       ▼
+     <span class="k">Git</span>
+       │
+       ▼
+    <span class="str">GitHub</span>
+       │
+       ▼
+     <span class="k">CI/CD</span>
+       │
+       ▼
+  <span class="str">Cloudflare</span>
+       │
+       ▼
+   <span class="k">PRODUCTION</span></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PART 11 — ITERATION
+     ============================================================ -->
+<section class="slide part-divider">
+  <div class="slide-content">
+    <span class="pill dot purple reveal">PART 11</span>
+    <h1 class="reveal d1" style="font-size:3rem;margin-top:1rem"><span class="hl">Iteration</span></h1>
+    <p class="reveal d2" style="font-size:var(--body-size);color:var(--muted);margin-top:.5rem">Production is research. Every deploy feeds back.</p>
+  </div>
+</section>
+
+<!-- S43 · PRODUCTION IS RESEARCH -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Production Is Research</h2>
+    <div class="code reveal d2"><span class="k">USER</span>
+   ↓
+<span class="str">OBSERVE</span>
+   ↓
+<span class="k">LOGS</span>
+   ↓
+<span class="str">ERRORS</span>
+   ↓
+<span class="k">DATA</span>
+   ↓
+<span class="str">AI ANALYSIS</span>
+   ↓
+<span class="k">FIX</span>
+   ↓
+<span class="str">TEST</span>
+   ↓
+<span class="k">DEPLOY</span></div>
+    <p class="reveal d3" style="margin-top:.5rem"><b>Deploy is not the end.</b> It's the beginning of the real learning loop.</p>
+  </div>
+</section>
+
+<!-- S44 · AGENT DEBUGGING -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Agent Debugging Prompt</h2>
+    <div class="code reveal d2"><button class="copy" onclick="copyPrompt(this)">Copy</button><span class="k">This is a production issue.</span>
+
+Expected: <span class="str">[behavior]</span>
+Actual: <span class="str">[behavior]</span>
+Error: <span class="str">[error]</span>
+Recent change: <span class="str">[change]</span>
+
+Inspect:
+- logs
+- relevant code
+- database
+- API response
+
+<span class="k">Determine root cause first.</span>
+
+Do not modify code until you can explain
+the likely root cause.
+
+Then <span class="str">propose and implement the smallest safe fix</span>.</div>
+  </div>
+</section>
+
+<!-- S45 · SCIENTIFIC VALIDATION -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Scientific Validation</h2>
+    <p class="sub reveal d2">For DRR: <b>"It works" ≠ "It is correct."</b></p>
+    <div class="grid cols-3 reveal d3">
+      <div class="card tint-green">
+        <span class="lbl">Technical</span>
+        <p>Apakah code bekerja?</p>
+      </div>
+      <div class="card tint-blue">
+        <span class="lbl">Data</span>
+        <p>Apakah dataset benar?</p>
+      </div>
+      <div class="card tint-purple">
+        <span class="lbl">Spatial</span>
+        <p>Apakah lokasi benar?</p>
+      </div>
+      <div class="card tint-amber">
+        <span class="lbl">Scientific</span>
+        <p>Apakah metode masuk akal?</p>
+      </div>
+      <div class="card tint-red">
+        <span class="lbl">Domain</span>
+        <p>Apakah hasilnya masuk akal bagi practitioner?</p>
+      </div>
+      <div class="card">
+        <span class="lbl">User</span>
+        <p>Apakah hasilnya membantu keputusan?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S46 · QUALITY GATE -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">The DRR Quality Gate</h2>
+    <p class="sub reveal d2">Before production, pass through <b>every gate</b>:</p>
+    <div class="reveal d3" style="display:flex;flex-direction:column;gap:.35rem;align-items:center">
+      <div class="card tint-blue" style="width:280px;text-align:center;padding:.5rem"><b>PRODUCT</b></div>
+      <div style="color:var(--muted);font-size:1.2rem">↓</div>
+      <div class="card tint-green" style="width:280px;text-align:center;padding:.5rem"><b>DATA</b></div>
+      <div style="color:var(--muted);font-size:1.2rem">↓</div>
+      <div class="card" style="width:280px;text-align:center;padding:.5rem"><b>GIS</b></div>
+      <div style="color:var(--muted);font-size:1.2rem">↓</div>
+      <div class="card tint-purple" style="width:280px;text-align:center;padding:.5rem"><b>SCIENCE</b></div>
+      <div style="color:var(--muted);font-size:1.2rem">↓</div>
+      <div class="card tint-red" style="width:280px;text-align:center;padding:.5rem"><b>SECURITY</b></div>
+      <div style="color:var(--muted);font-size:1.2rem">↓</div>
+      <div class="card tint-amber" style="width:280px;text-align:center;padding:.5rem"><b>UX</b></div>
+      <div style="color:var(--muted);font-size:1.2rem">↓</div>
+      <div class="card tint-blue" style="width:280px;text-align:center;padding:.5rem"><b>PRODUCTION</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- S47 · CAPSTONE PROJECT -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Capstone Project</h2>
+    <p class="sub reveal d2">The workshop ends with <b>one end-to-end DRR project</b>.</p>
+    <div class="card tint-blue reveal d3" style="text-align:center;padding:1.5rem">
+      <span class="lbl" style="font-size:.85rem">EXAMPLE</span>
+      <h2 style="font-size:2.5rem;margin:.5rem 0"><span class="hl">Urban Flood Intelligence</span></h2>
+      <div class="quote" style="font-size:1.3rem;margin-top:.5rem;border:1px solid color-mix(in oklab,var(--primary) 30%,transparent)">"Where, when and why does flooding repeatedly happen — and who is exposed?"</div>
+    </div>
+  </div>
+</section>
+
+<!-- S48 · CAPSTONE PIPELINE -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Capstone Pipeline</h2>
+    <div class="code reveal d2"><span class="k">NEWS / DIBI / REPORTS</span>
+          │
+          ▼
+       <span class="str">SCRAPING</span>
+          │
+          ▼
+     <span class="k">FLOOD EVENTS</span>
+          │
+          ▼
+      <span class="str">GEOCODING</span>
+          │
+          ▼
+       <span class="k">GEOJSON</span>
+          │
+    ┌──────┴──────┐
+    ▼              ▼
+  <span class="str">QGIS</span>          <span class="k">GEE</span>
+    │              │
+    │          land cover
+    │          rainfall
+    │          surface water
+    │
+    └──────┬──────┘
+           ▼
+       <span class="str">ANALYSIS</span>
+           │
+           ▼
+      <span class="k">CLOUDFLARE</span>
+           │
+           ▼
+   <span class="str">INTERACTIVE MAP</span>
+           │
+           ▼
+       <span class="k">DECISION</span></div>
+  </div>
+</section>
+
+<!-- S49 · WHAT PARTICIPANTS BUILD -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">What Participants Build</h2>
+    <div class="grid cols-3 reveal d2">
+      <div class="card tint-blue"><span class="lbl">Research</span><p>AI finds sources. Literature + reports.</p></div>
+      <div class="card"><span class="lbl">Data</span><p>Agent builds scraper / API ingestion.</p></div>
+      <div class="card tint-green"><span class="lbl">GIS</span><p>QGIS MCP — spatial analysis.</p></div>
+      <div class="card tint-amber"><span class="lbl">EO</span><p>GEE MCP — satellite analysis.</p></div>
+      <div class="card"><span class="lbl">Product</span><p>AI builds web application.</p></div>
+      <div class="card tint-purple"><span class="lbl">Database</span><p>D1 — structured data.</p></div>
+      <div class="card"><span class="lbl">Storage</span><p>R2 — GeoJSON + assets.</p></div>
+      <div class="card tint-blue"><span class="lbl">Deploy</span><p>GitHub → CI/CD → Cloudflare.</p></div>
+      <div class="card tint-green"><span class="lbl">Iterate</span><p>Feedback → fix → deploy.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S50 · FINAL MENTAL MODEL -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">Final Mental Model</h2>
+    <div class="split reveal d2">
+      <div>
+        <div class="card bad" style="margin-bottom:var(--gap)">
+          <span class="lbl">don't think</span>
+          <div class="quote" style="font-size:1.2rem">AI → Code → Website</div>
+        </div>
+        <div class="card good">
+          <span class="lbl">think</span>
+          <div class="quote" style="font-size:1rem">Disaster Problem → Evidence → Data → GIS/EO/Climate → Analysis → Decision → PRD → AI Agents → Git → CI/CD → Cloudflare → Action ↺</div>
+        </div>
+      </div>
+      <div class="code small"><span class="k">DISASTER PROBLEM</span>
+       │
+       ▼
+    <span class="str">EVIDENCE</span>
+       │
+       ▼
+      <span class="k">DATA</span>
+       │
+  ┌───┼───┐
+  ▼   ▼   ▼
+<span class="str">GIS</span> <span class="k">EO</span> <span class="str">CLIMATE</span>
+  └───┼───┘
+      ▼
+  <span class="k">ANALYSIS</span>
+      ▼
+  <span class="str">DECISION</span>
+      ▼
+    <span class="k">PRD</span>
+      ▼
+  <span class="str">AI AGENTS</span>
+      ▼
+   <span class="k">SKILLS + MCP</span>
+      ▼
+    <span class="str">GIT</span>
+      ▼
+   <span class="k">CI/CD</span>
+      ▼
+ <span class="str">CLOUDFLARE</span>
+      ▼
+   <span class="k">ACTION</span>
+      └────↺</div>
+    </div>
+  </div>
+</section>
+
+<!-- S51 · THE NEW DRR BUILDER -->
+<section class="slide">
+  <div class="slide-content">
+    <h2 class="reveal d1">The New DRR Builder</h2>
+    <p class="sub reveal d2">You don't have to be an expert in everything. You have to <b>orchestrate</b>.</p>
+    <div class="grid cols-3 reveal d3">
+      <div class="card"><p><b>GIS expert</b></p></div>
+      <div class="card"><p><b>Remote sensing expert</b></p></div>
+      <div class="card"><p><b>Data engineer</b></p></div>
+      <div class="card"><p><b>Frontend developer</b></p></div>
+      <div class="card"><p><b>Backend developer</b></p></div>
+      <div class="card"><p><b>DevOps engineer</b></p></div>
+    </div>
+    <div class="rule reveal d4"></div>
+    <div class="grid cols-3 reveal d4">
+      <div class="card tint-blue"><span class="lbl">Human</span><p><b>Domain knowledge + judgement</b></p></div>
+      <div class="card tint-green"><span class="lbl">AI</span><p><b>Execution + exploration</b></p></div>
+      <div class="card tint-amber"><span class="lbl">MCP</span><p><b>Live tools</b></p></div>
+      <div class="card tint-purple"><span class="lbl">Skills</span><p><b>Methodology</b></p></div>
+      <div class="card"><span class="lbl">Data</span><p><b>Evidence</b></p></div>
+      <div class="card tint-blue"><span class="lbl">Git</span><p><b>Memory</b></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S52 · CLOSING -->
+<section class="slide">
+  <div class="slide-content" style="align-items:center;text-align:center">
+    <h1 class="reveal d1" style="font-size:3.2rem;max-width:700px">Don't Vibe the Answer.<br><span class="hl">Vibe the Investigation.</span></h1>
+    <div class="rule reveal d2" style="width:200px;margin:1rem auto"></div>
+    <div class="quote reveal d3" style="font-size:1.3rem;max-width:650px;text-align:center">A beautiful application with bad data can create <span style="color:var(--danger)">bad decisions</span>.</div>
+    <div class="quote reveal d4" style="font-size:1.3rem;max-width:650px;text-align:center;margin-top:.8rem;border-left:3px solid var(--safe);border-radius:0 16px 16px 0">Good evidence + good methodology + good tools + good engineering can turn <span style="color:var(--safe)">data into action</span>.</div>
+    <div class="rule reveal d5" style="width:200px;margin:1rem auto"></div>
+    <div class="flow reveal d5" style="justify-content:center">
+      <span class="pill solid">THINK</span>
+      <span class="pill" style="background:var(--safe);border-color:var(--safe);color:#fff">UNDERSTAND EARTH</span>
+      <span class="pill" style="background:var(--accent);border-color:var(--accent);color:#fff">BUILD</span>
+      <span class="pill" style="background:var(--purple);border-color:var(--purple);color:#fff">SHIP</span>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script>
+/* ============ SLIDE PRESENTATION CONTROLLER ============ */
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var dotsBox = document.getElementById('dots');
+  var idxBox = document.getElementById('idx');
+  var prog = document.getElementById('progress');
+  var stage = document.getElementById('stage');
+  var current = 0;
+
+  dotsBox.innerHTML = '';
+  slides.forEach(function (s, i) {
+    var b = document.createElement('button');
+    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    b.addEventListener('click', function () { go(i); });
+    dotsBox.appendChild(b);
+  });
+
+  function show(i) {
+    current = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach(function (s, idx) { s.classList.toggle('active', idx === current); });
+    var dots = dotsBox.querySelectorAll('button');
+    dots.forEach(function (d, idx) { d.classList.toggle('active', idx === current); });
+    idxBox.textContent = String(current + 1).padStart(2, '0');
+    prog.style.width = ((current + 1) / slides.length * 100) + '%';
+  }
+  function go(i) {
+    var target = Math.max(0, Math.min(slides.length - 1, i));
+    if (target === current) return;
+    show(target);
+  }
+
+  function fit() {
+    var scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  document.addEventListener('keydown', function (e) {
+    var tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'select' || tag === 'textarea') return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(current + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); go(current - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); go(0); }
+    else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+  });
+
+  var wheelLock = false;
+  window.addEventListener('wheel', function (e) {
+    var tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'select' || tag === 'input' || tag === 'textarea') return;
+    if (e.target.closest && e.target.closest('.code')) return;
+    if (wheelLock) return;
+    wheelLock = true;
+    setTimeout(function () { wheelLock = false; }, 700);
+    if (e.deltaY > 0) go(current + 1); else go(current - 1);
+  }, { passive: true });
+
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('select') || e.target.closest('button') || e.target.closest('a')) return;
+    if (e.target.closest('.code')) return;
+    var w = window.innerWidth;
+    if (e.clientX > w * 0.85) go(current + 1);
+    else if (e.clientX < w * 0.15) go(current - 1);
+  });
+
+  show(0);
+})();
+
+/* ============ PROMPT COPY ============ */
+function copyPrompt(btn) {
+  var box = btn.closest('.code');
+  var text = box.innerText.replace('Copy', '').trim();
+  function done() { btn.textContent = 'Copied!'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done);
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta); done();
+  }
+}
+</script>
+</body>
+</html>

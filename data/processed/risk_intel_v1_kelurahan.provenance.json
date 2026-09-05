@@ -1,0 +1,23 @@
+{
+  "dataset_id": "risk_intel_v1_kelurahan_v1",
+  "source": {
+    "derived_from": [
+      "fri_v1_kelurahan.json",
+      "flood_history.json",
+      "data/processed/*_provenance.json"
+    ]
+  },
+  "processing": {
+    "environment": "Python (deterministic)",
+    "processing_script": "tools/build_risk_intel.py"
+  },
+  "outputs": {
+    "file": "data/processed/risk_intel_v1_kelurahan.json"
+  },
+  "version": "1.0",
+  "quality_level": "Q2",
+  "validator": "deterministic build (tools/build_risk_intel.py) + Phase 0 gate tools/check_governance.py",
+  "governance_note": "Phase 0 backfill (datagov §46): version/quality_level/validator ditambahkan saat gate check; artefak data tidak diubah",
+  "status": "PUBLISHED",
+  "processed_at": "2026-09-03T05:14:51.255880+00:00"
+}

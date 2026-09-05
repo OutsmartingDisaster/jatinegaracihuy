@@ -1,0 +1,23 @@
+{
+  "dataset_id": "satudata_tingkat-kemiskinan",
+  "title": "Tingkat Kemiskinan",
+  "source": "Satu Data Jakarta (satudata.jakarta.go.id)",
+  "source_url": "https://satudata.jakarta.go.id/open-data/detail?kategori=dataset&page_url=tingkat-kemiskinan",
+  "api": "https://satudata.jakarta.go.id/backend/api/v2/satudata/detail",
+  "rows": 3,
+  "total_reported": 3,
+  "periode": [
+    {
+      "periode_data": "2023"
+    },
+    {
+      "periode_data": "2025"
+    },
+    {
+      "periode_data": "2024"
+    }
+  ],
+  "acquired_at": "2026-09-02T20:35:32.492948+00:00",
+  "status": "RAW",
+  "processing_script": "tools/download_satudata.py"
+}

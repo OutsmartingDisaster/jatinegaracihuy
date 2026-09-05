@@ -1,0 +1,31 @@
+{
+  "dataset_id": "inarisk_layer_bahaya_banjir_jatinegara_raw",
+  "layer": "layer_bahaya_banjir",
+  "source": "BNPB InaRISK (ArcGIS ImageServer)",
+  "source_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/layer_bahaya_banjir/ImageServer",
+  "request_url": "https://gis.bnpb.go.id/server/rest/directories/arcgisoutput/inarisk/layer_bahaya_banjir_ImageServer/_ags_4ba74d39_5f26_468e_8ce5_d6dd4c366019.tif",
+  "bbox_request_wgs84": [
+    106.85,
+    -6.27,
+    106.95,
+    -6.17
+  ],
+  "bbox_result": {
+    "xmin": 11894487.590999998,
+    "ymin": -694711.2584999995,
+    "xmax": 11905619.539999997,
+    "ymax": -683579.3095000004,
+    "spatialReference": {
+      "wkid": 3395,
+      "latestWkid": 3395
+    }
+  },
+  "crs": "EPSG:3395",
+  "pixel_size_m": 100,
+  "pixel_type": "F32",
+  "processing_version": "raw",
+  "processing_script": "tools/scrape_inarisk.py",
+  "acquired_at": "2026-09-02T19:26:49.215006+00:00",
+  "status": "RAW",
+  "size_bytes": 66610
+}

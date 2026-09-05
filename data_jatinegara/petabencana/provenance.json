@@ -1,0 +1,13 @@
+{
+  "dataset_id": "petabencana_jakarta_snapshot",
+  "source": "PetaBencana.id Data API v3 (https://data.petabencana.id)",
+  "endpoints": {
+    "reports": "/reports?admin=ID-JK&timeperiod=<jam>  (publik, OK)",
+    "floods": "/floods  (endpoint 500 saat diuji 2026-09-03)",
+    "floodgauge": "/floodgauge  (403 - butuh Authentication Token/API key)"
+  },
+  "acquired_at": "2026-09-02T20:35:54.311676+00:00",
+  "status": "RAW",
+  "note": "Snapshot diambil saat tidak ada laporan banjir aktif; endpoint tetap terdokumentasi untuk pemakaian realtime.",
+  "processing_script": "tools/petabencana_snapshot.py"
+}

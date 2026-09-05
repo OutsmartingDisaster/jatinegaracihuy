@@ -1,0 +1,198 @@
+[
+ {
+  "rn": "1",
+  "periode_data": "2006",
+  "indikator_kemiskinan": "Jumlah Penduduk Miskin",
+  "nilai": "407.1",
+  "satuan": "Ribu Orang"
+ },
+ {
+  "rn": "2",
+  "periode_data": "2007",
+  "indikator_kemiskinan": "Jumlah Penduduk Miskin",
+  "nilai": "405.7",
+  "satuan": "Ribu Orang"
+ },
+ {
+  "rn": "3",
+  "periode_data": "2008",
+  "indikator_kemiskinan": "Jumlah Penduduk Miskin",
+  "nilai": "379.6",
+  "satuan": "Ribu Orang"
+ },
+ {
+  "rn": "4",
+  "periode_data": "2009",
+  "indikator_kemiskinan": "Jumlah Penduduk Miskin",
+  "nilai": "323.2",
+  "satuan": "Ribu Orang"
+ },
+ {
+  "rn": "5",
+  "periode_data": "2010",
+  "indikator_kemiskinan": "Jumlah Penduduk Miskin",
+  "nilai": "312.2",
+  "satuan": "Ribu Orang"
+ },
+ {
+  "rn": "6",
+  "periode_data": "2011",
+  "indikator_kemiskinan": "Jumlah Penduduk Miskin",
+  "nilai": "363.4",
+  "satuan": "Ribu Orang"
+ },
+ {
+  "rn": "7",
+  "periode_data": "2012",
+  "indikator_kemiskinan": "Jumlah Penduduk Miskin",
+  "nilai": "363.2",
+  "satuan": "Ribu Orang"
+ },
+ {
+  "rn": "8",
+  "periode_data": "2006",
+  "indikator_kemiskinan": "Persentase Penduduk Miskin",
+  "nilai": "4.6",
+  "satuan": "Persen"
+ },
+ {
+  "rn": "9",
+  "periode_data": "2007",
+  "indikator_kemiskinan": "Persentase Penduduk Miskin",
+  "nilai": "4.5",
+  "satuan": "Persen"
+ },
+ {
+  "rn": "10",
+  "periode_data": "2008",
+  "indikator_kemiskinan": "Persentase Penduduk Miskin",
+  "nilai": "4.28",
+  "satuan": "Persen"
+ },
+ {
+  "rn": "11",
+  "periode_data": "2009",
+  "indikator_kemiskinan": "Persentase Penduduk Miskin",
+  "nilai": "3.62",
+  "satuan": "Persen"
+ },
+ {
+  "rn": "12",
+  "periode_data": "2010",
+  "indikator_kemiskinan": "Persentase Penduduk Miskin",
+  "nilai": "3.48",
+  "satuan": "Persen"
+ },
+ {
+  "rn": "13",
+  "periode_data": "2011",
+  "indikator_kemiskinan": "Persentase Penduduk Miskin",
+  "nilai": "3.75",
+  "satuan": "Persen"
+ },
+ {
+  "rn": "14",
+  "periode_data": "2012",
+  "indikator_kemiskinan": "Persentase Penduduk Miskin",
+  "nilai": "3.69",
+  "satuan": "Persen"
+ },
+ {
+  "rn": "15",
+  "periode_data": "2006",
+  "indikator_kemiskinan": "Indeks Kedalaman Kemiskinan (P1)",
+  "nilai": "0.75",
+  "satuan": "Skala"
+ },
+ {
+  "rn": "16",
+  "periode_data": "2007",
+  "indikator_kemiskinan": "Indeks Kedalaman Kemiskinan (P1)",
+  "nilai": "0.59",
+  "satuan": "Skala"
+ },
+ {
+  "rn": "17",
+  "periode_data": "2008",
+  "indikator_kemiskinan": "Indeks Kedalaman Kemiskinan (P1)",
+  "nilai": "0.58",
+  "satuan": "Skala"
+ },
+ {
+  "rn": "18",
+  "periode_data": "2009",
+  "indikator_kemiskinan": "Indeks Kedalaman Kemiskinan (P1)",
+  "nilai": "0.57",
+  "satuan": "Skala"
+ },
+ {
+  "rn": "19",
+  "periode_data": "2010",
+  "indikator_kemiskinan": "Indeks Kedalaman Kemiskinan (P1)",
+  "nilai": "0.45",
+  "satuan": "Skala"
+ },
+ {
+  "rn": "20",
+  "periode_data": "2011",
+  "indikator_kemiskinan": "Indeks Kedalaman Kemiskinan (P1)",
+  "nilai": "0.6",
+  "satuan": "Skala"
+ },
+ {
+  "rn": "21",
+  "periode_data": "2012",
+  "indikator_kemiskinan": "Indeks Kedalaman Kemiskinan (P1)",
+  "nilai": "0.5",
+  "satuan": "Skala"
+ },
+ {
+  "rn": "22",
+  "periode_data": "2006",
+  "indikator_kemiskinan": "Indeks Keparahan Kemiskinan (P2)",
+  "nilai": "0.19",
+  "satuan": "Skala"
+ },
+ {
+  "rn": "23",
+  "periode_data": "2007",
+  "indikator_kemiskinan": "Indeks Keparahan Kemiskinan (P2)",
+  "nilai": "0.12",
+  "satuan": "Skala"
+ },
+ {
+  "rn": "24",
+  "periode_data": "2008",
+  "indikator_kemiskinan": "Indeks Keparahan Kemiskinan (P2)",
+  "nilai": "0.13",
+  "satuan": "Skala"
+ },
+ {
+  "rn": "25",
+  "periode_data": "2009",
+  "indikator_kemiskinan": "Indeks Keparahan Kemiskinan (P2)",
+  "nilai": "0.14",
+  "satuan": "Skala"
+ },
+ {
+  "rn": "26",
+  "periode_data": "2010",
+  "indikator_kemiskinan": "Indeks Keparahan Kemiskinan (P2)",
+  "nilai": "0.11",
+  "satuan": "Skala"
+ },
+ {
+  "rn": "27",
+  "periode_data": "2011",
+  "indikator_kemiskinan": "Indeks Keparahan Kemiskinan (P2)",
+  "nilai": "0.15",
+  "satuan": "Skala"
+ },
+ {
+  "rn": "28",
+  "periode_data": "2012",
+  "indikator_kemiskinan": "Indeks Keparahan Kemiskinan (P2)",
+  "nilai": "0.13",
+  "satuan": "Skala"
+ }
+]

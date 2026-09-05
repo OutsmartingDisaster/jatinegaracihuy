@@ -1,0 +1,20 @@
+[
+ {
+  "rn": "1",
+  "periode_data": "2023",
+  "target": "4.13",
+  "capaian": "4.44"
+ },
+ {
+  "rn": "2",
+  "periode_data": "2025",
+  "target": "3.25",
+  "capaian": "4.03"
+ },
+ {
+  "rn": "3",
+  "periode_data": "2024",
+  "target": "3.79",
+  "capaian": "4.14"
+ }
+]

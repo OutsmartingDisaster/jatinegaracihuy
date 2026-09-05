@@ -1,0 +1,18 @@
+{
+  "dataset_id": "dem_layer_hillshade_jatinegara_web_preview",
+  "source": "Copernicus GLO-30 DEM hillshade derived artifact",
+  "source_url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_S07_00_E106_00_DEM/Copernicus_DSM_COG_10_S07_00_E106_00_DEM.tif",
+  "source_artifact": "data/raw/layer_hillshade_jatinegara.tif",
+  "derived_from": "data/raw/layer_dem_jatinegara.provenance.json",
+  "processing_script": "tools/build_hillshade_png.py",
+  "processing_version": "web_preview_v1",
+  "outputs": {
+    "file": "data/processed/hillshade_jatinegara.png"
+  },
+  "validator": "PNG readability + source GeoTIFF provenance check",
+  "crs": "EPSG:3395 source; EPSG:4326 display bounds supplied by MapLibre",
+  "acquired_at": "2026-09-03T11:39:09.200529+00:00",
+  "status": "PUBLISHED",
+  "quality_level": "Q2",
+  "limitation": "PNG is a display preview; analytical elevation remains the source GeoTIFF."
+}

@@ -1,0 +1,31 @@
+{
+  "dataset_id": "inarisk_layer_kerentanan_banjir_jatinegara_raw",
+  "layer": "layer_kerentanan_banjir",
+  "source": "BNPB InaRISK (ArcGIS ImageServer)",
+  "source_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/layer_kerentanan_banjir/ImageServer",
+  "request_url": "https://gis.bnpb.go.id/server/rest/directories/arcgisoutput/inarisk/layer_kerentanan_banjir_ImageServer/_ags_6a3dc10b_48a4_4449_bb8a_6b8702f082cb.tif",
+  "bbox_request_wgs84": [
+    106.85,
+    -6.27,
+    106.95,
+    -6.17
+  ],
+  "bbox_result": {
+    "xmin": 11894487.590999998,
+    "ymin": -694711.2584999995,
+    "xmax": 11905619.539999997,
+    "ymax": -683579.3095000004,
+    "spatialReference": {
+      "wkid": 3395,
+      "latestWkid": 3395
+    }
+  },
+  "crs": "EPSG:3395",
+  "pixel_size_m": 100,
+  "pixel_type": "F32",
+  "processing_version": "raw",
+  "processing_script": "tools/scrape_inarisk.py",
+  "acquired_at": "2026-09-02T19:26:49.881054+00:00",
+  "status": "RAW",
+  "size_bytes": 66610
+}

@@ -1,0 +1,481 @@
+{
+  "dataset_id": "satellite_observability_v1",
+  "version": "1.0",
+  "generated_at": "2026-09-04T12:31:04.256495+00:00",
+  "window": {
+    "events": "2021-02-08 → 2025-12-07",
+    "s1_archive": "2020-11-01 -> 2026-01-01"
+  },
+  "note": "Kanal observabilitas: mengukur KAPAN satelit bisa/tidak bisa melihat. Tidak ada klaim deteksi banjir. Coverage gap ≠ bantahan (sejajar validasi TMA).",
+  "per_event": [
+    {
+      "event_id": "E-2021-01",
+      "event_date": "2021-02-08",
+      "s1": {
+        "status": "observed_during",
+        "scenes": [
+          {
+            "acq_utc": "2021-02-09 22:33",
+            "pass": "DESCENDING",
+            "platform": "S1A"
+          }
+        ],
+        "nearest_before": null,
+        "nearest_after": null,
+        "note": "Scene SAR tersedia pada jendela kejadian; deteksi genangan tidak diklaim (uji 3 metode: false-positive urban ≈ sinyal — lihat sar_evaluation)."
+      },
+      "s2": {
+        "status": "cloud_blocked",
+        "scenes": [
+          {
+            "acq_utc": "2021-02-08",
+            "cloud_pct": 100
+          },
+          {
+            "acq_utc": "2021-02-08",
+            "cloud_pct": 89
+          }
+        ],
+        "note": "Semua scene optik terhalang awan (89–100% awan scene-level)."
+      }
+    },
+    {
+      "event_id": "E-2021-02",
+      "event_date": "2021-02-19",
+      "s1": {
+        "status": "observed_during",
+        "scenes": [
+          {
+            "acq_utc": "2021-02-21 22:33",
+            "pass": "DESCENDING",
+            "platform": "S1A"
+          }
+        ],
+        "nearest_before": null,
+        "nearest_after": null,
+        "note": "Scene SAR tersedia pada jendela kejadian; deteksi genangan tidak diklaim (uji 3 metode: false-positive urban ≈ sinyal — lihat sar_evaluation)."
+      },
+      "s2": {
+        "status": "cloud_blocked",
+        "scenes": [
+          {
+            "acq_utc": "2021-02-18",
+            "cloud_pct": 95
+          },
+          {
+            "acq_utc": "2021-02-18",
+            "cloud_pct": 91
+          }
+        ],
+        "note": "Semua scene optik terhalang awan (91–95% awan scene-level)."
+      }
+    },
+    {
+      "event_id": "E-2022-01",
+      "event_date": "2022-02-17",
+      "s1": {
+        "status": "observed_during",
+        "scenes": [
+          {
+            "acq_utc": "2022-02-16 22:34",
+            "pass": "DESCENDING",
+            "platform": "S1A"
+          }
+        ],
+        "nearest_before": null,
+        "nearest_after": null,
+        "note": "Scene SAR tersedia pada jendela kejadian; deteksi genangan tidak diklaim (uji 3 metode: false-positive urban ≈ sinyal — lihat sar_evaluation)."
+      },
+      "s2": {
+        "status": "cloud_blocked",
+        "scenes": [
+          {
+            "acq_utc": "2022-02-18",
+            "cloud_pct": 100
+          },
+          {
+            "acq_utc": "2022-02-18",
+            "cloud_pct": 100
+          }
+        ],
+        "note": "Semua scene optik terhalang awan (100–100% awan scene-level)."
+      }
+    },
+    {
+      "event_id": "E-2022-02",
+      "event_date": "2022-11-07",
+      "s1": {
+        "status": "observed_during",
+        "scenes": [
+          {
+            "acq_utc": "2022-11-07 22:34",
+            "pass": "DESCENDING",
+            "platform": "S1A"
+          }
+        ],
+        "nearest_before": null,
+        "nearest_after": null,
+        "note": "Scene SAR tersedia pada jendela kejadian; deteksi genangan tidak diklaim (uji 3 metode: false-positive urban ≈ sinyal — lihat sar_evaluation)."
+      },
+      "s2": {
+        "status": "cloud_blocked",
+        "scenes": [
+          {
+            "acq_utc": "2022-11-05",
+            "cloud_pct": 87
+          },
+          {
+            "acq_utc": "2022-11-05",
+            "cloud_pct": 71
+          }
+        ],
+        "note": "Semua scene optik terhalang awan (71–87% awan scene-level)."
+      }
+    },
+    {
+      "event_id": "E-2024-01",
+      "event_date": "2024-11-28",
+      "s1": {
+        "status": "no_scene",
+        "scenes": [],
+        "nearest_before": {
+          "acq_utc": "2024-11-24 11:15",
+          "lag_days": -4
+        },
+        "nearest_after": {
+          "acq_utc": "2024-12-06 11:15",
+          "lag_days": 8
+        },
+        "note": "Tanpa akuisisi SAR ±2 hari (revisit efektif 12 hari pasca-gagal S1B, Des 2021). Satelit tidak sempat — bukan bukti tidak banjir."
+      },
+      "s2": {
+        "status": "cloud_blocked",
+        "scenes": [
+          {
+            "acq_utc": "2024-11-29",
+            "cloud_pct": 94
+          },
+          {
+            "acq_utc": "2024-11-29",
+            "cloud_pct": 98
+          }
+        ],
+        "note": "Semua scene optik terhalang awan (94–98% awan scene-level)."
+      }
+    },
+    {
+      "event_id": "E-2025-01",
+      "event_date": "2025-03-04",
+      "s1": {
+        "status": "no_scene",
+        "scenes": [],
+        "nearest_before": {
+          "acq_utc": "2025-02-28 11:15",
+          "lag_days": -4
+        },
+        "nearest_after": {
+          "acq_utc": "2025-03-12 11:15",
+          "lag_days": 8
+        },
+        "note": "Tanpa akuisisi SAR ±2 hari (revisit efektif 12 hari pasca-gagal S1B, Des 2021). Satelit tidak sempat — bukan bukti tidak banjir."
+      },
+      "s2": {
+        "status": "cloud_blocked",
+        "scenes": [
+          {
+            "acq_utc": "2025-03-04",
+            "cloud_pct": 100
+          },
+          {
+            "acq_utc": "2025-03-04",
+            "cloud_pct": 99
+          }
+        ],
+        "note": "Semua scene optik terhalang awan (99–100% awan scene-level)."
+      }
+    },
+    {
+      "event_id": "E-2025-02",
+      "event_date": "2025-07-06",
+      "s1": {
+        "status": "no_scene",
+        "scenes": [],
+        "nearest_before": {
+          "acq_utc": "2025-06-28 11:15",
+          "lag_days": -8
+        },
+        "nearest_after": {
+          "acq_utc": "2025-07-10 11:15",
+          "lag_days": 4
+        },
+        "note": "Tanpa akuisisi SAR ±2 hari (revisit efektif 12 hari pasca-gagal S1B, Des 2021). Satelit tidak sempat — bukan bukti tidak banjir."
+      },
+      "s2": {
+        "status": "cloud_blocked",
+        "scenes": [
+          {
+            "acq_utc": "2025-07-04",
+            "cloud_pct": 65
+          },
+          {
+            "acq_utc": "2025-07-04",
+            "cloud_pct": 87
+          },
+          {
+            "acq_utc": "2025-07-07",
+            "cloud_pct": 63
+          },
+          {
+            "acq_utc": "2025-07-07",
+            "cloud_pct": 66
+          }
+        ],
+        "note": "Semua scene optik terhalang awan (63–87% awan scene-level)."
+      }
+    },
+    {
+      "event_id": "E-2025-03",
+      "event_date": "2025-12-07",
+      "s1": {
+        "status": "post_recession",
+        "scenes": [
+          {
+            "acq_utc": "2025-12-09 22:34",
+            "pass": "DESCENDING",
+            "platform": "S1A"
+          }
+        ],
+        "nearest_before": null,
+        "nearest_after": null,
+        "note": "Scene ada hanya setelah air surut (catatan sumber: surut hari yang sama) — piksel kering, bukan kontradiksi kejadian."
+      },
+      "s2": {
+        "status": "cloud_blocked",
+        "scenes": [
+          {
+            "acq_utc": "2025-12-09",
+            "cloud_pct": 100
+          },
+          {
+            "acq_utc": "2025-12-09",
+            "cloud_pct": 97
+          }
+        ],
+        "note": "Semua scene optik terhalang awan (97–100% awan scene-level)."
+      }
+    },
+    {
+      "event_id": "E-2025-04",
+      "event_date": "2025-11-18",
+      "s1": {
+        "status": "post_recession",
+        "scenes": [
+          {
+            "acq_utc": "2025-11-19 11:15",
+            "pass": "ASCENDING",
+            "platform": "S1A"
+          }
+        ],
+        "nearest_before": null,
+        "nearest_after": null,
+        "note": "Scene ada hanya setelah air surut (catatan sumber: surut hari yang sama) — piksel kering, bukan kontradiksi kejadian."
+      },
+      "s2": {
+        "status": "cloud_blocked",
+        "scenes": [
+          {
+            "acq_utc": "2025-11-19",
+            "cloud_pct": 98
+          },
+          {
+            "acq_utc": "2025-11-19",
+            "cloud_pct": 99
+          }
+        ],
+        "note": "Semua scene optik terhalang awan (98–99% awan scene-level)."
+      }
+    }
+  ],
+  "channel_summary": {
+    "total_events": 9,
+    "s1_no_scene": 3,
+    "s1_observed_during": 4,
+    "s1_post_recession": 2,
+    "s2_cloud_blocked": 9,
+    "s2_usable": 0
+  },
+  "rainfall_forcing": {
+    "collection": "NASA/GPM_L3/IMERG_V07 (half-hourly, ~10 km, all-weather radar-gauge merged)",
+    "note": "Kanal satelit yang TIDAK buta: mengukur PENYEBAB (hujan), bukan genangan. 87.648 observasi 2021-2025. Presip kumulatif (mm) sebelum tiap kejadian terdokumentasi; lokasi = Bendung Katulampa (hulu Ciliwung) & centroid Kampung Melayu.",
+    "per_event": [
+      {
+        "event_id": "E-2021-01",
+        "event_date": "2021-02-08",
+        "p24_katulampa_mm": 50.2,
+        "p72_katulampa_mm": 120.0,
+        "p72_jatinegara_mm": 247.9
+      },
+      {
+        "event_id": "E-2021-02",
+        "event_date": "2021-02-19",
+        "p24_katulampa_mm": 39.3,
+        "p72_katulampa_mm": 123.1,
+        "p72_jatinegara_mm": 119.3
+      },
+      {
+        "event_id": "E-2022-01",
+        "event_date": "2022-02-17",
+        "p24_katulampa_mm": 84.4,
+        "p72_katulampa_mm": 116.4,
+        "p72_jatinegara_mm": 87.2
+      },
+      {
+        "event_id": "E-2022-02",
+        "event_date": "2022-11-07",
+        "p24_katulampa_mm": 27.1,
+        "p72_katulampa_mm": 45.0,
+        "p72_jatinegara_mm": 52.0,
+        "note": "kejadian berulang harian (4x/minggu) — 72h kecil konsisten dengan skala kecil; juga bersinggungan Kali Cipinang"
+      },
+      {
+        "event_id": "E-2024-01",
+        "event_date": "2024-11-28",
+        "p24_katulampa_mm": 20.8,
+        "p72_katulampa_mm": 136.0,
+        "p72_jatinegara_mm": 88.5
+      },
+      {
+        "event_id": "E-2025-01",
+        "event_date": "2025-03-04",
+        "p24_katulampa_mm": 201.7,
+        "p72_katulampa_mm": 329.4,
+        "p72_jatinegara_mm": 204.3,
+        "note": "terbesar di seluruh sampel — konsisten dengan banjir terbesar (3.5 m)"
+      },
+      {
+        "event_id": "E-2025-02",
+        "event_date": "2025-07-06",
+        "p24_katulampa_mm": 113.1,
+        "p72_katulampa_mm": 184.5,
+        "p72_jatinegara_mm": 120.0
+      },
+      {
+        "event_id": "E-2025-03",
+        "event_date": "2025-12-07",
+        "p24_katulampa_mm": 37.1,
+        "p72_katulampa_mm": 91.9,
+        "p72_jatinegara_mm": 33.5
+      },
+      {
+        "event_id": "E-2025-04",
+        "event_date": "2025-11-18",
+        "p24_katulampa_mm": 101.5,
+        "p72_katulampa_mm": 141.3,
+        "p72_jatinegara_mm": 119.9,
+        "note": "kejadian Kali Sunter Hulu + hujan lokal — sinyal lokal Jatinegara relevan"
+      }
+    ],
+    "control": {
+      "method": "24 tanggal acak 2021-2025 tanpa kejadian terdokumentasi (seed 42), presip 72h Katulampa",
+      "n": 24,
+      "median_mm": 21.4,
+      "p75_mm": 46.2,
+      "p90_mm": 120.7,
+      "max_mm": 187.2
+    }
+  },
+  "water_dataset_metrics": {
+    "jrc_gsw_v14": {
+      "asset": "JRC/GSW1_4/GlobalSurfaceWater",
+      "occurrence_gte10_ha": 0.09,
+      "seasonality_gte1_ha": 5.2,
+      "max_extent_ha": 8.05,
+      "note": "dataset global JRC menangkap kanal sungai saja; nol jejak banjir musiman permukiman"
+    },
+    "s2_dry_season_2024_mndwi": {
+      "method": "MNDWI = (Green B3 - SWIR1 B11)/(B3 + B11) > 0, median 27 scene May-Oct 2024 cloud<30%",
+      "area_ha": 7.7,
+      "note": "konsisten dengan kanal sungai (Ciliwung + Kali Cipinang) ~0.4% dari AOI"
+    }
+  },
+  "sar_evaluation": {
+    "note": "tiga metode deteksi genangan SAR diuji pada 4 scene dalam jendela kejadian; hasil tidak dapat dipisahkan dari false positive urban",
+    "tested": [
+      {
+        "method": "absolute threshold VH<-18 dB & VV<-14 dB, speckle 3 m",
+        "flood_scenes_flagged_ha": [
+          3.7,
+          4.0,
+          3.2,
+          3.2
+        ],
+        "dry_reference_flagged_ha": 11.1,
+        "season_contrast_wet_dry_ha_per_scene": [
+          36.7,
+          32.9
+        ],
+        "verdict": "non-conclusive"
+      },
+      {
+        "method": "change detection vs median 5-tahun per-orbit, anomali >3 dB + VH<-16",
+        "flood_scenes_flagged_ha": [
+          15.0,
+          30.0,
+          30.0,
+          30.0
+        ],
+        "dry_reference_flagged_ha": 32.8,
+        "verdict": "dominan false positive (basah tanah hujan semalaman, citywide)"
+      },
+      {
+        "method": "z-score per piksel (dip statistic) z<-3 & VH<-18",
+        "flood_scenes_flagged_ha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "dry_reference_flagged_ha": 0.4,
+        "verdict": "tidak sensitif (variansi urban besar)"
+      },
+      {
+        "method": "UN-SPIDER ratio change detection (before/after per kejadian, VH, orbit DESC) + kalibrasi ambang sweep 1.0-1.5 — replikasi Irfan dkk. (Pekanbaru 2024), AOI union kelurahan (1039.1 ha)",
+        "pairs": {
+          "E-2021-01 (before 2021-01-28, after 2021-02-09)": {
+            "t_1.17_ha": 476.2,
+            "t_1.50_ha": 269.6
+          },
+          "E-2021-02 (before 2021-01-28, after 2021-02-21)": {
+            "t_1.17_ha": 480.9,
+            "t_1.50_ha": 303.9
+          },
+          "E-2022-02 (before 2022-10-26, after 2022-11-07)": {
+            "t_1.17_ha": 353.6,
+            "t_1.50_ha": 201.4
+          },
+          "control (2022-02-16 -> 2022-02-28, di luar puncak banjir)": {
+            "t_1.17_ha": 376.4,
+            "t_1.50_ha": 219.6
+          }
+        },
+        "verdict": "tidak dapat dikalibrasi: ambang kalibrasi paper (1.16-1.17) menandai 34-46% union kelurahan (overestimate jelas); kontrol hampir sama besar dengan pasangan banjir; tidak ada ambang di rentang 1.0-1.5 yang memisahkan banjir dari kontrol. Penyebab struktural: skala kejadian bantaran (puluhan ha) vs variasi backscatter urban + revisit 12 hari (kelembapan citywide). Delta kejadian-vs-kontrol konsisten positif (~+100 ha @1.17) = sinyal ada tapi kecil relatif noise. Metode tidak transferable dari Pekanbaru (genangan tepian sungai luas) ke permukiman padat bantaran Ciliwung."
+      },
+      {
+        "method": "Landsat 8/9 optik (MNDWI) pada jendela kejadian",
+        "finding": "LC08_122064_20250303 — satu-satunya scene Landsat yang jatuh DI DALAM jendela genangan 9 kejadian (hari-1 E-2025-01) — bebas awan hanya 13.9% dari AOI; atas poligon Kelurahan Kampung Melayu: 0%. Awan badai persis di atas area banjir (sistem badai yang sama). Feb 2021: tidak ada scene di jendela kejadian sama sekali. Metode optik tertutup awan secara struktural."
+      },
+      {
+        "method": "HAND topografi MERIT Hydro v1.0.1 (~90 m) sebagai zona potensi luapan",
+        "finding": "Tidak membedakan: 56% union kelurahan berada di HAND<3 m (dataran alluvial Jakarta Timur seragam); RW kejadian median 67% vs RW lain 63,6%. Zona tidak diskriminatif pada resolusi 90 m di plain datar."
+      },
+      {
+        "method": "S1 river-stage proxy — backscatter rata-rata buffer Ciliwung (40 m & 120 m) dikorelasikan dengan TMA Katulampa per jam (215 scene, 2021-2025)",
+        "finding": "r VV-TMA maksimum 0.50 (DESC, buffer 40 m, scene tanpa hujan lokal, lag 0-1.5 jam) TAPI korelasi dengan TMA lagged 8-16 jam (waktu tempuh empirik Katulampa->Jatinegara) hanya 0.18. Sinyal = konfundek 'sedang hujan di DAS' (Katulampa naik + bantaran basah bersamaan), BUKAN muka air di Jatinegara. Struktur lag membuktikan bukan gauge; gagal Rule 10 sebagai pengukur."
+      }
+    ],
+    "conclusion": "deteksi genangan per-kejadian tidak diklaim; satelit diposisikan sebagai kanal OBSERVABILITAS (kapan bisa & tidak bisa melihat), bukan kanal deteksi"
+  },
+  "summary": {
+    "headline": "Satelit imaging tidak membantah satu pun kejadian — satelit tidak sempat: 3 dari 9 kejadian tanpa scene SAR, 9 dari 9 optiknya terblokir awan. Kanal hujan GPM IMERG menutup celah: penyebab hujan terkonfirmasi 9/9 kejadian (kejadian duduk di ekor atas distribusi — median kontrol 21,4 mm/72h vs 329,4 mm pada banjir terbesar)."
+  }
+}

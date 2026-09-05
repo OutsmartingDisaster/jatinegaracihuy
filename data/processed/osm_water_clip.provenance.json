@@ -1,0 +1,32 @@
+{
+  "dataset_id": "osm_water_jatinegara_clip_v1",
+  "name": "OSM osm_water — Kecamatan Jatinegara (clipped)",
+  "version": "1.0",
+  "source": {
+    "provider": "OpenStreetMap via Overpass API",
+    "raw_dataset": "data/raw/osm_water.geojson",
+    "raw_provenance": "data/raw/osm_water.provenance.json",
+    "acquired_at": "2026-09-03T01:48:27.977945+00:00",
+    "license": "ODbL (c) OpenStreetMap contributors"
+  },
+  "mask": {
+    "dataset": "Batas administratif Kecamatan Jatinegara",
+    "file": "data/raw/boundary_kecamatan_jatinegara.geojson",
+    "crs": "EPSG:4326"
+  },
+  "processing": {
+    "environment": "Python/shapely (deviasi: QGIS MCP tidak tersedia di sesi ini)",
+    "operation": "intersection(boundary) per feature; GeometryCollection dirapikan",
+    "processing_script": "tools/clip_osm.py"
+  },
+  "outputs": {
+    "file": "data/processed/osm_water_clip.geojson",
+    "crs": "EPSG:4326",
+    "features_in": 75,
+    "features_out": 62
+  },
+  "quality_level": "Q1",
+  "status": "PUBLISHED",
+  "processed_at": "2026-09-03T01:56:31.346634+00:00",
+  "validator": "feature count + CRS check (script output)"
+}

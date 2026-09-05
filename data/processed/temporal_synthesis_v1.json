@@ -1,0 +1,109 @@
+{
+  "dataset_id": "temporal_synthesis_v1_kelurahan",
+  "version": "1.0",
+  "generated_at": "2026-09-04T04:07:10.999262+00:00",
+  "window": {
+    "years": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "method": "event-derived; year preserved per event (etl §28)"
+  },
+  "note": "derived temporal pattern, BUKAN observasi baru; coverage gap tetap terbawa (event terdokumentasi ≠ semua kejadian)",
+  "per_year": [
+    {
+      "year": 2021,
+      "event_count": 2,
+      "areas_affected": [
+        "Kampung Melayu"
+      ],
+      "max_depth_cm": 150
+    },
+    {
+      "year": 2022,
+      "event_count": 2,
+      "areas_affected": [
+        "Kampung Melayu"
+      ],
+      "max_depth_cm": 110
+    },
+    {
+      "year": 2023,
+      "event_count": 0,
+      "areas_affected": null,
+      "max_depth_cm": null
+    },
+    {
+      "year": 2024,
+      "event_count": 1,
+      "areas_affected": [
+        "Kampung Melayu"
+      ],
+      "max_depth_cm": null
+    },
+    {
+      "year": 2025,
+      "event_count": 4,
+      "areas_affected": [
+        "Cipinang Muara",
+        "Kampung Melayu"
+      ],
+      "max_depth_cm": 350
+    }
+  ],
+  "kelurahan": {
+    "Cipinang Muara": {
+      "area_id": "Cipinang Muara",
+      "event_count": 1,
+      "years_active": [
+        2025
+      ],
+      "first_event": "2025-11-18",
+      "last_event": "2025-11-18",
+      "mean_interval_days": null,
+      "event_density_per_year": 0.2,
+      "max_depth_cm": 70,
+      "repeated_area": false,
+      "event_ids": [
+        "E-2025-04"
+      ]
+    },
+    "Kampung Melayu": {
+      "area_id": "Kampung Melayu",
+      "event_count": 8,
+      "years_active": [
+        2021,
+        2022,
+        2024,
+        2025
+      ],
+      "first_event": "2021-02-08",
+      "last_event": "2025-12-07",
+      "mean_interval_days": 251.9,
+      "event_density_per_year": 1.6,
+      "max_depth_cm": 350,
+      "repeated_area": true,
+      "event_ids": [
+        "E-2021-01",
+        "E-2021-02",
+        "E-2022-01",
+        "E-2022-02",
+        "E-2024-01",
+        "E-2025-01",
+        "E-2025-02",
+        "E-2025-03"
+      ]
+    }
+  },
+  "repeated_affected_areas": [
+    "Kampung Melayu"
+  ],
+  "summary": {
+    "total_events": 9,
+    "areas_with_events": 2,
+    "repeated_area_count": 1
+  }
+}

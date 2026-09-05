@@ -1,0 +1,106 @@
+{
+  "dataset_id": "freshness_v1",
+  "thresholds": {
+    "fresh_months": 6,
+    "aging_months": 24
+  },
+  "items": [
+    {
+      "status": "Unknown",
+      "reason": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui",
+      "dataset": "InaRISK bahaya/kerentanan (BNPB)",
+      "note": "diunduh 2026-09-03; vintage rilis nasional tidak dipublikasikan — cycle resmi tidak diketahui"
+    },
+    {
+      "status": "Fresh",
+      "data_age_months": 0,
+      "last_updated": "2026-09-03",
+      "dataset": "OSM buildings/facilities/roads/water",
+      "note": "ekstraksi Overpass hari ini; OSM berubah terus (crowdsourced)"
+    },
+    {
+      "status": "Stale",
+      "data_age_months": 63.1,
+      "last_updated": "2021-06-01",
+      "dataset": "Copernicus GLO-30 DEM",
+      "note": "mosaik GLO-30 (avg ~2011-2021); tangentDEM rilis 2021"
+    },
+    {
+      "status": "Aging",
+      "data_age_months": 23.5,
+      "last_updated": "2024-09-17",
+      "dataset": "Batas kelurahan (DPMPTSP DKI)",
+      "note": "tanggal upload dokumen terkait; versi batas tidak diberi tanggal oleh penyedia"
+    },
+    {
+      "status": "Fresh",
+      "data_age_months": 0.0,
+      "last_updated": "2026-09-03",
+      "dataset": "Flood history events",
+      "note": "event historis: freshness diukur dari tanggal kejadian per event, bukan koleksi"
+    },
+    {
+      "status": "Stale",
+      "data_age_months": 66.8,
+      "last_updated": "2021-02-08",
+      "dataset": "Event E-2021-01 (Kampung Melayu)",
+      "note": "event historis — selalu Aging/Stale by design; nilai = evidence, bukan data hidup"
+    },
+    {
+      "status": "Stale",
+      "data_age_months": 66.4,
+      "last_updated": "2021-02-19",
+      "dataset": "Event E-2021-02 (Kampung Melayu)",
+      "note": "event historis — selalu Aging/Stale by design; nilai = evidence, bukan data hidup"
+    },
+    {
+      "status": "Stale",
+      "data_age_months": 54.5,
+      "last_updated": "2022-02-17",
+      "dataset": "Event E-2022-01 (Kampung Melayu)",
+      "note": "event historis — selalu Aging/Stale by design; nilai = evidence, bukan data hidup"
+    },
+    {
+      "status": "Stale",
+      "data_age_months": 45.9,
+      "last_updated": "2022-11-07",
+      "dataset": "Event E-2022-02 (Kampung Melayu)",
+      "note": "event historis — selalu Aging/Stale by design; nilai = evidence, bukan data hidup"
+    },
+    {
+      "status": "Aging",
+      "data_age_months": 21.2,
+      "last_updated": "2024-11-28",
+      "dataset": "Event E-2024-01 (Kampung Melayu)",
+      "note": "event historis — selalu Aging/Stale by design; nilai = evidence, bukan data hidup"
+    },
+    {
+      "status": "Aging",
+      "data_age_months": 18.0,
+      "last_updated": "2025-03-04",
+      "dataset": "Event E-2025-01 (Kampung Melayu)",
+      "note": "event historis — selalu Aging/Stale by design; nilai = evidence, bukan data hidup"
+    },
+    {
+      "status": "Aging",
+      "data_age_months": 13.9,
+      "last_updated": "2025-07-06",
+      "dataset": "Event E-2025-02 (Kampung Melayu)",
+      "note": "event historis — selalu Aging/Stale by design; nilai = evidence, bukan data hidup"
+    },
+    {
+      "status": "Aging",
+      "data_age_months": 8.9,
+      "last_updated": "2025-12-07",
+      "dataset": "Event E-2025-03 (Kampung Melayu)",
+      "note": "event historis — selalu Aging/Stale by design; nilai = evidence, bukan data hidup"
+    },
+    {
+      "status": "Aging",
+      "data_age_months": 9.5,
+      "last_updated": "2025-11-18",
+      "dataset": "Event E-2025-04 (Cipinang Muara)",
+      "note": "event historis — selalu Aging/Stale by design; nilai = evidence, bukan data hidup"
+    }
+  ]
+}

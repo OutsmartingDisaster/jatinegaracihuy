@@ -1,0 +1,17 @@
+{
+  "dataset_id": "satudata_data-jumlah-penduduk-pengangguran",
+  "title": "Data Jumlah Penduduk Pengangguran",
+  "source": "Satu Data Jakarta (satudata.jakarta.go.id)",
+  "source_url": "https://satudata.jakarta.go.id/open-data/detail?kategori=dataset&page_url=data-jumlah-penduduk-pengangguran",
+  "api": "https://satudata.jakarta.go.id/backend/api/v2/satudata/detail",
+  "rows": 534,
+  "total_reported": 534,
+  "periode": [
+    {
+      "periode_data": "2016"
+    }
+  ],
+  "acquired_at": "2026-09-02T20:35:32.038945+00:00",
+  "status": "RAW",
+  "processing_script": "tools/download_satudata.py"
+}

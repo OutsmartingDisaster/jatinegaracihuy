@@ -1,0 +1,19 @@
+{
+  "dataset_id": "satellite_observability_v1",
+  "version": "1.0",
+  "generated_at": "2026-09-04T12:31:04.256495+00:00",
+  "source": {
+    "raw_file": "data/raw/satellite_scene_inventory_gee.json",
+    "raw_sha256": "19b4cf30ca8f332a973a14a076326088fb36d8e789768fce85a848d370accb67",
+    "origin": "Google Earth Engine (COPERNICUS/S1_GRD, COPERNICUS/S2_SR_HARMONIZED, JRC/GSW1_4, COPERNICUS/DEM/GLO30)",
+    "collected_at": "2026-09-04"
+  },
+  "method": {
+    "id": "satellite-observability-v1",
+    "description": "Status cakupan scene per kejadian terdokumentasi (no_scene / observed_during / post_recession / cloud_blocked) + paksaan hujan GPM IMERG 24/72 jam (hulu Katulampa & lokal). Deterministik dari RAW; tanpa interpretasi genangan."
+  },
+  "output_sha256": "d26caeae3d8b5f8823785760ecc17c5fde6d5155c82be01a9bd4538c3c52427b",
+  "status": "PUBLISHED",
+  "quality_tier": "Q2",
+  "note": "Dataset terpisah dari flood_history & TMA (etl §27: kanal observasi tidak dicampur)."
+}

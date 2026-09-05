@@ -1,0 +1,24 @@
+{
+  "dataset_id": "dem_layer_dem_jatinegara_raw",
+  "layer": "layer_dem",
+  "source": "Copernicus GLO-30 DEM (ESA/Mercator/EEA, public COG on AWS)",
+  "source_url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_S07_00_E106_00_DEM/Copernicus_DSM_COG_10_S07_00_E106_00_DEM.tif",
+  "bbox_request": "106.85,-6.27,106.95,-6.17",
+  "crs": "EPSG:3395",
+  "pixel_size_m": 30.0,
+  "pixel_type": "F32",
+  "resolution_native_m": 30,
+  "processing_version": "raw+reproject_3395+cog",
+  "processing_script": "tools/download_dem.py",
+  "acquired_at": "2026-09-02T19:31:12.817431+00:00",
+  "status": "RAW",
+  "size_bytes": 594280,
+  "derived": {
+    "dataset_id": "dem_layer_hillshade_jatinegara_raw",
+    "layer": "layer_hillshade",
+    "method": "hillshade az=315 alt=45 (Lambertian surface-normal shading)",
+    "derived_from": "layer_dem_jatinegara.tif",
+    "pixel_type": "uint8",
+    "size_bytes": 105124
+  }
+}

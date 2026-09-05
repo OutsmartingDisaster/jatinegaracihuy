@@ -1,0 +1,24 @@
+{
+  "dataset_id": "fri_v1_kelurahan_jatinegara_v1",
+  "name": "FRI v1 + MSVI proxy per kelurahan",
+  "version": "1.0",
+  "source": {
+    "hazard": "data/processed/bahaya_clip.tif",
+    "vulnerability": "data/processed/kerentanan_clip.tif",
+    "exposure": "data/processed/osm_buildings_clip.geojson",
+    "capacity": "data/processed/osm_facilities_clip.geojson + flood_history.json (PPID penampungan)"
+  },
+  "processing": {
+    "environment": "Python (rasterio zonal stats + shapely overlay, UTM 48S untuk luas)",
+    "processing_script": "tools/compute_fri.py",
+    "fri_version": "fri_v1"
+  },
+  "outputs": {
+    "file": "data/processed/fri_v1_kelurahan.json",
+    "kelurahan_count": 8
+  },
+  "quality_level": "Q2/Q4 (derived; exposure & capacity = proxy)",
+  "status": "PUBLISHED",
+  "processed_at": "2026-09-03T03:55:15.236135+00:00",
+  "validator": "anti-ngarang guards: capacity gap tidak dihitung; confidence weakest-factor"
+}

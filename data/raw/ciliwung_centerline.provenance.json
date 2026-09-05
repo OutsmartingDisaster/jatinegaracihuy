@@ -1,0 +1,19 @@
+{
+  "dataset_id": "ciliwung_centerline",
+  "version": "1.0",
+  "status": "RAW",
+  "source": "OpenStreetMap via Overpass (ways waterway~river|stream_channel, name~Ciliwung)",
+  "acquired_at": "2026-09-04T08:52:21.021818+00:00",
+  "processed_at": "2026-09-04T08:52:21.021818+00:00",
+  "processing": {
+    "processing_script": "tools/fetch_ciliwung.py",
+    "processing_version": "ciliwung-centerline-v1"
+  },
+  "outputs": {
+    "file": "data/raw/ciliwung_centerline.geojson",
+    "crs": "EPSG:4326"
+  },
+  "record_count": 231,
+  "length_km": 74.31,
+  "checksum": "sha256:d80eeabb21f9b2a247b259e974d059f5cc0ee18cb21ba25f42e996bb6c14cb12"
+}

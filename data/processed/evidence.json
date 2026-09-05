@@ -1,0 +1,398 @@
+{
+  "dataset_id": "evidence_jatinegara_v1",
+  "schema_note": "PRD §19 evidence fields; dataset_ref menunjuk provenance sumber",
+  "generated_at": "2026-09-03T05:14:51.249315+00:00",
+  "count": 31,
+  "evidence": [
+    {
+      "evidence_id": "EVD-DAT-INAHAZ",
+      "type": "Official dataset",
+      "source": "BNPB InaRISK layer_bahaya_banjir (clipped, 4 kelas)",
+      "source_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/layer_bahaya_banjir/ImageServer",
+      "event_date": null,
+      "location": "Kecamatan Jatinegara",
+      "dataset_ref": "data/processed/bahaya_class.provenance.json",
+      "confidence": "High"
+    },
+    {
+      "evidence_id": "EVD-DAT-INAVUL",
+      "type": "Official dataset",
+      "source": "BNPB InaRISK layer_kerentanan_banjir (clipped, 4 kelas)",
+      "source_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/layer_kerentanan_banjir/ImageServer",
+      "event_date": null,
+      "location": "Kecamatan Jatinegara",
+      "dataset_ref": "data/processed/kerentanan_class.provenance.json",
+      "confidence": "High"
+    },
+    {
+      "evidence_id": "EVD-DAT-DEM",
+      "type": "Official dataset",
+      "source": "Copernicus GLO-30 DEM + hillshade Jatinegara",
+      "source_url": "https://portal.opentopography.org",
+      "event_date": null,
+      "location": "Kecamatan Jatinegara",
+      "dataset_ref": "data/raw/layer_dem_jatinegara.provenance.json",
+      "confidence": "High"
+    },
+    {
+      "evidence_id": "EVD-DAT-OSMBLD",
+      "type": "Official dataset",
+      "source": "OSM building footprints Jatinegara (clip)",
+      "source_url": "https://overpass-api.de",
+      "event_date": null,
+      "location": "Kecamatan Jatinegara",
+      "dataset_ref": "data/processed/osm_buildings_clip.provenance.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-DAT-OSMFAC",
+      "type": "Official dataset",
+      "source": "OSM critical facilities Jatinegara (clip)",
+      "source_url": "https://overpass-api.de",
+      "event_date": null,
+      "location": "Kecamatan Jatinegara",
+      "dataset_ref": "data/processed/osm_facilities_clip.provenance.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-DAT-BOUND",
+      "type": "Official dataset",
+      "source": "Batas administratif kecamatan + 8 kelurahan (DPMPTSP DKI)",
+      "source_url": "DPMPTSP Provinsi DKI Jakarta",
+      "event_date": null,
+      "location": "Kecamatan Jatinegara",
+      "dataset_ref": "data/raw/boundary_administrasi_jatinegara.provenance.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-E-2021-01",
+      "type": "Historical event / News report",
+      "source": "Kompas.id",
+      "source_url": "https://www.kompas.id/artikel/banjir-kembali-melanda-kampung-melayu",
+      "event_date": "2021-02-08",
+      "location": "Kampung Melayu",
+      "depth_cm": null,
+      "evacuated": null,
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVD-E-2021-02",
+      "type": "Historical event / News report",
+      "source": "detikNews",
+      "source_url": "https://news.detik.com/berita/d-5385500/banjir-rendam-rumah-warga-di-kampung-melayu-jaktim-tinggi-air-capai-1-5-meter",
+      "event_date": "2021-02-19",
+      "location": "Kampung Melayu",
+      "depth_cm": 150,
+      "evacuated": null,
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVD-E-2022-01",
+      "type": "Historical event / News report",
+      "source": "Kompas TV",
+      "source_url": "https://www.kompas.tv",
+      "event_date": "2022-02-17",
+      "location": "Kampung Melayu",
+      "depth_cm": null,
+      "evacuated": null,
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVD-E-2022-02",
+      "type": "Historical event / News report",
+      "source": "Kompas.id",
+      "source_url": "https://www.kompas.id/artikel/cerita-dari-kampung-melayu-banjir-seleher-4-kali-seminggu",
+      "event_date": "2022-11-07",
+      "location": "Kampung Melayu, RW14",
+      "depth_cm": 110,
+      "evacuated": 0,
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVD-E-2024-01",
+      "type": "Historical event / News report",
+      "source": "Kompas TV",
+      "source_url": "https://www.kompas.tv",
+      "event_date": "2024-11-28",
+      "location": "Kampung Melayu, RW04",
+      "depth_cm": null,
+      "evacuated": null,
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVD-E-2025-01",
+      "type": "Historical event / News report",
+      "source": "BPBD DKI Jakarta; Tempo/Antara; Bloomberg Technoz; BNPB; Kemenkes",
+      "source_url": "https://www.tempo.co/hukum/banjir-di-kampung-melayu-disebut-terparah-sejak-2007-capai-3-5-meter-1215347",
+      "event_date": "2025-03-04",
+      "location": "Kampung Melayu, RW05",
+      "depth_cm": 350,
+      "evacuated": 792,
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVD-E-2025-02",
+      "type": "Historical event / News report",
+      "source": "detikNews (Polda Metro Jaya)",
+      "source_url": "https://news.detik.com/berita/d-7998167/kebon-pala-jaktim-terendam-banjir-1-8-meter-polisi-bantu-71-warga-mengungsi",
+      "event_date": "2025-07-06",
+      "location": "Kampung Melayu, RW04",
+      "depth_cm": 180,
+      "evacuated": 71,
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVD-E-2025-03",
+      "type": "Historical event / News report",
+      "source": "detikNews",
+      "source_url": "https://news.detik.com/berita/d-8246241/kebon-pala-jaktim-terendam-luapan-kali-ciliwung-dini-hari-tadi-tinggi-air-85-cm",
+      "event_date": "2025-12-07",
+      "location": "Kampung Melayu, RW05",
+      "depth_cm": 85,
+      "evacuated": null,
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVD-E-2025-04",
+      "type": "Historical event / News report",
+      "source": "Antara News (BPBD Jakarta Timur); JPNN",
+      "source_url": "https://www.antaranews.com/berita/5250713/banjir-masih-melanda-beberapa-rt-di-cipinang-muara-jaktim",
+      "event_date": "2025-11-18",
+      "location": "Cipinang Muara, RW13",
+      "depth_cm": 70,
+      "evacuated": null,
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVD-PPID-001",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Kampung Melayu (RW 04/RW 05) — Jl. Kebon Pala II",
+      "jenis": "Banjir",
+      "penampungan": [
+        "Mesjid Itihadul Ikhwan",
+        "SDN 01 Kampung Melayu",
+        "Sekretariat RW 05",
+        "Aula Kantor Kelurahan Kampung Melayu"
+      ],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-002",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Kampung Melayu (RW 07/RW 08) — Jl. Tanah Rendah",
+      "jenis": "Banjir",
+      "penampungan": [
+        "Sekretariat RW 06",
+        "Sekretariat RW 007",
+        "Mesjid Ruhul Islam RW 07",
+        "Mushola Khairul Anam",
+        "Lapangan SMPN 26"
+      ],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-003",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Rawa Bunga (RW 04/RW 05/RW 06)",
+      "jenis": "Genangan",
+      "penampungan": [],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-004",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Bidaracina (RW 06/RW 07) — Jl. Tanjung Lengkong",
+      "jenis": "Banjir",
+      "penampungan": [
+        "Kantor Kelurahan Bidara Cina / GOR Otista",
+        "SDN 01/02 RW 04"
+      ],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-005",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Bidaracina (RW 011) — Jl. Baiduri Bulan",
+      "jenis": "Banjir",
+      "penampungan": [
+        "SKKT RW 011",
+        "Sekretariat Karang Taruna RW 011"
+      ],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-006",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Bidaracina (RW 016) — Rusunawi",
+      "jenis": "Banjir",
+      "penampungan": [],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-007",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Cipinang Cempedak (RW 04) — Jl. Kebon Nanas Utara 2 / SMK Dewi Sartika",
+      "jenis": "Genangan",
+      "penampungan": [
+        "Masjid At-Taubah RW 05"
+      ],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-008",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Cipinang Cempedak (RW 07) — Jl. Kebon Nanas Utara 1",
+      "jenis": "Genangan",
+      "penampungan": [
+        "Masjid Al-Mubarokah RW 07"
+      ],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-009",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Cipinang Cempedak (RW 08) — Jl. Kebon Nanas Selatan 1",
+      "jenis": "Genangan",
+      "penampungan": [],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-010",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Cipinang Cempedak (RW 04/RW 05) — Jl. Otista 3",
+      "jenis": "Genangan",
+      "penampungan": [],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-011",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Cipinang Cempedak (RW 01/RW 02/RW 03/RW 11) — Jl. DI Panjaitan",
+      "jenis": "Genangan",
+      "penampungan": [],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-012",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Cipinang Besar Selatan (RW 01/RW 02)",
+      "jenis": "Genangan",
+      "penampungan": [
+        "Kantor Sekretariat RW 01",
+        "Kantor Sekretariat RW 02"
+      ],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-013",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Cipinang Besar Utara (RW 05) — Jl. Prumpung Tengah",
+      "jenis": "Genangan",
+      "penampungan": [
+        "SDN 011 CBU"
+      ],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-014",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Cipinang Besar Utara (RW 010) — Jl. Cipinang Pulo Maja",
+      "jenis": "Genangan",
+      "penampungan": [],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-015",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Cipinang Muara (RW 013) — Jl. Cipinang Bali",
+      "jenis": "Banjir",
+      "penampungan": [
+        "Kantor Sekretariat RW 013"
+      ],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    },
+    {
+      "evidence_id": "EVD-PPID-016",
+      "type": "Government report",
+      "source": "PPID Jakarta Timur — Daerah Rawan Bencana Kecamatan Jatinegara",
+      "source_url": "https://timur.jakarta.go.id/ppid/files/240917-085950.pdf",
+      "event_date": "2024-09-17",
+      "location": "Cipinang Muara (RW 013) — Jl. Cipinang Bali IV (RT 006/013)",
+      "jenis": "Banjir",
+      "penampungan": [
+        "Kantor Sekretariat RW 013"
+      ],
+      "dataset_ref": "data/raw/flood_history.json",
+      "confidence": "Medium"
+    }
+  ]
+}

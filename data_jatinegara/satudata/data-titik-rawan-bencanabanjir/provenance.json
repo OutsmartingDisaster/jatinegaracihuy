@@ -1,0 +1,17 @@
+{
+  "dataset_id": "satudata_data-titik-rawan-bencanabanjir",
+  "title": "Data Titik Rawan Bencana/Banjir",
+  "source": "Satu Data Jakarta (satudata.jakarta.go.id)",
+  "source_url": "https://satudata.jakarta.go.id/open-data/detail?kategori=dataset&page_url=data-titik-rawan-bencanabanjir",
+  "api": "https://satudata.jakarta.go.id/backend/api/v2/satudata/detail",
+  "rows": 154,
+  "total_reported": 154,
+  "periode": [
+    {
+      "periode_data": "2024"
+    }
+  ],
+  "acquired_at": "2026-09-02T20:27:40.008939+00:00",
+  "status": "RAW",
+  "processing_script": "tools/download_satudata.py"
+}

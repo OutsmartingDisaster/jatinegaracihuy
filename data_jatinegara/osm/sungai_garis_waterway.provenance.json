@@ -1,0 +1,26 @@
+{
+  "dataset_id": "osm_waterway_lines_jatinegara",
+  "source": "OpenStreetMap via Overpass API",
+  "query_bbox": "-6.248,106.852,-6.202,106.908",
+  "features": 90,
+  "waterway_classes": [
+    "canal",
+    "drain",
+    "river",
+    "stream",
+    "weir"
+  ],
+  "named_rivers": [
+    "Ci Liwung",
+    "Cipinang",
+    "Kali Malang",
+    "Kali Sunter",
+    "Kali Utan Kayu",
+    "Kanal Banjir Timur",
+    "Sodetan Ciliwung",
+    "Sunter"
+  ],
+  "acquired_at": "2026-09-03T01:35:27.027926+00:00",
+  "status": "RAW",
+  "processing_script": "tools/osm_waterways.py"
+}

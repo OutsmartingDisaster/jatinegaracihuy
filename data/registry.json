@@ -1,0 +1,376 @@
+{
+  "generated_at": "2026-09-03T07:56:39.779144+00:00",
+  "provenance_lifecycle": [
+    "RAW",
+    "PROCESSING",
+    "VALIDATION",
+    "PUBLISHED",
+    "SUPERSEDED",
+    "ARCHIVED"
+  ],
+  "known_gaps": [
+    {
+      "gap": "Verifikasi RW boundaries (91 RW dari OSM, Q3)",
+      "reason": "Batas RW bersumber komunitas (OSM relation name^RW, lokal admin_level=9) — tidak ada sumber resmi publik. Distribusi 6-16 RW/kelurahan plausible; dataset status=VALIDATION.",
+      "path_forward": "Verifikasi dengan peta kantor kelurahan + konfirmasi RT/RW saat UAT (PRD §25), lalu naikkan ke PUBLISHED"
+    },
+    {
+      "gap": "R2 upload PMTiles",
+      "reason": "Menunggu Cloudflare R2 credentials (account id + API token + bucket) dari user",
+      "path_forward": "tools/upload_r2.py siap; isi .env.r2 lalu jalankan"
+    },
+    {
+      "gap": "Flood events 2023 & event berita kelurahan non-Kampung Melayu",
+      "reason": "Belum ditemukan dalam pencarian berita — coverage gap, bukan kejadian kosong (lihat flood_history.json coverage_notes)",
+      "path_forward": "Riset lanjutan + wawancara komunitas + citizen reports (Phase 6)"
+    },
+    {
+      "note": "PMTiles dibangun via pure-python tiler (tools/build_pmtiles.py) karena tippecanoe/WSL/Docker tidak tersedia di host; decode tervalidasi. Pertimbangkan tippecanoe saat tooling tersedia untuk simplification/drop rules lebih baik."
+    }
+  ],
+  "datasets": {
+    "raw": [
+      {
+        "sidecar": "data/raw/boundary_administrasi_jatinegara.provenance.json",
+        "dataset_id": "boundary_administrasi_jatinegara_raw",
+        "source": "DPMPTSP Provinsi DKI Jakarta",
+        "source_url": null,
+        "acquired_at": "2026-09-02T19:36:12.337674+00:00",
+        "processed_at": null,
+        "processing_version": "raw-filtered-epsg4326",
+        "status": "RAW",
+        "quality_level": null,
+        "outputs": {
+          "kecamatan": {
+            "file": "boundary_kecamatan_jatinegara.geojson",
+            "feature_count": 1,
+            "size_bytes": 220979
+          },
+          "kelurahan": {
+            "file": "boundary_kelurahan_jatinegara.geojson",
+            "feature_count": 8,
+            "size_bytes": 562540
+          }
+        },
+        "crs": "EPSG:4326"
+      },
+      {
+        "sidecar": "data/raw/layer_bahaya_banjir_jatinegara.provenance.json",
+        "dataset_id": "inarisk_layer_bahaya_banjir_jatinegara_raw",
+        "source": "BNPB InaRISK (ArcGIS ImageServer)",
+        "source_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/layer_bahaya_banjir/ImageServer",
+        "acquired_at": "2026-09-02T19:26:49.215006+00:00",
+        "processed_at": null,
+        "processing_version": "raw",
+        "status": "RAW",
+        "quality_level": null,
+        "outputs": null,
+        "crs": "EPSG:3395"
+      },
+      {
+        "sidecar": "data/raw/layer_dem_jatinegara.provenance.json",
+        "dataset_id": "dem_layer_dem_jatinegara_raw",
+        "source": "Copernicus GLO-30 DEM (ESA/Mercator/EEA, public COG on AWS)",
+        "source_url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_S07_00_E106_00_DEM/Copernicus_DSM_COG_10_S07_00_E106_00_DEM.tif",
+        "acquired_at": "2026-09-02T19:31:12.817431+00:00",
+        "processed_at": null,
+        "processing_version": "raw+reproject_3395+cog",
+        "status": "RAW",
+        "quality_level": null,
+        "outputs": null,
+        "crs": "EPSG:3395"
+      },
+      {
+        "sidecar": "data/raw/layer_kerentanan_banjir_jatinegara.provenance.json",
+        "dataset_id": "inarisk_layer_kerentanan_banjir_jatinegara_raw",
+        "source": "BNPB InaRISK (ArcGIS ImageServer)",
+        "source_url": "https://gis.bnpb.go.id/server/rest/services/inarisk/layer_kerentanan_banjir/ImageServer",
+        "acquired_at": "2026-09-02T19:26:49.881054+00:00",
+        "processed_at": null,
+        "processing_version": "raw",
+        "status": "RAW",
+        "quality_level": null,
+        "outputs": null,
+        "crs": "EPSG:3395"
+      },
+      {
+        "sidecar": "data/raw/osm_buildings.provenance.json",
+        "dataset_id": "osm_buildings_jatinegara_raw",
+        "source": "OpenStreetMap via Overpass API",
+        "source_url": "https://overpass-api.de/api/interpreter",
+        "acquired_at": "2026-09-03T01:45:43.587700+00:00",
+        "processed_at": null,
+        "processing_version": "raw",
+        "status": "RAW",
+        "quality_level": null,
+        "outputs": null,
+        "crs": "EPSG:4326"
+      },
+      {
+        "sidecar": "data/raw/osm_facilities.provenance.json",
+        "dataset_id": "osm_facilities_jatinegara_raw",
+        "source": "OpenStreetMap via Overpass API",
+        "source_url": "https://overpass-api.de/api/interpreter",
+        "acquired_at": "2026-09-03T01:49:46.490379+00:00",
+        "processed_at": null,
+        "processing_version": "raw",
+        "status": "RAW",
+        "quality_level": null,
+        "outputs": null,
+        "crs": "EPSG:4326"
+      },
+      {
+        "sidecar": "data/raw/osm_roads.provenance.json",
+        "dataset_id": "osm_roads_jatinegara_raw",
+        "source": "OpenStreetMap via Overpass API",
+        "source_url": "https://overpass.kumi.systems/api/interpreter",
+        "acquired_at": "2026-09-03T01:39:21.964137+00:00",
+        "processed_at": null,
+        "processing_version": "raw",
+        "status": "RAW",
+        "quality_level": null,
+        "outputs": null,
+        "crs": "EPSG:4326"
+      },
+      {
+        "sidecar": "data/raw/osm_water.provenance.json",
+        "dataset_id": "osm_water_jatinegara_raw",
+        "source": "OpenStreetMap via Overpass API",
+        "source_url": "https://overpass-api.de/api/interpreter",
+        "acquired_at": "2026-09-03T01:48:27.977945+00:00",
+        "processed_at": null,
+        "processing_version": "raw",
+        "status": "RAW",
+        "quality_level": null,
+        "outputs": null,
+        "crs": "EPSG:4326"
+      },
+      {
+        "sidecar": "data/raw/rw_boundaries_raw.provenance.json",
+        "dataset_id": "rw_boundaries_osm_v1",
+        "source": "OpenStreetMap via Overpass API",
+        "source_url": null,
+        "acquired_at": null,
+        "processed_at": "2026-09-03T05:54:37.878282+00:00",
+        "processing_version": "v1",
+        "status": "VALIDATION",
+        "quality_level": "Q3",
+        "outputs": {
+          "file": "data/raw/rw_boundaries_raw.geojson",
+          "features": 91,
+          "per_kelurahan": {
+            "CIPINANG MUARA": 16,
+            "CIPINANG CEMPEDAK": 11,
+            "RAWA BUNGA": 9,
+            "CIPINANG BESAR UTARA": 14,
+            "KAMPUNG MELAYU": 9,
+            "BIDARA CINA": 16,
+            "CIPINANG BESAR SELATAN": 10,
+            "BALI MESTER": 6
+          }
+        },
+        "crs": null
+      }
+    ],
+    "processed": [
+      {
+        "sidecar": "data/processed/bahaya_class.provenance.json",
+        "dataset_id": "inarisk_bahaya_banjir_jatinegara_class_v1",
+        "source": "BNPB InaRISK (ArcGIS ImageServer)",
+        "source_url": null,
+        "acquired_at": null,
+        "processed_at": "2026-09-03",
+        "processing_version": null,
+        "status": "PUBLISHED",
+        "quality_level": "Q2",
+        "outputs": {
+          "class_raster": "data/processed/bahaya_class.tif",
+          "dissolved_vector": "data/processed/bahaya_class_dissolved.gpkg",
+          "crs": "EPSG:3395",
+          "pixel_size_m": 100.3,
+          "pixel_type": "Float32",
+          "class_distribution_px": {
+            "1": 255,
+            "2": 298,
+            "3": 433,
+            "4": 53
+          }
+        },
+        "crs": null
+      },
+      {
+        "sidecar": "data/processed/evidence.provenance.json",
+        "dataset_id": "evidence_v1",
+        "source": "{\"derived_from\": [\"fri_v1_kelurahan.json\", \"flood_history.js",
+        "source_url": null,
+        "acquired_at": null,
+        "processed_at": "2026-09-03T05:14:51.254882+00:00",
+        "processing_version": null,
+        "status": "PUBLISHED",
+        "quality_level": "Q2",
+        "outputs": {
+          "file": "data/processed/evidence.json"
+        },
+        "crs": null
+      },
+      {
+        "sidecar": "data/processed/freshness_v1.provenance.json",
+        "dataset_id": "freshness_v1_v1",
+        "source": "{\"derived_from\": [\"fri_v1_kelurahan.json\", \"flood_history.js",
+        "source_url": null,
+        "acquired_at": null,
+        "processed_at": "2026-09-03T05:14:51.254882+00:00",
+        "processing_version": null,
+        "status": "PUBLISHED",
+        "quality_level": "Q2",
+        "outputs": {
+          "file": "data/processed/freshness_v1.json"
+        },
+        "crs": null
+      },
+      {
+        "sidecar": "data/processed/fri_v1_kelurahan.provenance.json",
+        "dataset_id": "fri_v1_kelurahan_jatinegara_v1",
+        "source": "{\"hazard\": \"data/processed/bahaya_clip.tif\", \"vulnerability\"",
+        "source_url": null,
+        "acquired_at": null,
+        "processed_at": "2026-09-03T03:55:15.236135+00:00",
+        "processing_version": null,
+        "status": "PUBLISHED",
+        "quality_level": "Q2/Q4 (derived; exposure & capacity = proxy)",
+        "outputs": {
+          "file": "data/processed/fri_v1_kelurahan.json",
+          "kelurahan_count": 8
+        },
+        "crs": null
+      },
+      {
+        "sidecar": "data/processed/kerentanan_class.provenance.json",
+        "dataset_id": "inarisk_kerentanan_banjir_jatinegara_class_v1",
+        "source": "BNPB InaRISK (ArcGIS ImageServer)",
+        "source_url": null,
+        "acquired_at": null,
+        "processed_at": "2026-09-03",
+        "processing_version": null,
+        "status": "PUBLISHED",
+        "quality_level": "Q2",
+        "outputs": {
+          "class_raster": "data/processed/kerentanan_class.tif",
+          "dissolved_vector": "data/processed/kerentanan_class_dissolved.gpkg",
+          "crs": "EPSG:3395",
+          "pixel_size_m": 100.3,
+          "pixel_type": "Float32",
+          "class_distribution_px": {
+            "1": 245,
+            "2": 54,
+            "3": 29,
+            "4": 711
+          }
+        },
+        "crs": null
+      },
+      {
+        "sidecar": "data/processed/osm_buildings_clip.provenance.json",
+        "dataset_id": "osm_buildings_jatinegara_clip_v1",
+        "source": "OpenStreetMap via Overpass API",
+        "source_url": null,
+        "acquired_at": null,
+        "processed_at": "2026-09-03T01:56:31.217824+00:00",
+        "processing_version": null,
+        "status": "PUBLISHED",
+        "quality_level": "Q1",
+        "outputs": {
+          "file": "data/processed/osm_buildings_clip.geojson",
+          "crs": "EPSG:4326",
+          "features_in": 39269,
+          "features_out": 37825
+        },
+        "crs": null
+      },
+      {
+        "sidecar": "data/processed/osm_facilities_clip.provenance.json",
+        "dataset_id": "osm_facilities_jatinegara_clip_v1",
+        "source": "OpenStreetMap via Overpass API",
+        "source_url": null,
+        "acquired_at": null,
+        "processed_at": "2026-09-03T01:56:31.728259+00:00",
+        "processing_version": null,
+        "status": "PUBLISHED",
+        "quality_level": "Q1",
+        "outputs": {
+          "file": "data/processed/osm_facilities_clip.geojson",
+          "crs": "EPSG:4326",
+          "features_in": 480,
+          "features_out": 462
+        },
+        "crs": null
+      },
+      {
+        "sidecar": "data/processed/osm_roads_clip.provenance.json",
+        "dataset_id": "osm_roads_jatinegara_clip_v1",
+        "source": "OpenStreetMap via Overpass API",
+        "source_url": null,
+        "acquired_at": null,
+        "processed_at": "2026-09-03T01:56:05.782879+00:00",
+        "processing_version": null,
+        "status": "PUBLISHED",
+        "quality_level": "Q1",
+        "outputs": {
+          "file": "data/processed/osm_roads_clip.geojson",
+          "crs": "EPSG:4326",
+          "features_in": 4692,
+          "features_out": 4343
+        },
+        "crs": null
+      },
+      {
+        "sidecar": "data/processed/osm_water_clip.provenance.json",
+        "dataset_id": "osm_water_jatinegara_clip_v1",
+        "source": "OpenStreetMap via Overpass API",
+        "source_url": null,
+        "acquired_at": null,
+        "processed_at": "2026-09-03T01:56:31.346634+00:00",
+        "processing_version": null,
+        "status": "PUBLISHED",
+        "quality_level": "Q1",
+        "outputs": {
+          "file": "data/processed/osm_water_clip.geojson",
+          "crs": "EPSG:4326",
+          "features_in": 75,
+          "features_out": 62
+        },
+        "crs": null
+      },
+      {
+        "sidecar": "data/processed/priority_v1_kelurahan.provenance.json",
+        "dataset_id": "priority_v1_kelurahan_v1",
+        "source": "{\"derived_from\": [\"fri_v1_kelurahan.json\", \"flood_history.js",
+        "source_url": null,
+        "acquired_at": null,
+        "processed_at": "2026-09-03T05:14:51.255880+00:00",
+        "processing_version": null,
+        "status": "PUBLISHED",
+        "quality_level": "Q2",
+        "outputs": {
+          "file": "data/processed/priority_v1_kelurahan.json"
+        },
+        "crs": null
+      },
+      {
+        "sidecar": "data/processed/risk_intel_v1_kelurahan.provenance.json",
+        "dataset_id": "risk_intel_v1_kelurahan_v1",
+        "source": "{\"derived_from\": [\"fri_v1_kelurahan.json\", \"flood_history.js",
+        "source_url": null,
+        "acquired_at": null,
+        "processed_at": "2026-09-03T05:14:51.255880+00:00",
+        "processing_version": null,
+        "status": "PUBLISHED",
+        "quality_level": "Q2",
+        "outputs": {
+          "file": "data/processed/risk_intel_v1_kelurahan.json"
+        },
+        "crs": null
+      }
+    ]
+  }
+}

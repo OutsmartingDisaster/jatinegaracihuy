@@ -1,0 +1,29 @@
+# Node
+node_modules/
+web/dist/
+dashboard/dist/
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+web-dev.log
+
+# Bulk data — tidak layak/boleh di-push (total ~1.9 GB)
+# - data/data.zip = 184 MB (limit GitHub 100 MB)
+# - data/data-tma/*.json = snapshot harian TMA 2025-11..2026-09 (~1.67 GB);
+#   hasil olahnya sudah ada di data/processed/tma_*.json
+data/data.zip
+data/data-tma/*.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+
+# SQLite governance DB (regenerable via tools/seed_governance_db.py)
+data/governance.db

@@ -1,0 +1,1733 @@
+{
+  "generated_at": "2026-09-05T00:31:19.194517+00:00",
+  "spec": "docs/JATINEGARA SIAGA-datagov.md §45–§46, §42–§44, §56, §66",
+  "schema_check": {
+    "status": "pass",
+    "detail": "15/15 canonical+supporting tables created",
+    "missing": []
+  },
+  "enum_check": {
+    "values_seen": {
+      "VERY HIGH": 4,
+      "MEDIUM": 6,
+      "LOW": 2,
+      "HIGH": 4
+    },
+    "non_canonical": {},
+    "presentation_style_needs_normalization": {
+      "VERY HIGH": 4,
+      "MEDIUM": 6,
+      "LOW": 2,
+      "HIGH": 4
+    },
+    "status": "warning"
+  },
+  "null_policy_check": {
+    "checks": [
+      {
+        "check_name": "null_policy.flood_history_nulls_preserved",
+        "status": "pass",
+        "detail": "9 events; 9 null fields kept as unknown (0 not substituted)"
+      },
+      {
+        "check_name": "null_policy.capacity_gap_not_fabricated",
+        "status": "pass",
+        "detail": "8/8 kelurahan capacity_gap = 'cannot be reliably estimated' (§29)"
+      }
+    ],
+    "status": "pass"
+  },
+  "proxy_policy_check": {
+    "status": "pass",
+    "detail": "36 explicit PROXY labels in FRI methodology/outputs (exposure, vulnerability, capacity)",
+    "note": "Structured proxy_for/proxy_reason/proxy_methodology/confidence_impact fields di-migrasi ke tabel methodologies saat Phase 3"
+  },
+  "publication_gate": {
+    "checked": 28,
+    "published": 17,
+    "failures": 1,
+    "datasets": [
+      {
+        "group": "raw",
+        "dataset_id": "boundary_administrasi_jatinegara_raw",
+        "sidecar": "data/raw/boundary_administrasi_jatinegara.provenance.json",
+        "lifecycle_status": "RAW",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='raw-filtered-epsg4326'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "artifact not auto-located"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level=None"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator=None"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:4326'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": null,
+        "artifact": null,
+        "version": "raw-filtered-epsg4326"
+      },
+      {
+        "group": "raw",
+        "dataset_id": "ciliwung_centerline",
+        "sidecar": "data/raw/ciliwung_centerline.provenance.json",
+        "lifecycle_status": "RAW",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\raw\\ciliwung_centerline.geojson"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level=None"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator=None"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:4326'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "d80eeabb21f9b2a247b259e974d059f5cc0ee18cb21ba25f42e996bb6c14cb12",
+        "artifact": "data\\raw\\ciliwung_centerline.geojson",
+        "version": "1.0"
+      },
+      {
+        "group": "raw",
+        "dataset_id": "ds_flood_events_points_raw",
+        "sidecar": "data/raw/jatinegara_flood_events_2021_2025.provenance.json",
+        "lifecycle_status": "RAW",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "fail",
+            "severity": "warning",
+            "detail": "version=None"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "artifact not auto-located"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "fail",
+            "severity": "blocking",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level=None"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator=None"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "fail",
+            "severity": "warning",
+            "detail": "crs=None"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": null,
+        "artifact": null,
+        "version": null
+      },
+      {
+        "group": "raw",
+        "dataset_id": "inarisk_layer_bahaya_banjir_jatinegara_raw",
+        "sidecar": "data/raw/layer_bahaya_banjir_jatinegara.provenance.json",
+        "lifecycle_status": "RAW",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='raw'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\raw\\layer_bahaya_banjir_jatinegara.tif"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level=None"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator=None"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:3395'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "bd365cad6ad049689f932bc0fd85ff32e03eaa4c0784464776b910f02d3d7859",
+        "artifact": "data\\raw\\layer_bahaya_banjir_jatinegara.tif",
+        "version": "raw"
+      },
+      {
+        "group": "raw",
+        "dataset_id": "dem_layer_dem_jatinegara_raw",
+        "sidecar": "data/raw/layer_dem_jatinegara.provenance.json",
+        "lifecycle_status": "RAW",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='raw+reproject_3395+cog'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\raw\\layer_dem_jatinegara.tif"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level=None"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator=None"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:3395'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "675c7c30f2b1d6e67f96511848fb5132766690e8d5761decc985dac3bdb5ecbc",
+        "artifact": "data\\raw\\layer_dem_jatinegara.tif",
+        "version": "raw+reproject_3395+cog"
+      },
+      {
+        "group": "raw",
+        "dataset_id": "inarisk_layer_kerentanan_banjir_jatinegara_raw",
+        "sidecar": "data/raw/layer_kerentanan_banjir_jatinegara.provenance.json",
+        "lifecycle_status": "RAW",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='raw'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\raw\\layer_kerentanan_banjir_jatinegara.tif"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level=None"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator=None"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:3395'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "cdbfc512d608f95c6655d20ac595d43730907ea244526a5973800c854b9661de",
+        "artifact": "data\\raw\\layer_kerentanan_banjir_jatinegara.tif",
+        "version": "raw"
+      },
+      {
+        "group": "raw",
+        "dataset_id": "osm_buildings_jatinegara_raw",
+        "sidecar": "data/raw/osm_buildings.provenance.json",
+        "lifecycle_status": "RAW",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='raw'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\raw\\osm_buildings.geojson"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level=None"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator=None"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:4326'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "2d762da6a40df4da4c7b461e5a385bf41f2b168edcc3ce35c0fd87011f19d5c1",
+        "artifact": "data\\raw\\osm_buildings.geojson",
+        "version": "raw"
+      },
+      {
+        "group": "raw",
+        "dataset_id": "osm_facilities_jatinegara_raw",
+        "sidecar": "data/raw/osm_facilities.provenance.json",
+        "lifecycle_status": "RAW",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='raw'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\raw\\osm_facilities.geojson"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level=None"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator=None"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:4326'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "728c2bb49190187ccb9ba5bd4f766da95a428006a65bdd09286bb6373b7c1aa8",
+        "artifact": "data\\raw\\osm_facilities.geojson",
+        "version": "raw"
+      },
+      {
+        "group": "raw",
+        "dataset_id": "osm_roads_jatinegara_raw",
+        "sidecar": "data/raw/osm_roads.provenance.json",
+        "lifecycle_status": "RAW",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='raw'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\raw\\osm_roads.geojson"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level=None"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator=None"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:4326'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "1db539b9fee4cba4be0776b244f981599f0f4c6d5b02c162919d0a48613b4a5f",
+        "artifact": "data\\raw\\osm_roads.geojson",
+        "version": "raw"
+      },
+      {
+        "group": "raw",
+        "dataset_id": "osm_water_jatinegara_raw",
+        "sidecar": "data/raw/osm_water.provenance.json",
+        "lifecycle_status": "RAW",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='raw'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\raw\\osm_water.geojson"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level=None"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator=None"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:4326'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "2c353b07241543aaad77226737561e7e6a96ca50f79faba767706c966750d97b",
+        "artifact": "data\\raw\\osm_water.geojson",
+        "version": "raw"
+      },
+      {
+        "group": "raw",
+        "dataset_id": "rw_boundaries_osm_v1",
+        "sidecar": "data/raw/rw_boundaries_raw.provenance.json",
+        "lifecycle_status": "VALIDATION",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\raw\\rw_boundaries_raw.geojson"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q3'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator=None"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "fail",
+            "severity": "warning",
+            "detail": "crs=None"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "12562d8410c6b4db6dd3f41326c2ef43b292bf36387932461a20921668cd70ff",
+        "artifact": "data\\raw\\rw_boundaries_raw.geojson",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "inarisk_bahaya_banjir_jatinegara_class_v1",
+        "sidecar": "data/processed/bahaya_class.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\bahaya_class.tif"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q2'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='tools/validate_processed.py (crs, kelas, geometri GPKG)'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:3395'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "9d0d782939dbf87c0dffc711e74dbf24290284469584c5bd282d3259a18b9110",
+        "artifact": "data\\processed\\bahaya_class.tif",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "evidence_v1",
+        "sidecar": "data/processed/evidence.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\evidence.json"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q2'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='deterministic build (tools/build_risk_intel.py) + Phase 0 gate tools/check_governance.py'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs=None"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "38487aabb1e6b3e9f0b292f9380e036641e3f0390e7533142c07746fd55d7fff",
+        "artifact": "data\\processed\\evidence.json",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "ds_flood_events_points_v1",
+        "sidecar": "data/processed/flood_events_points_v1.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\flood_events_points_v1.geojson"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q4 (laporan publik unverified; koordinat proxy kelurahan/jalan)'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='deterministic build (tools/build_flood_points.py) + Phase 0 gate tools/check_governance.py'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "fail",
+            "severity": "warning",
+            "detail": "crs=None"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "ce3c2516b3d1a6b4bcdad420b508ee3d5d1ac0176921ea56e072ac88049d6af6",
+        "artifact": "data\\processed\\flood_events_points_v1.geojson",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "freshness_v1_v1",
+        "sidecar": "data/processed/freshness_v1.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\freshness_v1.json"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q2'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='deterministic build (tools/build_risk_intel.py) + Phase 0 gate tools/check_governance.py'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs=None"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "4e3e75d6f957381af8de18be099d46b2ad4ee9a2ea62ddedafe9a6a511631330",
+        "artifact": "data\\processed\\freshness_v1.json",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "fri_v1_kelurahan_jatinegara_v1",
+        "sidecar": "data/processed/fri_v1_kelurahan.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\fri_v1_kelurahan.json"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q2/Q4 (derived; exposure & capacity = proxy)'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='anti-ngarang guards: capacity gap tidak dihitung; confidence weakest-factor'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs=None"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "ae950b4d70901f725d93fa668bae6df670193f4ebc61807b22356ca43fc206eb",
+        "artifact": "data\\processed\\fri_v1_kelurahan.json",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "dem_layer_hillshade_jatinegara_web_preview",
+        "sidecar": "data/processed/hillshade_jatinegara.png.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='web_preview_v1'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\hillshade_jatinegara.png"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q2'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='PNG readability + source GeoTIFF provenance check'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:3395 source; EPSG:4326 display bounds supplied by MapLibre'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "9059d7745d48dcb2cea043125a9c978b84e3d6aa3ea9125bc465584edce1377d",
+        "artifact": "data\\processed\\hillshade_jatinegara.png",
+        "version": "web_preview_v1"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "inarisk_kerentanan_banjir_jatinegara_class_v1",
+        "sidecar": "data/processed/kerentanan_class.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\kerentanan_class.tif"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q2'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='tools/validate_processed.py (crs, kelas, geometri GPKG)'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:3395'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "1f48a38b5c658d972213dd401b7e58e3f6feac2035f7d01d160d332f5786f0c3",
+        "artifact": "data\\processed\\kerentanan_class.tif",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "osm_buildings_jatinegara_clip_v1",
+        "sidecar": "data/processed/osm_buildings_clip.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\osm_buildings_clip.geojson"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q1'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='feature count + CRS check (script output)'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:4326'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "6f93ce3136dc972091a21ac99da56301210625b6df51d9a9782a8898e70053e0",
+        "artifact": "data\\processed\\osm_buildings_clip.geojson",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "osm_facilities_jatinegara_clip_v1",
+        "sidecar": "data/processed/osm_facilities_clip.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\osm_facilities_clip.geojson"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q1'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='feature count + CRS check (script output)'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:4326'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "c9246d185c728aab36c300c6279dd976ea35700b0ab7b4387dfba9076e3675a6",
+        "artifact": "data\\processed\\osm_facilities_clip.geojson",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "osm_roads_jatinegara_clip_v1",
+        "sidecar": "data/processed/osm_roads_clip.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\osm_roads_clip.geojson"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q1'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='feature count + CRS check (script output)'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:4326'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "6729df550926802a9df71b5f6e52434f21f95a5f98292823d6ade03703f4b00b",
+        "artifact": "data\\processed\\osm_roads_clip.geojson",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "osm_water_jatinegara_clip_v1",
+        "sidecar": "data/processed/osm_water_clip.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\osm_water_clip.geojson"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q1'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='feature count + CRS check (script output)'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs='EPSG:4326'"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "7f35b01326b9e9befc086f8f4e10f19459bd53c5bb3481fe41b72c2af6845154",
+        "artifact": "data\\processed\\osm_water_clip.geojson",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "priority_v1_kelurahan_v1",
+        "sidecar": "data/processed/priority_v1_kelurahan.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\priority_v1_kelurahan.json"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q2'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='deterministic build (tools/build_risk_intel.py) + Phase 0 gate tools/check_governance.py'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs=None"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "5a7556b332db422ca8591d9bcd9cefaf4f503735cab8fe9e5ce6f67a0ca9343d",
+        "artifact": "data\\processed\\priority_v1_kelurahan.json",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "risk_intel_v1_kelurahan_v1",
+        "sidecar": "data/processed/risk_intel_v1_kelurahan.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\risk_intel_v1_kelurahan.json"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q2'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='deterministic build (tools/build_risk_intel.py) + Phase 0 gate tools/check_governance.py'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "crs=None"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "acb91b8f83a4f817eb13d4a86aae7812d34b1bf36635d322a64dbe6671f64ec6",
+        "artifact": "data\\processed\\risk_intel_v1_kelurahan.json",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "satellite_observability_v1",
+        "sidecar": "data/processed/satellite_observability_v1.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "fail",
+            "severity": "blocking",
+            "detail": "PUBLISHED without locatable artifact"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "fail",
+            "severity": "blocking",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "fail",
+            "severity": "blocking",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "fail",
+            "severity": "blocking",
+            "detail": "quality_level=None"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "fail",
+            "severity": "blocking",
+            "detail": "validator=None"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "fail",
+            "severity": "warning",
+            "detail": "crs=None"
+          }
+        ],
+        "gate_result": "FAIL",
+        "checksum_sha256": null,
+        "artifact": null,
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "temporal_synthesis_v1_kelurahan",
+        "sidecar": "data/processed/temporal_synthesis_v1.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\temporal_synthesis_v1.json"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q2'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='tools/check_governance.py (automated) + data-steward review'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "fail",
+            "severity": "warning",
+            "detail": "crs=None"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "2c663f4f406c03ba3a00d8429a2e37c6de2a4e64b650ae10c325f02737c31b63",
+        "artifact": "data\\processed\\temporal_synthesis_v1.json",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "tma_daily_v1_jatinegara",
+        "sidecar": "data/processed/tma_daily_v1.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\tma_daily_v1.json"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q2'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='tools/check_governance.py (automated) + data-steward review'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "fail",
+            "severity": "warning",
+            "detail": "crs=None"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "4a8c57ddbcdf3f26c5ed839cfa7181c4f56e3a8d66f28fcb83feffd2ce2ce8a9",
+        "artifact": "data\\processed\\tma_daily_v1.json",
+        "version": "1.0"
+      },
+      {
+        "group": "processed",
+        "dataset_id": "tma_v1_jatinegara",
+        "sidecar": "data/processed/tma_v1.provenance.json",
+        "lifecycle_status": "PUBLISHED",
+        "gate_checks": [
+          {
+            "check_name": "gate.source_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.version_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "version='1.0'"
+          },
+          {
+            "check_name": "gate.artifact_exists",
+            "status": "pass",
+            "severity": "info",
+            "detail": "data\\processed\\tma_v1.json"
+          },
+          {
+            "check_name": "gate.acquisition_date",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.processing_script",
+            "status": "pass",
+            "severity": "info",
+            "detail": ""
+          },
+          {
+            "check_name": "gate.quality_level",
+            "status": "pass",
+            "severity": "info",
+            "detail": "quality_level='Q2'"
+          },
+          {
+            "check_name": "gate.validator_recorded",
+            "status": "pass",
+            "severity": "info",
+            "detail": "validator='tools/check_governance.py (automated) + data-steward review'"
+          },
+          {
+            "check_name": "gate.crs_recorded",
+            "status": "fail",
+            "severity": "warning",
+            "detail": "crs=None"
+          }
+        ],
+        "gate_result": "PASS",
+        "checksum_sha256": "3e467dff96dbd1918e70fabcb99a7c33119323f29916e872c39ff388e5142a78",
+        "artifact": "data\\processed\\tma_v1.json",
+        "version": "1.0"
+      }
+    ]
+  },
+  "critical_rules_reference": "docs/governance/governance.md §0.10 (datagov §66 Rules 01-10)"
+}

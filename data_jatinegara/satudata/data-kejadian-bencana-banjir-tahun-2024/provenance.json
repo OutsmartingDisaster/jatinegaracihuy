@@ -1,0 +1,26 @@
+{
+  "dataset_id": "satudata_data-kejadian-bencana-banjir-tahun-2024",
+  "title": "Data Kejadian Bencana Banjir Tahun 2024",
+  "source": "Satu Data Jakarta (satudata.jakarta.go.id)",
+  "source_url": "https://satudata.jakarta.go.id/open-data/detail?kategori=dataset&page_url=data-kejadian-bencana-banjir-tahun-2024",
+  "api": "https://satudata.jakarta.go.id/backend/api/v2/satudata/detail",
+  "rows": 260,
+  "total_reported": 260,
+  "periode": [
+    {
+      "periode_data": "202412"
+    },
+    {
+      "periode_data": "202406"
+    },
+    {
+      "periode_data": "202403"
+    },
+    {
+      "periode_data": "202409"
+    }
+  ],
+  "acquired_at": "2026-09-02T20:34:48.899797+00:00",
+  "status": "RAW",
+  "processing_script": "tools/download_satudata.py"
+}

@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="Overpass API 0.7.62.11 87bfad18">
+<note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</note>
+<meta osm_base="2026-09-02T20:06:36Z"/>
+
+  <node id="2869814750" lat="-6.2212256" lon="106.8638899"/>
+  <node id="2869814764" lat="-6.2212483" lon="106.8638492"/>
+  <node id="2869814795" lat="-6.2212950" lon="106.8639290"/>
+  <node id="2869814814" lat="-6.2213177" lon="106.8638883"/>
+  <node id="3219719556" lat="-6.2341466" lon="106.8661054"/>
+  <node id="3219719557" lat="-6.2341638" lon="106.8660555"/>
+  <node id="3219719559" lat="-6.2342332" lon="106.8661355"/>
+  <node id="3219719560" lat="-6.2342503" lon="106.8660855"/>
+  <node id="3704074959" lat="-6.1705015" lon="106.8872849"/>
+  <node id="3704074960" lat="-6.1705464" lon="106.8873601"/>
+  <node id="3704074961" lat="-6.1705584" lon="106.8872505"/>
+  <node id="3704074962" lat="-6.1706033" lon="106.8873258"/>
+  <node id="4750410176" lat="-6.2214020" lon="106.8609250"/>
+  <node id="4750410177" lat="-6.2214240" lon="106.8609250"/>
+  <node id="4750410178" lat="-6.2214240" lon="106.8608834"/>
+  <node id="4750410179" lat="-6.2214020" lon="106.8608834"/>
+  <node id="4750413344" lat="-6.2203145" lon="106.8611716"/>
+  <node id="4750413345" lat="-6.2203452" lon="106.8612199"/>
+  <node id="4750413346" lat="-6.2203774" lon="106.8611992"/>
+  <node id="4750413347" lat="-6.2203467" lon="106.8611509"/>
+  <node id="4750514693" lat="-6.2194314" lon="106.8613101"/>
+  <node id="4750514694" lat="-6.2194881" lon="106.8612632"/>
+  <node id="4750514695" lat="-6.2195149" lon="106.8612960"/>
+  <node id="4750514696" lat="-6.2194582" lon="106.8613429"/>
+  <node id="4750515057" lat="-6.2175262" lon="106.8627138"/>
+  <node id="4750515058" lat="-6.2175755" lon="106.8627473"/>
+  <node id="4750515059" lat="-6.2175466" lon="106.8627903"/>
+  <node id="4750515060" lat="-6.2174973" lon="106.8627568"/>
+  <node id="4763768942" lat="-6.2503844" lon="106.8617034"/>
+  <node id="4763768943" lat="-6.2503671" lon="106.8617678"/>
+  <node id="4763768944" lat="-6.2502644" lon="106.8617398"/>
+  <node id="4763768945" lat="-6.2502818" lon="106.8616755"/>
+  <node id="4776187113" lat="-6.2295138" lon="106.8645227"/>
+  <node id="4776187114" lat="-6.2294438" lon="106.8645757"/>
+  <node id="4776187115" lat="-6.2294141" lon="106.8645360"/>
+  <node id="4776187116" lat="-6.2294841" lon="106.8644831"/>
+  <node id="4832491895" lat="-6.2349001" lon="106.8649266"/>
+  <node id="4832491896" lat="-6.2348875" lon="106.8650144"/>
+  <node id="4832491897" lat="-6.2348143" lon="106.8650037"/>
+  <node id="4832491898" lat="-6.2348270" lon="106.8649159"/>
+  <node id="4836222516" lat="-6.2253688" lon="106.8635116"/>
+  <node id="4836222517" lat="-6.2253869" lon="106.8634779"/>
+  <node id="4836222518" lat="-6.2254208" lon="106.8635398"/>
+  <node id="4836222519" lat="-6.2254389" lon="106.8635061"/>
+  <node id="4836223529" lat="-6.2264139" lon="106.8641353"/>
+  <node id="4836223530" lat="-6.2264427" lon="106.8640814"/>
+  <node id="4836223531" lat="-6.2264859" lon="106.8641742"/>
+  <node id="4836223533" lat="-6.2265147" lon="106.8641203"/>
+  <node id="4836223738" lat="-6.2316269" lon="106.8637401"/>
+  <node id="4836223741" lat="-6.2316789" lon="106.8638044"/>
+  <node id="4836223743" lat="-6.2316910" lon="106.8636876"/>
+  <node id="4836223748" lat="-6.2317430" lon="106.8637520"/>
+  <node id="4836392042" lat="-6.2324815" lon="106.8914199"/>
+  <node id="4836392043" lat="-6.2325441" lon="106.8914682"/>
+  <node id="4836392044" lat="-6.2325823" lon="106.8914180"/>
+  <node id="4836392045" lat="-6.2325197" lon="106.8913697"/>
+  <node id="4871110181" lat="-6.2286167" lon="106.8644930"/>
+  <node id="4871110182" lat="-6.2286167" lon="106.8645318"/>
+  <node id="4871110183" lat="-6.2285707" lon="106.8645318"/>
+  <node id="4871110184" lat="-6.2285707" lon="106.8644930"/>
+  <node id="4902129921" lat="-6.1935397" lon="106.9388744"/>
+  <node id="4902129922" lat="-6.1935430" lon="106.9389542"/>
+  <node id="4902129923" lat="-6.1933432" lon="106.9389626"/>
+  <node id="4902129924" lat="-6.1933399" lon="106.9388828"/>
+  <way id="283067211">
+    <nd ref="2869814814"/>
+    <nd ref="2869814764"/>
+    <nd ref="2869814750"/>
+    <nd ref="2869814795"/>
+    <nd ref="2869814814"/>
+    <tag k="access:roof" v="no"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="addr:full" v="Jalan Inspeksi saluran"/>
+    <tag k="backup_generator" v="no"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:condition" v="good"/>
+    <tag k="building:floor" v="cement"/>
+    <tag k="building:levels" v="1"/>
+    <tag k="building:roof" v="concrete"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="concrete"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa 5"/>
+    <tag k="operator" v="Sudin PU Perairan"/>
+    <tag k="pump:unit" v="1"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="315840381">
+    <nd ref="3219719557"/>
+    <nd ref="3219719556"/>
+    <nd ref="3219719559"/>
+    <nd ref="3219719560"/>
+    <nd ref="3219719557"/>
+    <tag k="access:roof" v="no"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="addr:full" v="Jalan H"/>
+    <tag k="backup_generator" v="yes"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:condition" v="good"/>
+    <tag k="building:floor" v="ceramics"/>
+    <tag k="building:levels" v="1"/>
+    <tag k="building:roof" v="asbestos"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="brick"/>
+    <tag k="capacity:pump" v="100"/>
+    <tag k="flood_prone" v="yes"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa Kebon Baru Jalan H"/>
+    <tag k="operator" v="SDPU Tata Air"/>
+    <tag k="pump:unit" v="2"/>
+    <tag k="pump_house" v="yes"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="366423071">
+    <nd ref="3704074959"/>
+    <nd ref="3704074960"/>
+    <nd ref="3704074962"/>
+    <nd ref="3704074961"/>
+    <nd ref="3704074959"/>
+    <tag k="access:roof" v="no"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="addr:full" v="Jalan Printis Kemerdekaan Jakarta Utara"/>
+    <tag k="address" v="Jl. Perintis Kemerdekaan, Jakarta Utara"/>
+    <tag k="backup_generator" v="no"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:condition" v="good"/>
+    <tag k="building:floor" v="ceramics"/>
+    <tag k="building:levels" v="1"/>
+    <tag k="building:roof" v="tile"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="brick"/>
+    <tag k="capacity" v="500"/>
+    <tag k="capacity:pump" v="500"/>
+    <tag k="capcty_tot" v="1000"/>
+    <tag k="elevation" v="20"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Stasiun Pompa Asmi"/>
+    <tag k="operator" v="Dinas Pekerjaan Umum Provinsi DKI Jakarta"/>
+    <tag k="pump:unit" v="2"/>
+    <tag k="pump_house" v="yes"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="482188488">
+    <nd ref="4750410179"/>
+    <nd ref="4750410176"/>
+    <nd ref="4750410177"/>
+    <nd ref="4750410178"/>
+    <nd ref="4750410179"/>
+    <tag k="access:roof" v="no"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="addr:full" v="Jalan Ciliwung"/>
+    <tag k="backup_generator" v="no"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:condition" v="good"/>
+    <tag k="building:floor" v="ceramics"/>
+    <tag k="building:levels" v="1"/>
+    <tag k="building:roof" v="concrete"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="brick"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa 3"/>
+    <tag k="operator" v="Sudin PU Perairan"/>
+    <tag k="pump:unit" v="1"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="482188505">
+    <nd ref="4750413347"/>
+    <nd ref="4750413344"/>
+    <nd ref="4750413345"/>
+    <nd ref="4750413346"/>
+    <nd ref="4750413347"/>
+    <tag k="access:roof" v="no"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="addr:full" v="Jalan Inspeksi saluran"/>
+    <tag k="backup_generator" v="no"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:condition" v="good"/>
+    <tag k="building:floor" v="cement"/>
+    <tag k="building:levels" v="1"/>
+    <tag k="building:roof" v="concrete"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="concrete"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa 4 Kel. Kampung Melayu"/>
+    <tag k="operator" v="Sudin PU Perairan"/>
+    <tag k="pump:unit" v="1"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="482204892">
+    <nd ref="4750514696"/>
+    <nd ref="4750514695"/>
+    <nd ref="4750514694"/>
+    <nd ref="4750514693"/>
+    <nd ref="4750514696"/>
+    <tag k="access:roof" v="no"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="addr:full" v="Jalan Ciliwung"/>
+    <tag k="backup_generator" v="no"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:condition" v="good"/>
+    <tag k="building:floor" v="ceramics"/>
+    <tag k="building:levels" v="1"/>
+    <tag k="building:roof" v="concrete"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="brick"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa 2"/>
+    <tag k="operator" v="PU"/>
+    <tag k="pump:unit" v="1"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="482204934">
+    <nd ref="4750515060"/>
+    <nd ref="4750515059"/>
+    <nd ref="4750515058"/>
+    <nd ref="4750515057"/>
+    <nd ref="4750515060"/>
+    <tag k="access:roof" v="no"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="addr:full" v="Jalan Inspeksi saluran"/>
+    <tag k="backup_generator" v="no"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:condition" v="good"/>
+    <tag k="building:floor" v="cement"/>
+    <tag k="building:levels" v="1"/>
+    <tag k="building:roof" v="concrete"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="concrete"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa 1"/>
+    <tag k="operator" v="Sudin PU Perairan"/>
+    <tag k="pump:unit" v="1"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="483633702">
+    <nd ref="4763768945"/>
+    <nd ref="4763768944"/>
+    <nd ref="4763768943"/>
+    <nd ref="4763768942"/>
+    <nd ref="4763768945"/>
+    <tag k="access:roof" v="no"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="addr:full" v="Jalan Pengadegan Timur I"/>
+    <tag k="backup_generator" v="yes"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:condition" v="good"/>
+    <tag k="building:floor" v="ceramics"/>
+    <tag k="building:levels" v="2"/>
+    <tag k="building:roof" v="tin"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="brick"/>
+    <tag k="capacity:pump" v="300 dan 500"/>
+    <tag k="elevation" v="100"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa Pengadegan"/>
+    <tag k="operator" v="Pemerintah Daerah"/>
+    <tag k="pump:unit" v="2"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="484871505">
+    <nd ref="4776187116"/>
+    <nd ref="4776187115"/>
+    <nd ref="4776187114"/>
+    <nd ref="4776187113"/>
+    <nd ref="4776187116"/>
+    <tag k="access:roof" v="no"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="addr:full" v="Jalan Ciliwung"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:condition" v="good"/>
+    <tag k="building:floor" v="cement"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="brick"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa Bidara Cina"/>
+    <tag k="operator" v="Dinas Pekerjaan Umum"/>
+    <tag k="pump:unit" v="1"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="491094760">
+    <nd ref="4832491898"/>
+    <nd ref="4832491897"/>
+    <nd ref="4832491896"/>
+    <nd ref="4832491895"/>
+    <nd ref="4832491898"/>
+    <tag k="access:roof" v="no"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="addr:full" v="Jalan J Kebon Baru"/>
+    <tag k="backup_generator" v="yes"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:condition" v="good"/>
+    <tag k="building:floor" v="ceramics"/>
+    <tag k="building:levels" v="1"/>
+    <tag k="building:roof" v="concrete"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="concrete"/>
+    <tag k="capacity:pump" v="500"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa Kebon Baru"/>
+    <tag k="operator" v="Dinas PU Tata Air"/>
+    <tag k="pump:unit" v="2"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="491530009">
+    <nd ref="4836223738"/>
+    <nd ref="4836223741"/>
+    <nd ref="4836223748"/>
+    <nd ref="4836223743"/>
+    <nd ref="4836223738"/>
+    <tag k="access:roof" v="yes"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="addr:full" v="Jalan D"/>
+    <tag k="backup_generator" v="no"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:condition" v="good"/>
+    <tag k="building:levels" v="1"/>
+    <tag k="building:roof" v="asbestos"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="brick"/>
+    <tag k="capacity:pump" v="250"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa Kebon Baru Jalan D"/>
+    <tag k="operator" v="SDPU Tata Air"/>
+    <tag k="pump:unit" v="2"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="491530010">
+    <nd ref="4836223530"/>
+    <nd ref="4836223529"/>
+    <nd ref="4836223531"/>
+    <nd ref="4836223533"/>
+    <nd ref="4836223530"/>
+    <tag k="access:roof" v="no"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="addr:full" v="Jalan Masjid 1"/>
+    <tag k="backup_generator" v="yes"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:floor" v="ceramics"/>
+    <tag k="building:levels" v="1"/>
+    <tag k="building:roof" v="tile"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="brick"/>
+    <tag k="capacity:pump" v="100"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa Kebon Baru PLN"/>
+    <tag k="operator" v="SDPU Tata Air"/>
+    <tag k="pump:unit" v="1"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="491530011">
+    <nd ref="4836222517"/>
+    <nd ref="4836222516"/>
+    <nd ref="4836222518"/>
+    <nd ref="4836222519"/>
+    <nd ref="4836222517"/>
+    <tag k="access:roof" v="no"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="backup_generator" v="yes"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:condition" v="good"/>
+    <tag k="building:floor" v="ceramics"/>
+    <tag k="building:levels" v="2"/>
+    <tag k="building:roof" v="concrete"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="brick"/>
+    <tag k="capacity:pump" v="100"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa Kebon Baru"/>
+    <tag k="operator" v="SDA"/>
+    <tag k="pump:unit" v="2"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="491550939">
+    <nd ref="4836392045"/>
+    <nd ref="4836392042"/>
+    <nd ref="4836392043"/>
+    <nd ref="4836392044"/>
+    <nd ref="4836392045"/>
+    <tag k="access:roof" v="no"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="addr:full" v="Jalan Cipinang Indah I"/>
+    <tag k="backup_generator" v="no"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:condition" v="good"/>
+    <tag k="building:floor" v="tekhel"/>
+    <tag k="building:levels" v="1"/>
+    <tag k="building:roof" v="concrete"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="concrete"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa RW 16 Cipinang Indah I"/>
+    <tag k="operator" v="Sudin PU Perairan"/>
+    <tag k="pump:unit" v="1"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="495342405">
+    <nd ref="4871110184"/>
+    <nd ref="4871110183"/>
+    <nd ref="4871110182"/>
+    <nd ref="4871110181"/>
+    <nd ref="4871110184"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="capacity:pump" v="100"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa Kebon Baru RW 02"/>
+    <tag k="operator" v="SDPU Tata Air"/>
+    <tag k="pump:unit" v="2"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+  <way id="498869135">
+    <nd ref="4902129924"/>
+    <nd ref="4902129923"/>
+    <nd ref="4902129922"/>
+    <nd ref="4902129921"/>
+    <nd ref="4902129924"/>
+    <tag k="access:roof" v="no"/>
+    <tag k="addr:city" v="DKI Jakarta"/>
+    <tag k="addr:full" v="Jalan Rengas Elok"/>
+    <tag k="backup_generator" v="yes"/>
+    <tag k="building" v="pumping_station"/>
+    <tag k="building:condition" v="good"/>
+    <tag k="building:floor" v="ceramics"/>
+    <tag k="building:levels" v="1"/>
+    <tag k="building:roof" v="concrete"/>
+    <tag k="building:structure" v="confined_masonry"/>
+    <tag k="building:walls" v="brick"/>
+    <tag k="capacity:pump" v="1000 L/s per pompa"/>
+    <tag k="man_made" v="pumping_station"/>
+    <tag k="name" v="Rumah Pompa Aneka Elok"/>
+    <tag k="operator" v="Sudin PU Tata Air Jakarta Timur"/>
+    <tag k="pump:unit" v="2"/>
+    <tag k="source" v="HOT_InAWARESurvey_2017"/>
+  </way>
+
+</osm>

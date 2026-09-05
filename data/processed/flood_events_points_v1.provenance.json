@@ -1,0 +1,54 @@
+{
+  "dataset_id": "ds_flood_events_points_v1",
+  "source": {
+    "derived_from": [
+      "data/raw/jatinegara_flood_events_2021_2025.csv",
+      "data/raw/rw_boundaries_raw.geojson (geometri RW, Q3 OSM komunitas)"
+    ],
+    "raw_sha256": "99e7eb7d008b36ad6bf9d87870654135ccc91f9d46cd62179763d0e7f3390cbb",
+    "description": "54 kejadian banjir/genangan terdokumentasi 2021-2025 (sumber per titik: source, source_url; koordinat proxy per coordinate_method) + choropleth RW agregat"
+  },
+  "processing": {
+    "environment": "Python (deterministic)",
+    "processing_script": "tools/build_flood_points.py"
+  },
+  "outputs": {
+    "file": "data/processed/flood_events_points_v1.geojson",
+    "rw_choropleth_file": "data/processed/flood_rw_choropleth_v1.geojson"
+  },
+  "version": "1.1",
+  "quality_level": "Q4 (laporan publik unverified; koordinat proxy kelurahan/jalan; batas RW Q3)",
+  "validator": "deterministic build (tools/build_flood_points.py) + Phase 0 gate tools/check_governance.py",
+  "status": "PUBLISHED",
+  "processed_at": "2026-09-05T00:55:45.733960+00:00",
+  "summary": {
+    "event_count": 54,
+    "events_with_rw_attr": 41,
+    "events_without_rw_attr": 13,
+    "rw_polygons_hit": 10,
+    "rw_combos_unmatched": [
+      "KAMPUNG MELAYU RW 11"
+    ],
+    "per_year": {
+      "2021": 4,
+      "2022": 5,
+      "2023": 8,
+      "2024": 4,
+      "2025": 33
+    },
+    "per_kelurahan": {
+      "Bidara Cina": 18,
+      "Cipinang Muara": 5,
+      "Kampung Melayu": 31
+    },
+    "max_depth_cm": 350.0,
+    "with_depth_cm": 53
+  },
+  "known_limitations": [
+    "Koordinat proxy (kelurahan_proxy/road_proxy/locality_proxy) — bukan survei genangan",
+    "Choropleth RW: batas RW = OSM admin_level=10 (Q3 komunitas, belum diverifikasi kantor kelurahan)",
+    "Kejadian multi-RW dihitung di SETIAP RW yang disebut sumber (bukan pecahan)",
+    "Kejadian tanpa atribut RW tidak masuk choropleth RW — tetap ada di file titik & daftar laporan",
+    "Kejadian = yang terdokumentasi; coverage gap tetap ada (absen titik ≠ tidak kejadian)"
+  ]
+}

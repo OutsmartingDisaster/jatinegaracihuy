@@ -1,0 +1,464 @@
+{
+  "dataset_id": "fri_v1_kelurahan_jatinegara",
+  "fri_version": "fri_v1",
+  "methodology": {
+    "description": "FRI sebagai derived indicator (PRD §15). Agregasi weighted linear combination, dinormalisasi min-max antar kelurahan.",
+    "variables": {
+      "hazard": "zonal mean InaRISK bahaya_clip.tif (kelas indeks 0-1)",
+      "exposure": "kepadatan bangunan OSM per km² (PROXY — data populasi belum tersedia)",
+      "vulnerability": "zonal mean InaRISK kerentanan_clip.tif sebagai MSVI proxy (PRD §13 status=proxy)",
+      "capacity": "(1 - normalized(facility_evac_capable + 2*ppid_penampungan_count)) — PROXY kehadiran, bukan kapasitas numerik"
+    },
+    "weights": {
+      "hazard": 0.35,
+      "exposure": 0.25,
+      "vulnerability": 0.25,
+      "capacity": 0.15
+    },
+    "normalization": "min-max antar 8 kelurahan; jika nilai identik -> 0.5; None dipertahankan",
+    "aggregation": "linear: 0.35*H + 0.25*E + 0.25*V + 0.15*(1-C)",
+    "classification_thresholds": {
+      "0.34": "LOW",
+      "0.54": "MEDIUM",
+      "0.72": "HIGH",
+      "1.01": "VERY HIGH"
+    },
+    "missing_data_treatment": "Komponen None -> FRI tidak dihitung (UNKNOWN), bukan diisi 0",
+    "version_note": "Perubahan bobot/threshold wajib menaikkan versi (fri_v2) — PRD §15"
+  },
+  "generated_at": "2026-09-03T03:55:15.235104+00:00",
+  "kelurahan": {
+    "KAMPUNG MELAYU": {
+      "kode_kelurahan": "3175031001",
+      "area_km2": 0.48,
+      "hazard_mean": 0.7089000940322876,
+      "msvi_proxy": 0.866475522518158,
+      "building_count": 2388,
+      "building_area_m2": 157986,
+      "building_density_per_km2": 4976.1,
+      "facility_total": 49,
+      "facility_evac_capable": 37,
+      "ppid_penampungan_count": 9,
+      "flood_events_2021_2025": 8,
+      "sub_scores": {
+        "hazard": 1.0,
+        "exposure": 1.0,
+        "vulnerability": 1.0,
+        "capacity_inverted": 0.3878
+      },
+      "fri_score": 0.9082,
+      "risk_category": "VERY HIGH",
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "risk_explanation_v1": {
+        "risk_category": "VERY HIGH",
+        "top_contributors": [
+          "hazard",
+          "exposure",
+          "vulnerability"
+        ],
+        "contributions": {
+          "hazard": 0.35,
+          "exposure": 0.25,
+          "vulnerability": 0.25,
+          "capacity": 0.0582
+        },
+        "evidence_count": 17,
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    },
+    "BIDARA CINA": {
+      "kode_kelurahan": "3175031002",
+      "area_km2": 1.247,
+      "hazard_mean": 0.650081992149353,
+      "msvi_proxy": 0.8573192954063416,
+      "building_count": 5713,
+      "building_area_m2": 442649,
+      "building_density_per_km2": 4580.9,
+      "facility_total": 96,
+      "facility_evac_capable": 74,
+      "ppid_penampungan_count": 0,
+      "flood_events_2021_2025": 0,
+      "sub_scores": {
+        "hazard": 0.9145,
+        "exposure": 0.8266,
+        "vulnerability": 0.9888,
+        "capacity_inverted": 0.0
+      },
+      "fri_score": 0.7739,
+      "risk_category": "VERY HIGH",
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "risk_explanation_v1": {
+        "risk_category": "VERY HIGH",
+        "top_contributors": [
+          "hazard",
+          "vulnerability",
+          "exposure"
+        ],
+        "contributions": {
+          "hazard": 0.3201,
+          "exposure": 0.2066,
+          "vulnerability": 0.2472,
+          "capacity": 0.0
+        },
+        "evidence_count": 0,
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    },
+    "BALI MESTER": {
+      "kode_kelurahan": "3175031003",
+      "area_km2": 0.672,
+      "hazard_mean": 0.2858494222164154,
+      "msvi_proxy": 0.45878392457962036,
+      "building_count": 1812,
+      "building_area_m2": 232462,
+      "building_density_per_km2": 2697.0,
+      "facility_total": 30,
+      "facility_evac_capable": 25,
+      "ppid_penampungan_count": 0,
+      "flood_events_2021_2025": 0,
+      "sub_scores": {
+        "hazard": 0.3847,
+        "exposure": 0.0,
+        "vulnerability": 0.5027,
+        "capacity_inverted": 1.0
+      },
+      "fri_score": 0.4103,
+      "risk_category": "MEDIUM",
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "risk_explanation_v1": {
+        "risk_category": "MEDIUM",
+        "top_contributors": [
+          "capacity",
+          "hazard",
+          "vulnerability"
+        ],
+        "contributions": {
+          "hazard": 0.1347,
+          "exposure": 0.0,
+          "vulnerability": 0.1257,
+          "capacity": 0.15
+        },
+        "evidence_count": 0,
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    },
+    "RAWA BUNGA": {
+      "kode_kelurahan": "3175031004",
+      "area_km2": 0.848,
+      "hazard_mean": 0.021330837160348892,
+      "msvi_proxy": 0.04673819988965988,
+      "building_count": 2304,
+      "building_area_m2": 231979,
+      "building_density_per_km2": 2717.3,
+      "facility_total": 32,
+      "facility_evac_capable": 26,
+      "ppid_penampungan_count": 0,
+      "flood_events_2021_2025": 0,
+      "sub_scores": {
+        "hazard": 0.0,
+        "exposure": 0.0089,
+        "vulnerability": 0.0,
+        "capacity_inverted": 0.9796
+      },
+      "fri_score": 0.1492,
+      "risk_category": "LOW",
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "risk_explanation_v1": {
+        "risk_category": "LOW",
+        "top_contributors": [
+          "capacity",
+          "exposure",
+          "hazard"
+        ],
+        "contributions": {
+          "hazard": 0.0,
+          "exposure": 0.0022,
+          "vulnerability": 0.0,
+          "capacity": 0.1469
+        },
+        "evidence_count": 0,
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    },
+    "CIPINANG CEMPEDAK": {
+      "kode_kelurahan": "3175031005",
+      "area_km2": 1.608,
+      "hazard_mean": 0.4367814362049103,
+      "msvi_proxy": 0.7400897145271301,
+      "building_count": 6335,
+      "building_area_m2": 677763,
+      "building_density_per_km2": 3939.0,
+      "facility_total": 48,
+      "facility_evac_capable": 39,
+      "ppid_penampungan_count": 2,
+      "flood_events_2021_2025": 0,
+      "sub_scores": {
+        "hazard": 0.6042,
+        "exposure": 0.545,
+        "vulnerability": 0.8458,
+        "capacity_inverted": 0.6327
+      },
+      "fri_score": 0.6541,
+      "risk_category": "HIGH",
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "risk_explanation_v1": {
+        "risk_category": "HIGH",
+        "top_contributors": [
+          "hazard",
+          "vulnerability",
+          "exposure"
+        ],
+        "contributions": {
+          "hazard": 0.2115,
+          "exposure": 0.1362,
+          "vulnerability": 0.2115,
+          "capacity": 0.0949
+        },
+        "evidence_count": 2,
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    },
+    "CIPINANG MUARA": {
+      "kode_kelurahan": "3175031006",
+      "area_km2": 2.663,
+      "hazard_mean": 0.4417838454246521,
+      "msvi_proxy": 0.6929750442504883,
+      "building_count": 10054,
+      "building_area_m2": 928666,
+      "building_density_per_km2": 3775.3,
+      "facility_total": 93,
+      "facility_evac_capable": 70,
+      "ppid_penampungan_count": 2,
+      "flood_events_2021_2025": 1,
+      "sub_scores": {
+        "hazard": 0.6115,
+        "exposure": 0.4731,
+        "vulnerability": 0.7883,
+        "capacity_inverted": 0.0
+      },
+      "fri_score": 0.5294,
+      "risk_category": "MEDIUM",
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "risk_explanation_v1": {
+        "risk_category": "MEDIUM",
+        "top_contributors": [
+          "hazard",
+          "vulnerability",
+          "exposure"
+        ],
+        "contributions": {
+          "hazard": 0.214,
+          "exposure": 0.1183,
+          "vulnerability": 0.1971,
+          "capacity": 0.0
+        },
+        "evidence_count": 3,
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    },
+    "CIPINANG BESAR SELATAN": {
+      "kode_kelurahan": "3175031007",
+      "area_km2": 1.699,
+      "hazard_mean": 0.36470067501068115,
+      "msvi_proxy": 0.5511595606803894,
+      "building_count": 4747,
+      "building_area_m2": 458179,
+      "building_density_per_km2": 2793.6,
+      "facility_total": 74,
+      "facility_evac_capable": 57,
+      "ppid_penampungan_count": 2,
+      "flood_events_2021_2025": 0,
+      "sub_scores": {
+        "hazard": 0.4994,
+        "exposure": 0.0424,
+        "vulnerability": 0.6153,
+        "capacity_inverted": 0.2653
+      },
+      "fri_score": 0.379,
+      "risk_category": "MEDIUM",
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "risk_explanation_v1": {
+        "risk_category": "MEDIUM",
+        "top_contributors": [
+          "hazard",
+          "vulnerability",
+          "capacity"
+        ],
+        "contributions": {
+          "hazard": 0.1748,
+          "exposure": 0.0106,
+          "vulnerability": 0.1538,
+          "capacity": 0.0398
+        },
+        "evidence_count": 2,
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    },
+    "CIPINANG BESAR UTARA": {
+      "kode_kelurahan": "3175031008",
+      "area_km2": 1.132,
+      "hazard_mean": 0.34494301676750183,
+      "msvi_proxy": 0.6134699583053589,
+      "building_count": 4548,
+      "building_area_m2": 363002,
+      "building_density_per_km2": 4017.6,
+      "facility_total": 42,
+      "facility_evac_capable": 32,
+      "ppid_penampungan_count": 1,
+      "flood_events_2021_2025": 0,
+      "sub_scores": {
+        "hazard": 0.4707,
+        "exposure": 0.5794,
+        "vulnerability": 0.6914,
+        "capacity_inverted": 0.8163
+      },
+      "fri_score": 0.6049,
+      "risk_category": "HIGH",
+      "confidence": {
+        "overall": "MEDIUM",
+        "per_factor": {
+          "hazard": "HIGH",
+          "exposure": "MEDIUM",
+          "vulnerability": "MEDIUM (proxy: InaRISK kerentanan)",
+          "capacity": "MEDIUM"
+        }
+      },
+      "capacity_gap": {
+        "status": "cannot be reliably estimated",
+        "reason": "Tidak ada data numerik populasi terpapar dan kapasitas penampungan (PRD §29 — jangan buat estimasi tanpa metodologi)"
+      },
+      "risk_explanation_v1": {
+        "risk_category": "HIGH",
+        "top_contributors": [
+          "vulnerability",
+          "hazard",
+          "exposure"
+        ],
+        "contributions": {
+          "hazard": 0.1647,
+          "exposure": 0.1449,
+          "vulnerability": 0.1728,
+          "capacity": 0.1224
+        },
+        "evidence_count": 1,
+        "caveats": [
+          "FRI = derived indicator fri_v1, bukan observasi langsung",
+          "Exposure memakai kepadatan bangunan OSM sebagai proxy populasi",
+          "Capacity memakai proxy kehadiran fasilitas, bukan kapasitas numerik"
+        ]
+      }
+    }
+  }
+}

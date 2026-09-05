@@ -1,0 +1,39 @@
+No,Lokasi Pengamatan,Sungai/Kali,Tinggi Air (cm),Perubahan,Tanggal,Jam,Status Siaga
+1,Bendung. Cibalok - Gadog 1,Ciliwung,-13,Naik,03/09/2026,09:10,Normal
+2,Bendung. Katulampa 2,Ciliwung,0,Tetap,03/09/2026,09:10,Normal
+3,P.S. Depok 2,Ciliwung,63,Naik,03/09/2026,09:10,Normal
+4,Waduk Kampung Rambutan 1,Cipinang,16,Turun,03/09/2026,09:10,Normal
+5,P.A. Manggarai 2,Ciliwung,489,Naik,03/09/2026,09:10,Normal
+6,P.S. Krukut Hulu 2,Krukut,29,Naik,03/09/2026,09:10,Normal
+7,Pompa Cideng 1,Cideng Siantar,43,Naik,03/09/2026,09:15,Normal
+8,P.A. Karet 1,Banjir Kanal Barat,205,Tetap,03/09/2026,09:15,Normal
+9,P.A. Marina Ancol (Laut),Laut,176,Tetap,03/09/2026,09:10,Waspada (Siaga 3)
+10,P.A. Marina Ancol (Kali),Kali,106,Turun,03/09/2026,09:15,Normal
+11,Pompa Pasar Ikan 1,Laut,185,Naik,03/09/2026,09:10,Waspada (Siaga 3)
+12,Rumah Pompa Pluit 1,Waduk Pluit,-184,Naik,03/09/2026,09:15,Normal
+13,P.S. Pesanggrahan 1,Pesanggrahan,51,Turun,03/09/2026,09:10,Normal
+14,P.S. Angke Hulu 1,Angke,-36,Naik,03/09/2026,09:15,Normal
+15,P.S. Sunter Hulu,Sunter,42,Tetap,03/09/2026,09:15,Normal
+16,P.A. Pulo Gadung 2,Sunter,284,Turun,03/09/2026,09:10,Normal
+17,Pompa Yos Sudarso 1,Sunter Timur,176,Turun,03/09/2026,09:15,Waspada (Siaga 3)
+18,P.A. Kaliduri 1,Kali Duri,172,Turun,03/09/2026,09:10,Normal
+19,P.A. Istiqlal 1,Ciliwung,50,Turun,03/09/2026,09:10,Normal
+20,P.A. Jembatan Merah 1,Ciliwung,35,Turun,03/09/2026,09:10,Normal
+21,P.A. Ancol Flushing 1,Ciliwung,110,Turun,03/09/2026,09:15,Normal
+22,P.A. Cengkareng Drain,Cengkareng,214,Tetap,03/09/2026,09:15,Waspada (Siaga 3)
+23,Pompa Kamal Muara (Bubble),Kali Kamal,69,Naik,03/09/2026,09:15,Normal
+24,Pompa Kali Asin (Bubble),Kali Angke,235,Turun,03/09/2026,09:19,Waspada (Siaga 3)
+25,Pompa Lagoa (Bubble),Kali Sunter,65,Turun,03/09/2026,09:15,Normal
+26,Pompa Cilincing (Bubble),Kali Rawa Malang,77,Naik,31/08/2026,12:48,Normal
+27,Jembatan Pasir Jambu,Ciliwung,94,Turun,03/09/2026,09:10,Normal
+28,Jembatan Kuning Cikambangan,Ciliwung,10,Turun,03/09/2026,09:10,Normal
+29,Jembatan Jalan Raya Tapos,Kali Sunter,21,Turun,03/09/2026,09:10,Normal
+30,Jembatan MT. Haryono,Ciliwung,55,Tetap,03/09/2026,09:10,Normal
+31,Rumah Pompa Tipala,Cipinang,11,Turun,03/09/2026,09:10,Normal
+32,Taman Jati Cimel,Sunter,12,Tetap,03/09/2026,09:10,Normal
+33,Jembatan Jl. L. Malahayati,Ciliwung,39,Tetap,03/09/2026,09:10,Normal
+34,Waduk Kaja Ciracas,Cipinang,0,Tetap,03/09/2026,09:10,Normal
+35,Jembatan Kali Krukut,Kali Krukut,37,Turun,03/09/2026,09:10,Normal
+36,Rumah Pompa Kemang 2,Kali Krukut,22,Naik,03/09/2026,09:10,Normal
+37,Rumah Pompa Atma Jaya,Kali Krukut,105,Turun,03/09/2026,09:10,Normal
+38,Posko SDA Palmerah,Kali Grogol,65,Turun,03/09/2026,09:10,Normal
