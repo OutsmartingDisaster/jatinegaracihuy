@@ -349,6 +349,28 @@ export function setLayerOpacity(map: MLMap, id: string, opacity: number, duratio
   }, durationMs + delayMs + 50);
 }
 
+/** ch06 interaktif: sorot komponen persamaan risiko di peta saat blok
+ *  RiskEquation di-hover. Base state dipulihkan saat hover dilepas.
+ *  Akses peta via hook debug __storyMap (EventTimeline memakai pola sama). */
+export type RiskComponent = "hazard" | "exposure" | "vulnerability" | "capacity" | null;
+
+export function emphasizeRiskComponents(comp: RiskComponent) {
+  const map = (window as unknown as { __storyMap?: MLMap }).__storyMap;
+  if (!map) return;
+  const base = { hazard: 0.5, vulnerability: 0, buildings: 0, facilities: 0 }; // = state chapter 06
+  const focusSets: Record<Exclude<RiskComponent, null>, typeof base> = {
+    hazard: { hazard: 0.85, vulnerability: 0.08, buildings: 0.05, facilities: 0.08 },
+    exposure: { hazard: 0.08, vulnerability: 0.08, buildings: 0.7, facilities: 0.08 },
+    vulnerability: { hazard: 0.08, vulnerability: 0.85, buildings: 0.05, facilities: 0.08 },
+    capacity: { hazard: 0.08, vulnerability: 0.08, buildings: 0.05, facilities: 0.85 },
+  };
+  const target = comp ? focusSets[comp] : base;
+  for (const [id, o] of Object.entries(target)) {
+    setLayerOpacity(map, id, o, 280);
+  }
+  setLayerOpacity(map, "buildings-outline", (target.buildings ?? 0) > 0.3 ? 0.35 : 0.08, 280);
+}
+
 export function flyTo(map: MLMap, camera: { center: [number, number]; zoom: number }, reduced: boolean) {
   map.flyTo({ center: camera.center, zoom: camera.zoom, duration: reduced ? 0 : 700, essential: true });
 }

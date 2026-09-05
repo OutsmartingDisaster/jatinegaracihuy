@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { ChapterDef } from "../story/chapters";
+import type { RiskComponent } from "../map/engine";
 
 /* ---------- Trust badges (uiux §29–30: confidence ≠ risk ≠ freshness) ---------- */
 
@@ -80,15 +81,37 @@ export function ExplainPanel({ explain, onClose }: { explain: ChapterDef["explai
   );
 }
 
-/* ---------- Risk equation visual (uiux §14 — relationship, not math) ---------- */
+/* ---------- Risk equation visual (uiux §14 — relationship, not math) ----------
+ * Interaktif: tiap blok adalah tombol — hover/fokus menyorot komponen yang
+ * sama di peta (engine.emphasizeRiskComponents via onFocusChange). */
 
-export function RiskEquation() {
-  const Block = ({ label, desc, tone }: { label: string; desc: string; tone: string }) => (
-    <div className={`flex-1 rounded-xl border-2 p-4 text-center ${tone}`}>
-      <p className="text-lg font-extrabold tracking-wide">{label}</p>
-      <p className="mt-1 text-xs leading-snug opacity-80">{desc}</p>
-    </div>
-  );
+export function RiskEquation({
+  focus,
+  onFocusChange,
+}: {
+  focus?: RiskComponent;
+  onFocusChange?: (c: RiskComponent) => void;
+}) {
+  const Block = ({ id, label, desc, tone }: { id: RiskComponent; label: string; desc: string; tone: string }) => {
+    const active = focus != null && focus === id;
+    const dimmed = focus != null && focus !== id;
+    return (
+      <button
+        type="button"
+        onMouseEnter={() => onFocusChange?.(id)}
+        onMouseLeave={() => onFocusChange?.(null)}
+        onFocus={() => onFocusChange?.(id)}
+        onBlur={() => onFocusChange?.(null)}
+        aria-pressed={active}
+        className={`block w-full flex-1 cursor-pointer rounded-xl border-2 p-4 text-center transition-opacity duration-200 ${tone} ${
+          active ? "opacity-100 outline-2 outline-offset-2 outline-ink/40" : ""
+        } ${dimmed ? "opacity-40" : "opacity-100"}`}
+      >
+        <p className="text-lg font-extrabold tracking-wide">{label}</p>
+        <p className="mt-1 text-xs leading-snug opacity-80">{desc}</p>
+      </button>
+    );
+  };
   const Arrow = ({ label }: { label: string }) => (
     <div className="flex flex-col items-center py-1 text-ink-soft">
       <span aria-hidden className="text-xl leading-none">↓</span>
@@ -97,17 +120,20 @@ export function RiskEquation() {
   );
   return (
     <div className="mx-auto flex max-w-md flex-col items-stretch py-2">
-      <Block label="HAZARD" desc="Seberapa besar ancaman banjir" tone="border-risk-very-high/60 bg-risk-very-high/5" />
+      <Block id="hazard" label="HAZARD" desc="Seberapa besar ancaman banjir" tone="border-risk-very-high/60 bg-risk-very-high/5" />
       <Arrow label="bertemu" />
-      <Block label="EXPOSURE" desc="Apa dan siapa yang berada di area terdampak" tone="border-[#fc8d59]/60 bg-[#fc8d59]/5" />
+      <Block id="exposure" label="EXPOSURE" desc="Apa dan siapa yang berada di area terdampak" tone="border-[#fc8d59]/60 bg-[#fc8d59]/5" />
       <Arrow label="dipengaruhi oleh" />
-      <Block label="VULNERABILITY" desc="Seberapa rentan mereka terhadap dampak" tone="border-msvi-high/60 bg-msvi-high/5" />
+      <Block id="vulnerability" label="VULNERABILITY" desc="Seberapa rentan mereka terhadap dampak" tone="border-msvi-high/60 bg-msvi-high/5" />
       <Arrow label="dan dikurangi oleh" />
-      <Block label="CAPACITY" desc="Kemampuan sistem menghadapi & mengurangi dampak" tone="border-msvi-low/60 bg-msvi-low/5" />
+      <Block id="capacity" label="CAPACITY" desc="Kemampuan sistem menghadapi & mengurangi dampak" tone="border-msvi-low/60 bg-msvi-low/5" />
       <Arrow label="menghasilkan" />
       <div className="rounded-xl bg-ink p-4 text-center text-paper">
         <p className="text-xl font-extrabold tracking-widest">RISK</p>
       </div>
+      <p className="mt-2 text-center text-[11px] font-semibold text-ink-soft/80">
+        Arahkan kursor / fokus ke tiap komponen untuk melihatnya di peta.
+      </p>
     </div>
   );
 }

@@ -10,6 +10,8 @@ import TmaValidationPanel from "./TmaPanel";
 import SatObsPanel from "./SatObsPanel";
 import PanelBoundary from "./PanelBoundary";
 import EventTimeline from "./EventTimeline";
+import RiskClassPanel from "./RiskClassPanel";
+import { emphasizeRiskComponents, type RiskComponent } from "../map/engine";
 import { Closing, Hero, Intro, TmaEventsSection } from "./StorySections";
 import WaterJourney from "./WaterJourney";
 import { fetchPriority, trackEvent, type PriorityItem } from "../api";
@@ -167,6 +169,7 @@ function StoryProgress() {
 }
 
   function ChapterBlock({ id, priority }: { id: string; priority: PriorityItem[] }) {
+    const [riskFocus, setRiskFocus] = useState<RiskComponent>(null);
   const ch = chapterById(id);
   const setActiveChapter = useApp((s) => s.setActiveChapter);
   const ref = useRef<HTMLElement>(null);
@@ -215,7 +218,17 @@ function StoryProgress() {
         <p key={i} className="mt-5 max-w-prose text-lg leading-relaxed text-ink-soft">{p}</p>
       ))}
 
-      {ch.component === "risk-eq" && <RiskEquation />}
+      {ch.component === "risk-eq" && (
+        <div className="mt-8">
+          <RiskEquation
+            focus={riskFocus}
+            onFocusChange={(c) => {
+              setRiskFocus(c);
+              emphasizeRiskComponents(c);
+            }}
+          />
+        </div>
+      )}
       {ch.component === "risk-card" && <div className="mt-8" onMouseLeave={onComplete}><RiskCard /></div>}
       {ch.component === "priority-card" && <div className="mt-8"><PriorityCard items={priority} /></div>}
       {ch.component === "event-timeline" && <div className="mt-8"><EventTimeline /></div>}
@@ -223,6 +236,24 @@ function StoryProgress() {
 
       {ch.id === "ch02" && <PanelBoundary label="Validasi TMA"><TmaValidationPanel /></PanelBoundary>}
       {ch.id === "ch02" && <PanelBoundary label="Validasi satelit"><SatObsPanel /></PanelBoundary>}
+      {ch.id === "ch05" && (
+        <div className="mt-6">
+          <RiskClassPanel
+            layerId="vulnerability"
+            title="Legenda: Kerentanan InaRISK (proxy MSVI)"
+            note="Indeks 0–1 dikelompokkan 4 kelas kuartil antar-area. Kelas relatif antar kelurahan — bukan prevalensi kemiskinan. Arahkan kursor ke poligon di peta untuk detail kelas."
+          />
+        </div>
+      )}
+      {ch.id === "ch06" && (
+        <div className="mt-6">
+          <RiskClassPanel
+            layerId="hazard"
+            title="Legenda: Bahaya banjir InaRISK"
+            note="Bahaya = komponen HAZARD pada persamaan di atas. Arahkan kursor ke poligon di peta untuk kelasnya."
+          />
+        </div>
+      )}
 
       <EvidenceBlock evidence={ch.evidence} />
     </section>

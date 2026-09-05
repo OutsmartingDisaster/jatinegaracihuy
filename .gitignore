@@ -27,3 +27,5 @@ Thumbs.db
 
 # SQLite governance DB (regenerable via tools/seed_governance_db.py)
 data/governance.db
+
+# TS incremental build cacheweb/tsconfig.tsbuildinfo
