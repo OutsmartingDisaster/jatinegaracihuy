@@ -1,7 +1,5 @@
 # Jatinegara Sahabat Air
 
-**Platform intelijen risiko banjir untuk satu kecamatan — Kecamatan Jatinegara, Jakarta Timur.**
-
 Dibangun dari satu frustrasi konkret: [InaRISK](https://inarisk.bnpb.go.id/) lambat, berat, dan memaksa kamu menelusuri banyak layer cuma untuk memahami satu kecamatan. **Jatinegara Sahabat Air** membalik pendekatannya — **satu kecamatan, satu perjalanan** — dengan data yang bisa diaudit dan interaksi yang menjelaskan dirinya sendiri.
 
 > Proyek portofolio dari bootcamp **U-INSPIRE 101 — "Decode Risk. Ship Impact." (SESI 5)**: memakai agent coding (OpenCode) + Agent Skills + MCP untuk membangun platform DRR yang deployable, bukan infografis statis.
