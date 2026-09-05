@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { ChapterDef } from "../story/chapters";
 import type { RiskComponent } from "../map/engine";
 
@@ -102,6 +102,14 @@ export function RiskEquation({
         onMouseLeave={() => onFocusChange?.(null)}
         onFocus={() => onFocusChange?.(id)}
         onBlur={() => onFocusChange?.(null)}
+        // Tap (touch/pen) tidak selalu memicu focus — dan tap mensintesis
+        // mouseenter — jadi toggle via click HANYA untuk pointer non-mouse.
+        onPointerDown={(e) => {
+          touchTap.current = e.pointerType !== "mouse";
+        }}
+        onClick={() => {
+          if (touchTap.current) onFocusChange?.(active ? null : id);
+        }}
         aria-pressed={active}
         className={`block w-full flex-1 cursor-pointer rounded-xl border-2 p-4 text-center transition-opacity duration-200 ${tone} ${
           active ? "opacity-100 outline-2 outline-offset-2 outline-ink/40" : ""
@@ -112,6 +120,7 @@ export function RiskEquation({
       </button>
     );
   };
+  const touchTap = useRef(false);
   const Arrow = ({ label }: { label: string }) => (
     <div className="flex flex-col items-center py-1 text-ink-soft">
       <span aria-hidden className="text-xl leading-none">↓</span>

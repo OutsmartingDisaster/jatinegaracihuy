@@ -286,7 +286,9 @@ export default function EventTimeline() {
         )}
       </p>
 
-      <ol className="mt-2 max-h-72 space-y-1 overflow-y-auto pr-1">
+      {/* Mobile: daftar mengalir penuh (tanpa scroll-dalam yang menjebak swipe);
+          batas tinggi + scroll-dalam hanya di md+. */}
+      <ol className="mt-2 space-y-1 pr-0 md:max-h-72 md:overflow-y-auto md:pr-1">
         {filtered.map((e) => (
           <li key={e.event_id} className="rounded-lg border-b border-line/70 px-1 py-1.5 last:border-b-0">
             <div className="flex flex-wrap items-baseline gap-x-2 text-sm">

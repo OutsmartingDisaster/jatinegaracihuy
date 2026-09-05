@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Map as MLMap } from "maplibre-gl";
+import * as maplibregl from "maplibre-gl";
 import { CHAPTERS, chapterById } from "./chapters";
 import StoryMap from "./StoryMap";
 import type { MapDataBundle } from "../map/engine";
@@ -26,6 +27,7 @@ import { fetchPriority, trackEvent, type PriorityItem } from "../api";
 
 export default function StoryShell() {
   const mapRef = useRef<MLMap | null>(null);
+  const tapPopupRef = useRef<maplibregl.Popup | null>(null);
   const [priority, setPriority] = useState<PriorityItem[]>([]);
   const [explainOpen, setExplainOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -70,11 +72,14 @@ export default function StoryShell() {
     setLoaded(true);
   };
 
-  // Click-to-inspect (public inspector) — setelah layer siap
+  // Click-to-inspect (public inspector) — setelah layer siap.
+  // Plus: tap-popup RW (ch04) — hover-popup EventTimeline hanya jalan di mouse,
+  // sehingga tap di mobile tidak memberi apa-apa. Tap RW ber-kejadian > 0
+  // menampilkan ringkasan yang sama (close on tap berikutnya/di luar).
   useEffect(() => {
     const map = mapRef.current;
     if (!loaded || !map) return;
-    const onClick = (e: { point: { x: number; y: number } }) => {
+    const onClick = (e: { point: { x: number; y: number }; lngLat: { lng: number; lat: number } }) => {
       // All story layers stay visible (crossfade), so hit-testing must be
       // scoped to the layers actually active in the current chapter.
       const active = new Set(chapterById(useApp.getState().activeChapter).layers.map((l) => l.id));
@@ -90,9 +95,29 @@ export default function StoryShell() {
         st.setShowAll(st.activeChapter, false);
         trackEvent("feature_selected", { area_id: code, chapter: st.activeChapter });
       }
+      if (useApp.getState().activeChapter === "ch04" && map.getLayer("flood-rw")) {
+        const rwHits = map.queryRenderedFeatures([e.point.x, e.point.y] as [number, number], { layers: ["flood-rw"] });
+        const rp = rwHits[0]?.properties as Record<string, unknown> | undefined;
+        const count = Number(rp?.["event_count"] ?? 0);
+        tapPopupRef.current?.remove();
+        tapPopupRef.current = null;
+        if (rp && count > 0) {
+          const depth = rp["max_depth_cm"];
+          const html =
+            `<div style="font:600 12px/1.5 'Plus Jakarta Sans',sans-serif;color:#1d2429">` +
+            `<div style="font-weight:800">${String(rp["rw_name"])} · ${String(rp["kelurahan"])}</div>` +
+            `<div>${count} kejadian</div>` +
+            (depth != null ? `<div>Kedalaman maks terlapor: ${depth} cm</div>` : "") +
+            (rp["latest_date"] ? `<div>Terakhir tercatat: ${String(rp["latest_date"])}</div>` : "") +
+            `</div>`;
+          const pop = new maplibregl.Popup({ closeButton: true, closeOnClick: true, offset: 8, maxWidth: "240px" });
+          pop.setLngLat([e.lngLat.lng, e.lngLat.lat]).setHTML(html).addTo(map);
+          tapPopupRef.current = pop;
+        }
+      }
     };
     map.on("click" as never, onClick as never);
-    return () => { map.off("click" as never, onClick as never); };
+    return () => { map.off("click" as never, onClick as never); tapPopupRef.current?.remove(); tapPopupRef.current = null; };
   }, [loaded]);
 
   return (
@@ -164,7 +189,8 @@ export default function StoryShell() {
 
 function Header() {
   return (
-    <header className="sticky top-0 z-30 flex items-center justify-between border-b border-line bg-paper/95 px-6 py-3 backdrop-blur">
+    // Tinggi dikunci (bukan dari padding) — semua sticky offset top-[53px] mengacu ke sini.
+    <header className="sticky top-0 z-30 flex h-[53px] items-center justify-between border-b border-line bg-paper/95 px-6 backdrop-blur">
       <a href="/" className="text-sm font-extrabold tracking-tight">
         JATINEGARA <span className="text-accent">SAHABAT AIR</span>
       </a>
@@ -183,7 +209,9 @@ function StoryProgress() {
   const activeChapter = useApp((s) => s.activeChapter);
   const labels = ["Place", "History", "Pattern", "Exposure", "Vulnerability", "Model", "Risk", "Priority", "Action"];
   return (
-    <nav aria-label="Kemajuan cerita" className="sticky top-[53px] z-20 border-b border-line bg-paper/95 px-6 py-2.5 backdrop-blur">
+    // Mobile: dock TEPAT di bawah peta sticky (53px header + 45vh peta) agar
+    // tidak menimpa peta; desktop tetap sejajar header (kolom berdampingan).
+    <nav aria-label="Kemajuan cerita" className="sticky top-[calc(53px+45vh)] z-20 border-b border-line bg-paper/95 px-6 py-2.5 backdrop-blur md:top-[53px]">
       <ol className="flex flex-wrap gap-x-3 gap-y-1 text-[11px] font-semibold uppercase tracking-wider">
         {CHAPTERS.map((ch, i) => (
           <li key={ch.id}>
@@ -237,7 +265,9 @@ function StoryProgress() {
     <section
       ref={ref}
       id={id}
-      className="mx-auto flex min-h-[92vh] max-w-2xl flex-col justify-center px-6 py-20"
+      // scroll-mt: lompatan anchor #chxx tidak boleh mendarat di balik
+      // header + peta sticky (mobile: 53px + 45vh).
+      className="mx-auto flex min-h-[92vh] max-w-2xl scroll-mt-[calc(53px+45vh+1rem)] flex-col justify-center px-6 py-20 md:scroll-mt-16"
       aria-label={ch.title}
     >
       <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-accent">

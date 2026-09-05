@@ -104,8 +104,8 @@ export function RiskCard() {
             <p className="text-xs font-bold uppercase tracking-wider text-ink-soft">Mengapa?</p>
             {data.contributors.map((c) => (
               <div key={c.dimension} className="flex items-center gap-3">
-                <span className="w-44 shrink-0 text-sm font-semibold">{c.label}</span>
-                <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-line/70" role="presentation">
+                <span className="w-28 shrink-0 text-sm font-semibold sm:w-44">{c.label}</span>
+                <div className="h-2.5 min-w-0 flex-1 overflow-hidden rounded-full bg-line/70" role="presentation">
                   <div
                     className="h-full rounded-full bg-accent/70 transition-[width] duration-500 ease-out"
                     style={{ width: `${Math.min(100, c.strength * 100)}%` }}
