@@ -7,7 +7,7 @@ import { useApp } from "../store";
 import { chapterById, STORY_CAMERA } from "./chapters";
 import {
   addStoryLayers, baseStyle, highlightArea, LAYER_IDS, loadBundle,
-  setLayerOpacity, setFloodYear, ensureBuildings,
+  setLayerOpacity, setFloodYear,
   type MapDataBundle,
 } from "../map/engine";
 import { trackEvent } from "../api";
@@ -70,7 +70,8 @@ export default function StoryMap({ onReady }: Props) {
       else setLayerOpacity(map, id, target, OUT_MS, 0);
       prevOpacities.current.set(id, target);
     }
-    if (def.layers.some((l) => l.id === "buildings")) ensureBuildings(map);
+    // Story tidak pernah auto-load buildings (berat) — hanya AnalisPage
+    // yang memanggil ensureBuildings secara eksplisit (opt-in, flag heavy).
     const fh = def.layers.find((l) => l.id === "flood-history");
     if (fh && kelRef.current) setFloodYear(map, fh.year ?? "all", bundle.temporal, bundle.kelJoined);
   }, []);
