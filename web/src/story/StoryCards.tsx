@@ -53,7 +53,7 @@ export function RiskCard() {
       </div>
       <p className="mt-2 text-[11px] text-ink-soft/70">
         {revealed
-          ? "Peta menyala. Klik chip lain (atau poligon di peta) untuk pindah area."
+          ? "Peta menyala — hanya area terpilih yang tampil. Klik chip lain (atau poligon di peta) untuk pindah area."
           : "Peta masih mati — pilih salah satu area untuk menyalakannya."}
       </p>
 
@@ -61,8 +61,8 @@ export function RiskCard() {
         <div className="mt-4 rounded-xl border border-dashed border-line p-5 text-center">
           <p className="text-sm font-semibold text-ink">Di mana risikonya tinggi?</p>
           <p className="mt-1 text-sm text-ink-soft">
-            Delapan kelurahan, satu peta. Pilihanmu yang menyalakannya —
-            beserta alasan, keyakinan, dan usia datanya.
+            Pilih satu kelurahan — peta hanya menunjukkan area itu, supaya jelas
+            di mana, beserta alasan, keyakinan, dan usia datanya.
           </p>
         </div>
       ) : (
@@ -136,7 +136,7 @@ export function PriorityCard({ items }: { items: PriorityItem[] }) {
       </p>
       <p className="mt-1 text-[11px] text-ink-soft/70">
         {revealed
-          ? "Peta menyala. Klik baris untuk pindah sorotan antar area."
+          ? "Peta menyala — hanya area terpilih yang tampil. Klik baris untuk pindah sorotan antar area."
           : "Peta masih mati — klik salah satu area untuk menyalakannya."}
       </p>
       <ol className="mt-4 space-y-3">

@@ -371,6 +371,16 @@ export function emphasizeRiskComponents(comp: RiskComponent) {
   setLayerOpacity(map, "buildings-outline", (target.buildings ?? 0) > 0.3 ? 0.35 : 0.08, 280);
 }
 
+/** Spotlight per kelurahan (ch07/ch08): hanya area terpilih yang tampil.
+ *  code null = lepas filter (tampilkan semua yang sudah ter-reveal).
+ *  Properti kel_code di-inject ke semua fitur kelurahan (injectKelProps). */
+export function setSpotlight(map: MLMap, layerIds: string[], code: string | null) {
+  for (const id of layerIds) {
+    if (!map.getLayer(id)) continue;
+    map.setFilter(id, code ? (["==", ["get", "kel_code"], code] as never) : null);
+  }
+}
+
 export function flyTo(map: MLMap, camera: { center: [number, number]; zoom: number }, reduced: boolean) {
   map.flyTo({ center: camera.center, zoom: camera.zoom, duration: reduced ? 0 : 700, essential: true });
 }

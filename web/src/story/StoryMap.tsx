@@ -7,7 +7,7 @@ import { useApp } from "../store";
 import { chapterById, STORY_CAMERA } from "./chapters";
 import {
   addStoryLayers, baseStyle, highlightArea, LAYER_IDS, loadBundle,
-  setLayerOpacity, setFloodYear, ensureBuildings,
+  setLayerOpacity, setFloodYear, ensureBuildings, setSpotlight,
   type MapDataBundle,
 } from "../map/engine";
 import { trackEvent } from "../api";
@@ -133,11 +133,14 @@ export default function StoryMap({ onReady }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeChapter, revealed, applyChapter]);
 
-  // Selection highlight
+  // Selection highlight + spotlight per kelurahan (ch07/ch08)
   useEffect(() => {
     const map = mapRef.current;
     if (map && kelRef.current && map.isStyleLoaded()) {
       highlightArea(map, kelRef.current, selectedArea);
+      const ch = useApp.getState().activeChapter;
+      if (ch === "ch07") setSpotlight(map, ["fri", "fri-outline"], selectedArea);
+      else if (ch === "ch08") setSpotlight(map, ["priority"], selectedArea);
       if (selectedArea) trackEvent("feature_selected", { area_id: selectedArea });
     }
   }, [selectedArea]);
