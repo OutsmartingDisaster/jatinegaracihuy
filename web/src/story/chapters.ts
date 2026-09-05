@@ -149,12 +149,13 @@ export const CHAPTERS: ChapterDef[] = [
     body: [
       "Air tidak berhenti pada batas peta. Ia bertemu rumah, bangunan, jalan, aktivitas, dan manusia.",
       "Saat slide ini muncul, RW yang terdampak terwarnai biru: makin gelap, makin banyak kejadian terdokumentasi 2021–2025 — Kampung Melayu RW 04 (20 kejadian) paling gelap. Geser slider tahun: warna RW berubah mengikuti kejadian tahun itu.",
-      "Data populasi terpapar belum tersedia — angka kepadatan bangunan dipakai sebagai penanda paparan (analisis, bukan visual), dan disebut sebagai itu: penanda.",
+      "Pulsa biru-keemasan adalah bangunan-bangunan yang berada di kawasan ini. Data populasi terpapar belum tersedia — kepadatan bangunan dipakai sebagai penanda paparan, dan disebut sebagai itu: penanda.",
     ],
     camera: { center: STORY_CAMERA.center, zoom: STORY_CAMERA.zoom },
     component: "event-timeline",
     layers: [
       { id: "temporal-pattern", opacity: 0.35 },
+      { id: "buildings", opacity: 0.55 },
       { id: "flood-rw", opacity: 0.85 },
       { id: "flood-events", opacity: 0.9 },
     ],

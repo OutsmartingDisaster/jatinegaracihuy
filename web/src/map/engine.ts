@@ -7,9 +7,9 @@ import { UNKNOWN } from "./palette";
 
 /* ---------- Map engine (PRD v6.1 Phase 4.1 MapStateController) ----------
  * All sources are loaded once (small PMTiles/GeoJSON); chapters change
- * VISIBILITY + camera only, with eased transitions. Buildings tetap lazy
- * via ensureBuildings, tapi HANYA dipanggil AnalisPage (opt-in, flag heavy)
- * — story tidak pernah memuatnya (spatial §65–66). */
+ * VISIBILITY + camera only, with eased transitions. Buildings (simplified
+ * ~6.7 MB, 37.8k footprints — tools/simplify_buildings.py) are lazy-loaded
+ * on first demand (spatial §65–66: never load everything on first render). */
 
 const BASE_CENTER: [number, number] = [106.895, -6.216];
 
@@ -359,17 +359,18 @@ export type RiskComponent = "hazard" | "exposure" | "vulnerability" | "capacity"
 export function emphasizeRiskComponents(comp: RiskComponent) {
   const map = (window as unknown as { __storyMap?: MLMap }).__storyMap;
   if (!map) return;
-  const base = { hazard: 0.5, vulnerability: 0, facilities: 0 }; // = state chapter 06
+  const base = { hazard: 0.5, vulnerability: 0, buildings: 0, facilities: 0 }; // = state chapter 06
   const focusSets: Record<Exclude<RiskComponent, null>, typeof base> = {
-    hazard: { hazard: 0.85, vulnerability: 0.08, facilities: 0.08 },
-    exposure: { hazard: 0.08, vulnerability: 0.08, facilities: 0.7 },
-    vulnerability: { hazard: 0.08, vulnerability: 0.85, facilities: 0.08 },
-    capacity: { hazard: 0.08, vulnerability: 0.08, facilities: 0.85 },
+    hazard: { hazard: 0.85, vulnerability: 0.08, buildings: 0.05, facilities: 0.08 },
+    exposure: { hazard: 0.08, vulnerability: 0.08, buildings: 0.7, facilities: 0.08 },
+    vulnerability: { hazard: 0.08, vulnerability: 0.85, buildings: 0.05, facilities: 0.08 },
+    capacity: { hazard: 0.08, vulnerability: 0.08, buildings: 0.05, facilities: 0.85 },
   };
   const target = comp ? focusSets[comp] : base;
   for (const [id, o] of Object.entries(target)) {
     setLayerOpacity(map, id, o, 280);
   }
+  setLayerOpacity(map, "buildings-outline", (target.buildings ?? 0) > 0.3 ? 0.35 : 0.08, 280);
 }
 
 export function flyTo(map: MLMap, camera: { center: [number, number]; zoom: number }, reduced: boolean) {
