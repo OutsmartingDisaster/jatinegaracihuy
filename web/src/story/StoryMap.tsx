@@ -84,10 +84,20 @@ export default function StoryMap({ onReady }: Props) {
       center: STORY_CAMERA.center,
       zoom: STORY_CAMERA.zoom,
       attributionControl: { compact: true },
+      // Kamera milik cerita (fixed editorial framing): semua jalur zoom user
+      // dimatikan (tidak ada kontrol +/-, wheel, dblclick, pinch, box,
+      // keyboard). cooperativeGestures agar scroll satu jari di mobile
+      // menggeser halaman, bukan kejebak menggeser peta. Klik/tap untuk
+      // inspect tetap jalan.
+      scrollZoom: false,
+      boxZoom: false,
+      doubleClickZoom: false,
+      touchZoomRotate: false,
+      keyboard: false,
+      cooperativeGestures: true,
     });
     mapRef.current = map;
     (window as unknown as { __storyMap?: MLMap }).__storyMap = map; // debug/automation hook
-    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
     // Self-heal: terapkan chapter aktif setiap map idle (idempoten — skip bila
     // target == prev). Menutup celah bila style belum loaded saat retry habis.
     const onIdle = () => applyChapter(useApp.getState().activeChapter);

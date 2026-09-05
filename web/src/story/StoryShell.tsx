@@ -96,9 +96,11 @@ export default function StoryShell() {
           tinggi calc(100vh-53px)) supaya overlay tidak tertutup header;
           kolom kanan diberi pb ekstra supaya sticky tidak lepas saat ch09 dibaca. */}
       <div className="md:grid md:grid-cols-2">
-        {/* Kolom kiri: sticky map — sejajar viewport, di bawah header */}
-        <div className="relative md:sticky md:top-[53px] md:h-[calc(100vh-53px)]">
-          <div className="h-[54vh] w-full md:h-full">
+        {/* Kolom kiri: sticky map — sejajar viewport, di bawah header.
+            Mobile ikut sticky (45vh) dengan pola yang sama seperti desktop:
+            narasi scroll, peta menetap. */}
+        <div className="sticky top-[53px] h-[45vh] md:h-[calc(100vh-53px)]">
+          <div className="h-full w-full">
             <StoryMap onReady={handleMapReady} />
             {explainOpen && (
               <ExplainPanel explain={chapter.explain} onClose={() => setExplainOpen(false)} />
