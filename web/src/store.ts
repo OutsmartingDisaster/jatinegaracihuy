@@ -25,6 +25,11 @@ interface AppState {
   selectedArea: string | null; // kelurahan code (public inspector)
   explainOpen: boolean;
   mapError: string | null;
+  /** Hidden-first reveal (ch07/ch08): peta mati sampai user memilih area.
+   *  Reveal-once-per-visit — reset setiap bab diaktifkan ulang. */
+  revealed: Record<string, boolean>;
+  revealChapter: (id: string) => void;
+  resetReveal: (id: string) => void;
   setActiveChapter: (id: string) => void;
   selectArea: (code: string | null) => void;
   setExplainOpen: (open: boolean) => void;
@@ -36,6 +41,9 @@ export const useApp = create<AppState>((set) => ({
   selectedArea: null,
   explainOpen: false,
   mapError: null,
+  revealed: {},
+  revealChapter: (id) => set((s) => ({ revealed: { ...s.revealed, [id]: true } })),
+  resetReveal: (id) => set((s) => ({ revealed: { ...s.revealed, [id]: false } })),
   setActiveChapter: (id) => set({ activeChapter: id }),
   selectArea: (code) => set({ selectedArea: code }),
   setExplainOpen: (open) => set({ explainOpen: open }),

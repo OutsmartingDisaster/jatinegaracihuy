@@ -12,11 +12,17 @@ export function RiskCard() {
   const codes = Object.values(KEL_CODES);
   const selectedArea = useApp((s) => s.selectedArea);
   const selectArea = useApp((s) => s.selectArea);
-  const active = selectedArea ?? codes[0];
+  const revealed = useApp((s) => s.revealed["ch07"] ?? false);
+  const active = selectedArea; // null = belum memilih → peta mati + prompt
   const [data, setData] = useState<Awaited<ReturnType<typeof fetchExplanation>> | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!active) {
+      setData(null);
+      setError(null);
+      return;
+    }
     setData(null);
     setError(null);
     fetchExplanation(active)
@@ -45,8 +51,22 @@ export function RiskCard() {
           </button>
         ))}
       </div>
-      <p className="mt-2 text-[11px] text-ink-soft/70">Area terpilih disorot di peta — atau klik poligon di peta.</p>
+      <p className="mt-2 text-[11px] text-ink-soft/70">
+        {revealed
+          ? "Peta menyala. Klik chip lain (atau poligon di peta) untuk pindah area."
+          : "Peta masih mati — pilih salah satu area untuk menyalakannya."}
+      </p>
 
+      {!active ? (
+        <div className="mt-4 rounded-xl border border-dashed border-line p-5 text-center">
+          <p className="text-sm font-semibold text-ink">Di mana risikonya tinggi?</p>
+          <p className="mt-1 text-sm text-ink-soft">
+            Delapan kelurahan, satu peta. Pilihanmu yang menyalakannya —
+            beserta alasan, keyakinan, dan usia datanya.
+          </p>
+        </div>
+      ) : (
+      <>
       {error && (
         <p role="alert" className="mt-4 rounded-lg bg-risk-high/10 p-3 text-sm text-[#a04d22]">
           Penjelasan tidak dapat dimuat saat ini. {error}
@@ -93,6 +113,8 @@ export function RiskCard() {
       ) : (
         !error && <p className="mt-4 animate-pulse text-sm text-ink-soft">Menyiapkan penjelasan risiko…</p>
       )}
+      </>
+      )}
     </section>
   );
 }
@@ -104,12 +126,18 @@ export function PriorityCard({ items }: { items: PriorityItem[] }) {
   const top = items.slice(0, 3);
   const selectedArea = useApp((s) => s.selectedArea);
   const selectArea = useApp((s) => s.selectArea);
+  const revealed = useApp((s) => s.revealed["ch08"] ?? false);
   const maxScore = useMemo(() => Math.max(...top.map((p) => p.priority_score), 0.01), [top]);
   return (
     <section aria-label="Area prioritas" className="rounded-2xl border border-line bg-paper/95 p-6 shadow-sm">
       <h3 className="text-2xl font-extrabold text-ink">Mengapa area ini diprioritaskan?</h3>
       <p className="mt-1 text-sm text-ink-soft">
         Peringkat berdasarkan kombinasi risiko + paparan + kekuatan bukti — bukan sekadar risiko tertinggi.
+      </p>
+      <p className="mt-1 text-[11px] text-ink-soft/70">
+        {revealed
+          ? "Peta menyala. Klik baris untuk pindah sorotan antar area."
+          : "Peta masih mati — klik salah satu area untuk menyalakannya."}
       </p>
       <ol className="mt-4 space-y-3">
         {top.map((p) => {

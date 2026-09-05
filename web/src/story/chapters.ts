@@ -234,7 +234,7 @@ export const CHAPTERS: ChapterDef[] = [
     title: "Di mana risikonya tinggi",
     body: [
       "Inilah Flood Risk Index (FRI) — pertama kali muncul di cerita ini, bukan di halaman depan.",
-      "Klik area mana pun untuk melihat mengapa risikonya setinggi itu, seberapa yakin kita pada angkanya, dan datanya seberapa baru.",
+      "Peta mulai kosong. Pilih salah satu area untuk menyalakannya — lalu lihat mengapa risikonya setinggi itu, seberapa yakin kita pada angkanya, dan datanya seberapa baru.",
     ],
     camera: { center: STORY_CAMERA.center, zoom: STORY_CAMERA.zoom },
     layers: [{ id: "fri", opacity: 0.8 }],
@@ -264,6 +264,7 @@ export const CHAPTERS: ChapterDef[] = [
     body: [
       "Risiko tinggi tidak otomatis berarti prioritas tertinggi. Prioritas mempertimbangkan risiko, paparan, kekuatan bukti, dan — begitu datanya tersedia — kesenjangan kapasitas.",
       "Area prioritas dalam cerita ini adalah yang kombinasi risikonya tinggi, paparannya besar, dan buktinya kuat.",
+      "Peta mulai kosong — klik salah satu dari tiga area untuk menyalakannya.",
     ],
     camera: { center: STORY_CAMERA.center, zoom: STORY_CAMERA.zoom },
     layers: [{ id: "priority", opacity: 0.85 }],

@@ -31,6 +31,26 @@ export default function StoryShell() {
   const [loaded, setLoaded] = useState(false);
   const activeChapter = useApp((s) => s.activeChapter);
   const mapError = useApp((s) => s.mapError);
+  const selectedArea = useApp((s) => s.selectedArea);
+
+  // Hidden-first reveal (ch07/ch08): tiap bab dibuka → peta mati + seleksi
+  // dibersihkan (fresh start per kunjungan).
+  useEffect(() => {
+    if (activeChapter === "ch07" || activeChapter === "ch08") {
+      const st = useApp.getState();
+      st.resetReveal(activeChapter);
+      st.selectArea(null);
+    }
+  }, [activeChapter]);
+
+  // Pilihan area menyalakan peta (via chip kartu, baris prioritas, maupun klik peta).
+  useEffect(() => {
+    const ch = useApp.getState().activeChapter;
+    if (selectedArea && (ch === "ch07" || ch === "ch08")) {
+      useApp.getState().revealChapter(ch);
+      trackEvent("story_map_revealed", { chapter: ch, area_id: selectedArea });
+    }
+  }, [selectedArea]);
 
   useEffect(() => {
     fetchPriority().then((r) => setPriority(r.items)).catch(() => {});

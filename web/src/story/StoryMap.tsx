@@ -56,9 +56,14 @@ export default function StoryMap({ onReady }: Props) {
 
     const visible = new Map<string, number>();
     for (const l of def.layers) visible.set(l.id, l.opacity ?? 1);
+    const revealed = useApp.getState().revealed;
     for (const id of LAYER_IDS) {
       if (id === "highlight") continue;
-      const target = resolveAlias(id, visible);
+      let target = resolveAlias(id, visible);
+      // Hidden-first reveal (ch07/ch08): fri/priority tetap 0 sampai bab di-reveal.
+      if (!revealed[chapterId] && ((chapterId === "ch07" && (id === "fri" || id === "fri-outline")) || (chapterId === "ch08" && id === "priority"))) {
+        target = 0;
+      }
       const prev = prevOpacities.current.get(id) ?? 0;
       if (target === prev) continue;
       if (target > prev) setLayerOpacity(map, id, target, IN_MS, IN_DELAY);
@@ -110,11 +115,13 @@ export default function StoryMap({ onReady }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [applyChapter]);
 
-  // Chapter → map state (the story controls the map)
+  // Chapter → map state (the story controls the map). `revealed` ikut jadi
+  // dep: reveal memicu applyChapter ulang (fade-in), reset memicu fade-out.
+  const revealed = useApp((s) => s.revealed);
   useEffect(() => {
     applyChapter(activeChapter);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeChapter]);
+  }, [activeChapter, revealed, applyChapter]);
 
   // Selection highlight
   useEffect(() => {
