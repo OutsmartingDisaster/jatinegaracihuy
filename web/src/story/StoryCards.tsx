@@ -1,12 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { fetchExplanation, KEL_CODES, KEL_NAMES, type PriorityItem } from "../api";
 import { ConfidenceBadge, FreshnessBadge } from "./StoryBits";
+import { useApp } from "../store";
+import { trackEvent } from "../api";
 
-/* ---------- Public risk card (uiux §32–34: class first, no fake precision) ---------- */
+/* ---------- Public risk card (uiux §32–34: class first, no fake precision) ----------
+ * Dua arah: pilih area di kartu → boundary menyala di peta; klik area di peta
+ * (public inspector) → kartu ikut berganti (via store.selectedArea). */
 
 export function RiskCard() {
   const codes = Object.values(KEL_CODES);
-  const [active, setActive] = useState<string>(codes[0]);
+  const selectedArea = useApp((s) => s.selectedArea);
+  const selectArea = useApp((s) => s.selectArea);
+  const active = selectedArea ?? codes[0];
   const [data, setData] = useState<Awaited<ReturnType<typeof fetchExplanation>> | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -26,7 +32,10 @@ export function RiskCard() {
           <button
             key={code}
             type="button"
-            onClick={() => setActive(code)}
+            onClick={() => {
+              selectArea(code === active ? null : code);
+              trackEvent("riskcard_area_selected", { area_id: code });
+            }}
             aria-pressed={active === code}
             className={`rounded-full px-3 py-1.5 text-sm font-semibold transition-colors ${
               active === code ? "bg-ink text-paper" : "bg-line/60 text-ink-soft hover:bg-line"
@@ -36,6 +45,7 @@ export function RiskCard() {
           </button>
         ))}
       </div>
+      <p className="mt-2 text-[11px] text-ink-soft/70">Area terpilih disorot di peta — atau klik poligon di peta.</p>
 
       {error && (
         <p role="alert" className="mt-4 rounded-lg bg-risk-high/10 p-3 text-sm text-[#a04d22]">
@@ -57,7 +67,7 @@ export function RiskCard() {
                 <span className="w-44 shrink-0 text-sm font-semibold">{c.label}</span>
                 <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-line/70" role="presentation">
                   <div
-                    className="h-full rounded-full bg-accent/70"
+                    className="h-full rounded-full bg-accent/70 transition-[width] duration-500 ease-out"
                     style={{ width: `${Math.min(100, c.strength * 100)}%` }}
                   />
                 </div>
@@ -87,10 +97,14 @@ export function RiskCard() {
   );
 }
 
-/* ---------- Priority card (ch08: risk ≠ priority) ---------- */
+/* ---------- Priority card (ch08: risk ≠ priority) ----------
+ * Klik baris → area disorot di peta (store.selectedArea). */
 
 export function PriorityCard({ items }: { items: PriorityItem[] }) {
   const top = items.slice(0, 3);
+  const selectedArea = useApp((s) => s.selectedArea);
+  const selectArea = useApp((s) => s.selectArea);
+  const maxScore = useMemo(() => Math.max(...top.map((p) => p.priority_score), 0.01), [top]);
   return (
     <section aria-label="Area prioritas" className="rounded-2xl border border-line bg-paper/95 p-6 shadow-sm">
       <h3 className="text-2xl font-extrabold text-ink">Mengapa area ini diprioritaskan?</h3>
@@ -98,18 +112,39 @@ export function PriorityCard({ items }: { items: PriorityItem[] }) {
         Peringkat berdasarkan kombinasi risiko + paparan + kekuatan bukti — bukan sekadar risiko tertinggi.
       </p>
       <ol className="mt-4 space-y-3">
-        {top.map((p) => (
-          <li key={p.id} className="rounded-xl border border-line/80 bg-white/60 p-4">
-            <div className="flex items-baseline justify-between gap-3">
-              <p className="text-lg font-extrabold text-ink">
-                <span className="mr-2 rounded-md bg-risk-very-high px-2 py-0.5 text-sm text-paper">#{p.rank}</span>
-                {p.area_name ?? p.area_id}
-              </p>
-              <span className="font-mono text-sm text-ink-soft">{p.priority_score.toFixed(2)}</span>
-            </div>
-            <p className="mt-1 text-sm leading-snug text-ink-soft">{p.rationale}</p>
-          </li>
-        ))}
+        {top.map((p) => {
+          const selected = selectedArea === p.area_id;
+          return (
+            <li key={p.id}>
+              <button
+                type="button"
+                onClick={() => selectArea(selected ? null : p.area_id)}
+                aria-pressed={selected}
+                className={`block w-full cursor-pointer rounded-xl border p-4 text-left transition-colors ${
+                  selected ? "border-accent bg-accent/5 ring-2 ring-accent/30" : "border-line/80 bg-white/60 hover:border-line"
+                }`}
+              >
+                <div className="flex items-baseline justify-between gap-3">
+                  <p className="text-lg font-extrabold text-ink">
+                    <span className="mr-2 rounded-md bg-risk-very-high px-2 py-0.5 text-sm text-paper">#{p.rank}</span>
+                    {p.area_name ?? p.area_id}
+                  </p>
+                  <span className="font-mono text-sm text-ink-soft">{p.priority_score.toFixed(2)}</span>
+                </div>
+                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-line/70" role="presentation">
+                  <div
+                    className="h-full rounded-full bg-risk-very-high/80 transition-[width] duration-500 ease-out"
+                    style={{ width: `${(p.priority_score / maxScore) * 100}%` }}
+                  />
+                </div>
+                <p className="mt-2 text-sm leading-snug text-ink-soft">{p.rationale}</p>
+                <p className="mt-1.5 text-[11px] font-semibold text-accent">
+                  {selected ? "✓ Disorot di peta — klik lagi untuk lepas" : "Klik untuk sorot di peta"}
+                </p>
+              </button>
+            </li>
+          );
+        })}
       </ol>
       <p className="mt-3 text-xs text-ink-soft/90">
         ⚠ Capacity gap numerik belum masuk perhitungan (data populasi & shelter belum tersedia).

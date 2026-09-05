@@ -11,6 +11,7 @@ import SatObsPanel from "./SatObsPanel";
 import PanelBoundary from "./PanelBoundary";
 import EventTimeline from "./EventTimeline";
 import RiskClassPanel from "./RiskClassPanel";
+import ReadinessChecklist from "./ReadinessChecklist";
 import { emphasizeRiskComponents, type RiskComponent } from "../map/engine";
 import { Closing, Hero, Intro, TmaEventsSection } from "./StorySections";
 import WaterJourney from "./WaterJourney";
@@ -252,6 +253,12 @@ function StoryProgress() {
             title="Legenda: Bahaya banjir InaRISK"
             note="Bahaya = komponen HAZARD pada persamaan di atas. Arahkan kursor ke poligon di peta untuk kelasnya."
           />
+        </div>
+      )}
+
+      {ch.id === "ch09" && (
+        <div className="mt-8">
+          <ReadinessChecklist />
         </div>
       )}
 
