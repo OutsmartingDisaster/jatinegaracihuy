@@ -16,25 +16,13 @@ const BASE_CENTER: [number, number] = [106.895, -6.216];
 export function baseStyle(): StyleSpecification {
   return {
     version: 8,
-    // TANPA glyphs: tidak ada layer symbol/teks, dan URL font eksternal membuat
-    // isStyleLoaded() tertahan (mirror statis: semua layer vektor stuck opacity 0
-    // bila demotiles tidak terjangkau) — basemap raster tidak butuh glyphs.
-    sources: {
-      basemap: {
-        type: "raster",
-        tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
-        tileSize: 256,
-        maxzoom: 19,
-        attribution: "© OpenStreetMap contributors",
-      },
-    },
+    // Basemap abu polos — TANPA tile OSM (bangunan/jalan ikut ke-render di
+    // raster dan tak bisa dimatikan; konteks spasial disediakan layer vektor
+    // sendiri: water, roads, boundary-outline). Juga TANPA glyphs (tak ada
+    // layer symbol) — nol dependensi eksternal, style selalu loaded.
+    sources: {},
     layers: [
       { id: "bg", type: "background", paint: { "background-color": "#f0eeea" } },
-      {
-        id: "basemap", type: "raster", source: "basemap",
-        // OSM dibuat abu-abu editorial: grayscale penuh + desaturasi warna jalan
-        paint: { "raster-saturation": -1, "raster-contrast": 0.08, "raster-brightness-max": 0.92, "raster-opacity": 0.95 },
-      },
     ],
   };
 }
