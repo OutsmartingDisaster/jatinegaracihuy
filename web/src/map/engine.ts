@@ -16,14 +16,23 @@ const BASE_CENTER: [number, number] = [106.895, -6.216];
 export function baseStyle(): StyleSpecification {
   return {
     version: 8,
-    // Basemap abu polos — TANPA tile OSM (bangunan/jalan ikut ke-render di
-    // raster dan tak bisa dimatikan; konteks spasial disediakan layer vektor
-    // sendiri: water, roads, boundary-outline). Juga TANPA glyphs (tak ada
-    // layer symbol) — nol dependensi eksternal, style selalu loaded.
-    // Abu cukup gelap (#d8d3ca) agar panel peta terbaca di atas paper #faf8f5.
-    sources: {},
+    // Basemap Esri Light Gray Canvas (raster, tanpa API key) — konteks jalan/
+    // sungai/lahan terbaca tapi kalem; TANPA glyphs (tak ada layer symbol).
+    sources: {
+      basemap: {
+        type: "raster",
+        tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"],
+        tileSize: 256,
+        maxzoom: 19,
+        attribution: "© Esri, HERE, Garmin, OpenStreetMap contributors",
+      },
+    },
     layers: [
       { id: "bg", type: "background", paint: { "background-color": "#d8d3ca" } },
+      {
+        id: "basemap", type: "raster", source: "basemap",
+        paint: { "raster-opacity": 0.9 },
+      },
     ],
   };
 }
