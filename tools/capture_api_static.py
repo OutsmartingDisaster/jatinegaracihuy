@@ -63,6 +63,19 @@ UNAVAILABLE = [
     "GET /health/data (admin; tidak dipakai publik)",
 ]
 
+# MapLibre GL (>=v5) me-load Web Worker dari URL relatif terhadap chunk JS:
+#   new URL('./maplibre-gl-worker.mjs', import.meta.url)
+# Vite/rolldown tidak meng-emit file ini (pola new Worker tidak statis terdeteksi),
+# sehingga di mirror path /assets/maplibre-gl-worker.mjs jatuh ke fallback SPA
+# (index.html) → browser menolak (MIME text/html) → worker mati → layer vektor
+# tidak terproses (basemap raster tetap tampil). Solusi: salin worker + shared
+# chunk-nya (self-contained, tanpa import relatif lain) ke dist/assets/ dengan
+# NAMA PERSIS. Bukan bagian data — dicatat di manifest agar transparan.
+VENDOR_WORKER = [
+    ("node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs", "maplibre-gl-worker.mjs"),
+    ("node_modules/maplibre-gl/dist/maplibre-gl-shared.mjs", "maplibre-gl-shared.mjs"),
+]
+
 files: dict[str, str] = {}
 
 
@@ -132,6 +145,16 @@ def main() -> int:
             shutil.copy2(src, os.path.join(dest_dir, name))
             files["data/spatial/" + name] = sha256(os.path.join(dest_dir, name))
             print(f"  copied data/spatial/{name}")
+
+        print("menyalin MapLibre worker (lihat VENDOR_WORKER) ...")
+        for subpath, name in VENDOR_WORKER:
+            src = os.path.join(ROOT, "web", *subpath.split("/"))
+            if not os.path.isfile(src):
+                raise RuntimeError(f"vendor worker hilang: {subpath}")
+            dest = os.path.join(DIST, "assets", name)
+            shutil.copy2(src, dest)
+            files["assets/" + name] = sha256(dest)
+            print(f"  copied assets/{name}")
 
         try:
             rev = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"],
