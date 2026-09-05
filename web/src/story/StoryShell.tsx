@@ -45,11 +45,17 @@ export default function StoryShell() {
   }, [activeChapter]);
 
   // Pilihan area menyalakan peta (via chip kartu, baris prioritas, maupun klik peta).
+  // Sebaliknya: melepas pilihan (toggle chip/baris) mematikan peta lagi —
+  // layer tidak nongol terus setelah di-reveal.
   useEffect(() => {
     const ch = useApp.getState().activeChapter;
-    if (selectedArea && (ch === "ch07" || ch === "ch08")) {
-      useApp.getState().revealChapter(ch);
-      trackEvent("story_map_revealed", { chapter: ch, area_id: selectedArea });
+    if (ch === "ch07" || ch === "ch08") {
+      if (selectedArea) {
+        useApp.getState().revealChapter(ch);
+        trackEvent("story_map_revealed", { chapter: ch, area_id: selectedArea });
+      } else {
+        useApp.getState().resetReveal(ch);
+      }
     }
   }, [selectedArea]);
 
