@@ -9,6 +9,12 @@ import { RISK_LABELS_ID } from "../map/palette";
 
 const YEARS = [2021, 2022, 2023, 2024, 2025, "all"] as const;
 
+/** Ambil tahun dari event_date (toleran format; tak cocok → NaN → tersaring). */
+function yearOf(eventDate: string): number {
+  const m = /^(\d{4})/.exec(eventDate ?? "");
+  return m ? Number(m[1]) : NaN;
+}
+
 export default function RiwayatPage() {
   const [year, setYear] = useState<number | "all">("all");
   const [events, setEvents] = useState<FloodEvent[]>([]);
@@ -18,8 +24,10 @@ export default function RiwayatPage() {
 
   useEffect(() => {
     setLoading(true);
-    fetchEvents(year === "all" ? "" : `year=${year}`)
-      .then((r) => setEvents(r.items))
+    // Ambil semua kejadian sekali, saring tahun di klien — idempoten terhadap
+    // filter server (?year=), sehingga jalan identik di mode live maupun mirror statis.
+    fetchEvents("")
+      .then((r) => setEvents(year === "all" ? r.items : r.items.filter((e) => yearOf(e.event_date) === year)))
       .catch((e) => setError(String(e)))
       .finally(() => setLoading(false));
   }, [year]);

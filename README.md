@@ -6,6 +6,8 @@ Dibangun dari satu frustrasi konkret: [InaRISK](https://inarisk.bnpb.go.id/) lam
 >
 > Tesisnya: *interactive beats infographic* — dan proyek ini buktinya.
 
+**Demo publik: https://jatinegara-sahabat-air.pages.dev** — mirror statis scrollytelling (respons API di-bake dari FastAPI lokal via `tools/capture_api_static.py`; data bulk di R2, lihat `DATA_LOCATIONS.md`). Mode Analis + pelaporan tetap butuh backend lokal.
+
 ---
 
 ## Apa isi repo ini

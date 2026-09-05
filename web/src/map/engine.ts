@@ -1,7 +1,7 @@
 import type { Map as MLMap, StyleSpecification } from "maplibre-gl";
 import type { FeatureCollection, Geometry } from "geojson";
 import * as maplibregl from "maplibre-gl";
-import { spatial } from "../config";
+import { api, spatial } from "../config";
 import { KEL_CODES, type FRIKelurahan, type PriorityItem, type TemporalSynthesis } from "../api";
 import { UNKNOWN } from "./palette";
 
@@ -103,7 +103,7 @@ export async function loadBundle(): Promise<MapDataBundle> {
   const [kelGj, fri, priorityRes, temporal] = await Promise.all([
     fetch(spatial("boundary_kelurahan_jatinegara.geojson")).then((r) => r.json()),
     fetch(spatial("fri_v1_kelurahan.json")).then((r) => r.json()),
-    fetch("/api/priority").then((r) => r.json()),
+    fetch(api("/priority")).then((r) => r.json()),
     fetch(spatial("temporal_synthesis_v1.json")).then((r) => r.json()),
   ]);
   const bundle: MapDataBundle = { kelGj, kelJoined: kelGj, fri, priority: priorityRes.data?.items ?? priorityRes.items ?? [], temporal };

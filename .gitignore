@@ -29,3 +29,4 @@ Thumbs.db
 data/governance.db
 
 # TS incremental build cacheweb/tsconfig.tsbuildinfo
+web/tsconfig.tsbuildinfo
