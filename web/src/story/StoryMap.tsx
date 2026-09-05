@@ -133,17 +133,20 @@ export default function StoryMap({ onReady }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeChapter, revealed, applyChapter]);
 
-  // Selection highlight + spotlight per kelurahan (ch07/ch08)
+  // Selection highlight + spotlight per kelurahan (ch07/ch08).
+  // showAll ikut jadi dep: mode "Lihat semua" melepas filter tanpa ubah seleksi.
+  const showAll = useApp((s) => s.showAll);
   useEffect(() => {
     const map = mapRef.current;
     if (map && kelRef.current && map.isStyleLoaded()) {
       highlightArea(map, kelRef.current, selectedArea);
       const ch = useApp.getState().activeChapter;
-      if (ch === "ch07") setSpotlight(map, ["fri", "fri-outline"], selectedArea);
-      else if (ch === "ch08") setSpotlight(map, ["priority"], selectedArea);
+      const all = useApp.getState().showAll[ch] ?? false;
+      if (ch === "ch07") setSpotlight(map, ["fri", "fri-outline"], all ? null : selectedArea);
+      else if (ch === "ch08") setSpotlight(map, ["priority"], all ? null : selectedArea);
       if (selectedArea) trackEvent("feature_selected", { area_id: selectedArea });
     }
-  }, [selectedArea]);
+  }, [selectedArea, showAll]);
 
   return <div ref={container} className="h-full w-full" aria-label="Peta interaktif Jatinegara" role="application" />;
 }

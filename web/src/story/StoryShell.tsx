@@ -34,12 +34,13 @@ export default function StoryShell() {
   const selectedArea = useApp((s) => s.selectedArea);
 
   // Hidden-first reveal (ch07/ch08): tiap bab dibuka → peta mati + seleksi
-  // dibersihkan (fresh start per kunjungan).
+  // dibersihkan + mode "Lihat semua" dimatikan (fresh start per kunjungan).
   useEffect(() => {
     if (activeChapter === "ch07" || activeChapter === "ch08") {
       const st = useApp.getState();
       st.resetReveal(activeChapter);
       st.selectArea(null);
+      st.setShowAll(activeChapter, false);
     }
   }, [activeChapter]);
 
@@ -77,8 +78,11 @@ export default function StoryShell() {
       const f = hits[0] as { properties?: Record<string, unknown> } | undefined;
       const code = f?.properties ? String(f.properties["kel_code"] ?? f.properties["kdepum"] ?? "") : "";
       if (code && /^\d{10}$/.test(code)) {
-        useApp.getState().selectArea(code);
-        trackEvent("feature_selected", { area_id: code, chapter: useApp.getState().activeChapter });
+        const st = useApp.getState();
+        st.selectArea(code);
+        // Klik poligon = pilihan spesifik → keluar dari mode "Lihat semua".
+        st.setShowAll(st.activeChapter, false);
+        trackEvent("feature_selected", { area_id: code, chapter: st.activeChapter });
       }
     };
     map.on("click" as never, onClick as never);

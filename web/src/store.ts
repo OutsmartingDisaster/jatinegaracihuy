@@ -30,6 +30,10 @@ interface AppState {
   revealed: Record<string, boolean>;
   revealChapter: (id: string) => void;
   resetReveal: (id: string) => void;
+  /** Mode "Lihat semua" (ch07/ch08): seleksi tetap (panel penjelasan jalan),
+   *  tapi filter spotlight dilepas → tampil semua area. */
+  showAll: Record<string, boolean>;
+  setShowAll: (id: string, v: boolean) => void;
   setActiveChapter: (id: string) => void;
   selectArea: (code: string | null) => void;
   setExplainOpen: (open: boolean) => void;
@@ -44,6 +48,8 @@ export const useApp = create<AppState>((set) => ({
   revealed: {},
   revealChapter: (id) => set((s) => ({ revealed: { ...s.revealed, [id]: true } })),
   resetReveal: (id) => set((s) => ({ revealed: { ...s.revealed, [id]: false } })),
+  showAll: {},
+  setShowAll: (id, v) => set((s) => ({ showAll: { ...s.showAll, [id]: v } })),
   setActiveChapter: (id) => set({ activeChapter: id }),
   selectArea: (code) => set({ selectedArea: code }),
   setExplainOpen: (open) => set({ explainOpen: open }),

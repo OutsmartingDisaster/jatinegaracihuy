@@ -13,6 +13,8 @@ export function RiskCard() {
   const selectedArea = useApp((s) => s.selectedArea);
   const selectArea = useApp((s) => s.selectArea);
   const revealed = useApp((s) => s.revealed["ch07"] ?? false);
+  const showAll = useApp((s) => s.showAll["ch07"] ?? false);
+  const setShowAll = useApp((s) => s.setShowAll);
   const active = selectedArea; // null = belum memilih → peta mati + prompt
   const [data, setData] = useState<Awaited<ReturnType<typeof fetchExplanation>> | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -40,6 +42,7 @@ export function RiskCard() {
             type="button"
             onClick={() => {
               selectArea(code === active ? null : code);
+              setShowAll("ch07", false);
               trackEvent("riskcard_area_selected", { area_id: code });
             }}
             aria-pressed={active === code}
@@ -50,11 +53,28 @@ export function RiskCard() {
             {KEL_NAMES[code] ?? code}
           </button>
         ))}
+        {revealed && (
+          <button
+            type="button"
+            onClick={() => {
+              setShowAll("ch07", true);
+              trackEvent("riskcard_show_all", {});
+            }}
+            aria-pressed={showAll}
+            className={`rounded-full px-3 py-1.5 text-sm font-semibold transition-colors ${
+              showAll ? "bg-accent text-paper" : "border border-dashed border-line text-ink-soft hover:border-ink-soft"
+            }`}
+          >
+            ⤢ Lihat semua
+          </button>
+        )}
       </div>
       <p className="mt-2 text-[11px] text-ink-soft/70">
-        {revealed
-          ? "Peta menyala — hanya area terpilih yang tampil. Klik chip lain (atau poligon di peta) untuk pindah area."
-          : "Peta masih mati — pilih salah satu area untuk menyalakannya."}
+        {!revealed
+          ? "Peta masih mati — pilih salah satu area untuk menyalakannya."
+          : showAll
+            ? "Menampilkan semua area. Klik chip untuk fokus satu area."
+            : "Peta menyala — hanya area terpilih yang tampil. Klik chip lain (atau poligon di peta) untuk pindah area."}
       </p>
 
       {!active ? (
@@ -127,6 +147,8 @@ export function PriorityCard({ items }: { items: PriorityItem[] }) {
   const selectedArea = useApp((s) => s.selectedArea);
   const selectArea = useApp((s) => s.selectArea);
   const revealed = useApp((s) => s.revealed["ch08"] ?? false);
+  const showAll = useApp((s) => s.showAll["ch08"] ?? false);
+  const setShowAll = useApp((s) => s.setShowAll);
   const maxScore = useMemo(() => Math.max(...top.map((p) => p.priority_score), 0.01), [top]);
   return (
     <section aria-label="Area prioritas" className="rounded-2xl border border-line bg-paper/95 p-6 shadow-sm">
@@ -135,9 +157,11 @@ export function PriorityCard({ items }: { items: PriorityItem[] }) {
         Peringkat berdasarkan kombinasi risiko + paparan + kekuatan bukti — bukan sekadar risiko tertinggi.
       </p>
       <p className="mt-1 text-[11px] text-ink-soft/70">
-        {revealed
-          ? "Peta menyala — hanya area terpilih yang tampil. Klik baris untuk pindah sorotan antar area."
-          : "Peta masih mati — klik salah satu area untuk menyalakannya."}
+        {!revealed
+          ? "Peta masih mati — klik salah satu area untuk menyalakannya."
+          : showAll
+            ? "Menampilkan semua area. Klik baris untuk fokus satu area."
+            : "Peta menyala — hanya area terpilih yang tampil. Klik baris untuk pindah sorotan antar area."}
       </p>
       <ol className="mt-4 space-y-3">
         {top.map((p) => {
@@ -146,7 +170,10 @@ export function PriorityCard({ items }: { items: PriorityItem[] }) {
             <li key={p.id}>
               <button
                 type="button"
-                onClick={() => selectArea(selected ? null : p.area_id)}
+                onClick={() => {
+                  selectArea(selected ? null : p.area_id);
+                  setShowAll("ch08", false);
+                }}
                 aria-pressed={selected}
                 className={`block w-full cursor-pointer rounded-xl border p-4 text-left transition-colors ${
                   selected ? "border-accent bg-accent/5 ring-2 ring-accent/30" : "border-line/80 bg-white/60 hover:border-line"
@@ -174,6 +201,18 @@ export function PriorityCard({ items }: { items: PriorityItem[] }) {
           );
         })}
       </ol>
+      {revealed && (
+        <button
+          type="button"
+          onClick={() => setShowAll("ch08", true)}
+          aria-pressed={showAll}
+          className={`mt-3 w-full rounded-xl px-3 py-2 text-sm font-semibold transition-colors ${
+            showAll ? "bg-accent text-paper" : "border border-dashed border-line text-ink-soft hover:border-ink-soft"
+          }`}
+        >
+          ⤢ Lihat semua area
+        </button>
+      )}
       <p className="mt-3 text-xs text-ink-soft/90">
         ⚠ Capacity gap numerik belum masuk perhitungan (data populasi & shelter belum tersedia).
         Peringkat dapat berubah ketika data tersebut terbit.
