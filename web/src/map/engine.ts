@@ -20,9 +20,10 @@ export function baseStyle(): StyleSpecification {
     // raster dan tak bisa dimatikan; konteks spasial disediakan layer vektor
     // sendiri: water, roads, boundary-outline). Juga TANPA glyphs (tak ada
     // layer symbol) — nol dependensi eksternal, style selalu loaded.
+    // Abu cukup gelap (#d8d3ca) agar panel peta terbaca di atas paper #faf8f5.
     sources: {},
     layers: [
-      { id: "bg", type: "background", paint: { "background-color": "#f0eeea" } },
+      { id: "bg", type: "background", paint: { "background-color": "#d8d3ca" } },
     ],
   };
 }
